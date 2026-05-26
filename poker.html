@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Poker Guide | FREE-CASINO-CHIPS.COM</title>
+
+<style>
+    body {
+        background-color:#0b1020;
+        color:#ffffff;
+        font-family:Arial;
+        margin:0;
+        padding:0;
+        display:flex;
+    }
+
+    header {
+        background:#111726;
+        padding:25px;
+        text-align:center;
+        font-size:32px;
+        font-weight:bold;
+        color:#ffcc33;
+        border-bottom:2px solid:#222a40;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        z-index:10;
+    }
+
+    aside {
+        width:260px;
+        background:#111726;
+        padding:20px;
+        border-right:2px solid:#222a40;
+        position:fixed;
+        top:90px;
+        bottom:0;
+        overflow-y:auto;
+    }
+
+    main {
+        margin-left:260px;
+        padding:140px 40px 200px 40px;
+        width:calc(100% - 260px);
+        box-sizing:border-box;
+    }
+
+    h1, h2 {
+        color:#ffcc33;
+    }
+
+    .section {
+        background:#111726;
+        padding:25px;
+        border-radius:10px;
+        border:1px solid:#222a40;
+        margin-top:30px;
+        font-size:20px;
+        line-height:1.6;
+    }
+
+    .subheader {
+        color:#66aaff;
+        font-size:24px;
+        margin-top:20px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>POKER GUIDE</header>
+
+<!-- FIXED SIDEBAR LOADER -->
+<aside id="sidebar"></aside>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("/sidebar.html")
+        .then(r => r.text())
+        .then(html => { document.getElementById("sidebar").innerHTML = html; })
+        .catch(err => console.log("Sidebar load error:", err));
+});
+</script>
+
+<main>
+
+<div class="section">
+    <h1 style="text-align:center;">Master Every Poker Game</h1>
+    <p style="text-align:center; color:#cccccc;">
+        Learn the best strategies, starting hands, and winning habits for every poker variant you play.
+    </p>
+</div>
+
+<div class="section">
+    <h2>Texas Hold’em — Best Practices</h2>
+    <p><strong>• Play tight from early position.</strong> Fold weak hands and avoid trouble hands like K‑J, Q‑J, A‑9 offsuit.</p>
+    <p><strong>• Raise your strong hands preflop.</strong> Don’t limp with A‑K, A‑Q, or big pairs.</p>
+    <p><strong>• Continuation bet only when the board favors you.</strong> Dry boards = good. Wet boards = dangerous.</p>
+    <p><strong>• Don’t slowplay big hands on draw-heavy boards.</strong> Charge draws.</p>
+    <p><strong>• Position is everything.</strong> Play more hands on the button.</p>
+</div>
+
+<div class="section">
+    <h2>Omaha — Best Practices</h2>
+    <p><strong>• Play hands that work together.</strong> Double‑suited, connected, coordinated cards.</p>
+    <p><strong>• Avoid trashy pairs.</strong> Aces without support are dangerous.</p>
+    <p><strong>• Draws are stronger than made hands.</strong> Don’t fall in love with one pair.</p>
+    <p><strong>• Nut draws only.</strong> Second‑best draws lose money.</p>
+</div>
+
+<div class="section">
+    <h2>Courchevel — Best Practices</h2>
+    <p><strong>• The exposed flop card changes everything.</strong> Adjust immediately.</p>
+    <p><strong>• Strong starting hands matter more.</strong> Because one flop card is known.</p>
+    <p><strong>• Nut draws dominate.</strong> Same as Omaha but amplified.</p>
+</div>
+
+<div class="section">
+    <h2>Badeucy — Best Practices</h2>
+    <p><strong>• Start with strong 2‑way hands.</strong> (A‑2‑3‑4 + strong Badugi potential)</p>
+    <p><strong>• Don’t chase weak Badugis.</strong> You’ll get crushed.</p>
+    <p><strong>• Draw aggressively when you have position.</strong></p>
+</div>
+
+<div class="section">
+    <h2>5‑Card Draw — Best Practices</h2>
+    <p><strong>• Only play premium starting hands.</strong> Big pairs, trips, or strong draws.</p>
+    <p><strong>• Don’t draw to inside straights.</strong></p>
+    <p><strong>• Bet your strong pairs.</strong> Don’t give free cards.</p>
+</div>
+
+<div class="section">
+    <h2>Mixed Games — Best Practices</h2>
+    <p><strong>• Tighten up on games you’re weak at.</strong></p>
+    <p><strong>• Attack players who don’t understand the rotation.</strong></p>
+    <p><strong>• Track which games you win the most in.</strong></p>
+</div>
+
+<div class="section">
+    <h2>Free Poker Platforms</h2>
+    <p>These are the poker platforms you can play on for free and earn real rewards.</p>
+
+    <h3 class="subheader">ClubsPoker</h3>
+
+    <p style="text-align:center; margin-top:20px;">
+        <a href="clubspoker.html" style="color:#66aaff; font-size:22px; font-weight:bold;">
+            ➜ Go to ClubsPoker Page
+        </a>
+    </p>
+</div>
+
+<div id="visitCounter" style="margin-top:40px; text-align:center; color:#888; font-size:16px;"></div>
+
+<script>
+    let count = localStorage.getItem("pokerPageCount");
+    if (!count) { count = 0; }
+    count++;
+    localStorage.setItem("pokerPageCount", count);
+    document.getElementById("visitCounter").innerHTML =
+        "Page Views: " + count.toLocaleString();
+</script>
+
+</main>
+
+</body>
+</html>
+
