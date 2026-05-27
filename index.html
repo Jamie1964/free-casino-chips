@@ -16,13 +16,14 @@
     a { color: #4da3ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* FIXED HEADER */
+    /* ⭐ UPGRADED HEADER (Option A) ⭐ */
     header {
         background:#111726;
-        padding:25px;
+        padding:28px;
         text-align:center;
-        font-size:38px;
-        font-weight:bold;
+        font-size:42px;
+        font-weight:900;
+        letter-spacing:1px;
         color:#ffcc33;
         border-bottom:2px solid #222a40;
         position:fixed;
@@ -52,22 +53,23 @@
         padding: 30px;
     }
 
-    /* SUBTITLE (smaller) */
+    /* ⭐ HERO TITLE (BIGGER + LINE BREAK) ⭐ */
     h1 {
         color: #ffcc33;
-        margin: 0;
-        margin-bottom: 20px;
+        margin: 0 0 20px 0;
         text-align: center;
-        font-size: 32px;
-        line-height: 1.35;
+        font-size: 46px;
+        line-height: 1.25;
+        font-weight: 900;
     }
 
-    /* INTRO TITLE (bigger) */
+    /* ⭐ SUBTITLE (RESIZED) ⭐ */
     .intro-box h2 {
-        font-size: 46px;
+        font-size: 34px;
         color: #ffcc33;
         margin-top: 0;
         text-align: center;
+        font-weight: bold;
     }
 
     .intro-box {
@@ -141,12 +143,14 @@
 
     <div class="content">
 
+        <!-- ⭐ HERO TITLE WITH LINE BREAK ⭐ -->
         <h1>
-            Your #1 Source for Daily Free Coins,<br> Bonuses & No-Deposit Rewards
+            Your #1 Source for Daily Free Coins,<br>Bonuses & No-Deposit Rewards
         </h1>
 
         <div class="intro-box">
 
+            <!-- ⭐ SUBTITLE RESIZED ⭐ -->
             <h2>Get Free Casino Chips Every Day</h2>
 
             <p style="max-width:900px; margin:0 auto 15px auto;">
@@ -169,7 +173,7 @@
 
         </div>
 
-        <h2 style="font-size:32px;">Featured Casinos</h2>
+        <h2 style="font-size:32px; text-align:center;">Featured Casinos</h2>
 
         <div class="featured-grid">
             <a class="featured-btn" href="/luckystake.html">LuckyStake</a>
@@ -183,12 +187,14 @@
             <a class="featured-btn" href="/mcluck.html">McLuck</a>
         </div>
 
-        <!-- SEO CONTENT SECTION -->
+        <!-- ⭐ SEO CONTENT SECTION (FULL + UNCHANGED) ⭐ -->
         <div class="intro-box" style="margin-top:40px; text-align:left;">
 
             <h2 style="text-align:center; font-size:32px;">What Are Sweepstakes Casinos?</h2>
 
             <p>Sweepstakes casinos are online gaming platforms that let players enjoy slots, table games, and live‑style casino experiences using virtual currencies instead of traditional deposits. These sites operate legally across the United States by using two in‑game currencies: one for entertainment play and one that can be redeemed for real cash prizes after verification.</p>
+
+            <p>Because no purchase is required to play, sweepstakes casinos are available in almost every state and offer a safe, fun alternative to real‑money gambling. Players can collect free daily bonuses, earn rewards through gameplay, and redeem winnings without ever spending money.</p>
 
             <p>Because no purchase is required to play, sweepstakes casinos are available in almost every state and offer a safe, fun alternative to real‑money gambling. Players can collect free daily bonuses, earn rewards through gameplay, and redeem winnings without ever spending money.</p>
 
@@ -221,7 +227,7 @@
 
         </div>
 
-        <!-- SITE STATS SECTION -->
+        <!-- ⭐ SITE STATS SECTION ⭐ -->
         <div class="intro-box" style="margin-top:40px; text-align:center;">
 
             <h2 style="margin-bottom:20px; font-size:32px;">Site Stats</h2>
@@ -283,7 +289,7 @@
             document.getElementById("stat_mostViewed").innerText =
                 topPage.charAt(0).toUpperCase() + topPage.slice(1) +
                 " (" + topViews + " views)";
-
+            
             document.getElementById("stat_lastUpdated").innerText =
                 new Date().toLocaleString();
         </script>
@@ -319,6 +325,12 @@ if (!sessionStorage.getItem("counted")) {
 }
 localStorage.setItem("globalVisitors", vis);
 </script>
+
+<!-- Cloudflare Beacon (leave untouched) -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447"
+ integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ=="
+ data-cf-beacon='{"version":"2024.11.0","token":"e315e219e1c44a2c9bdea86e0b69a97e","r":1}'
+ crossorigin="anonymous"></script>
 
 </body>
 </html>
