@@ -1,74 +1,118 @@
-<div class="sidebar">
+<style>
+    .sidebar-links {
+        text-align: right;
+    }
 
-  <!-- MAIN NAVIGATION -->
-  <h2>Navigation</h2>
-  <a href="/index.html">Home</a>
-  <a href="/games.html">Slot Games</a>
-  <a href="/poker.html">Poker</a>
+    .sidebar-links a {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 18px;
+        color: #4da3ff;
+        text-decoration: none;
+        white-space: nowrap;
+    }
 
-  <!-- POKER SITES -->
-  <h2>Poker Sites</h2>
-  <a href="/clubspoker.html">ClubsPoker</a>
-  <a href="/clubwptgold.html">ClubWPT Gold</a>
+    .sidebar-links a:hover {
+        text-decoration: underline;
+    }
 
-  <!-- CASINOS (A–Z) -->
-  <h2>Casinos</h2>
+    /* OBLONG BUTTON STYLE */
+    .sidebar-button {
+        display: block;
+        background: #ffcc33;
+        color: #000;
+        padding: 14px 32px;
+        border-radius: 8px;
+        font-size: 22px;
+        font-weight: bold;
+        text-decoration: none;
+        margin-bottom: 25px;
+        text-align: center;
+    }
 
-  <a href="ace.html">Ace</a>
-  <a href="americanluck.html">AmericanLuck</a>
-  <a href="babacasino.html">BabaCasino</a>
-  <a href="bangcoins.html">BangCoins</a>
-  <a href="cashoomo.html">Cashoomo</a>
-  <a href="casinoclick.html">CasinoClick</a>
-  <a href="chipnwin.html">ChipNWin</a>
-  <a href="cidercasino.html">CiderCasino</a>
-  <a href="coinsback.html">CoinsBack</a>
-  <a href="coinz.html">Coinz</a>
-  <a href="epicsweep.html">EpicSweep</a>
-  <a href="firesevens.html">FireSevens</a>
-  <a href="fortunewheelz.html">FortuneWheelz</a>
-  <a href="funrize.html">Funrize</a>
-  <a href="goldenheartsgames.html">GoldenHeartsGames</a>
-  <a href="goodvibes.html">GoodVibes</a>
-  <a href="hellomillions.html">HelloMillions</a>
-  <a href="high5casino.html">High5Casino</a>
-  <a href="jumbo88.html">Jumbo88</a>
-  <a href="kingprize.html">KingPrize</a>
-  <a href="lavishluck.html">LavishLuck</a>
-  <a href="legendz.html">Legendz</a>
-  <a href="lonestar.html">LoneStar</a>
-  <a href="luckparty.html">LuckParty</a>
-  <a href="luckyslots.html">LuckySlots</a>
-  <a href="luckystake.html">LuckyStake</a>
-  <a href="mcluck.html">McLuck</a>
-  <a href="modo.html">Modo</a>
-  <a href="moozi.html">Moozi</a>
-  <a href="myprizeus.html">MyPrizeUS</a>
-  <a href="newluck.html">NewLuck</a>
-  <a href="nolimitcoins.html">NoLimitCoins</a>
-  <a href="playfame.html">PlayFame</a>
-  <a href="playtana.html">PlayTana</a>
-  <a href="pulsz.html">Pulsz</a>
-  <a href="rolla.html">Rolla</a>
-  <a href="scarletsands.html">ScarletSands</a>
-  <a href="sixty6.html">Sixty6</a>
-  <a href="speedsweeps.html">SpeedSweeps</a>
-  <a href="spinblitz.html">SpinBlitz</a>
-  <a href="spindoo.html">Spindoo</a>
-  <a href="spinsagacasino.html">SpinSagaCasino</a>
-  <a href="sportzino.html">Sportzino</a>
-  <a href="spree.html">Spree</a>
-  <a href="stormrush.html">StormRush</a>
-  <a href="sweepico.html">Sweepico</a>
-  <a href="sweepsblast.html">SweepsBlast</a>
-  <a href="sweepshark.html">SweepsHark</a>
-  <a href="taofortune.html">TaoFortune</a>
-  <a href="thewinzone.html">TheWinZone</a>
-  <a href="vegasway.html">VegasWay</a>
-  <a href="winbonanza.html">WinBonanza</a>
-  <a href="wowvegas.html">WowVegas</a>
-  <a href="yaycasino.html">YayCasino</a>
-  <a href="zulacasino.html">ZulaCasino</a>
+    .sidebar-button:hover {
+        background: #ffe680;
+    }
+
+    h2 {
+        color: #ffcc33;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        font-size: 22px;
+        text-align: right;
+    }
+</style>
+
+<div class="sidebar-links">
+
+    <!-- TOP OBLONG BUTTON -->
+    <a class="sidebar-button" href="/index.html">Home</a>
+
+    <h2>Navigation</h2>
+    <a href="/games.html">Slot Games</a>
+    <a href="/poker.html">Poker</a>
+
+    <h2>Poker Sites</h2>
+    <a href="/clubspoker.html">ClubsPoker</a>
+    <a href="/clubwptgold.html">ClubWPT Gold</a>
+
+    <h2>Casinos</h2>
+
+    <a href="ace.html">Ace</a>
+    <a href="americanluck.html">AmericanLuck</a>
+    <a href="babacasino.html">BabaCasino</a>
+    <a href="bangcoins.html">BangCoins</a>
+    <a href="cashoomo.html">Cashoomo</a>
+    <a href="casinoclick.html">CasinoClick</a>
+    <a href="chipnwin.html">ChipNWin</a>
+    <a href="cidercasino.html">CiderCasino</a>
+    <a href="coinsback.html">CoinsBack</a>
+    <a href="coinz.html">Coinz</a>
+    <a href="epicsweep.html">EpicSweep</a>
+    <a href="firesevens.html">FireSevens</a>
+    <a href="fortunewheelz.html">FortuneWheelz</a>
+    <a href="funrize.html">Funrize</a>
+    <a href="goldenheartsgames.html">GoldenHeartsGames</a>
+    <a href="goodvibes.html">GoodVibes</a>
+    <a href="hellomillions.html">HelloMillions</a>
+    <a href="high5casino.html">High5Casino</a>
+    <a href="jumbo88.html">Jumbo88</a>
+    <a href="kingprize.html">KingPrize</a>
+    <a href="lavishluck.html">LavishLuck</a>
+    <a href="legendz.html">Legendz</a>
+    <a href="lonestar.html">LoneStar</a>
+    <a href="luckparty.html">LuckParty</a>
+    <a href="luckyslots.html">LuckySlots</a>
+    <a href="luckystake.html">LuckyStake</a>
+    <a href="mcluck.html">McLuck</a>
+    <a href="modo.html">Modo</a>
+    <a href="moozi.html">Moozi</a>
+    <a href="myprizeus.html">MyPrizeUS</a>
+    <a href="newluck.html">NewLuck</a>
+    <a href="nolimitcoins.html">NoLimitCoins</a>
+    <a href="playfame.html">PlayFame</a>
+    <a href="playtana.html">PlayTana</a>
+    <a href="pulsz.html">Pulsz</a>
+    <a href="rolla.html">Rolla</a>
+    <a href="scarletsands.html">ScarletSands</a>
+    <a href="sixty6.html">Sixty6</a>
+    <a href="speedsweeps.html">SpeedSweeps</a>
+    <a href="spinblitz.html">SpinBlitz</a>
+    <a href="spindoo.html">Spindoo</a>
+    <a href="spinsagacasino.html">SpinSagaCasino</a>
+    <a href="sportzino.html">Sportzino</a>
+    <a href="spree.html">Spree</a>
+    <a href="stormrush.html">StormRush</a>
+    <a href="sweepico.html">Sweepico</a>
+    <a href="sweepsblast.html">SweepsBlast</a>
+    <a href="sweepshark.html">SweepsHark</a>
+    <a href="taofortune.html">TaoFortune</a>
+    <a href="thewinzone.html">TheWinZone</a>
+    <a href="vegasway.html">VegasWay</a>
+    <a href="winbonanza.html">WinBonanza</a>
+    <a href="wowvegas.html">WowVegas</a>
+    <a href="yaycasino.html">YayCasino</a>
+    <a href="zulacasino.html">ZulaCasino</a>
 
 </div>
 
