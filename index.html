@@ -14,7 +14,7 @@
         padding:0;
     }
 
-    /* FIXED HEADER — SAME AS ACE */
+    /* FIXED HEADER */
     header {
         background:#111726;
         padding:25px;
@@ -30,17 +30,20 @@
         z-index:10;
     }
 
-    /* SIDEBAR — EXACT MATCH TO ACE */
+    /* LAYOUT WRAPPER (THE MISSING PIECE) */
+    #layout {
+        display:flex;
+        margin-top:90px;
+    }
+
+    /* SIDEBAR */
     .sidebar {
-        position:absolute;
-        top:90px;
-        left:0;
         width:260px;
-        min-height:100vh;
         background:#111827;
         border-right:1px solid #1f2937;
         padding:25px 20px 20px 35px;
         box-sizing:border-box;
+        min-height:100vh;
     }
 
     .sidebar a {
@@ -56,11 +59,10 @@
         text-decoration:underline;
     }
 
-    /* MAIN CONTENT — EXACT MATCH TO ACE */
+    /* MAIN CONTENT */
     .main {
-        margin-left:260px;
-        padding:150px 60px 200px 40px;
-        width:calc(100% - 260px);
+        flex:1;
+        padding:40px 60px 200px 40px;
         box-sizing:border-box;
     }
 
@@ -77,7 +79,7 @@
         margin-bottom:40px;
     }
 
-    /* FEATURED CASINOS */
+    /* FEATURED CASINOS GRID */
     .featured-grid {
         display:grid;
         grid-template-columns:repeat(3, 1fr);
@@ -122,69 +124,71 @@
 
 <header>FREE-CASINO-CHIPS.COM</header>
 
-<!-- SIDEBAR (MATCHES ACE EXACTLY) -->
-<div class="sidebar" id="sidebar"></div>
+<div id="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <h2 style="text-align:center;">Daily Free Coins, Bonuses & No-Deposit Rewards</h2>
+
+        <div class="intro-box">
+            <h2>Get Free Casino Chips Every Day</h2>
+
+            Every day, sweepstakes casinos hand out thousands of dollars worth of free coins, free spins, bonus drops,<br>
+            and loyalty rewards — and most players never claim them.<br><br>
+
+            That’s where <strong>Free-Casino-Chips.com</strong> comes in. We track the casinos that give out the <strong>best daily freebies</strong><br>
+            so you can collect your chips, play longer, and win more — all without spending a dime.<br><br>
+
+            Whether you want daily login bonuses, hourly drops, inbox rewards, or referral boosts, we show you exactly where to claim them.
+
+            <hr style="border:0; border-top:1px solid #222a40; margin:25px 0;">
+
+            <p style="font-size:22px; color:#ffcc33; font-weight:bold;">
+                …and play poker tournaments for free and win real cash.
+            </p>
+        </div>
+
+        <h2>Featured Casinos</h2>
+
+        <div class="featured-grid">
+            <a class="featured-btn" href="/luckystake.html">LuckyStake</a>
+            <a class="featured-btn" href="/epicsweep.html">EpicSweep</a>
+            <a class="featured-btn" href="/myprizeus.html">MyPrize US</a>
+            <a class="featured-btn" href="/sweepsblast.html">SweepsBlast</a>
+            <a class="featured-btn" href="/sweepshark.html">SweepsHark</a>
+            <a class="featured-btn" href="/thewinzone.html">TheWinZone</a>
+            <a class="featured-btn" href="/sportzino.html">Sportzino</a>
+            <a class="featured-btn" href="/rolla.html">Rolla</a>
+            <a class="featured-btn" href="/mcluck.html">McLuck</a>
+        </div>
+
+        <div class="counter">
+            Page views: <span id="viewCount">Loading…</span>
+        </div>
+
+        <footer>
+            Copyright ©2026 FREE-CASINO-CHIPS.COM — All rights reserved.
+        </footer>
+
+    </main>
+</div>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     fetch("sidebar.html")
         .then(r => r.text())
         .then(html => { document.getElementById("sidebar").innerHTML = html; });
-});
-</script>
 
-<!-- MAIN CONTENT -->
-<div class="main">
-
-    <h2 style="text-align:center;">Daily Free Coins, Bonuses & No-Deposit Rewards</h2>
-
-    <div class="intro-box">
-        <h2>Get Free Casino Chips Every Day</h2>
-
-        Every day, sweepstakes casinos hand out thousands of dollars worth of free coins, free spins, bonus drops,<br>
-        and loyalty rewards — and most players never claim them.<br>
-
-        That’s where <strong>Free-Casino-Chips.com</strong> comes in. We track the casinos that give out the <strong>best daily freebies</strong><br>
-        so you can collect your chips, play longer, and win more — all without spending a dime.<br>
-
-        Whether you want daily login bonuses, hourly drops, inbox rewards, or referral boosts, we show you exactly where to claim them.
-
-        <hr style="border:0; border-top:1px solid #222a40; margin:25px 0;">
-
-        <p style="font-size:22px; color:#ffcc33; font-weight:bold;">
-            …and play poker tournaments for free and win real cash.
-        </p>
-    </div>
-
-    <h2>Featured Casinos</h2>
-
-    <div class="featured-grid">
-        <a class="featured-btn" href="/luckystake.html">LuckyStake</a>
-        <a class="featured-btn" href="/epicsweep.html">EpicSweep</a>
-        <a class="featured-btn" href="/myprizeus.html">MyPrize US</a>
-        <a class="featured-btn" href="/sweepsblast.html">SweepsBlast</a>
-        <a class="featured-btn" href="/sweepshark.html">SweepsHark</a>
-        <a class="featured-btn" href="/thewinzone.html">TheWinZone</a>
-        <a class="featured-btn" href="/sportzino.html">Sportzino</a>
-        <a class="featured-btn" href="/rolla.html">Rolla</a>
-        <a class="featured-btn" href="/mcluck.html">McLuck</a>
-    </div>
-
-    <div class="counter">
-        Page views: <span id="viewCount">Loading…</span>
-    </div>
-
-    <script>
     fetch('/api/index-views')
         .then(r => r.json())
         .then(data => { document.getElementById('viewCount').textContent = data.views; })
         .catch(() => { document.getElementById('viewCount').textContent = 'N/A'; });
-    </script>
-
-    <footer>
-        Copyright ©2026 FREE-CASINO-CHIPS.COM — All rights reserved.
-    </footer>
-
-</div>
+});
+</script>
 
 </body>
 </html>
