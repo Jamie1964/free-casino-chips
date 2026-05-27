@@ -2,164 +2,276 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ACE Casino</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACE Casino | FREE-CASINO-CHIPS.COM</title>
+<meta name="description" content="ACE Casino — clean, fast, no‑nonsense casino with straightforward bonuses, curated games, and reliable payouts.">
+<link rel="canonical" href="https://www.free-casino-chips.com/ace.html">
+<meta name="robots" content="index, follow">
 
 <style>
-body {
-    background:#111827;
-    margin:0;
-    padding:0;
-    font-family:Arial;
-    color:white;
-}
+    body {
+        background-color:#0b1020;
+        color:#ffffff;
+        font-family:Arial;
+        margin:0;
+        padding:0;
+    }
 
-/* MAIN CONTENT AREA */
-main {
-    max-width:900px;
-    margin:0 auto;
-    padding:20px;
-}
+    /* FIXED HEADER */
+    header {
+        background:#111726;
+        padding:25px;
+        text-align:center;
+        font-size:32px;
+        font-weight:bold;
+        color:#ffcc33;
+        border-bottom:2px solid:#222a40;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        z-index:10;
+    }
 
-/* GOLD BUTTON */
-.gold-btn {
-    display:block;
-    width:260px;
-    margin:20px auto 10px auto;
-    text-align:center;
-    padding:14px 0;
-    background:#ffcc33;
-    color:black;
-    font-size:22px;
-    font-weight:bold;
-    border-radius:10px;
-    text-decoration:none;
-    box-shadow:0 0 10px #ffcc33;
-    transition:0.25s;
-}
+    /* SIDEBAR */
+    .sidebar {
+        position:absolute;
+        top:90px;
+        left:0;
+        width:260px;
+        min-height:100vh;
+        background:#111827;
+        border-right:1px solid #1f2937;
+        padding:25px 20px 20px 35px;
+        box-sizing:border-box;
+    }
 
-.gold-btn:hover {
-    box-shadow:0 0 18px #ffcc33;
-    background:#ffd84d;
-}
+    /* MAIN CONTENT */
+    .main {
+        margin-left:260px;
+        padding:150px 60px 200px 40px;
+        width:calc(100% - 260px);
+        box-sizing:border-box;
+    }
 
-/* PAGE COUNTER UNDER BUTTON */
-.page-counter {
-    text-align:center;
-    margin-top:10px;
-    margin-bottom:25px;
-    font-size:18px;
-    color:#66ccff;
-    text-shadow:0 0 6px #66ccff;
-}
+    h1, h2 { color:#ffcc33; margin-top:0; }
 
-/* COPYRIGHT */
-footer {
-    text-align:center;
-    margin-top:40px;
-    padding:20px 0;
-    font-size:16px;
-    color:#bbbbbb;
-}
+    /* BUTTONS */
+    .top-button {
+        text-align:center;
+        margin-bottom:30px;
+    }
+    .top-button a {
+        display:inline-block;
+        background:#ffcc33;
+        color:#000;
+        padding:14px 32px;
+        border-radius:8px;
+        font-size:26px;
+        font-weight:bold;
+        text-decoration:none;
+    }
+    .top-button a:hover { background:#ffe680; }
 
-/* SIDEBAR LOADER */
-#sidebar {
-    width:260px;
-    position:fixed;
-    left:0;
-    top:0;
-    bottom:0;
-    overflow-y:auto;
-    background:#0d1220;
-    padding:15px;
-    border-right:2px solid #1a2238;
-}
+    /* GRID */
+    .grid {
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:30px;
+        margin-top:30px;
+    }
 
-#content {
-    margin-left:280px;
-}
+    .card {
+        background:#111726;
+        padding:25px;
+        border-radius:10px;
+        border:1px solid:#222a40;
+        font-size:20px;
+        line-height:1.6;
+    }
+
+    footer {
+        text-align:center;
+        padding:25px;
+        margin-top:40px;
+        color:#888;
+        font-size:14px;
+    }
+
+    .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
+    .seo-section h2, .seo-section h3 { color:#ffcc33; }
+    .seo-section ul { margin-left:20px; }
+
+    /* PAGE VIEW COUNTER */
+    #pageCounter {
+        text-align:center;
+        margin-top:40px;
+        font-size:18px;
+        color:#66ccff;
+        text-shadow:0 0 6px #66ccff;
+    }
 </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
-<div id="sidebar"></div>
+<header>FREE-CASINO-CHIPS.COM</header>
 
+<!-- SIDEBAR INCLUDE -->
+<div class="sidebar" id="sidebar"></div>
 <script>
-fetch("/sidebar.html")
-    .then(r => r.text())
-    .then(html => document.getElementById("sidebar").innerHTML = html);
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("sidebar.html")
+        .then(r => r.text())
+        .then(html => { document.getElementById("sidebar").innerHTML = html; });
+});
 </script>
 
 <!-- MAIN CONTENT -->
-<div id="content">
-<main>
+<div class="main">
 
-<h1 style="text-align:center; color:#ffcc33; font-size:32px; margin-top:10px;">
-    ACE Casino
-</h1>
+    <!-- TOP BUTTON -->
+    <div class="top-button">
+        <a href="https://www.ace.com/?r=4333fa1d%2F42862933" target="_blank">
+            Play at ACE
+        </a>
+    </div>
 
-<p style="font-size:20px; line-height:1.6; margin-top:20px;">
-ACE is one of the cleanest, smoothest, and most reliable sweepstakes-style casinos available today.  
-Players love ACE for its fast payouts, simple interface, and generous welcome bonuses.  
-If you're looking for a platform that feels polished and trustworthy, ACE is one of the best options.
-</p>
+    <h2 style="text-align:center;">ACE Casino</h2>
 
-<!-- GOLD BUTTON -->
-<a class="gold-btn" href="https://www.ace.com/?r=4333fa1d%2F42862933" target="_blank">Play Now</a>
+    <p style="font-size:20px; line-height:1.6; text-align:center; max-width:900px; margin:0 auto;">
+        Straightforward real‑money casino with clear bonuses, a clean lobby, and fast navigation.
+        ACE is built for players who want a simple, functional, no‑nonsense experience.
+    </p>
 
-<!-- PAGE COUNTER UNDER BUTTON -->
-<div class="page-counter">
-    <strong>Page Views:</strong> <span id="pageViews">0</span>
-</div>
+    <!-- GRID 1 -->
+    <div class="grid">
+        <div class="card">
+            <h2>ACE Casino Overview</h2>
+            <p>ACE Casino is built for players who want a clean, no‑nonsense experience: log in, pick a game, play, cash out. The lobby is simple, the categories are clear, and you’re not buried under banners and distractions.</p>
+        </div>
 
-<script>
-// UNIQUE PAGE VIEW COUNTER PER PAGE
-let pageKey = "views_" + window.location.pathname;
-let pageViews = localStorage.getItem(pageKey) || 0;
-pageViews++;
-localStorage.setItem(pageKey, pageViews);
-document.getElementById("pageViews").innerText = pageViews;
-</script>
+        <div class="card">
+            <h2>Clean, Fast, Direct</h2>
+            <p>ACE focuses on proven slots, core table games, and a handful of live dealer options. It’s not trying to be the biggest library—it’s trying to be the one you can navigate without scrolling forever.</p>
+        </div>
+    </div>
 
-<p style="font-size:18px; line-height:1.6; margin-top:25px;">
-ACE offers a wide variety of games including slots, instant wins, and table games.  
-Their customer support is responsive, payouts are fast, and the platform is optimized for both desktop and mobile.  
-If you want a casino that feels premium and stable, ACE is a top-tier choice.
-</p>
+    <!-- GRID 2 -->
+    <div class="grid">
+        <div class="card">
+            <h2>Bonuses & Promotions</h2>
+            <p>ACE runs a standard welcome package with reloads and occasional promos. Offers are steady and usable—not confusing or overloaded with fine print.</p>
+        </div>
 
-<!-- FEEDBACK FORM -->
-<h2 style="text-align:center; margin-top:40px; color:#ffcc33;">Rate Your Experience</h2>
+        <div class="card">
+            <h2>Welcome Offer</h2>
+            <p>Matched first deposit (percentage varies). Sometimes extended to second or third deposits. Standard wagering applies. Always check max bet rules and restricted games.</p>
+        </div>
+    </div>
 
-<form method="POST" action="/api/ace-feedback" style="text-align:center; margin-top:20px;">
-    <select name="experience" style="font-size:18px; padding:8px; border-radius:8px;">
-        <option value="Great">Great</option>
-        <option value="Good">Good</option>
-        <option value="Okay">Okay</option>
-        <option value="Bad">Bad</option>
-        <option value="Terrible">Terrible</option>
-    </select>
+    <!-- GRID 3 -->
+    <div class="grid">
+        <div class="card">
+            <h2>Ongoing Promos</h2>
+            <p>Reload bonuses, free spins, chip drops, and event‑based promos. Treat promos as a small extra—the real value is in ACE’s reliability and payouts.</p>
+        </div>
 
-    <br><br>
+        <div class="card">
+            <h2>Readable Terms</h2>
+            <p>Average‑sized welcome, no huge VIP ladder, and terms that are easier to understand than most casinos.</p>
+        </div>
+    </div>
 
-    <textarea name="comments" placeholder="Additional comments..." 
-        style="width:80%; height:120px; font-size:16px; padding:10px; border-radius:8px;"></textarea>
+    <!-- GRID 4 -->
+    <div class="grid">
+        <div class="card">
+            <h2>Games & Software</h2>
+            <p>ACE offers curated slots, table games, and a few live dealer options. Not a massive catalog—just the essentials.</p>
+        </div>
 
-    <br><br>
+        <div class="card">
+            <h2>Slots / Tables / Live Dealer</h2>
+            <p>Video slots, classic slots, blackjack, roulette, baccarat, and core live dealer tables during peak hours.</p>
+        </div>
+    </div>
 
-    <button type="submit" 
-        style="padding:12px 25px; font-size:18px; border-radius:8px; background:#ffcc33; border:none; cursor:pointer;">
-        Submit Feedback
-    </button>
-</form>
+    <!-- GRID 5 -->
+    <div class="grid">
+        <div class="card">
+            <h2>Banking & Payouts</h2>
+            <p>Deposits are usually instant. Withdrawals depend on method and verification. E‑wallets are fastest once approved.</p>
+        </div>
 
-<!-- COPYRIGHT -->
-<footer>
-    © 2024 FREE-CASINO-CHIPS.COM — All Rights Reserved
-</footer>
+        <div class="card">
+            <h2>Deposits / Withdrawals</h2>
+            <p>Cards, e‑wallets, and region‑specific methods. KYC may be required before first withdrawal.</p>
+        </div>
+    </div>
 
-</main>
+    <!-- GRID 6 -->
+    <div class="grid">
+        <div class="card">
+            <h2>Support & Reliability</h2>
+            <p>Live chat during core hours, email for documents and account issues. Keep records of transactions and timestamps for faster resolutions.</p>
+        </div>
+
+        <div class="card">
+            <h2>Player Experience</h2>
+            <p>ACE feels like a “working” casino—clean, functional, and fast. Great for players who want simplicity over flash.</p>
+        </div>
+    </div>
+
+    <!-- SEO SECTION -->
+    <section class="seo-section">
+        <h2>How ACE Works</h2>
+        <p>ACE focuses on simplicity: fast navigation, curated games, and reliable payouts. It’s built for players who want efficiency over noise.</p>
+
+        <h3>What to Expect</h3>
+        <ul>
+            <li>Clean lobby</li>
+            <li>Fast loading games</li>
+            <li>Usable bonuses</li>
+            <li>Reliable banking</li>
+        </ul>
+
+        <h3>Tips</h3>
+        <ul>
+            <li>Check wagering rules before accepting bonuses</li>
+            <li>Verify early to avoid payout delays</li>
+            <li>Stick to games you know well</li>
+        </ul>
+
+        <h3>FAQ</h3>
+        <p><strong>Is ACE good for beginners?</strong> Yes — the layout is simple and easy to navigate.</p>
+        <p><strong>Are payouts fast?</strong> E‑wallets are fastest once verified.</p>
+        <p><strong>Does ACE have live dealer?</strong> Yes, core tables during peak hours.</p>
+    </section>
+
+    <!-- BOTTOM BUTTON -->
+    <div class="top-button" style="margin-top:40px;">
+        <a href="https://www.ace.com/?r=4333fa1d%2F42862933" target="_blank">
+            Play at ACE
+        </a>
+    </div>
+
+    <!-- PAGE VIEW COUNTER -->
+    <div id="pageCounter">
+        <strong>Page Views:</strong> <span id="pageViews">0</span>
+    </div>
+
+    <script>
+    let key = "views_" + window.location.pathname;
+    let views = localStorage.getItem(key) || 0;
+    views++;
+    localStorage.setItem(key, views);
+    document.getElementById("pageViews").innerText = views;
+    </script>
+
+    <footer>
+        Copyright ©2026 FREE-CASINO-CHIPS.COM
+        All rights reserved.
+    </footer>
+
 </div>
 
 </body>
