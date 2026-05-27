@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <title>ACE Casino | FREE-CASINO-CHIPS.COM</title>
 <meta name="description" content="ACE Casino — clean, fast, no‑nonsense casino with straightforward bonuses, curated games, and reliable payouts.">
-<link rel="canonical" href="https://www.free-casino-chips.com/ace.html">
 <meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://www.free-casino-chips.com/ace.html">
 
 <style>
     body {
@@ -53,7 +54,10 @@
         box-sizing:border-box;
     }
 
-    h1, h2 { color:#ffcc33; margin-top:0; }
+    h1, h2 {
+        color:#ffcc33;
+        margin-top:0;
+    }
 
     /* BUTTONS */
     .top-button {
@@ -69,8 +73,11 @@
         font-size:26px;
         font-weight:bold;
         text-decoration:none;
+        transition:0.2s;
     }
-    .top-button a:hover { background:#ffe680; }
+    .top-button a:hover {
+        background:#ffe680;
+    }
 
     /* GRID */
     .grid {
@@ -97,9 +104,17 @@
         font-size:14px;
     }
 
-    .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
-    .seo-section h2, .seo-section h3 { color:#ffcc33; }
-    .seo-section ul { margin-left:20px; }
+    .seo-section {
+        margin-top:30px;
+        color:#ddd;
+        font-size:18px;
+    }
+    .seo-section h2, .seo-section h3 {
+        color:#ffcc33;
+    }
+    .seo-section ul {
+        margin-left:20px;
+    }
 
     /* PAGE VIEW COUNTER */
     #pageCounter {
@@ -108,6 +123,27 @@
         font-size:18px;
         color:#66ccff;
         text-shadow:0 0 6px #66ccff;
+    }
+
+    /* MOBILE FIXES */
+    @media(max-width:900px){
+        .sidebar {
+            position:relative;
+            width:100%;
+            min-height:auto;
+            padding:20px;
+            top:0;
+            border-right:none;
+            border-bottom:1px solid #1f2937;
+        }
+        .main {
+            margin-left:0;
+            width:100%;
+            padding:140px 20px 120px 20px;
+        }
+        .grid {
+            grid-template-columns:1fr;
+        }
     }
 </style>
 </head>
@@ -136,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </a>
     </div>
 
-    <h2 style="text-align:center;">ACE Casino</h2>
+    <h1 style="text-align:center;">ACE Casino</h1>
 
     <p style="font-size:20px; line-height:1.6; text-align:center; max-width:900px; margin:0 auto;">
         Straightforward real‑money casino with clear bonuses, a clean lobby, and fast navigation.
@@ -273,6 +309,8 @@ document.addEventListener("DOMContentLoaded", () => {
     </footer>
 
 </div>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"e315e219e1c44a2c9bdea86e0b69a97e","r":1}' crossorigin="anonymous"></script>
 
 </body>
 </html>
