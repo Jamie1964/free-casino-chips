@@ -23,7 +23,7 @@
         font-size:32px;
         font-weight:bold;
         color:#ffcc33;
-        border-bottom:2px solid:#222a40;
+        border-bottom:2px solid #222a40;
         position:fixed;
         top:0;
         left:0;
@@ -126,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(html => { 
             document.getElementById("sidebar").innerHTML = html;
 
-            // After sidebar loads, update sidebar counters
             const counters = [
                 "views_chipnwin",
                 "views_cidercasino",
@@ -147,17 +146,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div class="main">
 
+    <!-- ⭐ TITLE ABOVE BUTTON ⭐ -->
+    <h1 style="text-align:center; font-size:38px;">
+        ChipnWin Sweepstakes Casino
+    </h1>
+
+    <!-- TOP BUTTON -->
     <div class="top-button">
         <a href="https://chipnwin.com/?earn=EQ9wKNS3" target="_blank">
             Play at ChipnWin
         </a>
     </div>
 
-    <h2 style="text-align:center;">ChipnWin Sweepstakes Casino</h2>
-
     <p style="font-size:20px; line-height:1.6; text-align:center; max-width:900px; margin:0 auto;">
-        ChipnWin is a fast-growing sweepstakes casino offering daily bonuses, inbox rewards, and a wide selection of slots and arcade-style games. 
-        With a clean mobile interface and a dual-currency system, players can enjoy Gold Coins for fun play and redeem Sweeps Coins for real cash prizes after verification. 
+        ChipnWin is a fast-growing sweepstakes casino offering daily bonuses, inbox rewards, and a wide selection of slots and arcade-style games.
+        With a clean mobile interface and a dual-currency system, players can enjoy Gold Coins for fun play and redeem Sweeps Coins for real cash prizes after verification.
         ChipnWin focuses on simplicity, fast-loading games, and consistent bonus drops — making it a strong choice for players who want a smooth, low-friction sweepstakes experience.
     </p>
 
@@ -254,7 +257,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <script>
-    // Page counter for THIS page
     let key = "views_chipnwin";
     let views = localStorage.getItem(key) || 0;
     views++;

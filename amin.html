@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel – Free Casino Chips</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Administrator dashboard for Free Casino Chips – manage pages, view stats, and moderate feedback.">
+
+  <style>
+    :root {
+      --bg-main: #05060a;
+      --bg-panel: #10131b;
+      --bg-panel-soft: #151927;
+      --border-soft: #262b3a;
+      --gold: #f0c674;
+      --text-main: #e5e9f0;
+      --text-muted: #9da5b4;
+      --accent-blue: #4aa3ff;
+      --accent-blue-glow: #4aa3ff55;
+      --accent-cyan: #3cf2ff;
+      --accent-cyan-glow: #3cf2ff55;
+      --radius-lg: 10px;
+      --radius-md: 6px;
+      --shadow-soft: 0 0 24px rgba(0,0,0,0.65);
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #151927 0, #05060a 55%, #020308 100%);
+      color: var(--text-main);
+    }
+
+    a { color: var(--accent-blue); text-decoration: none; }
+    a:hover { color: var(--accent-cyan); }
+
+    .page-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 4fr) minmax(260px, 1.6fr);
+      gap: 24px;
+    }
+    @media (max-width: 960px) {
+      .page-wrap { grid-template-columns: 1fr; }
+    }
+
+    .main-panel {
+      background: linear-gradient(145deg, #10131b, #090b11);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 22px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #202536;
+      padding-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--gold);
+      text-shadow: 0 0 12px rgba(240,198,116,0.35);
+    }
+
+    .admin-badge {
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #0f1625;
+      border: 1px solid #1f2a40;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      text-shadow: 0 0 8px var(--accent-cyan-glow);
+    }
+
+    .panel {
+      background: #0d111a;
+      border: 1px solid #1f2535;
+      border-radius: var(--radius-md);
+      padding: 18px;
+      margin-bottom: 22px;
+      box-shadow: 0 0 18px rgba(0,0,0,0.4);
+    }
+
+    .panel h2 {
+      margin-top: 0;
+      color: var(--accent-cyan);
+      text-shadow: 0 0 10px var(--accent-cyan-glow);
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .stat-box {
+      background: #111722;
+      border: 1px solid #1f2a40;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+    }
+
+    .stat-box strong {
+      color: var(--accent-blue);
+      text-shadow: 0 0 6px var(--accent-blue-glow);
+    }
+
+    .btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #4aa3ff, #3cf2ff);
+      color: #000;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 14px var(--accent-blue-glow);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .btn:hover {
+      background: linear-gradient(135deg, #6bc0ff, #5cffff);
+      box-shadow: 0 0 18px var(--accent-cyan-glow);
+    }
+
+    .feedback-entry {
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background: #0f1520;
+      border: 1px solid #1f2a40;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="page-wrap">
+
+  <!-- MAIN PANEL -->
+  <div class="main-panel">
+
+    <div class="header-row">
+      <h1>Admin Dashboard</h1>
+      <div class="admin-badge">ADMIN ACCESS</div>
+    </div>
+
+    <!-- SITE STATS -->
+    <div class="panel">
+      <h2>📊 Site Statistics</h2>
+
+      <div class="stat-box">
+        <span>Total Homepage Views</span>
+        <strong id="index-views">Loading...</strong>
+      </div>
+
+      <div class="stat-box">
+        <span>Total Feedback Entries</span>
+        <strong id="feedback-count">Loading...</strong>
+      </div>
+
+      <button class="btn" onclick="refreshStats()">Refresh Stats</button>
+    </div>
+
+    <!-- FEEDBACK MODERATION -->
+    <div class="panel">
+      <h2>📝 Recent Feedback</h2>
+      <div id="feedback-list">Loading feedback...</div>
+    </div>
+
+    <!-- ADMIN TOOLS -->
+    <div class="panel">
+      <h2>🛠 Admin Tools</h2>
+
+      <button class="btn" onclick="location.reload()">Reload Page</button>
+      <br><br>
+      <button class="btn" onclick="clearFeedback()">Clear All Feedback</button>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar"></aside>
+
+</div>
+
+<script>
+  // Load sidebar
+  fetch("/sidebar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("sidebar").innerHTML = html);
+
+  // Load stats
+  function refreshStats() {
+    fetch("/api/index-views")
+      .then(r => r.json())
+      .then(d => document.getElementById("index-views").textContent = d.views);
+
+    fetch("/api/feedback")
+      .then(r => r.json())
+      .then(list => {
+        document.getElementById("feedback-count").textContent = list.length;
+        renderFeedback(list);
+      });
+  }
+
+  function renderFeedback(list) {
+    const box = document.getElementById("feedback-list");
+    box.innerHTML = "";
+    list.forEach(entry => {
+      const div = document.createElement("div");
+      div.className = "feedback-entry";
+      div.innerHTML = `<strong>${entry.rating}★</strong><br>${entry.experience}`;
+      box.appendChild(div);
+    });
+  }
+
+  function clearFeedback() {
+    if (!confirm("Delete ALL feedback?")) return;
+    fetch("/api/feedback", { method: "DELETE" })
+      .then(() => refreshStats());
+  }
+
+  refreshStats();
+</script>
+
+</body>
+</html>
+

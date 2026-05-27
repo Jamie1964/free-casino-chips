@@ -13,7 +13,7 @@
     header {
         background:#111726; padding:25px; text-align:center;
         font-size:32px; font-weight:bold; color:#ffcc33;
-        border-bottom:2px solid:#222a40;
+        border-bottom:2px solid #222a40;
         position:fixed; top:0; left:0; width:100%; z-index:10;
     }
 
@@ -63,6 +63,13 @@
     .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
+
+    .counter-box {
+        text-align:center;
+        margin-top:40px;
+        font-size:16px;
+        color:#bbb;
+    }
 </style>
 </head>
 
@@ -230,12 +237,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     </section>
 
-    <!-- BOTTOM BUTTON -->
+    <!-- ⭐ BOTTOM BUTTON ⭐ -->
     <div class="top-button" style="margin-top:40px;">
         <a href="https://www.legendz.com/?referred_by_id=812117" target="_blank">
             Sign Up at Legendz
         </a>
     </div>
+
+    <!-- ⭐ COUNTER BELOW BOTTOM BUTTON ⭐ -->
+    <div class="counter-box">
+        <span id="viewCounter">Loading views...</span>
+    </div>
+
+    <script>
+        const pageId = "legendz";
+        fetch(`/api/${pageId}-views`)
+            .then(r => r.json())
+            .then(d => {
+                document.getElementById("viewCounter").innerText =
+                    `Page Views: ${d.views.toLocaleString()}`;
+            })
+            .catch(() => {
+                document.getElementById("viewCounter").innerText =
+                    "Page Views: unavailable";
+            });
+    </script>
 
     <footer>
         Copyright ©2026 FREE-CASINO-CHIPS.COM

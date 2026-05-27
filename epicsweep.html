@@ -61,7 +61,6 @@
         box-sizing:border-box;
     }
 
-    /* NEW TITLE */
     h1 {
         color:#ffcc33;
         text-align:center;
@@ -86,6 +85,7 @@
         font-weight:bold;
         text-decoration:none;
     }
+
     .top-button a:hover { background:#ffe680; }
 
     .grid {
@@ -115,6 +115,13 @@
     .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
+
+    .counter-box {
+        text-align:center;
+        margin-top:40px;
+        font-size:16px;
+        color:#bbb;
+    }
 </style>
 </head>
 
@@ -133,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div class="main">
 
-    <!-- ⭐ NEW TITLE ABOVE BUTTON ⭐ -->
     <h1>EpicSweep</h1>
 
     <!-- TOP CTA -->
@@ -220,12 +226,31 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Do I need to verify?</strong> Yes — KYC is required before withdrawing.</p>
     </section>
 
-    <!-- BOTTOM CTA -->
+    <!-- ⭐ BOTTOM CTA ⭐ -->
     <div class="top-button" style="margin-top:40px;">
         <a href="https://epicsweep.us?ref=48272_jamie1964" target="_blank">
             Play at EpicSweep
         </a>
     </div>
+
+    <!-- ⭐ COUNTER BELOW BUTTON ⭐ -->
+    <div class="counter-box">
+        <span id="viewCounter">Loading views...</span>
+    </div>
+
+    <script>
+        const pageId = "epicsweep";
+        fetch(`/api/${pageId}-views`)
+            .then(r => r.json())
+            .then(d => {
+                document.getElementById("viewCounter").innerText =
+                    `Page Views: ${d.views.toLocaleString()}`;
+            })
+            .catch(() => {
+                document.getElementById("viewCounter").innerText =
+                    "Page Views: unavailable";
+            });
+    </script>
 
     <footer>
         Copyright ©2026 FREE-CASINO-CHIPS.COM
@@ -234,6 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </div>
 
+<!-- FAQ JSON-LD -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",

@@ -35,7 +35,8 @@
         width:calc(100% - 260px); box-sizing:border-box;
     }
 
-    h1, h2 { color:#ffcc33; margin-top:0; }
+    h1 { color:#ffcc33; text-align:center; font-size:38px; margin:0 0 30px 0; }
+    h2, h3 { color:#ffcc33; }
 
     .top-button { text-align:center; margin-bottom:30px; }
     .top-button a {
@@ -55,14 +56,20 @@
         border:1px solid:#222a40; font-size:20px; line-height:1.6;
     }
 
+    .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
+    .seo-section ul { margin-left:20px; }
+
     footer {
         text-align:center; padding:25px; margin-top:60px;
         color:#888; font-size:14px;
     }
 
-    .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
-    .seo-section h2, .seo-section h3 { color:#ffcc33; }
-    .seo-section ul { margin-left:20px; }
+    .counter-box {
+        text-align:center;
+        margin-top:40px;
+        font-size:16px;
+        color:#bbb;
+    }
 </style>
 </head>
 
@@ -80,6 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <div class="main">
+
+    <h1>Jumbo88</h1>
 
     <!-- TOP BUTTON -->
     <div class="top-button">
@@ -228,6 +237,25 @@ document.addEventListener("DOMContentLoaded", () => {
             Sign Up at Jumbo88
         </a>
     </div>
+
+    <!-- PAGE VIEW COUNTER BELOW BOTTOM BUTTON -->
+    <div class="counter-box">
+        <span id="viewCounter">Loading views...</span>
+    </div>
+
+    <script>
+        const pageId = "jumbo88";
+        fetch(`/api/${pageId}-views`)
+            .then(r => r.json())
+            .then(d => {
+                document.getElementById("viewCounter").innerText =
+                    `Page Views: ${d.views.toLocaleString()}`;
+            })
+            .catch(() => {
+                document.getElementById("viewCounter").innerText =
+                    "Page Views: unavailable";
+            });
+    </script>
 
     <footer>
         Copyright ©2026 FREE-CASINO-CHIPS.COM

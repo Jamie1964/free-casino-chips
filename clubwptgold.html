@@ -18,10 +18,11 @@
 
     header {
         background:#111726;
-        padding:25px;
+        padding:28px;
         text-align:center;
-        font-size:32px;
-        font-weight:bold;
+        font-size:42px;
+        font-weight:900;
+        letter-spacing:1px;
         color:#ffcc33;
         border-bottom:2px solid #222a40;
         position:fixed;
@@ -61,11 +62,11 @@
         box-sizing:border-box;
     }
 
-    /* NEW TITLE */
     h1 {
         color:#ffcc33;
         text-align:center;
-        font-size:38px;
+        font-size:46px;
+        font-weight:900;
         margin:0 0 30px 0;
     }
 
@@ -126,6 +127,13 @@
     .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
+
+    .counter-box {
+        text-align:center;
+        margin-top:40px;
+        font-size:16px;
+        color:#bbb;
+    }
 </style>
 </head>
 
@@ -144,7 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div class="main">
 
-    <!-- ⭐ NEW TITLE ABOVE BUTTON ⭐ -->
     <h1>ClubWPT Gold</h1>
 
     <div class="top-button">
@@ -243,6 +250,32 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Are the prizes real?</strong> Yes — all daily tournaments award real cash.</p>
       <p><strong>Is this good for beginners?</strong> Yes. Structures are soft and fields are manageable.</p>
     </section>
+
+    <!-- ⭐ BOTTOM BUTTON ⭐ -->
+    <div class="top-button" style="margin-top:40px;">
+        <a href="https://www.clubwpt.com/gold" target="_blank">
+            Visit ClubWPT Gold
+        </a>
+    </div>
+
+    <!-- ⭐ PAGE VIEW COUNTER ⭐ -->
+    <div class="counter-box">
+        <span id="viewCounter">Loading views...</span>
+    </div>
+
+    <script>
+        const pageId = "clubwptgold";
+        fetch(`/api/${pageId}-views`)
+            .then(r => r.json())
+            .then(d => {
+                document.getElementById("viewCounter").innerText =
+                    `Page Views: ${d.views.toLocaleString()}`;
+            })
+            .catch(() => {
+                document.getElementById("viewCounter").innerText =
+                    "Page Views: unavailable";
+            });
+    </script>
 
     <footer>
         Copyright ©2026 FREE-CASINO-CHIPS.COM

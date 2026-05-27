@@ -1,18 +1,58 @@
-<div class="sidebar">
+<!-- GLOBAL SITE COUNTERS -->
+<div style="margin-bottom:25px; font-size:20px; color:#ffcc33; font-weight:bold;">
+    SITE STATS
+</div>
+
+<div id="globalCounters" style="
+    background:#111726;
+    border:1px solid #222a40;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:25px;
+    font-size:18px;
+    line-height:1.5;
+">
+    <div><strong>Total Visitors:</strong> <span id="totalVisitors">0</span></div>
+    <div><strong>Total Page Views:</strong> <span id="totalViews">0</span></div>
+</div>
+
+<script>
+// GLOBAL UNIQUE VISITOR COUNTER
+let visitorFlag = localStorage.getItem("fcc_global_visitor");
+let totalVisitors = localStorage.getItem("fcc_total_visitors") || 0;
+
+if (!visitorFlag) {
+    totalVisitors++;
+    localStorage.setItem("fcc_total_visitors", totalVisitors);
+    localStorage.setItem("fcc_global_visitor", "1");
+}
+
+// GLOBAL PAGE VIEW COUNTER
+let totalViews = localStorage.getItem("fcc_total_views") || 0;
+totalViews++;
+localStorage.setItem("fcc_total_views", totalViews);
+
+// DISPLAY COUNTERS
+document.getElementById("totalVisitors").innerText = totalVisitors;
+document.getElementById("totalViews").innerText = totalViews;
+</script>
+
+<!-- NAVIGATION LINKS -->
+<nav>
 
   <!-- MAIN NAVIGATION -->
-  <h2>Navigation</h2>
+  <h2 style="color:#ffcc33; margin-top:20px;">Navigation</h2>
   <a href="/index.html">Home</a>
   <a href="/games.html">Slot Games</a>
   <a href="/poker.html">Poker</a>
 
   <!-- POKER SITES -->
-  <h2>Poker Sites</h2>
+  <h2 style="color:#ffcc33; margin-top:20px;">Poker Sites</h2>
   <a href="/clubspoker.html">ClubsPoker</a>
   <a href="/clubwptgold.html">ClubWPT Gold</a>
 
-  <!-- CASINO SITES (A–Z) -->
-  <h2>Casinos</h2>
+  <!-- CASINO SITES -->
+  <h2 style="color:#ffcc33; margin-top:20px;">Casinos</h2>
 
   <a href="ace.html">Ace</a>
   <a href="americanluck.html">AmericanLuck</a>
@@ -71,5 +111,5 @@
   <a href="yaycasino.html">YayCasino</a>
   <a href="zulacasino.html">ZulaCasino</a>
 
-</div>
+</nav>
 

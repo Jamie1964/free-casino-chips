@@ -16,13 +16,14 @@
         padding:0;
     }
 
-    /* FIXED HEADER */
+    /* ⭐ UPGRADED HEADER (Option A) ⭐ */
     header {
         background:#111726;
-        padding:25px;
+        padding:28px;
         text-align:center;
-        font-size:32px;
-        font-weight:bold;
+        font-size:42px;
+        font-weight:900;
+        letter-spacing:1px;
         color:#ffcc33;
         border-bottom:2px solid:#222a40;
         position:fixed;
@@ -32,7 +33,6 @@
         z-index:10;
     }
 
-    /* SIDEBAR */
     .sidebar {
         position:absolute;
         top:90px;
@@ -56,7 +56,6 @@
 
     .sidebar a:hover { text-decoration:underline; }
 
-    /* MAIN CONTENT */
     .main {
         margin-left:260px;
         padding:150px 60px 200px 40px;
@@ -107,7 +106,7 @@
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
 
-    /* PAGE VIEW COUNTER */
+    /* ⭐ NEW API COUNTER STYLE ⭐ */
     #pageCounter {
         text-align:center;
         margin-top:40px;
@@ -122,7 +121,6 @@
 
 <header>FREE-CASINO-CHIPS.COM</header>
 
-<!-- SIDEBAR INCLUDE -->
 <div class="sidebar" id="sidebar"></div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -132,8 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<!-- MAIN CONTENT -->
 <div class="main">
+
+    <h1 style="text-align:center; font-size:46px; font-weight:900;">
+        BangCoins Sweepstakes Casino
+    </h1>
 
     <div class="top-button">
         <a href="https://bangcoins.com/?ref=r_jamie1964" target="_blank">
@@ -141,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </a>
     </div>
 
-    <h2 style="text-align:center;">BangCoins Sweepstakes Casino</h2>
     <p style="font-size:20px; line-height:1.6; text-align:center; max-width:900px; margin:0 auto;">
         BangCoins is a new sweepstakes casino launched in 2026 with one of the largest game libraries online — over 3,000 titles across slots, tables, live-style games, fish games, and instant wins.
         It’s built for players who care about game variety and fast redemptions, with a no‑purchase‑necessary welcome bonus and multiple payment options.
@@ -195,7 +195,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 
-    <!-- 2‑COLUMN RESTRICTED STATES -->
     <div class="grid" style="margin-top:30px;">
         <div class="card">
             <h2>Restricted States</h2>
@@ -251,24 +250,29 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Is BangCoins available in my state?</strong> See the Restricted States list above.</p>
     </section>
 
-    <!-- ⭐ BOTTOM BUTTON -->
     <div class="top-button" style="margin-top:50px; text-align:center;">
         <a href="https://bangcoins.com/?ref=r_jamie1964" target="_blank">
             Play at BangCoins
         </a>
     </div>
 
-    <!-- ⭐ PAGE VIEW COUNTER -->
+    <!-- ⭐ NEW API COUNTER ⭐ -->
     <div id="pageCounter">
-        <strong>Page Views:</strong> <span id="pageViews">0</span>
+        <strong>Page Views:</strong> <span id="pageViews">Loading…</span>
     </div>
 
     <script>
-    let key = "views_" + window.location.pathname;
-    let views = localStorage.getItem(key) || 0;
-    views++;
-    localStorage.setItem(key, views);
-    document.getElementById("pageViews").innerText = views;
+        const pageId = "bangcoins";
+        fetch(`/api/${pageId}-views`)
+            .then(r => r.json())
+            .then(d => {
+                document.getElementById("pageViews").innerText =
+                    d.views.toLocaleString();
+            })
+            .catch(() => {
+                document.getElementById("pageViews").innerText =
+                    "Unavailable";
+            });
     </script>
 
     <footer>
