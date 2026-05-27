@@ -18,24 +18,33 @@
 <!-- MAIN WRAPPER -->
 <div style="display:flex;margin-top:140px;">
 
-    <!-- SIDEBAR (loaded dynamically) -->
+    <!-- SIDEBAR -->
     <div style="width:272px;padding-left:12px;">
-        <div id="sidebar" style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;"></div>
+        <div id="sidebar" 
+             style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;
+                    overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;">
+        </div>
     </div>
 
     <!-- CONTENT -->
     <div style="flex:1;padding:0 25px;max-width:900px;">
 
-        <!-- TITLE -->
-        <h1 style="color:#66ccff;font-size:54px;font-weight:900;margin:0 0 25px 0;text-align:center;">
-            ACE
-        </h1>
+        <!-- CLICKABLE LOGO -->
+        <div style="text-align:center;margin-bottom:25px;">
+            <a href="https://www.ace.com/?r=4333fa1d%2F42862933" 
+               target="_blank" rel="noopener noreferrer">
+                <img src="images/ace-logo.png" 
+                     alt="ACE Logo" 
+                     style="max-width:260px;width:100%;height:auto;filter:drop-shadow(0 0 8px #000);">
+            </a>
+        </div>
 
         <!-- TWO COLUMN FEATURE BOXES -->
         <div style="display:flex;gap:20px;margin-bottom:30px;">
 
             <!-- LEFT BOX -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;box-shadow:0 0 12px #000;">
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
+                        border:1px solid:#222;box-shadow:0 0 12px #000;">
                 <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Highlights</h2>
 
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
@@ -57,7 +66,8 @@
             </div>
 
             <!-- RIGHT BOX -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;box-shadow:0 0 12px #000;">
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
+                        border:1px solid:#222;box-shadow:0 0 12px #000;">
                 <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Current Offers</h2>
 
                 <p style="line-height:1.6;margin-top:0;">
@@ -79,7 +89,8 @@
         </div>
 
         <!-- ABOUT SECTION -->
-        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid #222;box-shadow:0 0 12px #000;margin-bottom:30px;">
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;
+                    box-shadow:0 0 12px #000;margin-bottom:30px;">
             <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">About ACE</h2>
             <p style="line-height:1.7;margin:0;">
                 ACE is a fast‑growing sweepstakes casino known for its clean interface, smooth gameplay,
@@ -89,7 +100,7 @@
         </div>
 
         <!-- SEO SECTION -->
-        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid #222;
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;
                     box-shadow:0 0 12px #000;margin-bottom:30px;">
 
             <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
@@ -172,7 +183,8 @@
 </div>
 
 <!-- FOOTER -->
-<div style="width:100%;background:#111;padding:20px 0;text-align:center;color:#777;border-top:2px solid #333;margin-top:40px;">
+<div style="width:100%;background:#111;padding:20px 0;text-align:center;color:#777;
+            border-top:2px solid:#333;margin-top:40px;">
     © 2026 FREE‑CASINO‑CHIPS.COM — All Rights Reserved
 </div>
 
@@ -184,7 +196,8 @@
             document.getElementById('sidebar').innerHTML = html;
         })
         .catch(() => {
-            document.getElementById('sidebar').innerHTML = "<p style='color:#888;'>Sidebar unavailable</p>";
+            document.getElementById('sidebar').innerHTML = 
+                "<p style='color:#888;'>Sidebar unavailable</p>";
         });
 </script>
 
