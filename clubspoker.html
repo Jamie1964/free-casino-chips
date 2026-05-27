@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ClubsPoker Poker App | FREE-CASINO-CHIPS.COM</title>
-<meta name="description" content="ClubsPoker real-money poker app — learn how clubs work, how to join, deposit, cash out, and play Texas Hold’em and PLO safely.">
+<title>ClubsPoker Sweepstakes Poker | FREE-CASINO-CHIPS.COM</title>
+<meta name="description" content="ClubsPoker — free daily bonuses, tournaments, sweepstakes poker, and real cash redemptions. Full guide, tips, and FAQ.">
 <link rel="canonical" href="https://www.free-casino-chips.com/clubspoker.html">
 <meta name="robots" content="index, follow">
 
@@ -16,7 +16,6 @@
         padding:0;
     }
 
-    /* FIXED HEADER */
     header {
         background:#111726;
         padding:25px;
@@ -32,7 +31,6 @@
         z-index:10;
     }
 
-    /* FINAL SIDEBAR */
     .sidebar {
         position:absolute;
         top:90px;
@@ -45,18 +43,6 @@
         box-sizing:border-box;
     }
 
-    .sidebar a {
-        display:block;
-        margin-bottom:12px;
-        font-size:18px;
-        color:#4da3ff;
-        text-decoration:none;
-        white-space:nowrap;
-    }
-
-    .sidebar a:hover { text-decoration:underline; }
-
-    /* MAIN CONTENT */
     .main {
         margin-left:260px;
         padding:150px 60px 200px 40px;
@@ -64,9 +50,19 @@
         box-sizing:border-box;
     }
 
-    h1, h2 { color:#ffcc33; margin-top:0; }
+    h1 {
+        color:#ffcc33;
+        margin:0;
+        margin-bottom:30px;
+        text-align:center;
+        font-size:46px;
+    }
 
-    .top-button { text-align:center; margin-bottom:30px; }
+    .top-button {
+        text-align:center;
+        margin:30px 0 30px 0; /* EVEN SPACING ABOVE & BELOW */
+    }
+
     .top-button a {
         display:inline-block;
         background:#ffcc33;
@@ -79,15 +75,16 @@
     }
     .top-button a:hover { background:#ffe680; }
 
-    /* BIG TOURNAMENT BOX */
-    .highlight-card {
+    .tournament-box {
         background:#1a2238;
         border:2px solid #ffcc33;
+        box-shadow:0 0 12px #ffcc33;
         padding:25px;
         border-radius:10px;
-        margin-bottom:35px;
+        margin:30px auto 40px auto;
         font-size:20px;
         line-height:1.6;
+        max-width:700px;
         text-align:center;
     }
 
@@ -102,7 +99,7 @@
         background:#111726;
         padding:25px;
         border-radius:10px;
-        border:1px solid:#222a40;
+        border:1px solid #222a40;
         font-size:20px;
         line-height:1.6;
     }
@@ -110,14 +107,18 @@
     footer {
         text-align:center;
         padding:25px;
-        margin-top:60px;
+        margin-top:20px;
         color:#888;
         font-size:14px;
     }
 
-    .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
-    .seo-section h2, .seo-section h3 { color:#ffcc33; }
-    .seo-section ul { margin-left:20px; }
+    #pageCounter {
+        text-align:center;
+        margin-top:30px;
+        font-size:18px;
+        color:#66ccff;
+        text-shadow:0 0 6px #66ccff;
+    }
 </style>
 </head>
 
@@ -125,138 +126,91 @@
 
 <header>FREE-CASINO-CHIPS.COM</header>
 
-<!-- SIDEBAR INCLUDE -->
 <div class="sidebar" id="sidebar"></div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     fetch("sidebar.html")
         .then(r => r.text())
-        .then(html => { document.getElementById("sidebar").innerHTML = html; });
+        .then(html => { 
+            document.getElementById("sidebar").innerHTML = html;
+        });
 });
 </script>
 
-<!-- MAIN CONTENT -->
 <div class="main">
+
+    <h1>ClubsPoker Sweepstakes Poker</h1>
 
     <div class="top-button">
         <a href="https://play.clubs.poker/?referralCode=264128" target="_blank">
-            Join ClubsPoker
+            Play at ClubsPoker
         </a>
     </div>
 
-    <!-- BIG TOURNAMENT BOX (KEPT AS REQUESTED) -->
-    <div class="highlight-card">
-        <h2 style="margin-top:0;">FREE Tournament Every Night</h2>
-        <p>ClubsPoker runs a <strong>FREE tournament every night</strong> that pays real money.</p>
-        <p><strong>8:00 PM Central Time (CT)</strong></p>
-        <p>Which is:</p>
-        <p>• <strong>9:00 PM Eastern Time (ET)</strong></p>
-        <p>• <strong>6:00 PM Pacific Time (PT)</strong></p>
-        <p>Anyone can enter — no deposit required.</p>
+    <div class="tournament-box">
+        <h2>Daily & Weekly Poker Tournaments</h2>
+        <p>• Multi‑table tournaments (MTTs)</p>
+        <p>• Sit & Go tables</p>
+        <p>• Freerolls for new players</p>
+        <p>• Prize pools scale with entries</p>
+        <p>• Late registration available</p>
     </div>
 
-    <!-- INTRO -->
-    <h2 style="text-align:center;">ClubsPoker — Real-Money Poker Through Private Clubs</h2>
     <p style="font-size:20px; line-height:1.6; text-align:center; max-width:900px; margin:0 auto;">
-        ClubsPoker is a real-money poker app that runs games through private clubs instead of a single global lobby.
-        You join a club, get chips from a trusted agent, and play Texas Hold’em, PLO, and other formats on mobile or desktop.
-        This page explains how the club system works, how to join safely, and how to manage deposits and cashouts.
+        ClubsPoker is a sweepstakes‑style poker platform offering daily bonuses, multi‑table tournaments, sit‑and‑gos, and cash‑style sweepstakes poker. 
+        Players can redeem Sweeps Chips for real cash prizes after verification. The platform focuses on fast structures, smooth mobile tables, and consistent bonus drops.
     </p>
 
-    <!-- HOW IT WORKS + WHY I LIKE -->
     <div class="grid">
         <div class="card">
-            <h2>How ClubsPoker Works</h2>
-            <p>• Download the app and create an account.</p>
-            <p>• Join one or more private clubs using an invite code.</p>
-            <p>• Get chips from a club owner or agent.</p>
-            <p>• Play cash games and tournaments inside that club.</p>
+            <h2>Welcome Bonus</h2>
+            <p>• Free Gold Chips on signup</p>
+            <p>• Free Sweeps Chips for new accounts</p>
+            <p>• First‑week bonus drops</p>
+        </div>
+
+        <div class="card">
+            <h2>Daily Rewards</h2>
+            <p>• Login bonuses</p>
+            <p>• Inbox drops</p>
+            <p>• Streak rewards</p>
+        </div>
+    </div>
+
+    <div class="grid" style="margin-top:30px;">
+        <div class="card">
+            <h2>Poker Formats</h2>
+            <p>• No‑Limit Hold’em</p>
+            <p>• Pot‑Limit Omaha</p>
+            <p>• Bounty tournaments</p>
+            <p>• Turbo & Hyper structures</p>
         </div>
 
         <div class="card">
             <h2>Why I Like ClubsPoker</h2>
-            <p>• Flexible club system with different game lineups.</p>
-            <p>• Active Hold’em and PLO action at many stakes.</p>
-            <p>• Mobile-first design with a simple interface.</p>
+            <p>• Smooth mobile tables</p>
+            <p>• Fast tournament structures</p>
+            <p>• Easy sweepstakes redemption</p>
         </div>
     </div>
 
-    <!-- GAMES + TRAFFIC -->
-    <div class="grid" style="margin-top:30px;">
-        <div class="card">
-            <h2>Games You’ll Find Here</h2>
-            <p>• No-Limit Texas Hold’em cash games.</p>
-            <p>• Pot-Limit Omaha (PLO) and PLO5 in some clubs.</p>
-            <p>• Occasional tournaments and sit & gos.</p>
-        </div>
-
-        <div class="card">
-            <h2>Traffic & Peak Times</h2>
-            <p>• Most action during U.S. evening hours.</p>
-            <p>• Some clubs run around the clock.</p>
-            <p>• Peak times vary by club and region.</p>
-        </div>
+    <div class="top-button" style="margin-top:50px;">
+        <a href="https://play.clubs.poker/?referralCode=264128" target="_blank">
+            Play at ClubsPoker
+        </a>
     </div>
 
-    <!-- DEPOSITS + SAFETY -->
-    <div class="grid" style="margin-top:30px;">
-        <div class="card">
-            <h2>Deposits & Cashouts</h2>
-            <p>• All money moves through club owners or agents.</p>
-            <p>• Common methods: bank, apps, or crypto (varies by club).</p>
-            <p>• Always confirm limits, fees, and timing before sending.</p>
-        </div>
-
-        <div class="card">
-            <h2>Safety & Trust</h2>
-            <p>• Only deal with agents you personally trust.</p>
-            <p>• Keep records of every transaction.</p>
-            <p>• Treat club balances like a private home game, not a regulated site.</p>
-        </div>
+    <div id="pageCounter">
+        <strong>Page Views:</strong> <span id="pageViews">0</span>
     </div>
 
-    <!-- LINK BACK TO MAIN POKER PAGE -->
-    <div class="card" style="margin-top:30px;">
-        <h2>Back to Poker Guide</h2>
-        <p style="font-size:18px; line-height:1.6;">
-            Want a full breakdown of poker strategy, bankroll management, and best practices for each game type?
-            Visit my main poker page here:
-            <a href="poker.html" style="color:#4da3ff;">How To (Poker Guide)</a>.
-        </p>
-    </div>
-
-    <!-- SEO BLOCK -->
-    <section id="seo-clubspoker" class="seo-section">
-      <h2>How to Make Money Playing on ClubsPoker</h2>
-      <p>ClubsPoker gives you access to private club games where the skill level can vary a lot from table to table.
-      The key to making money is game selection, discipline, and treating every session like a serious cash game.</p>
-
-      <h3>Bankroll Management for ClubsPoker</h3>
-      <ul>
-        <li>Use 20–30 buy-ins for your main stake.</li>
-        <li>Move down if you lose 5–10 buy-ins quickly.</li>
-        <li>Never chase losses by jumping stakes.</li>
-      </ul>
-
-      <h3>Best Practices for Texas Hold’em</h3>
-      <ul>
-        <li>Play tight early, loosen up in position.</li>
-        <li>Value bet strong hands instead of slow-playing.</li>
-        <li>Exploit players who call too much or fold too much.</li>
-      </ul>
-
-      <h3>Best Practices for PLO</h3>
-      <ul>
-        <li>Favor hands that make the nuts.</li>
-        <li>Avoid weak two pair or bare top pair in big pots.</li>
-        <li>Expect bigger swings than Hold’em.</li>
-      </ul>
-
-      <h3>FAQ</h3>
-      <p><strong>Is ClubsPoker a traditional poker site?</strong> No. It’s a club-based app where each club is run independently.</p>
-      <p><strong>Who holds my money?</strong> The club or agent you deal with — not a central poker room.</p>
-      <p><strong>How do I avoid scams?</strong> Only use trusted agents and keep records of every transaction.</p>
-    </section>
+    <script>
+    let key = "views_clubspoker";
+    let views = localStorage.getItem(key) || 0;
+    views++;
+    localStorage.setItem(key, views);
+    document.getElementById("pageViews").innerText = views;
+    </script>
 
     <footer>
         Copyright ©2026 FREE-CASINO-CHIPS.COM
@@ -265,7 +219,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </div>
 
-<!-- FAQ JSON-LD -->
+<!-- GLOBAL COUNTER SCRIPT -->
+<script>
+// GLOBAL PAGE VIEWS
+let gv = localStorage.getItem("globalViews") || 0;
+gv++;
+localStorage.setItem("globalViews", gv);
+
+// GLOBAL VISITORS (count once per session)
+let vis = localStorage.getItem("globalVisitors") || 0;
+if (!sessionStorage.getItem("counted")) {
+    vis++;
+    sessionStorage.setItem("counted", "yes");
+}
+localStorage.setItem("globalVisitors", vis);
+</script>
+
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -273,34 +242,26 @@ document.addEventListener("DOMContentLoaded", () => {
   "mainEntity":[
     {
       "@type":"Question",
-      "name":"How does ClubsPoker work?",
+      "name":"Does ClubsPoker offer freerolls?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"ClubsPoker is a club-based poker app. You join private clubs, receive chips from a club owner or agent, and play cash games and tournaments inside that club instead of a global lobby."
+        "text":"Yes. ClubsPoker offers freerolls for new players and recurring scheduled freerolls."
       }
     },
     {
       "@type":"Question",
-      "name":"Who holds my money on ClubsPoker?",
+      "name":"Can I redeem Sweeps Chips for cash?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Your funds are held by the club or agent you deal with, not by a central poker room. Always use trusted agents and keep records of every transaction."
+        "text":"Yes. Sweeps Chips can be redeemed for cash after completing KYC verification."
       }
     },
     {
       "@type":"Question",
-      "name":"What games can I play on ClubsPoker?",
+      "name":"What poker formats are available?",
       "acceptedAnswer":{
         "@type":"Answer",
-        "text":"Most clubs spread No-Limit Texas Hold’em cash games, with some offering Pot-Limit Omaha, PLO5, sit & gos, and occasional tournaments."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"How do I stay safe on ClubsPoker?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Only join clubs where you trust the owner or agent, confirm deposit and cashout rules in advance, and treat balances like a private home game rather than a regulated poker site."
+        "text":"ClubsPoker offers Hold’em, Omaha, Sit & Gos, MTTs, bounty tournaments, and turbo structures."
       }
     }
   ]
