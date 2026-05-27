@@ -108,6 +108,15 @@
     .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
+
+    /* PAGE VIEW COUNTER */
+    #pageCounter {
+        text-align:center;
+        margin-top:40px;
+        font-size:18px;
+        color:#66ccff;
+        text-shadow:0 0 6px #66ccff;
+    }
 </style>
 </head>
 
@@ -230,26 +239,25 @@ document.addEventListener("DOMContentLoaded", () => {
         </a>
     </div>
 
+    <!-- PAGE VIEW COUNTER -->
+    <div id="pageCounter">
+        <strong>Page Views:</strong> <span id="pageViews">0</span>
+    </div>
+
+    <script>
+    let key = "views_" + window.location.pathname;
+    let views = localStorage.getItem(key) || 0;
+    views++;
+    localStorage.setItem(key, views);
+    document.getElementById("pageViews").innerText = views;
+    </script>
+
     <footer>
         Copyright ©2026 FREE-CASINO-CHIPS.COM
         All rights reserved.
     </footer>
 
 </div>
-
-<!-- FAQ JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    { "@type":"Question","name":"How do I get free coins on BabaCasino?","acceptedAnswer":{"@type":"Answer","text":"Sign up, claim the welcome coins, complete daily logins, and check the inbox for bonus drops. Use streaks and in‑game events to maximize free coins."}},
-    { "@type":"Question","name":"Can I redeem sweepstakes coins for cash?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sweepstakes coins can be redeemed following the casino's redemption process. Most sites require KYC before the first payout and process redemptions in 2–7 business days."}},
-    { "@type":"Question","name":"Is this really free money?","acceptedAnswer":{"@type":"Answer","text":"The coins and bonuses are free to claim, but redemptions require meeting the casino's rules and KYC verification. No purchase is required to receive free coins."}},
-    { "@type":"Question","name":"Which states are restricted?","acceptedAnswer":{"@type":"Answer","text":"Some states restrict sweepstakes casinos. Check the Restricted States section on the page for the latest list."}}
-  ]
-}
-</script>
 
 </body>
 </html>
