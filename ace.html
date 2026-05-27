@@ -16,7 +16,6 @@
         padding:0;
     }
 
-    /* FIXED HEADER */
     header {
         background:#111726;
         padding:25px;
@@ -32,7 +31,6 @@
         z-index:10;
     }
 
-    /* SIDEBAR */
     .sidebar {
         position:absolute;
         top:90px;
@@ -54,11 +52,8 @@
         white-space:nowrap;
     }
 
-    .sidebar a:hover {
-        text-decoration:underline;
-    }
+    .sidebar a:hover { text-decoration:underline; }
 
-    /* MAIN CONTENT */
     .main {
         margin-left:260px;
         padding:150px 60px 200px 40px;
@@ -108,6 +103,26 @@
     .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
+
+    /* COUNTER BOXES */
+    .counter-box {
+        background:#111726;
+        border:1px solid #222a40;
+        padding:20px;
+        border-radius:10px;
+        margin-top:40px;
+        font-size:20px;
+    }
+
+    .stars span {
+        font-size:32px;
+        cursor:pointer;
+        color:#555;
+    }
+    .stars span.active {
+        color:#ffcc33;
+    }
+
 </style>
 </head>
 
@@ -115,7 +130,6 @@
 
 <header>FREE-CASINO-CHIPS.COM</header>
 
-<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar"></div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -125,7 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<!-- MAIN CONTENT -->
 <div class="main">
 
     <div class="top-button">
@@ -223,7 +236,124 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Do I need to verify my address?</strong> Yes. Address verification is required for payouts.</p>
     </section>
 
-    <!-- ⭐ BOTTOM BUTTON (NOW INCLUDED) -->
+    <!-- ⭐ FULL TEST COUNTER SUITE (BOTTOM OF PAGE) -->
+    <div class="counter-box">
+
+        <h2 style="color:#ffcc33;">ACE Page Stats (Test Mode)</h2>
+
+        <p><strong>Page Views:</strong> <span id="pageViews">0</span></p>
+
+        <p><strong>Rate This Page:</strong></p>
+        <div class="stars" id="starRating">
+            <span data-value="1">★</span>
+            <span data-value="2">★</span>
+            <span data-value="3">★</span>
+            <span data-value="4">★</span>
+            <span data-value="5">★</span>
+        </div>
+
+        <p><strong>Today's Visitors:</strong> <span id="todayVisitors">0</span></p>
+        <p><strong>Today's Page Views:</strong> <span id="todayViews">0</span></p>
+        <p><strong>Users Online:</strong> <span id="liveUsers">0</span></p>
+
+        <h3 style="color:#ffcc33; margin-top:25px;">Recently Viewed Casinos</h3>
+        <ul id="recentList"></ul>
+
+        <h3 style="color:#ffcc33; margin-top:25px;">Most Viewed Pages</h3>
+        <ul id="mostViewedList"></ul>
+
+    </div>
+
+    <script>
+        const pageID = "ace";
+
+        // PAGE VIEWS
+        let views = parseInt(localStorage.getItem("ace_test_views") || "0");
+        views++;
+        localStorage.setItem("ace_test_views", views);
+        document.getElementById("pageViews").innerText = views;
+
+        // STAR RATING
+        const stars = document.querySelectorAll("#starRating span");
+        let savedRating = localStorage.getItem("ace_rating") || 0;
+
+        function highlight(r) {
+            stars.forEach((s, i) => s.classList.toggle("active", i < r));
+        }
+        highlight(savedRating);
+
+        stars.forEach(star => {
+            star.addEventListener("click", () => {
+                const rating = star.getAttribute("data-value");
+                localStorage.setItem("ace_rating", rating);
+                highlight(rating);
+            });
+        });
+
+        // TODAY'S VISITORS
+        const todayKey = "ace_today_visitors_" + new Date().toDateString();
+        let todayVisitors = localStorage.getItem(todayKey) || 0;
+        if (!sessionStorage.getItem("ace_today_visitor_flag")) {
+            todayVisitors++;
+            localStorage.setItem(todayKey, todayVisitors);
+            sessionStorage.setItem("ace_today_visitor_flag", "1");
+        }
+        document.getElementById("todayVisitors").innerText = todayVisitors;
+
+        // TODAY'S PAGE VIEWS
+        const todayViewsKey = "ace_today_views_" + new Date().toDateString();
+        let todayViews = parseInt(localStorage.getItem(todayViewsKey) || "0");
+        todayViews++;
+        localStorage.setItem(todayViewsKey, todayViews);
+        document.getElementById("todayViews").innerText = todayViews;
+
+        // LIVE USERS ONLINE
+        function updateLiveUsers() {
+            const key = "ace_live_users";
+            const now = Date.now();
+            localStorage.setItem(key, now);
+            let count = 0;
+            for (let i = 0; i < localStorage.length; i++) {
+                const k = localStorage.key(i);
+                if (k.includes("_live_users")) {
+                    const t = parseInt(localStorage.getItem(k));
+                    if (now - t < 15000) count++;
+                }
+            }
+            document.getElementById("liveUsers").innerText = count;
+        }
+        updateLiveUsers();
+        setInterval(updateLiveUsers, 5000);
+
+        // RECENTLY VIEWED
+        let recent = JSON.parse(localStorage.getItem("recently_viewed") || "[]");
+        recent = recent.filter(r => r.id !== pageID);
+        recent.unshift({ id: pageID, views: views });
+        recent = recent.slice(0, 10);
+        localStorage.setItem("recently_viewed", JSON.stringify(recent));
+
+        const recentList = document.getElementById("recentList");
+        recent.forEach(item => {
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="${item.id}.html">${item.id}</a> — ${item.views} views`;
+            recentList.appendChild(li);
+        });
+
+        // MOST VIEWED
+        let most = JSON.parse(localStorage.getItem("most_viewed") || "{}");
+        most[pageID] = views;
+        localStorage.setItem("most_viewed", JSON.stringify(most));
+
+        const sorted = Object.entries(most).sort((a,b) => b[1] - a[1]);
+        const mostList = document.getElementById("mostViewedList");
+        sorted.forEach(([id, count]) => {
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="${id}.html">${id}</a> — ${count} views`;
+            mostList.appendChild(li);
+        });
+
+    </script>
+
     <div class="top-button" style="margin-top:50px; text-align:center;">
         <a href="https://www.ace.com/?r=4333fa1d%2F42862933" target="_blank">
             Sign Up at ACE
