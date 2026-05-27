@@ -106,6 +106,15 @@
     .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
+
+    /* PAGE VIEW COUNTER */
+    #pageCounter {
+        text-align:center;
+        margin-top:40px;
+        font-size:18px;
+        color:#66ccff;
+        text-shadow:0 0 6px #66ccff;
+    }
 </style>
 </head>
 
@@ -128,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <div class="top-button">
         <a href="https://cashoomo.com/?referralCode=JH8QLG3YWP8S" target="_blank">
-            Sign Up at Cashoomo
+            Play at Cashoomo
         </a>
     </div>
 
@@ -221,12 +230,25 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Is Cashoomo available in my state?</strong> See the Restricted States section above.</p>
     </section>
 
-    <!-- ⭐ BOTTOM BUTTON (ADDED) -->
+    <!-- ⭐ BOTTOM BUTTON -->
     <div class="top-button" style="margin-top:50px; text-align:center;">
         <a href="https://cashoomo.com/?referralCode=JH8QLG3YWP8S" target="_blank">
-            Sign Up at Cashoomo
+            Play at Cashoomo
         </a>
     </div>
+
+    <!-- ⭐ PAGE VIEW COUNTER -->
+    <div id="pageCounter">
+        <strong>Page Views:</strong> <span id="pageViews">0</span>
+    </div>
+
+    <script>
+    let key = "views_" + window.location.pathname;
+    let views = localStorage.getItem(key) || 0;
+    views++;
+    localStorage.setItem(key, views);
+    document.getElementById("pageViews").innerText = views;
+    </script>
 
     <footer>
         Copyright ©2026 FREE-CASINO-CHIPS.COM

@@ -16,7 +16,6 @@
         padding:0;
     }
 
-    /* FIXED HEADER */
     header {
         background:#111726;
         padding:25px;
@@ -32,7 +31,6 @@
         z-index:10;
     }
 
-    /* FINAL SIDEBAR */
     .sidebar {
         position:absolute;
         top:90px;
@@ -56,7 +54,6 @@
 
     .sidebar a:hover { text-decoration:underline; }
 
-    /* MAIN CONTENT */
     .main {
         margin-left:260px;
         padding:150px 60px 200px 40px;
@@ -90,7 +87,7 @@
         background:#111726;
         padding:25px;
         border-radius:10px;
-        border:1px solid #222a40;
+        border:1px solid:#222a40;
         font-size:20px;
         line-height:1.6;
     }
@@ -106,6 +103,14 @@
     .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
+
+    #pageCounter {
+        text-align:center;
+        margin-top:40px;
+        font-size:18px;
+        color:#66ccff;
+        text-shadow:0 0 6px #66ccff;
+    }
 </style>
 </head>
 
@@ -113,7 +118,6 @@
 
 <header>FREE-CASINO-CHIPS.COM</header>
 
-<!-- SIDEBAR INCLUDE -->
 <div class="sidebar" id="sidebar"></div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -123,19 +127,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<!-- MAIN CONTENT -->
 <div class="main">
 
     <div class="top-button">
         <a href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S" target="_blank">
-            Sign Up at CiderCasino
+            Play at CiderCasino
         </a>
     </div>
 
     <h2 style="text-align:center;">CiderCasino Sweepstakes Casino</h2>
+
     <p style="font-size:20px; line-height:1.6; text-align:center; max-width:900px; margin:0 auto;">
-        CiderCasino is a sweepstakes-style gaming platform offering free daily bonuses, inbox rewards, and a wide selection of slots and arcade-style games.
-        It uses a dual-currency system that allows players to redeem Sweeps Coins for cash prizes after verification.
+        CiderCasino is a fast-growing sweepstakes casino offering daily bonuses, inbox rewards, and a wide selection of slots and arcade-style games. 
+        With a clean mobile interface and a dual-currency system, players can enjoy Gold Coins for fun play and redeem Sweeps Coins for real cash prizes after verification. 
+        CiderCasino focuses on smooth gameplay, frequent bonus drops, and a simple user experience — making it a strong choice for players who want a reliable and easy-to-use sweepstakes platform.
     </p>
 
     <div class="grid">
@@ -220,6 +225,24 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Is CiderCasino available in my state?</strong> See the Restricted States section above.</p>
     </section>
 
+    <div class="top-button" style="margin-top:50px;">
+        <a href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S" target="_blank">
+            Play at CiderCasino
+        </a>
+    </div>
+
+    <div id="pageCounter">
+        <strong>Page Views:</strong> <span id="pageViews">0</span>
+    </div>
+
+    <script>
+    let key = "views_" + window.location.pathname;
+    let views = localStorage.getItem(key) || 0;
+    views++;
+    localStorage.setItem(key, views);
+    document.getElementById("pageViews").innerText = views;
+    </script>
+
     <footer>
         Copyright ©2026 FREE-CASINO-CHIPS.COM
         All rights reserved.
@@ -227,7 +250,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </div>
 
-<!-- FAQ JSON-LD -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",

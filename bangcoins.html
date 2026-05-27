@@ -106,6 +106,15 @@
     .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
+
+    /* PAGE VIEW COUNTER */
+    #pageCounter {
+        text-align:center;
+        margin-top:40px;
+        font-size:18px;
+        color:#66ccff;
+        text-shadow:0 0 6px #66ccff;
+    }
 </style>
 </head>
 
@@ -128,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <div class="top-button">
         <a href="https://bangcoins.com/?ref=r_jamie1964" target="_blank">
-            Sign Up at BangCoins
+            Play at BangCoins
         </a>
     </div>
 
@@ -242,12 +251,25 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Is BangCoins available in my state?</strong> See the Restricted States list above.</p>
     </section>
 
-    <!-- ⭐ BOTTOM BUTTON (ADDED) -->
+    <!-- ⭐ BOTTOM BUTTON -->
     <div class="top-button" style="margin-top:50px; text-align:center;">
         <a href="https://bangcoins.com/?ref=r_jamie1964" target="_blank">
-            Sign Up at BangCoins
+            Play at BangCoins
         </a>
     </div>
+
+    <!-- ⭐ PAGE VIEW COUNTER -->
+    <div id="pageCounter">
+        <strong>Page Views:</strong> <span id="pageViews">0</span>
+    </div>
+
+    <script>
+    let key = "views_" + window.location.pathname;
+    let views = localStorage.getItem(key) || 0;
+    views++;
+    localStorage.setItem(key, views);
+    document.getElementById("pageViews").innerText = views;
+    </script>
 
     <footer>
         Copyright ©2026 FREE-CASINO-CHIPS.COM
@@ -255,48 +277,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </footer>
 
 </div>
-
-<!-- FAQ JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {
-      "@type":"Question",
-      "name":"How do I get free coins on BangCoins?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Sign up to claim the no-purchase welcome bonus of Gold Coins and Sweeps Coins, then use daily promos and recurring bonuses to grow your balance."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Can I redeem Sweeps Coins for cash at BangCoins?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Yes. Sweeps Coins can be redeemed for cash prizes once you meet the minimum threshold and complete KYC verification."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Is BangCoins really free to play?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"BangCoins is a sweepstakes casino, which means you can receive promotional Sweeps Coins without making a purchase."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Which states are restricted at BangCoins?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"BangCoins is not available in several states, including CA, CT, DE, HI, ID, LA, MD, MI, MT, NV, NJ, NY, VA, USVI, and WA."
-      }
-    }
-  ]
-}
-</script>
 
 </body>
 </html>
