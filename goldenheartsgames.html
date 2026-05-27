@@ -61,7 +61,14 @@
         box-sizing:border-box;
     }
 
-    h1, h2, h3 { color:#ffcc33; }
+    h1 {
+        color:#ffcc33;
+        text-align:center;
+        font-size:38px;
+        margin:0 0 30px 0;
+    }
+
+    h2, h3 { color:#ffcc33; }
 
     .top-button {
         text-align:center;
@@ -113,6 +120,14 @@
 
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
+
+    /* COUNTER STYLE */
+    .counter-box {
+        text-align:center;
+        margin-top:40px;
+        font-size:16px;
+        color:#bbb;
+    }
 </style>
 </head>
 
@@ -131,6 +146,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div class="main">
 
+    <h1>GoldenHearts</h1>
+
     <!-- TOP CTA -->
     <div class="top-button">
         <a href="https://www.goldenheartsgames.com/referral/YUX9OSX4U2" target="_blank">
@@ -138,16 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
         </a>
     </div>
 
-    <h1 style="text-align:center;">GoldenHearts</h1>
-
-    <!-- HERO CHARITY SECTION (CENTERED) -->
-    <div class="card" style="
-        margin-top:30px;
-        max-width:900px;
-        margin-left:auto;
-        margin-right:auto;
-        text-align:center;
-    ">
+    <!-- HERO CHARITY SECTION -->
+    <div class="card" style="margin-top:30px; max-width:900px; margin-left:auto; margin-right:auto; text-align:center;">
         <h2>GoldenHearts — Charity-Based Sweepstakes Gaming</h2>
         <p>
             GoldenHearts is one of the most unique sweepstakes-style gaming platforms in the United States.
@@ -245,6 +254,25 @@ document.addEventListener("DOMContentLoaded", () => {
             Play at GoldenHearts
         </a>
     </div>
+
+    <!-- PAGE VIEW COUNTER BELOW BOTTOM BUTTON -->
+    <div class="counter-box">
+        <span id="viewCounter">Loading views...</span>
+    </div>
+
+    <script>
+        const pageId = "goldenhearts";
+        fetch(`/api/${pageId}-views`)
+            .then(r => r.json())
+            .then(d => {
+                document.getElementById("viewCounter").innerText =
+                    `Page Views: ${d.views.toLocaleString()}`;
+            })
+            .catch(() => {
+                document.getElementById("viewCounter").innerText =
+                    "Page Views: unavailable";
+            });
+    </script>
 
     <!-- SEO SECTION -->
     <section class="seo-section">

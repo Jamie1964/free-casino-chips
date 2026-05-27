@@ -16,7 +16,6 @@
         padding:0;
     }
 
-    /* FIXED HEADER */
     header {
         background:#111726;
         padding:25px;
@@ -32,7 +31,6 @@
         z-index:10;
     }
 
-    /* FINAL SIDEBAR */
     .sidebar {
         position:absolute;
         top:90px;
@@ -56,7 +54,6 @@
 
     .sidebar a:hover { text-decoration:underline; }
 
-    /* MAIN CONTENT */
     .main {
         margin-left:260px;
         padding:150px 60px 200px 40px;
@@ -64,9 +61,21 @@
         box-sizing:border-box;
     }
 
-    h1, h2 { color:#ffcc33; margin-top:0; }
+    /* NEW TITLE */
+    h1 {
+        color:#ffcc33;
+        text-align:center;
+        font-size:38px;
+        margin:0 0 30px 0;
+    }
 
-    .top-button { text-align:center; margin-bottom:30px; }
+    h2 { color:#ffcc33; }
+
+    .top-button {
+        text-align:center;
+        margin-bottom:30px;
+    }
+
     .top-button a {
         display:inline-block;
         background:#ffcc33;
@@ -113,7 +122,6 @@
 
 <header>FREE-CASINO-CHIPS.COM</header>
 
-<!-- SIDEBAR INCLUDE -->
 <div class="sidebar" id="sidebar"></div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -123,8 +131,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<!-- MAIN CONTENT -->
 <div class="main">
+
+    <!-- ⭐ NEW TITLE ABOVE BUTTON ⭐ -->
+    <h1>CoinsBackCasino</h1>
 
     <div class="top-button">
         <a href="https://www.coinsbackcasino.com/invite/1542138?utm_source=copy&utm_medium=referral&utm_campaign=member-referral" target="_blank">
@@ -222,7 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </div>
 
-<!-- FAQ JSON-LD -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",

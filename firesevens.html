@@ -61,9 +61,20 @@
         box-sizing:border-box;
     }
 
-    h1, h2 { color:#ffcc33; margin-top:0; }
+    h1 {
+        color:#ffcc33;
+        text-align:center;
+        font-size:38px;
+        margin:0 0 30px 0;
+    }
 
-    .top-button { text-align:center; margin-bottom:30px; }
+    h2 { color:#ffcc33; }
+
+    .top-button {
+        text-align:center;
+        margin-bottom:30px;
+    }
+
     .top-button a {
         display:inline-block;
         background:#ffcc33;
@@ -103,6 +114,14 @@
     .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
+
+    /* COUNTER STYLE */
+    .counter-box {
+        text-align:center;
+        margin-top:50px;
+        font-size:16px;
+        color:#bbb;
+    }
 </style>
 </head>
 
@@ -120,6 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <div class="main">
+
+    <h1>FireSevens</h1>
 
     <!-- TOP CTA -->
     <div class="top-button">
@@ -204,6 +225,25 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>How fast are payouts?</strong> Usually within hours to 1–2 days.</p>
       <p><strong>Do I need to verify?</strong> Yes — KYC is required before withdrawing.</p>
     </section>
+
+    <!-- PAGE VIEW COUNTER -->
+    <div class="counter-box">
+        <span id="viewCounter">Loading views...</span>
+    </div>
+
+    <script>
+        const pageId = "firesevens";
+        fetch(`/api/${pageId}-views`)
+            .then(r => r.json())
+            .then(d => {
+                document.getElementById("viewCounter").innerText =
+                    `Page Views: ${d.views.toLocaleString()}`;
+            })
+            .catch(() => {
+                document.getElementById("viewCounter").innerText =
+                    "Page Views: unavailable";
+            });
+    </script>
 
     <!-- BOTTOM CTA -->
     <div class="top-button" style="margin-top:40px;">

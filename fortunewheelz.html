@@ -61,9 +61,20 @@
         box-sizing:border-box;
     }
 
-    h1, h2 { color:#ffcc33; margin-top:0; }
+    h1 {
+        color:#ffcc33;
+        text-align:center;
+        font-size:38px;
+        margin:0 0 30px 0;
+    }
 
-    .top-button { text-align:center; margin-bottom:30px; }
+    h2 { color:#ffcc33; }
+
+    .top-button {
+        text-align:center;
+        margin-bottom:30px;
+    }
+
     .top-button a {
         display:inline-block;
         background:#ffcc33;
@@ -103,6 +114,14 @@
     .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
+
+    /* COUNTER STYLE */
+    .counter-box {
+        text-align:center;
+        margin-top:40px;
+        font-size:16px;
+        color:#bbb;
+    }
 </style>
 </head>
 
@@ -120,6 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <div class="main">
+
+    <h1>FortuneWheelz</h1>
 
     <!-- TOP CTA -->
     <div class="top-button">
@@ -211,6 +232,25 @@ document.addEventListener("DOMContentLoaded", () => {
             Play at FortuneWheelz
         </a>
     </div>
+
+    <!-- PAGE VIEW COUNTER BELOW BOTTOM BUTTON -->
+    <div class="counter-box">
+        <span id="viewCounter">Loading views...</span>
+    </div>
+
+    <script>
+        const pageId = "fortunewheelz";
+        fetch(`/api/${pageId}-views`)
+            .then(r => r.json())
+            .then(d => {
+                document.getElementById("viewCounter").innerText =
+                    `Page Views: ${d.views.toLocaleString()}`;
+            })
+            .catch(() => {
+                document.getElementById("viewCounter").innerText =
+                    "Page Views: unavailable";
+            });
+    </script>
 
     <footer>
         Copyright ©2026 FREE-CASINO-CHIPS.COM

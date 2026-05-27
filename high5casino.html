@@ -16,7 +16,6 @@
         padding:0;
     }
 
-    /* FIXED HEADER */
     header {
         background:#111726;
         padding:25px;
@@ -24,7 +23,7 @@
         font-size:32px;
         font-weight:bold;
         color:#ffcc33;
-        border-bottom:2px solid:#222a40;
+        border-bottom:2px solid #222a40;
         position:fixed;
         top:0;
         left:0;
@@ -32,7 +31,6 @@
         z-index:10;
     }
 
-    /* FIXED SIDEBAR */
     .sidebar {
         position:absolute;
         top:90px;
@@ -54,11 +52,8 @@
         white-space:nowrap;
     }
 
-    .sidebar a:hover {
-        text-decoration:underline;
-    }
+    .sidebar a:hover { text-decoration:underline; }
 
-    /* MAIN CONTENT */
     .main {
         margin-left:260px;
         padding:150px 60px 200px 40px;
@@ -66,9 +61,20 @@
         box-sizing:border-box;
     }
 
-    h1, h2 { color:#ffcc33; margin-top:0; }
+    h1 {
+        color:#ffcc33;
+        text-align:center;
+        font-size:38px;
+        margin:0 0 30px 0;
+    }
 
-    .top-button { text-align:center; margin-bottom:30px; }
+    h2, h3 { color:#ffcc33; }
+
+    .top-button {
+        text-align:center;
+        margin-bottom:30px;
+    }
+
     .top-button a {
         display:inline-block;
         background:#ffcc33;
@@ -79,6 +85,7 @@
         font-weight:bold;
         text-decoration:none;
     }
+
     .top-button a:hover { background:#ffe680; }
 
     .grid {
@@ -92,10 +99,18 @@
         background:#111726;
         padding:25px;
         border-radius:10px;
-        border:1px solid:#222a40;
+        border:1px solid #222a40;
         font-size:20px;
         line-height:1.6;
     }
+
+    .seo-section {
+        margin-top:30px;
+        color:#ddd;
+        font-size:18px;
+    }
+
+    .seo-section ul { margin-left:20px; }
 
     footer {
         text-align:center;
@@ -105,9 +120,13 @@
         font-size:14px;
     }
 
-    .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
-    .seo-section h2, .seo-section h3 { color:#ffcc33; }
-    .seo-section ul { margin-left:20px; }
+    /* COUNTER STYLE */
+    .counter-box {
+        text-align:center;
+        margin-top:40px;
+        font-size:16px;
+        color:#bbb;
+    }
 </style>
 </head>
 
@@ -115,7 +134,6 @@
 
 <header>FREE-CASINO-CHIPS.COM</header>
 
-<!-- SIDEBAR INCLUDE -->
 <div class="sidebar" id="sidebar"></div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -125,8 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<!-- MAIN CONTENT -->
 <div class="main">
+
+    <h1>High 5 Casino</h1>
 
     <!-- TOP BUTTON -->
     <div class="top-button">
@@ -283,6 +302,25 @@ document.addEventListener("DOMContentLoaded", () => {
             Sign Up at High 5 Casino
         </a>
     </div>
+
+    <!-- PAGE VIEW COUNTER BELOW BOTTOM BUTTON -->
+    <div class="counter-box">
+        <span id="viewCounter">Loading views...</span>
+    </div>
+
+    <script>
+        const pageId = "high5casino";
+        fetch(`/api/${pageId}-views`)
+            .then(r => r.json())
+            .then(d => {
+                document.getElementById("viewCounter").innerText =
+                    `Page Views: ${d.views.toLocaleString()}`;
+            })
+            .catch(() => {
+                document.getElementById("viewCounter").innerText =
+                    "Page Views: unavailable";
+            });
+    </script>
 
     <footer>
         Copyright ©2026 FREE-CASINO-CHIPS.COM

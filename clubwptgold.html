@@ -16,7 +16,6 @@
         padding:0;
     }
 
-    /* FIXED HEADER */
     header {
         background:#111726;
         padding:25px;
@@ -32,7 +31,6 @@
         z-index:10;
     }
 
-    /* FINAL SIDEBAR */
     .sidebar {
         position:absolute;
         top:90px;
@@ -56,7 +54,6 @@
 
     .sidebar a:hover { text-decoration:underline; }
 
-    /* MAIN CONTENT */
     .main {
         margin-left:260px;
         padding:150px 60px 200px 40px;
@@ -64,9 +61,21 @@
         box-sizing:border-box;
     }
 
-    h1, h2 { color:#ffcc33; margin-top:0; }
+    /* NEW TITLE */
+    h1 {
+        color:#ffcc33;
+        text-align:center;
+        font-size:38px;
+        margin:0 0 30px 0;
+    }
 
-    .top-button { text-align:center; margin-bottom:30px; }
+    h2 { color:#ffcc33; }
+
+    .top-button {
+        text-align:center;
+        margin-bottom:30px;
+    }
+
     .top-button a {
         display:inline-block;
         background:#ffcc33;
@@ -79,7 +88,6 @@
     }
     .top-button a:hover { background:#ffe680; }
 
-    /* BIG TOURNAMENT BOX */
     .highlight-card {
         background:#1a2238;
         border:2px solid #ffcc33;
@@ -125,7 +133,6 @@
 
 <header>FREE-CASINO-CHIPS.COM</header>
 
-<!-- SIDEBAR INCLUDE -->
 <div class="sidebar" id="sidebar"></div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -135,8 +142,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<!-- MAIN CONTENT -->
 <div class="main">
+
+    <!-- ⭐ NEW TITLE ABOVE BUTTON ⭐ -->
+    <h1>ClubWPT Gold</h1>
 
     <div class="top-button">
         <a href="https://www.clubwpt.com/gold" target="_blank">
@@ -144,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </a>
     </div>
 
-    <!-- FREE DAILY TOURNAMENTS -->
     <div class="highlight-card">
         <h2 style="margin-top:0;">FREE Tournaments — 3 Times Every Day</h2>
         <p>ClubWPT Gold runs <strong>three FREE tournaments every single day</strong>, each with real cash prize pools.</p>
@@ -162,7 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
         Prize Pool: <strong>$100</strong></p>
     </div>
 
-    <!-- INTRO -->
     <h2 style="text-align:center;">ClubWPT Gold — Free Daily Poker Tournaments</h2>
     <p style="font-size:20px; line-height:1.6; text-align:center; max-width:900px; margin:0 auto;">
         ClubWPT Gold offers multiple free tournaments every day with real cash prizes.
@@ -170,7 +177,6 @@ document.addEventListener("DOMContentLoaded", () => {
         This page explains the daily schedule, how the platform works, and how to get the most value from the free events.
     </p>
 
-    <!-- HOW IT WORKS + WHY I LIKE -->
     <div class="grid">
         <div class="card">
             <h2>How ClubWPT Gold Works</h2>
@@ -188,7 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 
-    <!-- GAMES + TRAFFIC -->
     <div class="grid" style="margin-top:30px;">
         <div class="card">
             <h2>Games You’ll Find Here</h2>
@@ -205,7 +210,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 
-    <!-- LINK TO HOW-TO PAGE -->
     <div class="card" style="margin-top:30px;">
         <h2>Need Help Learning Poker?</h2>
         <p style="font-size:18px; line-height:1.6;">
@@ -215,7 +219,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </p>
     </div>
 
-    <!-- SEO BLOCK -->
     <section id="seo-clubwptgold" class="seo-section">
       <h2>How to Make Money Playing on ClubWPT Gold</h2>
       <p>ClubWPT Gold gives players access to multiple free tournaments every day with real cash prizes.
@@ -248,7 +251,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </div>
 
-<!-- FAQ JSON-LD -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",

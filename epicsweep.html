@@ -61,9 +61,21 @@
         box-sizing:border-box;
     }
 
-    h1, h2 { color:#ffcc33; margin-top:0; }
+    /* NEW TITLE */
+    h1 {
+        color:#ffcc33;
+        text-align:center;
+        font-size:38px;
+        margin:0 0 30px 0;
+    }
 
-    .top-button { text-align:center; margin-bottom:30px; }
+    h2 { color:#ffcc33; }
+
+    .top-button {
+        text-align:center;
+        margin-bottom:30px;
+    }
+
     .top-button a {
         display:inline-block;
         background:#ffcc33;
@@ -120,6 +132,9 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <div class="main">
+
+    <!-- ⭐ NEW TITLE ABOVE BUTTON ⭐ -->
+    <h1>EpicSweep</h1>
 
     <!-- TOP CTA -->
     <div class="top-button">
@@ -219,7 +234,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </div>
 
-<!-- FAQ JSON-LD -->
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
