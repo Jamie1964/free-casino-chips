@@ -16,7 +16,6 @@
         padding:0;
     }
 
-    /* ⭐ UPGRADED HEADER (Option A) ⭐ */
     header {
         background:#111726;
         padding:28px;
@@ -65,7 +64,7 @@
 
     h1, h2 { color:#ffcc33; margin-top:0; }
 
-    .top-button { text-align:center; margin-bottom:30px; }
+    .top-button { text-align:center; margin-bottom:40px; }
     .top-button a {
         display:inline-block;
         background:#ffcc33;
@@ -102,14 +101,14 @@
         font-size:14px;
     }
 
-    .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
+    .seo-section { margin-top:40px; color:#ddd; font-size:18px; }
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
 
-    /* ⭐ NEW API COUNTER STYLE ⭐ */
+    /* ⭐ ACE COUNTER STYLE ⭐ */
     #pageCounter {
         text-align:center;
-        margin-top:40px;
+        margin-top:50px;
         font-size:18px;
         color:#66ccff;
         text-shadow:0 0 6px #66ccff;
@@ -163,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 
-    <div class="grid" style="margin-top:30px;">
+    <div class="grid">
         <div class="card">
             <h2>Why I Like BangCoins</h2>
             <p>• Huge game library (3,000+ titles)</p>
@@ -179,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 
-    <div class="grid" style="margin-top:30px;">
+    <div class="grid">
         <div class="card">
             <h2>Payouts & Banking</h2>
             <p>• Typical redemption window: 3–7 business days after approval</p>
@@ -195,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 
-    <div class="grid" style="margin-top:30px;">
+    <div class="grid">
         <div class="card">
             <h2>Restricted States</h2>
 
@@ -250,29 +249,26 @@ document.addEventListener("DOMContentLoaded", () => {
       <p><strong>Is BangCoins available in my state?</strong> See the Restricted States list above.</p>
     </section>
 
-    <div class="top-button" style="margin-top:50px; text-align:center;">
+    <div class="top-button" style="margin-top:50px;">
         <a href="https://bangcoins.com/?ref=r_jamie1964" target="_blank">
             Play at BangCoins
         </a>
     </div>
 
-    <!-- ⭐ NEW API COUNTER ⭐ -->
+    <!-- ⭐ ACE COUNTER ⭐ -->
     <div id="pageCounter">
-        <strong>Page Views:</strong> <span id="pageViews">Loading…</span>
+        <strong>Page Views:</strong> <span id="pageViews">0</span>
     </div>
 
     <script>
-        const pageId = "bangcoins";
-        fetch(`/api/${pageId}-views`)
-            .then(r => r.json())
-            .then(d => {
-                document.getElementById("pageViews").innerText =
-                    d.views.toLocaleString();
-            })
-            .catch(() => {
-                document.getElementById("pageViews").innerText =
-                    "Unavailable";
-            });
+        let key = "views_" + window.location.pathname;
+        let views = localStorage.getItem(key) || 0;
+        views++;
+        localStorage.setItem(key, views);
+        document.getElementById("pageViews").innerText = views;
+
+        // Last visit tracking
+        localStorage.setItem("lastvisit_" + window.location.pathname, new Date().toString());
     </script>
 
     <footer>

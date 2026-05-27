@@ -16,7 +16,6 @@
         padding:0;
     }
 
-    /* ⭐ UPGRADED HEADER (Option A) ⭐ */
     header {
         background:#111726;
         padding:28px;
@@ -63,19 +62,18 @@
         box-sizing:border-box;
     }
 
+    h1, h2 { color:#ffcc33; margin-top:0; }
+
     h1 {
-        color:#ffcc33;
         text-align:center;
         font-size:46px;
         font-weight:900;
-        margin:0 0 30px 0;
+        margin-bottom:40px;
     }
-
-    h2 { color:#ffcc33; }
 
     .top-button {
         text-align:center;
-        margin-bottom:30px;
+        margin-bottom:40px;
     }
 
     .top-button a {
@@ -102,7 +100,7 @@
         background:#111726;
         padding:25px;
         border-radius:10px;
-        border:1px solid #222a40;
+        border:1px solid:#222a40;
         font-size:20px;
         line-height:1.6;
     }
@@ -115,15 +113,22 @@
         font-size:14px;
     }
 
-    .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
+    .seo-section {
+        margin-top:40px;
+        color:#ddd;
+        font-size:18px;
+    }
+
     .seo-section h2, .seo-section h3 { color:#ffcc33; }
     .seo-section ul { margin-left:20px; }
 
-    .counter-box {
+    /* ⭐ ACE COUNTER STYLE ⭐ */
+    #pageCounter {
         text-align:center;
-        margin-top:40px;
-        font-size:16px;
-        color:#bbb;
+        margin-top:50px;
+        font-size:18px;
+        color:#66ccff;
+        text-shadow:0 0 6px #66ccff;
     }
 </style>
 </head>
@@ -152,6 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <h2 style="text-align:center;">CoinsBackCasino — Fast Payouts, Big Bonuses, and Easy Gameplay</h2>
+
     <p style="font-size:20px; line-height:1.6; text-align:center; max-width:900px; margin:0 auto;">
         CoinsBackCasino is a modern sweepstakes-style casino offering fast payouts, daily bonuses, and a large library of slots and instant-win games.
         With simple banking, quick verification, and a clean interface, it’s one of the easiest casinos to get started with.
@@ -175,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 
-    <div class="grid" style="margin-top:30px;">
+    <div class="grid">
         <div class="card">
             <h2>Game Library</h2>
             <p>• Slots</p>
@@ -193,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </div>
 
-    <div class="grid" style="margin-top:30px;">
+    <div class="grid">
         <div class="card">
             <h2>KYC Verification</h2>
             <p>• Photo ID</p>
@@ -234,22 +240,20 @@ document.addEventListener("DOMContentLoaded", () => {
         </a>
     </div>
 
-    <div class="counter-box">
-        <span id="viewCounter">Loading views...</span>
+    <!-- ⭐ ACE COUNTER ⭐ -->
+    <div id="pageCounter">
+        <strong>Page Views:</strong> <span id="pageViews">0</span>
     </div>
 
     <script>
-        const pageId = "coinsback";
-        fetch(`/api/${pageId}-views`)
-            .then(r => r.json())
-            .then(d => {
-                document.getElementById("viewCounter").innerText =
-                    `Page Views: ${d.views.toLocaleString()}`;
-            })
-            .catch(() => {
-                document.getElementById("viewCounter").innerText =
-                    "Page Views: unavailable";
-            });
+        let key = "views_" + window.location.pathname;
+        let views = localStorage.getItem(key) || 0;
+        views++;
+        localStorage.setItem(key, views);
+        document.getElementById("pageViews").innerText = views;
+
+        // Last visit tracking
+        localStorage.setItem("lastvisit_" + window.location.pathname, new Date().toString());
     </script>
 
     <footer>
@@ -258,39 +262,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </footer>
 
 </div>
-
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {
-      "@type":"Question",
-      "name":"Is CoinsBackCasino legit?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Yes. CoinsBackCasino operates as a sweepstakes-style casino with real payouts."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"How fast are payouts?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Most payouts are processed within hours to 1–2 days depending on the method."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Do I need to verify my account?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Yes. KYC verification is required before your first withdrawal."
-      }
-    }
-  ]
-}
-</script>
 
 </body>
 </html>
