@@ -123,7 +123,25 @@
 document.addEventListener("DOMContentLoaded", () => {
     fetch("sidebar.html")
         .then(r => r.text())
-        .then(html => { document.getElementById("sidebar").innerHTML = html; });
+        .then(html => { 
+            document.getElementById("sidebar").innerHTML = html;
+
+            // After sidebar loads, update sidebar counters
+            const counters = [
+                "views_chipnwin",
+                "views_cidercasino",
+                "views_casinoclick",
+                "views_bangcoins",
+                "views_babacasino",
+                "views_americanluck"
+            ];
+
+            counters.forEach(key => {
+                let val = localStorage.getItem(key) || 0;
+                let el = document.getElementById(key);
+                if (el) el.innerText = val;
+            });
+        });
 });
 </script>
 
@@ -236,7 +254,8 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <script>
-    let key = "views_" + window.location.pathname;
+    // Page counter for THIS page
+    let key = "views_chipnwin";
     let views = localStorage.getItem(key) || 0;
     views++;
     localStorage.setItem(key, views);
