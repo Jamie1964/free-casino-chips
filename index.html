@@ -293,7 +293,7 @@
         </div>
 
         <script>
-            fetch('/api/page-views?path=index')
+            fetch('/api/index-views')
                 .then(r => r.json())
                 .then(data => {
                     document.getElementById('viewCount').textContent = data.views;
