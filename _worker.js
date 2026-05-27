@@ -6,7 +6,9 @@ export default {
     // INDEX PAGE VIEW COUNTER
     // -----------------------------
     if (url.pathname === "/api/index-views") {
-      const current = parseInt(await env.PAGE_VIEWS.get("index") || "0", 10);
+      let current = await env.PAGE_VIEWS.get("index", { type: "text" });
+      current = parseInt(current || "0", 10);
+
       const updated = current + 1;
       await env.PAGE_VIEWS.put("index", updated.toString());
 
