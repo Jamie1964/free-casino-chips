@@ -10,14 +10,9 @@
 
 <body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
-<!-- HEADER WITH YOUR SITE LOGO -->
-<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
-            border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
-    <img src="images/site-logo-ultra-low.png"
-         alt="Free Casino Chips Logo"
-         style="height:100%;width:auto;display:block;margin:0 auto;
-                object-fit:contain;object-position:center;
-                filter:drop-shadow(0 0 6px #000);">
+<!-- HEADER -->
+<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
+    <img src="images/site-logo-ultra-low.png" alt="Free Casino Chips Logo" style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;object-position:center;filter:drop-shadow(0 0 6px #000);">
 </div>
 
 <!-- MAIN WRAPPER -->
@@ -25,47 +20,39 @@
 
     <!-- SIDEBAR -->
     <div style="width:272px;padding-left:12px;">
-        <div id="sidebar"
-             style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;
-                    overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;">
-        </div>
+        <div id="sidebar" style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;"></div>
     </div>
 
     <!-- LOAD SIDEBAR -->
     <script>
         fetch('/sidebar.html')
-            .then(r => r.text())
-            .then(html => { document.getElementById('sidebar').innerHTML = html; })
-            .catch(() => { document.getElementById('sidebar').innerHTML = "<p style='color:#888;'>Sidebar unavailable</p>"; });
+            .then(r=>r.text())
+            .then(html=>{document.getElementById('sidebar').innerHTML=html;})
+            .catch(()=>{document.getElementById('sidebar').innerHTML="<p style='color:#888;'>Sidebar unavailable</p>";});
     </script>
 
     <!-- CONTENT -->
     <div style="flex:1;padding:0 25px;max-width:900px;">
 
-        <!-- TITLE -->
-        <h1 style="color:#66ccff;font-size:46px;text-align:center;margin-top:0;margin-bottom:10px;">
-            FireSevens
-        </h1>
-
-        <h2 style="color:#66ccff;font-size:32px;text-align:center;margin-top:0;margin-bottom:25px;">
-            Fast Payouts, Big Bonuses & Daily Rewards
-        </h2>
-
-        <!-- CLAIM OFFER BUTTON -->
-        <div style="text-align:center;margin-bottom:30px;">
-            <a href="http://firesevens.com/?invited_by=K4N5OQ"
-               target="_blank" rel="noopener noreferrer"
-               style="display:inline-block;background:#66ccff;color:#000;font-weight:900;
-                      padding:14px 28px;border-radius:8px;font-size:22px;text-decoration:none;
-                      box-shadow:0 0 12px #66ccff;">
-                Claim Offer
+        <!-- LOGO -->
+        <div style="text-align:center;margin-bottom:25px;margin-top:0;">
+            <a href="http://firesevens.com/?invited_by=K4N5OQ" target="_blank" rel="noopener noreferrer">
+                <img src="images/firesevens.png" alt="FireSevens Logo" style="max-width:300px;width:100%;height:auto;filter:drop-shadow(0 0 8px #000);">
             </a>
         </div>
 
-        <!-- INTRO -->
-        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid #222;
-                    box-shadow:0 0 12px #000;margin-bottom:30px;">
-            <p style="font-size:20px;line-height:1.7;margin:0;text-align:center;">
+        <!-- TITLE -->
+        <h1 style="color:#66ccff;font-size:46px;text-align:center;margin-top:0;margin-bottom:10px;">FireSevens</h1>
+        <h2 style="color:#66ccff;font-size:32px;text-align:center;margin-top:0;margin-bottom:25px;">Fast Payouts, Big Bonuses & Daily Rewards</h2>
+
+        <!-- CLAIM OFFER BUTTON -->
+        <div style="text-align:center;margin-bottom:30px;">
+            <a href="http://firesevens.com/?invited_by=K4N5OQ" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#66ccff;color:#000;font-weight:900;padding:14px 28px;border-radius:8px;font-size:22px;text-decoration:none;box-shadow:0 0 12px #66ccff;">Claim Offer</a>
+        </div>
+
+        <!-- BLUE HIGHLIGHT INTRO BOX -->
+        <div style="background:#141414;padding:25px;border-radius:12px;border:2px solid #66ccff;box-shadow:0 0 18px #66ccff;margin-bottom:35px;text-align:center;">
+            <p style="font-size:20px;line-height:1.7;margin:0;">
                 FireSevens is a popular sweepstakes-style casino offering fast payouts, daily login bonuses,
                 and a wide variety of slots and instant-win games. With simple banking, quick verification,
                 and a mobile-friendly interface, it’s a great choice for both new and experienced players.
@@ -75,12 +62,8 @@
         <!-- TWO COLUMN BOXES -->
         <div style="display:flex;gap:20px;margin-bottom:30px;">
 
-            <!-- WELCOME BONUS -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    Welcome Bonus
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;box-shadow:0 0 12px #000;">
+                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Welcome Bonus</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Free coins for new players</li>
                     <li>Starter rewards on first sign-up</li>
@@ -88,12 +71,8 @@
                 </ul>
             </div>
 
-            <!-- DAILY BONUSES -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    Daily Bonuses
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;box-shadow:0 0 12px #000;">
+                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Daily Bonuses</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Daily login rewards</li>
                     <li>Streak bonuses for consecutive days</li>
@@ -107,12 +86,8 @@
         <!-- SECOND ROW -->
         <div style="display:flex;gap:20px;margin-bottom:30px;">
 
-            <!-- GAME LIBRARY -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    Game Library
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;box-shadow:0 0 12px #000;">
+                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Game Library</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Slots</li>
                     <li>Crash-style games</li>
@@ -121,12 +96,8 @@
                 </ul>
             </div>
 
-            <!-- PAYOUTS -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    Payouts & Banking
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;box-shadow:0 0 12px #000;">
+                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Payouts & Banking</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Fast withdrawals</li>
                     <li>Bank transfer, crypto & more</li>
@@ -140,12 +111,8 @@
         <!-- THIRD ROW -->
         <div style="display:flex;gap:20px;margin-bottom:30px;">
 
-            <!-- KYC -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    KYC Verification
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;box-shadow:0 0 12px #000;">
+                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">KYC Verification</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Photo ID</li>
                     <li>Address verification</li>
@@ -153,12 +120,8 @@
                 </ul>
             </div>
 
-            <!-- RESTRICTED STATES -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid:#222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    Restricted States
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;box-shadow:0 0 12px #000;">
+                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Restricted States</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Washington</li>
                     <li>Idaho</li>
@@ -170,19 +133,10 @@
         </div>
 
         <!-- STRATEGY SECTION -->
-        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;
-                    box-shadow:0 0 12px #000;margin-bottom:30px;">
-            <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                How to Win More at FireSevens
-            </h2>
-            <p style="line-height:1.7;margin-bottom:15px;">
-                FireSevens offers a mix of slots and instant-win games, so the best strategy is to manage your bankroll,
-                take advantage of bonuses, and play games with consistent payouts.
-            </p>
-
-            <h3 style="color:#66ccff;font-size:26px;margin-top:20px;margin-bottom:10px;">
-                Best Practices
-            </h3>
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;box-shadow:0 0 12px #000;margin-bottom:30px;">
+            <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">How to Win More at FireSevens</h2>
+            <p style="line-height:1.7;margin-bottom:15px;">FireSevens offers a mix of slots and instant-win games, so the best strategy is to manage your bankroll, take advantage of bonuses, and play games with consistent payouts.</p>
+            <h3 style="color:#66ccff;font-size:26px;margin-top:20px;margin-bottom:10px;">Best Practices</h3>
             <ul style="margin:0;padding-left:20px;line-height:1.7;">
                 <li>Claim daily bonuses & streak rewards</li>
                 <li>Mix low- and medium-volatility slots</li>
@@ -192,58 +146,28 @@
         </div>
 
         <!-- SEO SECTION -->
-        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;
-                    box-shadow:0 0 12px #000;margin-bottom:30px;">
-
-            <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                Why FireSevens Is a Top Pick for Sweepstakes Players
-            </h2>
-
-            <p style="line-height:1.7;margin-bottom:15px;">
-                FireSevens has grown quickly thanks to its fast payouts, clean interface, and reliable daily rewards.
-                The platform is designed for players who want simple gameplay, quick verification, and a strong mix
-                of slots and instant-win games. Its mobile-friendly layout makes it easy to play anywhere, and the
-                daily missions and streak bonuses keep players engaged.
-            </p>
-
-            <h3 style="color:#66ccff;font-size:26px;margin-top:20px;margin-bottom:10px;">
-                Choosing the Best Games on FireSevens
-            </h3>
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;box-shadow:0 0 12px #000;margin-bottom:30px;">
+            <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Why FireSevens Is a Top Pick for Sweepstakes Players</h2>
+            <p style="line-height:1.7;margin-bottom:15px;">FireSevens has grown quickly thanks to its fast payouts, clean interface, and reliable daily rewards. The platform is designed for players who want simple gameplay, quick verification, and a strong mix of slots and instant-win games.</p>
+            <h3 style="color:#66ccff;font-size:26px;margin-top:20px;margin-bottom:10px;">Choosing the Best Games on FireSevens</h3>
             <ul style="margin:0;padding-left:20px;line-height:1.7;">
-                <li>Low-volatility slots are best for long sessions and steady bonuses.</li>
-                <li>Crash-style games offer fast-paced action with quick results.</li>
-                <li>Instant-win games are ideal for players who want simple, fast gameplay.</li>
-                <li>Prize wheel games are great for streak bonuses and daily missions.</li>
+                <li>Low-volatility slots for long sessions</li>
+                <li>Crash-style games for fast action</li>
+                <li>Instant-win games for quick results</li>
+                <li>Prize wheel games for streak bonuses</li>
             </ul>
-
-            <h3 style="color:#66ccff;font-size:26px;margin-top:20px;margin-bottom:10px;">
-                Bankroll Tips for FireSevens Players
-            </h3>
+            <h3 style="color:#66ccff;font-size:26px;margin-top:20px;margin-bottom:10px;">Bankroll Tips</h3>
             <ul style="margin:0;padding-left:20px;line-height:1.7;">
-                <li>Claim every daily reward — they add up quickly.</li>
-                <li>Use streak bonuses to maximize free coins.</li>
-                <li>Withdraw profits regularly to lock in wins.</li>
-                <li>Track your sessions to see which games perform best.</li>
+                <li>Claim every daily reward</li>
+                <li>Use streak bonuses</li>
+                <li>Withdraw profits regularly</li>
+                <li>Track your sessions</li>
             </ul>
-
-            <p style="line-height:1.7;margin-top:20px;">
-                Whether you're new to sweepstakes casinos or looking for a fast, reliable platform,
-                FireSevens offers one of the smoothest experiences available. With daily bonuses,
-                quick payouts, and a strong game selection, it’s a great choice for players
-                who want simple gameplay and consistent rewards.
-            </p>
-
         </div>
 
         <!-- CLAIM OFFER BUTTON AGAIN -->
         <div style="text-align:center;margin-top:40px;margin-bottom:40px;">
-            <a href="http://firesevens.com/?invited_by=K4N5OQ"
-               target="_blank" rel="noopener noreferrer"
-               style="display:inline-block;background:#66ccff;color:#000;font-weight:900;
-                      padding:14px 28px;border-radius:8px;font-size:22px;text-decoration:none;
-                      box-shadow:0 0 12px #66ccff;">
-                Claim Offer
-            </a>
+            <a href="http://firesevens.com/?invited_by=K4N5OQ" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#66ccff;color:#000;font-weight:900;padding:14px 28px;border-radius:8px;font-size:22px;text-decoration:none;box-shadow:0 0 12px #66ccff;">Claim Offer</a>
         </div>
 
         <!-- PAGE VIEW COUNTER -->
@@ -253,21 +177,16 @@
 
         <script>
             fetch('/api/firesevens-views')
-                .then(r => r.json())
-                .then(d => {
-                    document.getElementById('viewCount').innerText = "Page Views: " + d.views;
-                })
-                .catch(() => {
-                    document.getElementById('viewCount').innerText = "Page Views: unavailable";
-                });
+                .then(r=>r.json())
+                .then(d=>{document.getElementById('viewCount').innerText="Page Views: "+d.views;})
+                .catch(()=>{document.getElementById('viewCount').innerText="Page Views: unavailable";});
         </script>
 
     </div>
 </div>
 
 <!-- FOOTER -->
-<div style="width:100%;background:#111;padding:20px 0;text-align:center;color:#777;
-            border-top:2px solid:#333;margin-top:40px;">
+<div style="width:100%;background:#111;padding:20px 0;text-align:center;color:#777;border-top:2px solid:#333;margin-top:40px;">
     © 2026 FREE‑CASINO‑CHIPS.COM — All Rights Reserved
 </div>
 
@@ -277,30 +196,9 @@
   "@context":"https://schema.org",
   "@type":"FAQPage",
   "mainEntity":[
-    {
-      "@type":"Question",
-      "name":"Is FireSevens legit?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Yes. FireSevens operates as a sweepstakes-style casino."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"How fast are payouts?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Most payouts are processed within hours to 1–2 days."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Do I need to verify?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Yes. KYC verification is required before your first withdrawal."
-      }
-    }
+    {"@type":"Question","name":"Is FireSevens legit?","acceptedAnswer":{"@type":"Answer","text":"Yes. FireSevens operates as a sweepstakes-style casino."}},
+    {"@type":"Question","name":"How fast are payouts?","acceptedAnswer":{"@type":"Answer","text":"Most payouts are processed within hours to 1–2 days."}},
+    {"@type":"Question","name":"Do I need to verify?","acceptedAnswer":{"@type":"Answer","text":"Yes. KYC verification is required before your first withdrawal."}}
   ]
 }
 </script>
