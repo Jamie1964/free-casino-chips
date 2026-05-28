@@ -18,13 +18,12 @@
                 filter:drop-shadow(0 0 6px #000);">
 </div>
 
-            
 <!-- MAIN WRAPPER -->
 <div style="display:flex;margin-top:200px;">
 
     <!-- SIDEBAR -->
     <div style="width:272px;padding-left:12px;">
-        <div id="sidebar" 
+        <div id="sidebar"
              style="background:#111;border-right:2px solid:#222;min-height:100vh;padding:10px;
                     overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;">
         </div>
@@ -35,10 +34,10 @@
 
         <!-- CLICKABLE ACE LOGO -->
         <div style="text-align:center;margin-bottom:25px;">
-            <a href="https://www.ace.com/?r=4333fa1d%2F42862933" 
+            <a href="https://www.ace.com/?r=4333fa1d%2F42862933"
                target="_blank" rel="noopener noreferrer">
-                <img src="images/ace-logo.png" 
-                     alt="ACE Logo" 
+                <img src="images/ace-logo.png"
+                     alt="ACE Logo"
                      style="max-width:260px;width:100%;height:auto;filter:drop-shadow(0 0 8px #000);">
             </a>
         </div>
@@ -75,7 +74,7 @@
                 <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Current Offers</h2>
 
                 <p style="line-height:1.6;margin-top:0;">
-                    ACE provides rotating welcome rewards, free coin packages, and special promotions.  
+                    ACE provides rotating welcome rewards, free coin packages, and special promotions.
                     Offers change often — click below to view the latest deal.
                 </p>
 
@@ -161,8 +160,9 @@
             <span id="viewCount">Loading views...</span>
         </div>
 
+        <!-- FIXED COUNTER SCRIPT -->
         <script>
-            fetch('/api/ace-views')
+            fetch(`/api/pageviews?page=ace`)
                 .then(r => r.json())
                 .then(d => {
                     document.getElementById('viewCount').innerText = "Page Views: " + d.views;
