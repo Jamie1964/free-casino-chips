@@ -11,13 +11,9 @@
 <body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
 <!-- HEADER -->
-<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
-            border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
-    <img src="images/site-logo-ultra-low.png"
-         alt="Free Casino Chips Logo"
-         style="height:100%;width:auto;display:block;margin:0 auto;
-                object-fit:contain;object-position:center;
-                filter:drop-shadow(0 0 6px #000);">
+<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
+    <img src="images/site-logo-ultra-low.png" alt="Free Casino Chips Logo"
+         style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;object-position:center;filter:drop-shadow(0 0 6px #000);">
 </div>
 
 <!-- MAIN WRAPPER -->
@@ -26,9 +22,7 @@
     <!-- SIDEBAR -->
     <div style="width:272px;padding-left:12px;">
         <div id="sidebar"
-             style="background:#111;border-right:2px solid:#222;min-height:100vh;padding:10px;
-                    overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;">
-        </div>
+             style="background:#111;border-right:2px solid:#222;min-height:100vh;padding:10px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;"></div>
     </div>
 
     <!-- CONTENT -->
@@ -50,7 +44,7 @@
             </a>
         </div>
 
-        <!-- TOURNAMENT HIGHLIGHT BOX (BLUE MEDIUM) -->
+        <!-- TOURNAMENT HIGHLIGHT BOX -->
         <div style="background:#141414;padding:25px;border-radius:12px;
                     border:2px solid:#66ccff;box-shadow:0 0 18px #66ccff;
                     margin-bottom:35px;text-align:center;">
@@ -156,14 +150,19 @@
             <span id="viewCount">Loading views...</span>
         </div>
 
+        <!-- FIXED COUNTER SCRIPT -->
         <script>
-            fetch('/api/clubspoker-views')
+            fetch('/api/pageviews?page=clubspoker')
                 .then(r => r.json())
                 .then(d => {
-                    document.getElementById('viewCount').innerText = "Page Views: " + d.views;
+                    const v = d.views ?? d.count ?? d.total;
+                    document.getElementById('viewCount').innerText =
+                        (typeof v === 'number')
+                        ? 'Page Views: ' + v
+                        : 'Page Views: unavailable';
                 })
                 .catch(() => {
-                    document.getElementById('viewCount').innerText = "Page Views: unavailable";
+                    document.getElementById('viewCount').innerText = 'Page Views: unavailable';
                 });
         </script>
 
@@ -179,10 +178,8 @@
 <!-- LOAD SIDEBAR -->
 <script>
     fetch('/sidebar.html')
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById('sidebar').innerHTML = html;
-        })
+        .then(r => r.text())
+        .then(html => { document.getElementById('sidebar').innerHTML = html; })
         .catch(() => {
             document.getElementById('sidebar').innerHTML =
                 "<p style='color:#888;'>Sidebar unavailable</p>";
