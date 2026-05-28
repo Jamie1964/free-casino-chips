@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /amin.html
+
+Sitemap: https://www.free-casino-chips.com/sitemap.xml
+
