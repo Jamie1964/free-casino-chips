@@ -2,298 +2,198 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CiderCasino Sweepstakes Casino | FREE-CASINO-CHIPS.COM</title>
-<meta name="description" content="CiderCasino Sweepstakes Casino — claim free coins, daily bonuses, and learn how to redeem sweepstakes coins for cash. Full guide, tips, and FAQ.">
-<link rel="canonical" href="https://www.free-casino-chips.com/cidercasino.html">
-<meta name="robots" content="index, follow">
+<title>CiderCasino Sweepstakes Casino – Play & Win Real Prizes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
     body {
-        background-color:#0b1020;
-        color:#ffffff;
-        font-family:Arial;
-        margin:0;
-        padding:0;
+        background-color: #0d0d0d;
+        color: #e6e6e6;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
     }
-
-    header {
-        background:#111726;
-        padding:25px;
-        text-align:center;
-        font-size:32px;
-        font-weight:bold;
-        color:#ffcc33;
-        border-bottom:2px solid #222a40;
-        position:fixed;
-        top:0;
-        left:0;
-        width:100%;
-        z-index:10;
+    h1 {
+        color: gold;
+        font-size: 38px;
+        margin: 20px 0 10px 0;
+        text-align: center;
     }
-
-    .sidebar {
-        position:absolute;
-        top:90px;
-        left:0;
-        width:260px;
-        min-height:100vh;
-        background:#111827;
-        border-right:1px solid #1f2937;
-        padding:25px 20px 20px 35px;
-        box-sizing:border-box;
+    h2 {
+        color: gold;
+        font-size: 28px;
+        margin-top: 30px;
     }
-
-    .sidebar a {
-        display:block;
-        margin-bottom:12px;
-        font-size:18px;
-        color:#4da3ff;
-        text-decoration:none;
-        white-space:nowrap;
+    a { color: #4da3ff; }
+    .container {
+        width: 85%;
+        max-width: 1100px;
+        margin: auto;
+        padding-bottom: 40px;
     }
-
-    .sidebar a:hover { text-decoration:underline; }
-
-    .main {
-        margin-left:260px;
-        padding:150px 60px 200px 40px;
-        width:calc(100% - 260px);
-        box-sizing:border-box;
+    .play-button {
+        display: block;
+        width: 260px;
+        margin: 20px auto;
+        padding: 14px;
+        background-color: gold;
+        color: black;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 6px;
+        text-decoration: none;
     }
-
-    h1, h2 { color:#ffcc33; margin-top:0; }
-
-    .top-button { text-align:center; margin-bottom:30px; }
-    .top-button a {
-        display:inline-block;
-        background:#ffcc33;
-        color:#000;
-        padding:14px 32px;
-        border-radius:8px;
-        font-size:26px;
-        font-weight:bold;
-        text-decoration:none;
+    .logo {
+        display: block;
+        margin: 20px auto;
+        max-width: 260px;
     }
-    .top-button a:hover { background:#ffe680; }
-
-    .grid {
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:30px;
-        margin-top:30px;
+    .feedback-box {
+        background-color: #1a1a1a;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 40px;
     }
-
-    .card {
-        background:#111726;
-        padding:25px;
-        border-radius:10px;
-        border:1px solid #222a40;
-        font-size:20px;
-        line-height:1.6;
+    textarea {
+        width: 100%;
+        height: 120px;
+        background-color: #0d0d0d;
+        color: #e6e6e6;
+        border: 1px solid #333;
+        padding: 10px;
+        border-radius: 6px;
     }
-
+    button {
+        margin-top: 10px;
+        padding: 10px 18px;
+        background-color: gold;
+        color: black;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+    }
     footer {
-        text-align:center;
-        padding:25px;
-        margin-top:60px;
-        color:#888;
-        font-size:14px;
-    }
-
-    .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
-    .seo-section h2, .seo-section h3 { color:#ffcc33; }
-    .seo-section ul { margin-left:20px; }
-
-    #pageCounter {
-        text-align:center;
-        margin-top:40px;
-        font-size:18px;
-        color:#66ccff;
-        text-shadow:0 0 6px #66ccff;
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px;
+        color: #777;
     }
 </style>
-</head>
 
-<body>
-
-<header>FREE-CASINO-CHIPS.COM</header>
-
-<div class="sidebar" id="sidebar"></div>
 <script>
+// Sidebar Loader
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("sidebar.html")
+    fetch("/sidebar.html")
         .then(r => r.text())
         .then(html => { document.getElementById("sidebar").innerHTML = html; });
 });
+
+// Page View Counter
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("/api/cidercasino-views")
+        .then(r => r.json())
+        .then(data => {
+            document.getElementById("view-counter").innerText =
+                "Page Views: " + data.views;
+        });
+});
+
+// Feedback Submit
+function submitFeedback() {
+    const text = document.getElementById("feedback").value.trim();
+    if (!text) return;
+
+    fetch("/api/cidercasino-feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ feedback: text })
+    }).then(() => {
+        alert("Thank you for your feedback!");
+        document.getElementById("feedback").value = "";
+    });
+}
 </script>
 
-<div class="main">
+</head>
+<body>
 
-    <!-- ⭐ TITLE ABOVE BUTTON ⭐ -->
-    <h1 style="text-align:center; font-size:38px;">
-        CiderCasino Sweepstakes Casino
-    </h1>
+<div id="sidebar"></div>
 
-    <!-- TOP BUTTON -->
-    <div class="top-button">
-        <a href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S" target="_blank">
-            Play at CiderCasino
-        </a>
-    </div>
+<div class="container">
 
-    <p style="font-size:20px; line-height:1.6; text-align:center; max-width:900px; margin:0 auto;">
-        CiderCasino is a fast-growing sweepstakes casino offering daily bonuses, inbox rewards, and a wide selection of slots and arcade-style games.
-        With a clean mobile interface and a dual-currency system, players can enjoy Gold Coins for fun play and redeem Sweeps Coins for real cash prizes after verification.
-        CiderCasino focuses on smooth gameplay, frequent bonus drops, and a simple user experience — making it a strong choice for players who want a reliable and easy-to-use sweepstakes platform.
-    </p>
+<h1>CiderCasino Sweepstakes Casino</h1>
 
-    <div class="grid">
-        <div class="card">
-            <h2>Welcome Bonus</h2>
-            <p>• Free Gold Coins on signup</p>
-            <p>• Free Sweeps Coins for new accounts</p>
-            <p>• First-week bonus drops</p>
-        </div>
+<a href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S">
+    <img src="images/cidercasino-logo.svg" alt="CiderCasino Logo" class="logo">
+</a>
 
-        <div class="card">
-            <h2>Daily Bonuses</h2>
-            <p>• Daily login rewards</p>
-            <p>• Inbox surprise drops</p>
-            <p>• Streak bonuses</p>
-        </div>
-    </div>
+<a class="play-button" href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S">
+    Play at CiderCasino
+</a>
 
-    <div class="grid" style="margin-top:30px;">
-        <div class="card">
-            <h2>Why I Like CiderCasino</h2>
-            <p>• Clean, simple interface</p>
-            <p>• Smooth mobile performance</p>
-            <p>• Frequent daily bonuses</p>
-        </div>
+<p>
+CiderCasino Sweepstakes Casino is one of the fastest‑growing sweepstakes platforms in the United States, offering players a refreshing mix of slots, instant‑win games, and sweepstakes‑based rewards. With a clean interface, fast signup, and generous welcome bonuses, CiderCasino has quickly become a favorite among players looking for a smooth and rewarding sweepstakes experience.
+</p>
 
-        <div class="card">
-            <h2>Games You’ll Find Here</h2>
-            <p>• Classic slots</p>
-            <p>• Hold & Win titles</p>
-            <p>• Jackpot and arcade games</p>
-        </div>
-    </div>
+<h2>Why Players Choose CiderCasino</h2>
+<ul>
+    <li>Fast signup with instant rewards</li>
+    <li>Huge selection of sweepstakes slots</li>
+    <li>Daily bonuses and free rewards</li>
+    <li>Mobile‑friendly and easy to use</li>
+    <li>Safe, secure, and fully sweepstakes‑compliant</li>
+</ul>
 
-    <div class="grid" style="margin-top:30px;">
-        <div class="card">
-            <h2>Payouts & Banking</h2>
-            <p>• Typical redemption window: 2–7 business days</p>
-            <p>• Bank transfer, debit cards, gift cards</p>
-        </div>
+<h2>Restricted States</h2>
+<p>
+CiderCasino is not available in: <strong>Washington, Idaho, Michigan, Nevada</strong>.
+</p>
 
-        <div class="card">
-            <h2>KYC Verification</h2>
-            <p>• Government-issued ID</p>
-            <p>• Selfie verification</p>
-            <p>• Address verification</p>
-        </div>
-    </div>
+<h2>Player Experiences</h2>
+<ul>
+    <li>“Super smooth signup and fast bonuses.”</li>
+    <li>“Great slot variety and daily rewards.”</li>
+    <li>“One of the cleanest sweepstakes casinos I’ve used.”</li>
+</ul>
 
-    <div class="grid" style="margin-top:30px;">
-        <div class="card">
-            <h2>Restricted States</h2>
-            <p>• Washington</p>
-            <p>• Idaho</p>
-            <p>• Michigan</p>
-            <p>• Nevada</p>
-        </div>
-        <div></div>
-    </div>
+<div id="view-counter" style="margin-top:20px; font-size:18px; color:gold;"></div>
 
-    <section id="seo-cidercasino" class="seo-section">
-      <h2>How to Make Money With CiderCasino Sweepstakes Casino</h2>
-      <p>CiderCasino uses a dual-currency sweepstakes model: Gold Coins for fun play and Sweeps Coins for prize redemptions. You can start by claiming the welcome bonus, then build your balance through daily login rewards and inbox drops.</p>
+<div class="feedback-box">
+    <h2>Share Your Experience</h2>
+    <textarea id="feedback" placeholder="Write your feedback here..."></textarea>
+    <button onclick="submitFeedback()">Submit Feedback</button>
+</div>
 
-      <h3>How to Get Free Coins and Free Money Daily</h3>
-      <p>Claim the signup bonus, check the inbox every day, and participate in limited-time events.</p>
-
-      <h3>Is This Really Free? No Purchase Necessary Explained</h3>
-      <p>CiderCasino distributes promotional coins for free. You can play without making a purchase. Redemptions require following the rules and completing KYC verification.</p>
-
-      <h3>Tips to Maximize Your Free Earnings</h3>
-      <ul>
-        <li>Claim every inbox bonus and daily login reward</li>
-        <li>Play low‑variance slots to protect your balance</li>
-        <li>Use streaks and timed events to multiply rewards</li>
-        <li>Keep KYC documents ready to speed up payouts</li>
-      </ul>
-
-      <h3>FAQ</h3>
-      <p><strong>How long do redemptions take?</strong> Usually 2–7 business days after KYC approval.</p>
-      <p><strong>Do I need to verify my identity?</strong> Yes, KYC is required before your first payout.</p>
-      <p><strong>Is CiderCasino available in my state?</strong> See the Restricted States section above.</p>
-    </section>
-
-    <div class="top-button" style="margin-top:50px;">
-        <a href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S" target="_blank">
-            Play at CiderCasino
-        </a>
-    </div>
-
-    <div id="pageCounter">
-        <strong>Page Views:</strong> <span id="pageViews">0</span>
-    </div>
-
-    <script>
-    let key = "views_" + window.location.pathname;
-    let views = localStorage.getItem(key) || 0;
-    views++;
-    localStorage.setItem(key, views);
-    document.getElementById("pageViews").innerText = views;
-    </script>
-
-    <footer>
-        Copyright ©2026 FREE-CASINO-CHIPS.COM
-        All rights reserved.
-    </footer>
+<footer>
+    © 2026 FREE‑CASINO‑CHIPS.COM — CiderCasino Sweepstakes Casino Review
+</footer>
 
 </div>
 
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {
-      "@type":"Question",
-      "name":"How do I get free coins on CiderCasino?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Sign up, claim the welcome drop, complete daily logins, and check the inbox for bonus drops."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Can I redeem sweepstakes coins for cash?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Yes. Sweepstakes coins can be redeemed following the casino's redemption process."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Is this really free money?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"The coins and bonuses are free to claim, but redemptions require meeting the casino's rules and KYC verification."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Which states are restricted?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"CiderCasino is not available in Washington, Idaho, Michigan, or Nevada."
-      }
-    }
-  ]
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Organization",
+    "name": "CiderCasino Sweepstakes Casino",
+    "url": "https://www.free-casino-chips.com/cidercasino.html"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Jamie"
+  },
+  "reviewBody": "CiderCasino Sweepstakes Casino offers fast signup, great bonuses, and a strong selection of sweepstakes slot games.",
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "5",
+    "bestRating": "5"
+  }
 }
 </script>
 
 </body>
 </html>
+
