@@ -1,35 +1,46 @@
 export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+    async fetch(request, env) {
+        const url = new URL(request.url);
 
-    // Only handle /api/pageviews
-    if (url.pathname === "/api/pageviews") {
-      const page = url.searchParams.get("page");
+        // Only handle /api/pageviews
+        if (url.pathname === "/api/pageviews") {
+            const page = url.searchParams.get("page") || "unknown";
 
-      if (!page) {
-        return new Response(
-          JSON.stringify({ error: "Missing ?page=name parameter" }),
-          { status: 400, headers: { "Content-Type": "application/json" } }
-        );
-      }
+            // KV keys
+            const viewsKey = `views:${page}`;
+            const uniqueKey = `unique:${page}`;
+            const visitorKey = `visitor:${page}:${request.headers.get("CF-Connecting-IP")}`;
 
-      const key = `views:${page}`;
+            // Get current counts
+            let views = await env.PAGEVIEWS.get(viewsKey, { type: "json" }) || 0;
+            let unique = await env.PAGEVIEWS.get(uniqueKey, { type: "json" }) || 0;
 
-      // Read current count
-      let current = await env.PAGEVIEWS.get(key);
-      let newValue = (parseInt(current) || 0) + 1;
+            // Increment total views
+            views++;
+            await env.PAGEVIEWS.put(viewsKey, JSON.stringify(views));
 
-      // Save updated count
-      await env.PAGEVIEWS.put(key, newValue.toString());
+            // Check if this visitor is unique (24-hour window)
+            const seen = await env.PAGEVIEWS.get(visitorKey);
+            if (!seen) {
+                unique++;
+                await env.PAGEVIEWS.put(uniqueKey, JSON.stringify(unique));
 
-      return new Response(
-        JSON.stringify({ page, views: newValue }),
-        { headers: { "Content-Type": "application/json" } }
-      );
+                // Mark visitor as seen for 24 hours
+                await env.PAGEVIEWS.put(visitorKey, "1", { expirationTtl: 86400 });
+            }
+
+            // Return JSON response
+            return new Response(JSON.stringify({
+                page,
+                views,
+                unique
+            }), {
+                headers: { "Content-Type": "application/json" }
+            });
+        }
+
+        // Default: serve static assets
+        return env.ASSETS.fetch(request);
     }
-
-    // Default: serve static site
-    return env.ASSETS.fetch(request);
-  }
 };
 
