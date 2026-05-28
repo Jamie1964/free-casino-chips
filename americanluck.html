@@ -182,14 +182,17 @@
             <span id="viewCount">Loading views...</span>
         </div>
 
+        <!-- FIXED COUNTER SCRIPT -->
         <script>
-            fetch('/api/americanluck-views')
+            fetch(`/api/pageviews?page=americanluck`)
                 .then(r => r.json())
                 .then(d => {
-                    document.getElementById('viewCount').innerText = "Page Views: " + d.views;
+                    document.getElementById('viewCount').innerText =
+                        "Page Views: " + d.views;
                 })
                 .catch(() => {
-                    document.getElementById('viewCount').innerText = "Page Views: unavailable";
+                    document.getElementById('viewCount').innerText =
+                        "Page Views: unavailable";
                 });
         </script>
 
