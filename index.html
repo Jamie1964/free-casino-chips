@@ -1,86 +1,217 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FREE-CASINO-CHIPS.COM | Daily Free Coins & Bonuses</title><style>
-body{margin:0;font-family:Arial,sans-serif;background:#0d1117;color:#e6e6e6;}
-a{color:#4da3ff;text-decoration:none;}a:hover{text-decoration:underline;}
-header{background:#111726;padding:28px;text-align:center;font-size:42px;font-weight:900;letter-spacing:1px;color:#ffcc33;border-bottom:2px solid #222a40;position:fixed;top:0;left:0;width:100%;z-index:10;}
-.container{display:flex;max-width:1400px;margin:0 auto;padding-top:130px;}
-#sidebar{width:260px;background:#111827;border-right:1px solid #1f2937;min-height:100vh;padding:20px;}
-.content{flex:1;padding:30px;}
-h1{color:#ffcc33;margin:0 0 20px 0;text-align:center;font-size:46px;line-height:1.25;font-weight:900;}
-.intro-box h2{font-size:32px;color:#66ccff;margin-top:0;text-align:center;font-weight:900;}
-.intro-box{background:#111827;padding:25px;border-radius:8px;border:1px solid #1f2937;margin-bottom:35px;text-align:center;}
-.featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:40px;}
-.featured-btn{display:block;background:#111827;border:1px solid #1f2937;padding:18px;text-align:center;border-radius:10px;font-size:20px;color:#66ccff;font-weight:bold;text-decoration:none;box-shadow:0 0 6px rgba(102,204,255,.25);transition:.2s;}
-.featured-btn:hover{background:#1a2338;color:#99ddff;box-shadow:0 0 12px rgba(102,204,255,.55);transform:translateY(-2px);}
-.counter{text-align:center;font-size:14px;opacity:.7;margin-top:40px;}
-footer{text-align:center;font-size:14px;opacity:.6;margin-top:50px;padding:20px 0;}
-</style></head><body>
-<header>FREE-CASINO-CHIPS.COM</header>
-<div class="container">
-<aside id="sidebar"></aside>
-<script>fetch('/sidebar.html').then(r=>r.text()).then(h=>document.getElementById('sidebar').innerHTML=h);</script>
-<div class="content">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FREE-CASINO-CHIPS.COM – Daily Free Coins & Bonuses</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
-<h1>Your #1 Source for Daily Free Coins,<br>Bonuses & No-Deposit Rewards</h1>
+<body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
-<div class="intro-box">
-<h2>Get Free Casino Chips Every Day</h2>
-<p style="max-width:900px;margin:0 auto 15px;">Every day, sweepstakes casinos hand out thousands of dollars worth of free coins, free spins, bonus drops, and loyalty rewards — and most players never claim them.</p>
-<p style="max-width:900px;margin:0 auto 15px;">That’s where <strong>Free-Casino-Chips.com</strong> comes in. We track the casinos that give out the <strong>best daily freebies</strong> so you can collect your chips, play longer, and win more — all without spending a dime.</p>
-<p style="max-width:900px;margin:0 auto 25px;">Whether you want daily login bonuses, hourly drops, inbox rewards, or referral boosts, we show you exactly where to claim them.</p>
-<hr style="border:0;border-top:1px solid #222a40;margin:25px auto;width:80%;">
-<p style="font-size:22px;color:#ffcc33;font-weight:bold;margin-top:10px;">…and play poker tournaments for free and win real cash.</p>
+<!-- HERO HEADER (200px) -->
+<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
+            border-bottom:2px solid:#333;height:200px;overflow:hidden;text-align:center;">
+    <img src="images/site-logo-ultra-low.png"
+         alt="Free Casino Chips Logo"
+         style="height:100%;width:auto;display:block;margin:0 auto;
+                object-fit:contain;object-position:center;
+                filter:drop-shadow(0 0 6px #000);">
 </div>
 
-<h2 style="font-size:32px;text-align:center;">Featured Casinos</h2>
-<div class="featured-grid">
-<a class="featured-btn" href="/luckystake.html">LuckyStake</a>
-<a class="featured-btn" href="/epicsweep.html">EpicSweep</a>
-<a class="featured-btn" href="/myprizeus.html">MyPrize US</a>
-<a class="featured-btn" href="/sweepsblast.html">SweepsBlast</a>
-<a class="featured-btn" href="/sweepshark.html">SweepsHark</a>
-<a class="featured-btn" href="/thewinzone.html">TheWinZone</a>
-<a class="featured-btn" href="/sportzino.html">Sportzino</a>
-<a class="featured-btn" href="/rolla.html">Rolla</a>
-<a class="featured-btn" href="/mcluck.html">McLuck</a>
+<!-- MAIN WRAPPER -->
+<div style="display:flex;margin-top:240px;">
+
+    <!-- SIDEBAR -->
+    <div style="width:272px;padding-left:12px;">
+        <div id="sidebar" 
+             style="background:#111;border-right:2px solid:#222;min-height:100vh;padding:10px;
+                    overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;">
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div style="flex:1;padding:0 25px;max-width:900px;">
+
+        <!-- MAIN TITLE -->
+        <h1 style="color:#66ccff;font-size:42px;margin-top:0;margin-bottom:10px;text-align:center;">
+            FREE-CASINO-CHIPS.COM
+        </h1>
+
+        <h2 style="color:#66ccff;font-size:26px;text-align:center;margin-top:0;">
+            Your #1 Source for Daily Free Coins, Bonuses & No‑Deposit Rewards
+        </h2>
+
+        <!-- INTRO SECTION (CENTERED) -->
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;
+                    box-shadow:0 0 12px #000;margin-bottom:30px;text-align:center;">
+
+            <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
+                Get Free Casino Chips Every Day
+            </h2>
+
+            <p style="line-height:1.7;margin-bottom:15px;">
+                Sweepstakes casinos give out free coins, spins, bonuses, and rewards every single day —
+                and we track the best daily freebies so you never miss out.
+            </p>
+
+            <p style="line-height:1.7;margin-bottom:15px;">
+                Collect daily login bonuses, hourly drops, inbox rewards, referral boosts, and more…
+            </p>
+
+            <p style="line-height:1.7;margin-bottom:15px;color:#ffcc33;font-weight:bold;">
+                …and play poker tournaments for free and win real cash.
+            </p>
+
+        </div>
+
+        <!-- 3×3 BUTTON GRID (CENTERED) -->
+        <h2 style="color:#66ccff;font-size:34px;margin-bottom:20px;text-align:center;">
+            Featured Casinos
+        </h2>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+                    max-width:780px;margin:0 auto 40px auto;">
+
+            <a href="#" style="background:#141414;border:1px solid:#222;padding:18px 10px;
+                               text-align:center;border-radius:10px;color:#66ccff;
+                               font-size:20px;text-decoration:none;font-weight:bold;
+                               box-shadow:0 0 10px #000;">LuckyStake</a>
+
+            <a href="#" style="background:#141414;border:1px solid:#222;padding:18px 10px;
+                               text-align:center;border-radius:10px;color:#66ccff;
+                               font-size:20px;text-decoration:none;font-weight:bold;
+                               box-shadow:0 0 10px #000;">EpicSweep</a>
+
+            <a href="#" style="background:#141414;border:1px solid:#222;padding:18px 10px;
+                               text-align:center;border-radius:10px;color:#66ccff;
+                               font-size:20px;text-decoration:none;font-weight:bold;
+                               box-shadow:0 0 10px #000;">MyPrize US</a>
+
+            <a href="#" style="background:#141414;border:1px solid:#222;padding:18px 10px;
+                               text-align:center;border-radius:10px;color:#66ccff;
+                               font-size:20px;text-decoration:none;font-weight:bold;
+                               box-shadow:0 0 10px #000;">SweepsBlast</a>
+
+            <a href="#" style="background:#141414;border:1px solid:#222;padding:18px 10px;
+                               text-align:center;border-radius:10px;color:#66ccff;
+                               font-size:20px;text-decoration:none;font-weight:bold;
+                               box-shadow:0 0 10px #000;">SweepsHark</a>
+
+            <a href="#" style="background:#141414;border:1px solid:#222;padding:18px 10px;
+                               text-align:center;border-radius:10px;color:#66ccff;
+                               font-size:20px;text-decoration:none;font-weight:bold;
+                               box-shadow:0 0 10px #000;">TheWinZone</a>
+
+            <a href="#" style="background:#141414;border:1px solid:#222;padding:18px 10px;
+                               text-align:center;border-radius:10px;color:#66ccff;
+                               font-size:20px;text-decoration:none;font-weight:bold;
+                               box-shadow:0 0 10px #000;">SweepsKing</a>
+
+            <a href="#" style="background:#141414;border:1px solid:#222;padding:18px 10px;
+                               text-align:center;border-radius:10px;color:#66ccff;
+                               font-size:20px;text-decoration:none;font-weight:bold;
+                               box-shadow:0 0 10px #000;">CoinRush</a>
+
+            <a href="#" style="background:#141414;border:1px solid:#222;padding:18px 10px;
+                               text-align:center;border-radius:10px;color:#66ccff;
+                               font-size:20px;text-decoration:none;font-weight:bold;
+                               box-shadow:0 0 10px #000;">PrizeSpin</a>
+
+        </div>
+
+        <!-- SEO SECTION -->
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;
+                    box-shadow:0 0 12px #000;margin-bottom:30px;">
+
+            <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
+                What Are Free Casino Chips?
+            </h2>
+
+            <p style="line-height:1.7;margin-bottom:15px;">
+                Free casino chips are promotional rewards offered by sweepstakes casinos that let you play
+                games without spending money. These chips come from daily login bonuses, inbox rewards,
+                hourly drops, referral bonuses, and special promotions.
+            </p>
+
+            <h2 style="color:#66ccff;font-size:30px;margin-top:25px;margin-bottom:15px;">
+                Why Do Casinos Give Out Free Chips?
+            </h2>
+
+            <p style="line-height:1.7;margin-bottom:15px;">
+                Casinos offer free chips to attract new players, reward loyal users, and keep gameplay
+                active. These bonuses help players explore games, try new features, and stay engaged
+                without financial risk.
+            </p>
+
+            <h2 style="color:#66ccff;font-size:30px;margin-top:25px;margin-bottom:15px;">
+                How to Claim Free Casino Chips
+            </h2>
+
+            <ul style="margin:0;padding-left:20px;line-height:1.7;">
+                <li>Sign up for a sweepstakes casino account</li>
+                <li>Check your inbox for daily rewards</li>
+                <li>Log in every day to collect bonuses</li>
+                <li>Participate in promotions and events</li>
+                <li>Use referral links for extra chips</li>
+            </ul>
+
+            <h2 style="color:#66ccff;font-size:30px;margin-top:25px;margin-bottom:15px;">
+                Are Free Casino Chips Safe?
+            </h2>
+
+            <p style="line-height:1.7;margin-bottom:15px;">
+                Yes — reputable sweepstakes casinos are legally compliant and operate under strict
+                promotional guidelines. Always choose trusted platforms with transparent terms and
+                active customer support.
+            </p>
+
+        </div>
+
+        <!-- PAGE VIEW COUNTER (TWO LINES — ALWAYS SHOW BOTH) -->
+        <div style="text-align:center;color:#888;font-size:16px;margin-bottom:40px;line-height:1.6;">
+            <div id="views">Loading...</div>
+            <div id="unique">Loading...</div>
+        </div>
+
+        <script>
+            fetch('/api/index-views')
+                .then(r => r.json())
+                .then(d => {
+                    document.getElementById('views').innerText =
+                        "Total Page Views: " + d.views;
+                    document.getElementById('unique').innerText =
+                        "Total Unique Visitors: " + d.unique;
+                })
+                .catch(() => {
+                    document.getElementById('views').innerText =
+                        "Total Page Views: unavailable";
+                    document.getElementById('unique').innerText =
+                        "Total Unique Visitors: unavailable";
+                });
+        </script>
+
+    </div>
 </div>
 
-<!-- ⭐ SEO BLOCK (KEPT EXACTLY AS YOU PROVIDED IT) ⭐ -->
-<div style="max-width:900px;margin:0 auto;font-size:16px;line-height:1.55;">
-<h2 style="font-size:32px;color:#66ccff;text-align:center;">What Are Free Casino Chips?</h2>
-<p>Free casino chips are promotional rewards offered by sweepstakes casinos that let you play games without spending money. These chips can come from daily login bonuses, inbox rewards, hourly drops, referral bonuses, or special promotions.</p>
-
-<h2 style="font-size:32px;color:#66ccff;text-align:center;">Why Do Casinos Give Out Free Chips?</h2>
-<p>Casinos offer free chips to attract new players, reward loyal users, and keep gameplay active. These bonuses help players explore games, try new features, and stay engaged without financial risk.</p>
-
-<h2 style="font-size:32px;color:#66ccff;text-align:center;">How to Claim Free Casino Chips</h2>
-<ul>
-<li>Sign up for a sweepstakes casino account</li>
-<li>Check your inbox for daily rewards</li>
-<li>Log in every day to collect bonuses</li>
-<li>Participate in promotions and events</li>
-<li>Use referral links for extra chips</li>
-</ul>
-
-<h2 style="font-size:32px;color:#66ccff;text-align:center;">Are Free Casino Chips Safe?</h2>
-<p>Yes — reputable sweepstakes casinos are legally compliant and operate under strict promotional guidelines. Always choose trusted platforms with transparent terms and active customer support.</p>
+<!-- FOOTER -->
+<div style="width:100%;background:#111;padding:20px 0;text-align:center;color:#777;
+            border-top:2px solid:#333;margin-top:40px;">
+    © 2026 FREE‑CASINO‑CHIPS.COM — All Rights Reserved
 </div>
 
-<!-- ⭐ STATS BLOCK ⭐ -->
-<div class="counter">
+<!-- LOAD SIDEBAR -->
 <script>
-let v=localStorage.getItem("globalViews")||0;v++;localStorage.setItem("globalViews",v);
-let s=localStorage.getItem("globalVisitors")||0;if(!sessionStorage.getItem("counted")){s++;sessionStorage.setItem("counted","yes");}
-localStorage.setItem("globalVisitors",s);
+    fetch('/sidebar.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('sidebar').innerHTML = html;
+        })
+        .catch(() => {
+            document.getElementById('sidebar').innerHTML =
+                "<p style='color:#888;'>Sidebar unavailable</p>";
+        });
 </script>
-<p>Total Page Views: <span id="views"></span></p>
-<p>Total Unique Visitors: <span id="visitors"></span></p>
-<script>
-document.getElementById("views").innerText=localStorage.getItem("globalViews");
-document.getElementById("visitors").innerText=localStorage.getItem("globalVisitors");
-</script>
-</div>
 
-<footer>© 2026 Free-Casino-Chips.com — All Rights Reserved.</footer>
-
-</div></div></body></html>
+</body>
+</html>
 
