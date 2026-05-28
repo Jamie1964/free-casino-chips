@@ -2,196 +2,225 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CiderCasino Sweepstakes Casino – Play & Win Real Prizes</title>
+<title>CiderCasino Sweepstakes Casino – Free Casino Chips</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-    body {
-        background-color: #0d0d0d;
-        color: #e6e6e6;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-    h1 {
-        color: gold;
-        font-size: 38px;
-        margin: 20px 0 10px 0;
-        text-align: center;
-    }
-    h2 {
-        color: gold;
-        font-size: 28px;
-        margin-top: 30px;
-    }
-    a { color: #4da3ff; }
-    .container {
-        width: 85%;
-        max-width: 1100px;
-        margin: auto;
-        padding-bottom: 40px;
-    }
-    .play-button {
-        display: block;
-        width: 260px;
-        margin: 20px auto;
-        padding: 14px;
-        background-color: gold;
-        color: black;
-        text-align: center;
-        font-size: 20px;
-        font-weight: bold;
-        border-radius: 6px;
-        text-decoration: none;
-    }
-    .logo {
-        display: block;
-        margin: 20px auto;
-        max-width: 260px;
-    }
-    .feedback-box {
-        background-color: #1a1a1a;
-        padding: 20px;
-        border-radius: 8px;
-        margin-top: 40px;
-    }
-    textarea {
-        width: 100%;
-        height: 120px;
-        background-color: #0d0d0d;
-        color: #e6e6e6;
-        border: 1px solid #333;
-        padding: 10px;
-        border-radius: 6px;
-    }
-    button {
-        margin-top: 10px;
-        padding: 10px 18px;
-        background-color: gold;
-        color: black;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-    footer {
-        text-align: center;
-        margin-top: 50px;
-        padding: 20px;
-        color: #777;
-    }
-</style>
-
-<script>
-// Sidebar Loader
-document.addEventListener("DOMContentLoaded", () => {
-    fetch("/sidebar.html")
-        .then(r => r.text())
-        .then(html => { document.getElementById("sidebar").innerHTML = html; });
-});
-
-// Page View Counter
-document.addEventListener("DOMContentLoaded", () => {
-    fetch("/api/cidercasino-views")
-        .then(r => r.json())
-        .then(data => {
-            document.getElementById("view-counter").innerText =
-                "Page Views: " + data.views;
-        });
-});
-
-// Feedback Submit
-function submitFeedback() {
-    const text = document.getElementById("feedback").value.trim();
-    if (!text) return;
-
-    fetch("/api/cidercasino-feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ feedback: text })
-    }).then(() => {
-        alert("Thank you for your feedback!");
-        document.getElementById("feedback").value = "";
-    });
-}
-</script>
-
 </head>
-<body>
 
-<div id="sidebar"></div>
+<body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
-<div class="container">
-
-<h1>CiderCasino Sweepstakes Casino</h1>
-
-<a href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S">
-    <img src="images/cidercasino-logo.svg" alt="CiderCasino Logo" class="logo">
-</a>
-
-<a class="play-button" href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S">
-    Play at CiderCasino
-</a>
-
-<p>
-CiderCasino Sweepstakes Casino is one of the fastest‑growing sweepstakes platforms in the United States, offering players a refreshing mix of slots, instant‑win games, and sweepstakes‑based rewards. With a clean interface, fast signup, and generous welcome bonuses, CiderCasino has quickly become a favorite among players looking for a smooth and rewarding sweepstakes experience.
-</p>
-
-<h2>Why Players Choose CiderCasino</h2>
-<ul>
-    <li>Fast signup with instant rewards</li>
-    <li>Huge selection of sweepstakes slots</li>
-    <li>Daily bonuses and free rewards</li>
-    <li>Mobile‑friendly and easy to use</li>
-    <li>Safe, secure, and fully sweepstakes‑compliant</li>
-</ul>
-
-<h2>Restricted States</h2>
-<p>
-CiderCasino is not available in: <strong>Washington, Idaho, Michigan, Nevada</strong>.
-</p>
-
-<h2>Player Experiences</h2>
-<ul>
-    <li>“Super smooth signup and fast bonuses.”</li>
-    <li>“Great slot variety and daily rewards.”</li>
-    <li>“One of the cleanest sweepstakes casinos I’ve used.”</li>
-</ul>
-
-<div id="view-counter" style="margin-top:20px; font-size:18px; color:gold;"></div>
-
-<div class="feedback-box">
-    <h2>Share Your Experience</h2>
-    <textarea id="feedback" placeholder="Write your feedback here..."></textarea>
-    <button onclick="submitFeedback()">Submit Feedback</button>
+<!-- HEADER WITH PERFECT 100% BANNER (NO CROP) -->
+<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
+            border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
+    <img src="images/site-logo-ultra-low.png"
+         alt="Free Casino Chips Logo"
+         style="height:100%;width:auto;display:block;margin:0 auto;
+                object-fit:contain;object-position:center;
+                filter:drop-shadow(0 0 6px #000);">
 </div>
 
-<footer>
+<!-- MAIN WRAPPER -->
+<div style="display:flex;margin-top:200px;">
+
+    <!-- SIDEBAR -->
+    <div style="width:272px;padding-left:12px;">
+        <div id="sidebar" 
+             style="background:#111;border-right:2px solid:#222;min-height:100vh;padding:10px;
+                    overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;">
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div style="flex:1;padding:0 25px;max-width:900px;">
+
+        <!-- CLICKABLE LOGO -->
+        <div style="text-align:center;margin-bottom:25px;">
+            <a href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S"
+               target="_blank" rel="noopener noreferrer">
+                <img src="images/cidercasino-logo.svg"
+                     alt="CiderCasino Logo"
+                     style="max-width:260px;width:100%;height:auto;filter:drop-shadow(0 0 8px #000);">
+            </a>
+        </div>
+
+        <!-- TWO COLUMN FEATURE BOXES -->
+        <div style="display:flex;gap:20px;margin-bottom:30px;">
+
+            <!-- LEFT BOX -->
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
+                        border:1px solid:#222;box-shadow:0 0 12px #000;">
+                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Highlights</h2>
+
+                <ul style="margin:0;padding-left:20px;line-height:1.6;">
+                    <li>Fast‑growing U.S. sweepstakes casino</li>
+                    <li>Clean, mobile‑friendly interface</li>
+                    <li>Daily bonuses and free rewards</li>
+                    <li>Strong selection of sweepstakes slots</li>
+                    <li>Beginner‑friendly signup and onboarding</li>
+                </ul>
+
+                <h2 style="color:#66ccff;font-size:30px;margin-top:25px;margin-bottom:15px;">Fast Facts</h2>
+
+                <ul style="margin:0;padding-left:20px;line-height:1.6;">
+                    <li>Platform: CiderCasino</li>
+                    <li>Type: Sweepstakes Casino</li>
+                    <li>Availability: Most U.S. states (except restricted states)</li>
+                    <li>Bonus: Free rewards and daily promos</li>
+                    <li>Games: Slots, instant‑win, sweepstakes‑style prizes</li>
+                </ul>
+            </div>
+
+            <!-- RIGHT BOX -->
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
+                        border:1px solid:#222;box-shadow:0 0 12px #000;">
+                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Current Offers</h2>
+
+                <p style="line-height:1.6;margin-top:0;">
+                    CiderCasino regularly features welcome rewards, daily bonuses, and
+                    rotating sweepstakes promotions. Use the button below to visit
+                    CiderCasino and see the latest offer available for your account.
+                </p>
+
+                <div style="text-align:center;margin-top:25px;">
+                    <a href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S"
+                       target="_blank" rel="noopener noreferrer"
+                       style="display:inline-block;background:#66ccff;color:#000;font-weight:900;
+                              padding:14px 28px;border-radius:8px;font-size:22px;text-decoration:none;
+                              box-shadow:0 0 12px #66ccff;">
+                        Play at CiderCasino
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ABOUT SECTION -->
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;
+                    box-shadow:0 0 12px #000;margin-bottom:30px;">
+            <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
+                About CiderCasino
+            </h2>
+            <p style="line-height:1.7;margin:0;">
+                CiderCasino Sweepstakes Casino is a modern sweepstakes platform focused on
+                simple signup, clean design, and steady rewards. Players can enjoy a wide
+                range of sweepstakes‑style slot games and instant‑win titles, with daily
+                bonuses and recurring promotions that keep the experience active and
+                rewarding. The layout is straightforward and mobile‑friendly, making it
+                easy for new players to get started quickly.
+            </p>
+        </div>
+
+        <!-- SEO SECTION -->
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;
+                    box-shadow:0 0 12px #000;margin-bottom:30px;">
+
+            <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
+                CiderCasino Sweepstakes Casino – Full Review & Player Guide
+            </h2>
+
+            <p style="line-height:1.7;margin-bottom:15px;">
+                CiderCasino Sweepstakes Casino has quickly gained attention among U.S.
+                sweepstakes players thanks to its smooth interface, fast account creation,
+                and consistent rewards. The platform focuses on sweepstakes‑style slot
+                games and instant‑win experiences, giving players plenty of ways to enjoy
+                casual gameplay while participating in promotional prize draws.
+            </p>
+
+            <p style="line-height:1.7;margin-bottom:15px;">
+                New players can benefit from ongoing bonuses, daily login rewards, and
+                rotating promotions that help extend playtime and increase overall value.
+                The site is designed to be beginner‑friendly, with clear navigation and a
+                layout that works well on both desktop and mobile devices.
+            </p>
+
+            <p style="line-height:1.7;margin-bottom:15px;">
+                While CiderCasino operates as a sweepstakes casino and not a traditional
+                real‑money casino, players should still treat it like any other gaming
+                platform: set limits, track time spent, and focus on entertainment first.
+            </p>
+
+            <h2 style="color:#66ccff;font-size:30px;margin-top:25px;margin-bottom:15px;">
+                Why Players Choose CiderCasino
+            </h2>
+
+            <ul style="margin:0;padding-left:20px;line-height:1.7;">
+                <li>Clean, modern sweepstakes platform</li>
+                <li>Easy signup and beginner‑friendly layout</li>
+                <li>Good mix of sweepstakes slots and instant‑win games</li>
+                <li>Daily rewards and recurring promotions</li>
+                <li>Mobile‑optimized experience</li>
+            </ul>
+
+            <h2 style="color:#66ccff;font-size:30px;margin-top:25px;margin-bottom:15px;">
+                Restricted States
+            </h2>
+
+            <ul style="margin:0;padding-left:20px;line-height:1.7;">
+                <li>Washington</li>
+                <li>Idaho</li>
+                <li>Michigan</li>
+                <li>Nevada</li>
+            </ul>
+
+            <h2 style="color:#66ccff;font-size:30px;margin-top:25px;margin-bottom:15px;">
+                Tips for Playing at CiderCasino
+            </h2>
+
+            <p style="line-height:1.7;margin-bottom:15px;">
+                Since CiderCasino is a sweepstakes‑style platform, the best approach is to
+                focus on consistent play with a clear budget and realistic expectations.
+                Take advantage of daily rewards and promotions, and favor games that offer
+                steady, lower‑variance outcomes if you prefer longer sessions.
+            </p>
+
+            <h2 style="color:#66ccff;font-size:30px;margin-top:25px;margin-bottom:15px;">
+                Best Practices
+            </h2>
+
+            <ul style="margin:0;padding-left:20px;line-height:1.7;">
+                <li>Claim daily bonuses whenever available</li>
+                <li>Use lower‑volatility games for extended play</li>
+                <li>Track your time and spending</li>
+                <li>Play for entertainment, not expectation of profit</li>
+            </ul>
+
+        </div>
+
+        <!-- PAGE VIEW COUNTER -->
+        <div style="text-align:center;color:#888;font-size:14px;margin-bottom:40px;">
+            <span id="viewCount">Loading views...</span>
+        </div>
+
+        <script>
+            fetch('/api/cidercasino-views')
+                .then(r => r.json())
+                .then(d => {
+                    document.getElementById('viewCount').innerText = "Page Views: " + d.views;
+                })
+                .catch(() => {
+                    document.getElementById('viewCount').innerText = "Page Views: unavailable";
+                });
+        </script>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div style="width:100%;background:#111;padding:20px 0;text-align:center;color:#777;
+            border-top:2px solid:#333;margin-top:40px;">
     © 2026 FREE‑CASINO‑CHIPS.COM — CiderCasino Sweepstakes Casino Review
-</footer>
-
 </div>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Review",
-  "itemReviewed": {
-    "@type": "Organization",
-    "name": "CiderCasino Sweepstakes Casino",
-    "url": "https://www.free-casino-chips.com/cidercasino.html"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "Jamie"
-  },
-  "reviewBody": "CiderCasino Sweepstakes Casino offers fast signup, great bonuses, and a strong selection of sweepstakes slot games.",
-  "reviewRating": {
-    "@type": "Rating",
-    "ratingValue": "5",
-    "bestRating": "5"
-  }
-}
+<!-- LOAD SIDEBAR -->
+<script>
+    fetch('/sidebar.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('sidebar').innerHTML = html;
+        })
+        .catch(() => {
+            document.getElementById('sidebar').innerHTML =
+                "<p style='color:#888;'>Sidebar unavailable</p>";
+        });
 </script>
 
 </body>
