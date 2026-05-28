@@ -83,7 +83,7 @@
             </div>
 
             <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
+                        border:1px solid:#222;box-shadow:0 0 12px #000;">
                 <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Daily Bonuses</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Daily login rewards</li>
@@ -99,7 +99,7 @@
         <div style="display:flex;gap:20px;margin-bottom:30px;">
 
             <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
+                        border:1px solid:#222;box-shadow:0 0 12px #000;">
                 <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Game Library</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Slots</li>
@@ -110,7 +110,7 @@
             </div>
 
             <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
+                        border:1px solid:#222;box-shadow:0 0 12px #000;">
                 <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Payouts & Banking</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Fast withdrawals</li>
@@ -126,7 +126,7 @@
         <div style="display:flex;gap:20px;margin-bottom:30px;">
 
             <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
+                        border:1px solid:#222;box-shadow:0 0 12px #000;">
                 <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">KYC Verification</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Photo ID</li>
@@ -136,7 +136,7 @@
             </div>
 
             <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
+                        border:1px solid:#222;box-shadow:0 0 12px #000;">
                 <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">Restricted States</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Washington</li>
@@ -199,11 +199,20 @@
             <span id="viewCount">Loading views...</span>
         </div>
 
+        <!-- LOCALSTORAGE COUNTER (ACE SYSTEM) -->
         <script>
-            fetch('/api/epicsweep-views')
-                .then(r=>r.json())
-                .then(d=>{document.getElementById('viewCount').innerText="Page Views: "+d.views;})
-                .catch(()=>{document.getElementById('viewCount').innerText="Page Views: unavailable";});
+            const pageId = "epicsweep";
+            const key = "views_" + pageId;
+
+            let views = localStorage.getItem(key);
+            if (!views) {
+                views = 1;
+            } else {
+                views = parseInt(views) + 1;
+            }
+            localStorage.setItem(key, views);
+
+            document.getElementById("viewCount").innerText = "Page Views: " + views;
         </script>
 
     </div>
