@@ -12,7 +12,7 @@
 
 <!-- HEADER -->
 <div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
-            border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
+            border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
     <img src="images/site-logo-ultra-low.png"
          alt="Free Casino Chips Logo"
          style="height:100%;width:auto;display:block;margin:0 auto;
@@ -26,7 +26,7 @@
     <!-- SIDEBAR -->
     <div style="width:272px;padding-left:12px;">
         <div id="sidebar"
-             style="background:#111;border-right:2px solid:#222;min-height:100vh;padding:10px;
+             style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;
                     overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;">
         </div>
     </div>
@@ -42,11 +42,16 @@
     <!-- CONTENT -->
     <div style="flex:1;padding:0 25px;max-width:900px;">
 
-        <!-- TITLE -->
-        <h1 style="color:#66ccff;font-size:46px;text-align:center;margin-top:0;margin-bottom:10px;">
-            CoinsBackCasino
-        </h1>
+        <!-- LOGO -->
+        <div style="text-align:center;margin-bottom:25px;">
+            <a href="https://www.coinsbackcasino.com/invite/1542138?utm_source=copy&utm_medium=referral&utm_campaign=member-referral"
+               target="_blank" rel="noopener noreferrer">
+                <img src="images/coinsback.png" alt="CoinsBackCasino Logo"
+                     style="max-width:300px;width:100%;height:auto;filter:drop-shadow(0 0 8px #000);">
+            </a>
+        </div>
 
+        <!-- SUBTITLE -->
         <h2 style="color:#66ccff;font-size:32px;text-align:center;margin-top:0;margin-bottom:25px;">
             Fast Payouts, Big Bonuses & Easy Gameplay
         </h2>
@@ -64,7 +69,7 @@
 
         <!-- HIGHLIGHT BOX -->
         <div style="background:#141414;padding:25px;border-radius:12px;
-                    border:2px solid:#66ccff;box-shadow:0 0 18px #66ccff;
+                    border:2px solid #66ccff;box-shadow:0 0 18px #66ccff;
                     margin-bottom:35px;text-align:center;">
             <p style="font-size:20px;line-height:1.7;margin:0;">
                 CoinsBackCasino is a modern sweepstakes-style casino offering fast payouts, daily bonuses,
@@ -210,13 +215,17 @@
         </div>
 
         <script>
-            fetch('/api/coinsbackcasino-views')
+            fetch('/api/pageviews?page=coinsbackcasino')
                 .then(r => r.json())
                 .then(d => {
-                    document.getElementById('viewCount').innerText = "Page Views: " + d.views;
+                    const v = d.views ?? d.count ?? d.total;
+                    document.getElementById('viewCount').innerText =
+                        (typeof v === 'number')
+                        ? 'Page Views: ' + v
+                        : 'Page Views: unavailable';
                 })
                 .catch(() => {
-                    document.getElementById('viewCount').innerText = "Page Views: unavailable";
+                    document.getElementById('viewCount').innerText = 'Page Views: unavailable';
                 });
         </script>
 
