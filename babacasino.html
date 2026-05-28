@@ -23,7 +23,7 @@
 
     <!-- SIDEBAR -->
     <div style="width:272px;padding-left:12px;">
-        <div id="sidebar" 
+        <div id="sidebar"
              style="background:#111;border-right:2px solid:#222;min-height:100vh;padding:10px;
                     overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;">
         </div>
@@ -188,14 +188,17 @@
             <span id="viewCount">Loading views...</span>
         </div>
 
+        <!-- FIXED COUNTER SCRIPT -->
         <script>
-            fetch('/api/babacasino-views')
+            fetch(`/api/pageviews?page=babacasino`)
                 .then(r => r.json())
                 .then(d => {
-                    document.getElementById('viewCount').innerText = "Page Views: " + d.views;
+                    document.getElementById('viewCount').innerText =
+                        "Page Views: " + d.views;
                 })
                 .catch(() => {
-                    document.getElementById('viewCount').innerText = "Page Views: unavailable";
+                    document.getElementById('viewCount').innerText =
+                        "Page Views: unavailable";
                 });
         </script>
 
