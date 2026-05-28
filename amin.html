@@ -1,237 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Admin Panel – Free Casino Chips</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Administrator dashboard for Free Casino Chips – manage pages, view stats, and moderate feedback.">
+  <meta charset="UTF-8">
+  <title>Admin Control Panel – Free Casino Chips</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
     :root {
-      --bg-main: #05060a;
-      --bg-panel: #10131b;
-      --bg-panel-soft: #151927;
-      --border-soft: #262b3a;
-      --gold: #f0c674;
-      --text-main: #e5e9f0;
-      --text-muted: #9da5b4;
-      --accent-blue: #4aa3ff;
-      --accent-blue-glow: #4aa3ff55;
-      --accent-cyan: #3cf2ff;
-      --accent-cyan-glow: #3cf2ff55;
-      --radius-lg: 10px;
-      --radius-md: 6px;
-      --shadow-soft: 0 0 24px rgba(0,0,0,0.65);
+      --bg-main: #02030a;
+      --bg-panel: #050816;
+      --bg-panel-soft: #070b1c;
+      --accent: #35d0ff;
+      --accent-soft: #1a9ad1;
+      --accent-strong: #5bffea;
+      --danger: #ff4b6a;
+      --text-main: #f5f7ff;
+      --text-muted: #8b93b5;
+      --border-soft: #1a2138;
+      --shadow-neon: 0 0 24px rgba(53, 208, 255, 0.45);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
     }
+
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
-      background: radial-gradient(circle at top, #151927 0, #05060a 55%, #020308 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1024 0, #02030a 55%, #000 100%);
       color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: 24px 12px;
     }
 
-    a { color: var(--accent-blue); text-decoration: none; }
-    a:hover { color: var(--accent-cyan); }
-
-    .page-wrap {
+    .admin-shell {
+      width: 100%;
       max-width: 1280px;
-      margin: 0 auto;
-      padding: 24px 16px 40px;
       display: grid;
-      grid-template-columns: minmax(0, 4fr) minmax(260px, 1.6fr);
+      grid-template-columns: minmax(0, 3fr) minmax(320px, 2.2fr);
       gap: 24px;
     }
     @media (max-width: 960px) {
-      .page-wrap { grid-template-columns: 1fr; }
+      .admin-shell {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
-    .main-panel {
-      background: linear-gradient(145deg, #10131b, #090b11);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      padding: 22px;
-      border: 1px solid var(--border-soft);
-    }
-
-    .header-row {
+    /* LEFT SIDE – INFO / HEADER */
+    .left-panel {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
+      padding: 18px 18px 18px 8px;
+    }
+
+    .badge {
+      display: inline-flex;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #202536;
-      padding-bottom: 14px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      color: var(--gold);
-      text-shadow: 0 0 12px rgba(240,198,116,0.35);
-    }
-
-    .admin-badge {
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: #0f1625;
-      border: 1px solid #1f2a40;
-      color: var(--accent-cyan);
-      font-weight: 600;
-      text-shadow: 0 0 8px var(--accent-cyan-glow);
-    }
-
-    .panel {
-      background: #0d111a;
-      border: 1px solid #1f2535;
-      border-radius: var(--radius-md);
-      padding: 18px;
-      margin-bottom: 22px;
-      box-shadow: 0 0 18px rgba(0,0,0,0.4);
-    }
-
-    .panel h2 {
-      margin-top: 0;
-      color: var(--accent-cyan);
-      text-shadow: 0 0 10px var(--accent-cyan-glow);
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-    }
-
-    .stat-box {
-      background: #111722;
-      border: 1px solid #1f2a40;
-      padding: 14px;
-      border-radius: var(--radius-md);
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--text-muted);
-    }
-
-    .stat-box strong {
-      color: var(--accent-blue);
-      text-shadow: 0 0 6px var(--accent-blue-glow);
-    }
-
-    .btn {
-      padding: 10px 18px;
-      border-radius: var(--radius-md);
-      background: linear-gradient(135deg, #4aa3ff, #3cf2ff);
-      color: #000;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 0 14px var(--accent-blue-glow);
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(53, 208, 255, 0.4);
+      background: radial-gradient(circle at left, rgba(53, 208, 255, 0.18), transparent 60%);
+      color: var(--accent);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
     }
-    .btn:hover {
-      background: linear-gradient(135deg, #6bc0ff, #5cffff);
-      box-shadow: 0 0 18px var(--accent-cyan-glow);
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(53, 208, 255, 0.9);
     }
 
-    .feedback-entry {
-      padding: 12px;
-      border-radius: var(--radius-md);
-      background: #0f1520;
-      border: 1px solid #1f2a40;
-      margin-bottom: 10px;
+    .title {
+      margin: 14px 0 6px;
+      font-size: 2.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow: 0 0 18px rgba(53, 208, 255, 0.6);
     }
+
+    .subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 460px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+      font-size: 0.85rem;
+    }
+    .meta-pill {
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      border: 1px solid #1a2138;
+      background: rgba(5, 10, 30, 0.9);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .meta-pill span.key {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.7rem;
+      color: #6f7696;
+    }
+    .meta-pill span.val {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    /* RIGHT SIDE – NEON PANEL */
+    .neon-panel {
+      background: radial-gradient(circle at top right, #101a3a 0, #050816 55%, #02030a 100%);
+      border-radius: 26px;
+      border: 1px solid rgba(53, 208, 255, 0.35);
+      box-shadow: var(--shadow-neon);
+      padding: 18px 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .neon-panel::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0, rgba(53, 208, 255, 0.18), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(91, 255, 234, 0.16), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .neon-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .panel-title {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-strong);
+    }
+
+    .gear-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(53, 208, 255, 0.5);
+      background: rgba(5, 10, 30, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(53, 208, 255, 0.5);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .gear-btn:hover {
+      transform: rotate(12deg) scale(1.03);
+      background: rgba(10, 18, 45, 0.95);
+      box-shadow: 0 0 18px rgba(53, 208, 255, 0.8);
+    }
+
+    .gear-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      position: relative;
+    }
+    .gear-icon::before,
+    .gear-icon::after {
+      content: "";
+      position: absolute;
+      inset: 50%;
+      width: 2px;
+      height: 10px;
+      background: var(--accent);
+      transform-origin: center;
+    }
+    .gear-icon::before { transform: translate(-50%, -50%) rotate(0deg); }
+    .gear-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+
+    /* GRID OF OBLONG BUTTONS */
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 640px) {
+      .button-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .neon-btn {
+      position: relative;
+      border-radius: 999px;
+      padding: 10px 12px;
+      border: 1px solid rgba(53, 208, 255, 0.5);
+      background: radial-gradient(circle at top left, rgba(53, 208, 255, 0.25), rgba(5, 10, 30, 0.95));
+      color: var(--text-main);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      box-shadow: 0 0 14px rgba(53, 208, 255, 0.55);
+      overflow: hidden;
+    }
+    .neon-btn span.label {
+      white-space: nowrap;
+    }
+    .neon-btn span.value {
+      font-weight: 700;
+      color: var(--accent-strong);
+      text-shadow: 0 0 10px rgba(91, 255, 234, 0.9);
+    }
+    .neon-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0, rgba(255, 255, 255, 0.12) 40%, transparent 80%);
+      mix-blend-mode: screen;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+    .neon-btn:hover::after {
+      opacity: 1;
+    }
+
+    .neon-btn.muted {
+      border-color: rgba(139, 147, 181, 0.5);
+      box-shadow: 0 0 10px rgba(139, 147, 181, 0.4);
+      background: radial-gradient(circle at top left, rgba(139, 147, 181, 0.2), rgba(5, 10, 30, 0.95));
+    }
+
+    /* FOOTER ROW INSIDE PANEL */
+    .panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .panel-footer .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-strong);
+      box-shadow: 0 0 10px rgba(91, 255, 234, 0.9);
+      margin-right: 6px;
+    }
+
+    .panel-footer .danger {
+      color: var(--danger);
+    }
+
+    .panel-footer-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mini-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(53, 208, 255, 0.5);
+      background: rgba(5, 10, 30, 0.9);
+      color: var(--accent);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      cursor: pointer;
+    }
+    .mini-btn:hover {
+      background: rgba(10, 18, 45, 0.95);
+    }
+
   </style>
 </head>
-
 <body>
 
-<div class="page-wrap">
+<div class="admin-shell">
 
-  <!-- MAIN PANEL -->
-  <div class="main-panel">
-
-    <div class="header-row">
-      <h1>Admin Dashboard</h1>
-      <div class="admin-badge">ADMIN ACCESS</div>
+  <!-- LEFT SIDE -->
+  <section class="left-panel">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>Admin Control</span>
     </div>
 
-    <!-- SITE STATS -->
-    <div class="panel">
-      <h2>📊 Site Statistics</h2>
+    <h1 class="title">Neon Admin Hub</h1>
 
-      <div class="stat-box">
-        <span>Total Homepage Views</span>
-        <strong id="index-views">Loading...</strong>
+    <p class="subtitle">
+      Central dashboard for live page view counters across all casino review pages.
+      Uses the shared <code>/api/pageviews</code> file you already wired up.
+    </p>
+
+    <div class="meta-row">
+      <div class="meta-pill">
+        <span class="key">Mode</span>
+        <span class="val">Read‑only stats</span>
+      </div>
+      <div class="meta-pill">
+        <span class="key">Counters</span>
+        <span class="val">API‑driven</span>
+      </div>
+      <div class="meta-pill">
+        <span class="key">Pages</span>
+        <span class="val">Index + all casinos</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT SIDE – NEON PANEL -->
+  <section class="neon-panel">
+    <div class="neon-inner">
+
+      <div class="panel-header">
+        <div class="panel-title">Live page counters</div>
+        <button class="gear-btn" type="button" onclick="refreshAllCounters()">
+          <div class="gear-icon"></div>
+        </button>
       </div>
 
-      <div class="stat-box">
-        <span>Total Feedback Entries</span>
-        <strong id="feedback-count">Loading...</strong>
+      <!-- GRID OF OBLONG BUTTONS -->
+      <div class="button-grid">
+        <!-- Index -->
+        <button class="neon-btn" type="button">
+          <span class="label">Index</span>
+          <span class="value" id="count-index">–</span>
+        </button>
+
+        <!-- ACE -->
+        <button class="neon-btn" type="button">
+          <span class="label">ACE</span>
+          <span class="value" id="count-ace">–</span>
+        </button>
+
+        <!-- AmericanLuck -->
+        <button class="neon-btn" type="button">
+          <span class="label">AmericanLuck</span>
+          <span class="value" id="count-americanluck">–</span>
+        </button>
+
+        <!-- BabaCasino -->
+        <button class="neon-btn" type="button">
+          <span class="label">BabaCasino</span>
+          <span class="value" id="count-babacasino">–</span>
+        </button>
+
+        <!-- BangCoins -->
+        <button class="neon-btn" type="button">
+          <span class="label">BangCoins</span>
+          <span class="value" id="count-bangcoins">–</span>
+        </button>
+
+        <!-- ChipnWin -->
+        <button class="neon-btn" type="button">
+          <span class="label">ChipnWin</span>
+          <span class="value" id="count-chipnwin">–</span>
+        </button>
+
+        <!-- LuckyStake -->
+        <button class="neon-btn muted" type="button">
+          <span class="label">LuckyStake</span>
+          <span class="value" id="count-luckystake">–</span>
+        </button>
+
+        <!-- VegasAway -->
+        <button class="neon-btn muted" type="button">
+          <span class="label">VegasAway</span>
+          <span class="value" id="count-vegasaway">–</span>
+        </button>
+
+        <!-- Poker -->
+        <button class="neon-btn muted" type="button">
+          <span class="label">Poker</span>
+          <span class="value" id="count-poker">–</span>
+        </button>
+
+        <!-- SlotGames -->
+        <button class="neon-btn muted" type="button">
+          <span class="label">SlotGames</span>
+          <span class="value" id="count-slotgames">–</span>
+        </button>
       </div>
 
-      <button class="btn" onclick="refreshStats()">Refresh Stats</button>
+      <div class="panel-footer">
+        <div>
+          <span class="status-dot"></span>
+          <span id="status-text">Waiting for API…</span>
+        </div>
+        <div class="panel-footer-actions">
+          <button class="mini-btn" type="button" onclick="refreshAllCounters()">Refresh</button>
+          <button class="mini-btn" type="button" onclick="location.reload()">Reload page</button>
+        </div>
+      </div>
+
     </div>
-
-    <!-- FEEDBACK MODERATION -->
-    <div class="panel">
-      <h2>📝 Recent Feedback</h2>
-      <div id="feedback-list">Loading feedback...</div>
-    </div>
-
-    <!-- ADMIN TOOLS -->
-    <div class="panel">
-      <h2>🛠 Admin Tools</h2>
-
-      <button class="btn" onclick="location.reload()">Reload Page</button>
-      <br><br>
-      <button class="btn" onclick="clearFeedback()">Clear All Feedback</button>
-    </div>
-
-  </div>
-
-  <!-- SIDEBAR -->
-  <aside id="sidebar"></aside>
+  </section>
 
 </div>
 
 <script>
-  // Load sidebar
-  fetch("/sidebar.html")
-    .then(r => r.text())
-    .then(html => document.getElementById("sidebar").innerHTML = html);
+  const pages = [
+    { key: "index",       el: "count-index" },
+    { key: "ace",         el: "count-ace" },
+    { key: "americanluck",el: "count-americanluck" },
+    { key: "babacasino",  el: "count-babacasino" },
+    { key: "bangcoins",   el: "count-bangcoins" },
+    { key: "chipnwin",    el: "count-chipnwin" },
+    { key: "luckystake",  el: "count-luckystake" },
+    { key: "vegasaway",   el: "count-vegasaway" },
+    { key: "poker",       el: "count-poker" },
+    { key: "slotgames",   el: "count-slotgames" }
+  ];
 
-  // Load stats
-  function refreshStats() {
-    fetch("/api/index-views")
-      .then(r => r.json())
-      .then(d => document.getElementById("index-views").textContent = d.views);
+  function setStatus(msg, isError) {
+    const el = document.getElementById("status-text");
+    if (!el) return;
+    el.textContent = msg;
+    if (isError) {
+      el.classList.add("danger");
+    } else {
+      el.classList.remove("danger");
+    }
+  }
 
-    fetch("/api/feedback")
-      .then(r => r.json())
-      .then(list => {
-        document.getElementById("feedback-count").textContent = list.length;
-        renderFeedback(list);
+  function safeNumber(v) {
+    if (typeof v === "number") return v;
+    const n = parseInt(v, 10);
+    return isNaN(n) ? null : n;
+  }
+
+  function loadCounter(pageKey, elId) {
+    const el = document.getElementById(elId);
+    if (!el) return;
+
+    el.textContent = "…";
+
+    fetch("/api/pageviews?page=" + encodeURIComponent(pageKey))
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (!data) {
+          el.textContent = "–";
+          return;
+        }
+        const v = safeNumber(data.views ?? data.count ?? data.total);
+        el.textContent = (v === null) ? "–" : v;
+      })
+      .catch(() => {
+        el.textContent = "–";
       });
   }
 
-  function renderFeedback(list) {
-    const box = document.getElementById("feedback-list");
-    box.innerHTML = "";
-    list.forEach(entry => {
-      const div = document.createElement("div");
-      div.className = "feedback-entry";
-      div.innerHTML = `<strong>${entry.rating}★</strong><br>${entry.experience}`;
-      box.appendChild(div);
-    });
+  function refreshAllCounters() {
+    setStatus("Refreshing counters…", false);
+    pages.forEach(p => loadCounter(p.key, p.el));
+    setTimeout(() => {
+      setStatus("Counters loaded (where API is wired).", false);
+    }, 800);
   }
 
-  function clearFeedback() {
-    if (!confirm("Delete ALL feedback?")) return;
-    fetch("/api/feedback", { method: "DELETE" })
-      .then(() => refreshStats());
-  }
-
-  refreshStats();
+  // Initial load
+  refreshAllCounters();
 </script>
 
 </body>
