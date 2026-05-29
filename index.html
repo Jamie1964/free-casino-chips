@@ -13,17 +13,24 @@
             border-bottom:2px solid:#333;height:200px;overflow:hidden;text-align:center;">
     <img src="images/site-logo-ultra-low.png"
          alt="Free Casino Chips Logo"
+         onerror="this.style.display='none'; document.getElementById('fallback-title').style.display='block';"
          style="height:100%;width:auto;display:block;margin:0 auto;
                 object-fit:contain;object-position:center;
                 filter:drop-shadow(0 0 6px #000);">
 </div>
+
+<!-- FALLBACK TITLE (ONLY SHOWS IF LOGO FAILS) -->
+<h1 id="fallback-title"
+    style="display:none;color:#66ccff;font-size:42px;margin-top:220px;text-align:center;">
+    FREE‑CASINO‑CHIPS.COM
+</h1>
 
 <!-- MAIN WRAPPER -->
 <div style="display:flex;margin-top:240px;">
 
     <!-- SIDEBAR -->
     <div style="width:272px;padding-left:12px;">
-        <div id="sidebar" 
+        <div id="sidebar"
              style="background:#111;border-right:2px solid:#222;min-height:100vh;padding:10px;
                     overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;">
         </div>
@@ -32,16 +39,13 @@
     <!-- CONTENT -->
     <div style="flex:1;padding:0 25px;max-width:900px;">
 
-        <!-- MAIN TITLE -->
-        <h1 style="color:#66ccff;font-size:42px;margin-top:0;margin-bottom:10px;text-align:center;">
-            FREE-CASINO-CHIPS.COM
-        </h1>
+        <!-- REMOVED THE BIG H1 TITLE HERE -->
 
         <h2 style="color:#66ccff;font-size:26px;text-align:center;margin-top:0;">
             Your #1 Source for Daily Free Coins, Bonuses & No‑Deposit Rewards
         </h2>
 
-        <!-- INTRO SECTION (CENTERED) -->
+        <!-- INTRO SECTION -->
         <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;
                     box-shadow:0 0 12px #000;margin-bottom:30px;text-align:center;">
 
@@ -64,7 +68,7 @@
 
         </div>
 
-        <!-- 3×3 BUTTON GRID (CENTERED) -->
+        <!-- 3×3 BUTTON GRID -->
         <h2 style="color:#66ccff;font-size:34px;margin-bottom:20px;text-align:center;">
             Featured Casinos
         </h2>
@@ -167,13 +171,12 @@
 
         </div>
 
-        <!-- PAGE VIEW COUNTER (TWO LINES — ALWAYS SHOW BOTH) -->
+        <!-- PAGE VIEW COUNTER -->
         <div style="text-align:center;color:#888;font-size:16px;margin-bottom:40px;line-height:1.6;">
             <div id="views">Loading...</div>
             <div id="unique">Loading...</div>
         </div>
 
-        <!-- FIXED COUNTER SCRIPT -->
         <script>
             fetch(`/api/pageviews?page=index`)
                 .then(r => r.json())
