@@ -75,15 +75,19 @@
         color:#ffcc33;
         display:flex;
         justify-content:space-between;
-        max-width:600px;
+        max-width:900px;
+        gap:12px;
+        align-items:center;
     }
+
+    .stats div { min-width:140px; text-align:center; }
 </style>
 
 <script>
 function loadCounts() {
     let totalViews = 0;
 
-    // Load button counts
+    // Load button counts (all pages with data-page)
     const items = document.querySelectorAll("[data-page]");
     items.forEach(btn => {
         const page = btn.getAttribute("data-page");
@@ -92,11 +96,15 @@ function loadCounts() {
         totalViews += count;
     });
 
-    // Index views
+    // Index views (explicit)
     const indexViews = parseInt(localStorage.getItem("views_index") || 0);
-
-    // Update stats bar
     document.getElementById("indexViews").textContent = indexViews;
+
+    // Cheat views (explicit counter shown under Index Views)
+    const cheatViews = parseInt(localStorage.getItem("views_cheat") || 0);
+    document.getElementById("cheatViews").textContent = cheatViews;
+
+    // Update totals (items loop already summed all pages including cheat and index)
     document.getElementById("totalViews").textContent = totalViews;
 }
 
@@ -116,7 +124,7 @@ window.onload = loadCounts;
     <a class="btn" href="index.html" data-page="index" data-name="Home"></a>
     <a class="btn" href="games.html" data-page="games" data-name="Slot Games"></a>
     <a class="btn" href="poker.html" data-page="poker" data-name="Poker"></a>
-    <!-- Cheatsheet counter added here; links to cheat/index.html in the cheat folder at root -->
+    <!-- Cheatsheet button (points to cheat/index.html in the root/cheat folder) -->
     <a class="btn" href="cheat/index.html" data-page="cheat" data-name="Cheatsheet"></a>
 </div>
 
@@ -125,6 +133,7 @@ window.onload = loadCounts;
 <!-- ===================== -->
 <div class="stats">
     <div>Index Views: <span id="indexViews">0</span></div>
+    <div>Cheat Views: <span id="cheatViews">0</span></div>
     <div>Total Views: <span id="totalViews">0</span></div>
 </div>
 
