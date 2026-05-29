@@ -38,7 +38,7 @@
                target="_blank" rel="noopener noreferrer">
                 <img src="images/mrgoodwin-logo.avif"
                      alt="MrGoodwin Logo"
-                     style="max-width:260px;width:100%;height:auto;filter:drop-shadow(0 0 8px #000);">
+                     style="max-width:340px;width:100%;height:auto;filter:drop-shadow(0 0 8px #000);">
             </a>
         </div>
 
@@ -182,20 +182,19 @@
 
         </div>
 
-        <!-- PAGE VIEW COUNTER -->
+        <!-- PAGE VIEW COUNTER (FIXED) -->
         <div style="text-align:center;color:#888;font-size:14px;margin-bottom:40px;">
             <span id="viewCount">Loading views...</span>
         </div>
 
         <script>
-            fetch('/api/mrgoodwin-views')
-                .then(r => r.json())
-                .then(d => {
-                    document.getElementById('viewCount').innerText = "Page Views: " + d.views;
-                })
-                .catch(() => {
-                    document.getElementById('viewCount').innerText = "Page Views: unavailable";
-                });
+            const pageId = "mrgoodwin";
+            const key = "views_" + pageId;
+            let views = localStorage.getItem(key);
+            if (!views) views = 0;
+            views = parseInt(views) + 1;
+            localStorage.setItem(key, views);
+            document.getElementById("viewCount").innerText = "Page Views: " + views;
         </script>
 
     </div>
