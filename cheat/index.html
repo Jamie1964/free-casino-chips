@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Casino Cheat Sheet — Index</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --text:#0f1724; --muted:#6b7280; --accent:#0b74de;
+  }
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--text);background:var(--bg)}
+  .container{max-width:1100px;margin:20px auto;padding:16px}
+  header{display:flex;flex-direction:column;gap:12px;margin-bottom:12px}
+  .title-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  h1{font-size:20px;margin:0}
+  .lead{color:var(--muted);font-size:14px;max-width:720px}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .search input{padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);width:260px}
+  .btn{padding:8px 10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:#fff;cursor:pointer}
+  .btn.primary{background:var(--accent);color:#fff;border:none}
+  .btn.warn{background:#fff;color:#b91c1c;border:1px solid rgba(185,28,28,0.12)}
+  .summary{font-size:13px;color:var(--muted)}
+  .list-wrap{background:var(--card);border-radius:10px;padding:12px;border:1px solid rgba(0,0,0,0.04);margin-top:12px}
+  .list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.03);background:linear-gradient(180deg,rgba(255,255,255,0.6),transparent)}
+  .meta{display:flex;flex-direction:column;min-width:0}
+  .meta a{color:var(--accent);text-decoration:none;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .meta .url{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+  .checkbox{display:flex;align-items:center;gap:8px}
+  .small{font-size:13px;color:var(--muted)}
+  @media (max-width:980px){ .list{grid-template-columns:repeat(2,1fr)} .search input{width:200px} }
+  @media (max-width:640px){ .list{grid-template-columns:1fr} .search input{width:100%} .title-row{flex-direction:column;align-items:flex-start} }
+</style>
+</head>
+<body>
+  <div class="container" role="main" aria-label="Casino cheat sheet index">
+    <header>
+      <div class="title-row">
+        <div>
+          <h1>Casino Cheat Sheet</h1>
+          <div class="lead">
+            This cheat sheet is used to collect your daily gift of chips — visit every day and collect them all.
+            Each time you click a link it opens in a new tab, when you are finished collecting all your gifts on the casino site you close that tab and you come back to this page and click the next casino, repeat until you have collected all your daily free chips.
+          </div>
+        </div>
+
+        <div class="controls" role="toolbar" aria-label="Top controls">
+          <div class="search" role="search">
+            <input id="filter" type="search" placeholder="Filter links (name or URL)" aria-label="Filter links">
+          </div>
+
+          <button id="uncheckAll" class="btn warn" title="Uncheck every box on the page">Uncheck all</button>
+          <button id="markAll" class="btn" title="Mark all as opened">Mark all opened</button>
+          <button id="clearAll" class="btn" title="Clear saved marks">Clear saved marks</button>
+          <button id="exportJson" class="btn" title="Export opened state as JSON">Export JSON</button>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <div class="summary" id="count">0 / 0 links opened</div>
+        <div class="small">State is saved locally in your browser (localStorage).</div>
+      </div>
+    </header>
+
+    <section class="list-wrap" aria-live="polite">
+      <ul class="list" id="linkList" aria-label="Cheat links">
+        <!-- Full link list (each item has data-id used for localStorage) -->
+        <li class="item" data-id="ace">
+          <div class="checkbox"><input type="checkbox" id="chk-ace" aria-label="Mark Ace as opened"></div>
+          <div class="meta">
+            <a href="https://www.ace.com/?r=4333fa1d%2F42862933" target="_blank" rel="noopener noreferrer">Ace</a>
+            <div class="url">ace.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="americanluck">
+          <div class="checkbox"><input type="checkbox" id="chk-americanluck" aria-label="Mark AmericanLuck as opened"></div>
+          <div class="meta">
+            <a href="https://americanluck.com/signup/cefd9172-4bad-4f93-b8c3-a9d912bc522a" target="_blank" rel="noopener noreferrer">AmericanLuck</a>
+            <div class="url">americanluck.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="babacasino">
+          <div class="checkbox"><input type="checkbox" id="chk-babacasino" aria-label="Mark Babacasino as opened"></div>
+          <div class="meta">
+            <a href="https://play.babacasino.com/#/?referral_id=f06633476f2ed3ac374f5b43bb18c51c&inv_referral=true&fb_source=invite" target="_blank" rel="noopener noreferrer">Babacasino</a>
+            <div class="url">play.babacasino.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="bangcoins">
+          <div class="checkbox"><input type="checkbox" id="chk-bangcoins" aria-label="Mark BangCoins as opened"></div>
+          <div class="meta">
+            <a href="https://bangcoins.com/?ref=r_jamie1964" target="_blank" rel="noopener noreferrer">BangCoins</a>
+            <div class="url">bangcoins.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="cashoomo">
+          <div class="checkbox"><input type="checkbox" id="chk-cashoomo" aria-label="Mark Cashoomo as opened"></div>
+          <div class="meta">
+            <a href="https://cashoomo.com/?referralCode=JH8QLG3YWP8S" target="_blank" rel="noopener noreferrer">Cashoomo</a>
+            <div class="url">cashoomo.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="casino-click">
+          <div class="checkbox"><input type="checkbox" id="chk-casino-click" aria-label="Mark Casino.Click as opened"></div>
+          <div class="meta">
+            <a href="https://casino.click/?modal=iqs-sign-up&ReferenceCode=372778&AffiliatePlatformId=200" target="_blank" rel="noopener noreferrer">Casino.Click</a>
+            <div class="url">casino.click</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="chipnwin">
+          <div class="checkbox"><input type="checkbox" id="chk-chipnwin" aria-label="Mark ChipnWin as opened"></div>
+          <div class="meta">
+            <a href="https://chipnwin.com/?earn=EQ9wKNS3" target="_blank" rel="noopener noreferrer">ChipnWin</a>
+            <div class="url">chipnwin.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="cidercasino">
+          <div class="checkbox"><input type="checkbox" id="chk-cidercasino" aria-label="Mark CiderCasino as opened"></div>
+          <div class="meta">
+            <a href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S" target="_blank" rel="noopener noreferrer">CiderCasino</a>
+            <div class="url">cidercasino.onelink.me</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="coinsbackcasino">
+          <div class="checkbox"><input type="checkbox" id="chk-coinsbackcasino" aria-label="Mark CoinsBackCasino as opened"></div>
+          <div class="meta">
+            <a href="https://www.coinsbackcasino.com/invite/1542138?utm_source=copy&utm_medium=referral&utm_campaign=member-referral" target="_blank" rel="noopener noreferrer">CoinsBackCasino</a>
+            <div class="url">coinsbackcasino.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="coinz">
+          <div class="checkbox"><input type="checkbox" id="chk-coinz" aria-label="Mark Coinz.us as opened"></div>
+          <div class="meta">
+            <a href="https://coinz.us/?referral_code=2f3ba786b44e5184" target="_blank" rel="noopener noreferrer">Coinz.us</a>
+            <div class="url">coinz.us</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="clubwpt">
+          <div class="checkbox"><input type="checkbox" id="chk-clubwpt" aria-label="Mark ClubWPT as opened"></div>
+          <div class="meta">
+            <a href="https://www.clubwpt.com/" target="_blank" rel="noopener noreferrer">ClubWPT</a>
+            <div class="url">clubwpt.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="epicsweep">
+          <div class="checkbox"><input type="checkbox" id="chk-epicsweep" aria-label="Mark EpicSweep as opened"></div>
+          <div class="meta">
+            <a href="https://epicsweep.us?ref=48272_jamie1964" target="_blank" rel="noopener noreferrer">EpicSweep</a>
+            <div class="url">epicsweep.us</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="firesevens">
+          <div class="checkbox"><input type="checkbox" id="chk-firesevens" aria-label="Mark FireSevens as opened"></div>
+          <div class="meta">
+            <a href="http://firesevens.com/?invited_by=K4N5OQ" target="_blank" rel="noopener noreferrer">FireSevens</a>
+            <div class="url">firesevens.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="funrize">
+          <div class="checkbox"><input type="checkbox" id="chk-funrize" aria-label="Mark Funrize as opened"></div>
+          <div class="meta">
+            <a href="https://funrize.com/?invited_by=YH5D7O" target="_blank" rel="noopener noreferrer">Funrize</a>
+            <div class="url">funrize.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="funzcity">
+          <div class="checkbox"><input type="checkbox" id="chk-funzcity" aria-label="Mark FunzCity as opened"></div>
+          <div class="meta">
+            <a href="https://funzcity.com/" target="_blank" rel="noopener noreferrer">FunzCity</a>
+            <div class="url">funzcity.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="fortunewheelz">
+          <div class="checkbox"><input type="checkbox" id="chk-fortunewheelz" aria-label="Mark FortuneWheelz as opened"></div>
+          <div class="meta">
+            <a href="http://fortunewheelz.com/?invited_by=OP6DVW" target="_blank" rel="noopener noreferrer">FortuneWheelz</a>
+            <div class="url">fortunewheelz.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="goldenhearts">
+          <div class="checkbox"><input type="checkbox" id="chk-goldenhearts" aria-label="Mark GoldenHearts as opened"></div>
+          <div class="meta">
+            <a href="https://www.goldenheartsgames.com/referral/YUX9OSX4U2" target="_blank" rel="noopener noreferrer">GoldenHearts</a>
+            <div class="url">goldenheartsgames.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="goodvibes">
+          <div class="checkbox"><input type="checkbox" id="chk-goodvibes" aria-label="Mark GoodVibesCasino as opened"></div>
+          <div class="meta">
+            <a href="https://goodvibescasino.com/?r=CXT718DTJO" target="_blank" rel="noopener noreferrer">GoodVibesCasino</a>
+            <div class="url">goodvibescasino.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="high5">
+          <div class="checkbox"><input type="checkbox" id="chk-high5" aria-label="Mark High5Casino as opened"></div>
+          <div class="meta">
+            <a href="https://high5casino.com/gc?openRegOnInit=1&adId=INV001%3AJamie1964" target="_blank" rel="noopener noreferrer">High5Casino</a>
+            <div class="url">high5casino.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="hellomillions">
+          <div class="checkbox"><input type="checkbox" id="chk-hellomillions" aria-label="Mark HelloMillions as opened"></div>
+          <div class="meta">
+            <a href="https://www.hellomillions.com/lp/raf?r=8f3817ef%2F1463962580" target="_blank" rel="noopener noreferrer">HelloMillions</a>
+            <div class="url">hellomillions.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="jumbo88">
+          <div class="checkbox"><input type="checkbox" id="chk-jumbo88" aria-label="Mark Jumbo88 as opened"></div>
+          <div class="meta">
+            <a href="https://www.jumbo88.com/signup?referralCode=oVYJNB" target="_blank" rel="noopener noreferrer">Jumbo88</a>
+            <div class="url">jumbo88.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="kingprize">
+          <div class="checkbox"><input type="checkbox" id="chk-kingprize" aria-label="Mark KingPrize as opened"></div>
+          <div class="meta">
+            <a href="https://kingprize.com/?ref=47059" target="_blank" rel="noopener noreferrer">KingPrize</a>
+            <div class="url">kingprize.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="lavishluck">
+          <div class="checkbox"><input type="checkbox" id="chk-lavishluck" aria-label="Mark LavishLuck as opened"></div>
+          <div class="meta">
+            <a href="https://invite.lavishluck.net/8dID/0cyelj9k?c=GU934A6X" target="_blank" rel="noopener noreferrer">LavishLuck</a>
+            <div class="url">invite.lavishluck.net</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="legendz">
+          <div class="checkbox"><input type="checkbox" id="chk-legendz" aria-label="Mark Legendz as opened"></div>
+          <div class="meta">
+            <a href="https://www.legendz.com/?referred_by_id=812117" target="_blank" rel="noopener noreferrer">Legendz</a>
+            <div class="url">legendz.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="lonestar">
+          <div class="checkbox"><input type="checkbox" id="chk-lonestar" aria-label="Mark LoneStar as opened"></div>
+          <div class="meta">
+            <a href="https://lonestarcasino.com/refer/2655675" target="_blank" rel="noopener noreferrer">LoneStar</a>
+            <div class="url">lonestarcasino.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="luckparty">
+          <div class="checkbox"><input type="checkbox" id="chk-luckparty" aria-label="Mark LuckParty as opened"></div>
+          <div class="meta">
+            <a href="https://luckparty.com/signup/23c2ce10-e5bf-4713-9395-453f6d9a7009" target="_blank" rel="noopener noreferrer">LuckParty</a>
+            <div class="url">luckparty.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="luckyslots">
+          <div class="checkbox"><input type="checkbox" id="chk-luckyslots" aria-label="Mark LuckySlots as opened"></div>
+          <div class="meta">
+            <a href="https://luckyslots.us/?raf=MWlmelV3YVBpSXpQTGZreGs2d2s=" target="_blank" rel="noopener noreferrer">LuckySlots</a>
+            <div class="url">luckyslots.us</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="luckystake">
+          <div class="checkbox"><input type="checkbox" id="chk-luckystake" aria-label="Mark LuckyStake as opened"></div>
+          <div class="meta">
+            <a href="https://luckystake.com/?c=441612_s9G4MZ47" target="_blank" rel="noopener noreferrer">LuckyStake</a>
+            <div class="url">luckystake.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="mcluck">
+          <div class="checkbox"><input type="checkbox" id="chk-mcluck" aria-label="Mark McLuck as opened"></div>
+          <div class="meta">
+            <a href="https://www.mcluck.com/lp/raf?r=e294aa45%2F1928451837" target="_blank" rel="noopener noreferrer">McLuck</a>
+            <div class="url">mcluck.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="modo">
+          <div class="checkbox"><input type="checkbox" id="chk-modo" aria-label="Mark Modo as opened"></div>
+          <div class="meta">
+            <a href="https://modo.us?referralCode=C218Y8" target="_blank" rel="noopener noreferrer">Modo</a>
+            <div class="url">modo.us</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="moozi">
+          <div class="checkbox"><input type="checkbox" id="chk-moozi" aria-label="Mark Moozi as opened"></div>
+          <div class="meta">
+            <a href="https://moozi.com/signup?referral_code=4227623699" target="_blank" rel="noopener noreferrer">Moozi</a>
+            <div class="url">moozi.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="myprize">
+          <div class="checkbox"><input type="checkbox" id="chk-myprize" aria-label="Mark MyPrize US as opened"></div>
+          <div class="meta">
+            <a href="https://myprize.us/invite/Jamie1964" target="_blank" rel="noopener noreferrer">MyPrize US</a>
+            <div class="url">myprize.us</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="newluck">
+          <div class="checkbox"><input type="checkbox" id="chk-newluck" aria-label="Mark NewLuck as opened"></div>
+          <div class="meta">
+            <a href="https://newluck.net/?invitecode=gH_26yk5u3S9qnEZKuuoDsGSC4zTg2YBEahz_LLdZeDWC0aGZtHJir11STVyKaBb" target="_blank" rel="noopener noreferrer">NewLuck</a>
+            <div class="url">newluck.net</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="nolimitcoins">
+          <div class="checkbox"><input type="checkbox" id="chk-nolimitcoins" aria-label="Mark NoLimitCoins as opened"></div>
+          <div class="meta">
+            <a href="https://nolimitcoins.com/?invited_by=HASN8N" target="_blank" rel="noopener noreferrer">NoLimitCoins</a>
+            <div class="url">nolimitcoins.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="playfame">
+          <div class="checkbox"><input type="checkbox" id="chk-playfame" aria-label="Mark PlayFame as opened"></div>
+          <div class="meta">
+            <a href="https://www.playfame.com/lp/raf?r=157ef013%2F1490457530" target="_blank" rel="noopener noreferrer">PlayFame</a>
+            <div class="url">playfame.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="playtana">
+          <div class="checkbox"><input type="checkbox" id="chk-playtana" aria-label="Mark PlayTana as opened"></div>
+          <div class="meta">
+            <a href="http://playtana.com/?invited_by=2N00NE" target="_blank" rel="noopener noreferrer">PlayTana</a>
+            <div class="url">playtana.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="pulsz">
+          <div class="checkbox"><input type="checkbox" id="chk-pulsz" aria-label="Mark Pulsz as opened"></div>
+          <div class="meta">
+            <a href="https://www.pulsz.com/?invited_by=nvdpt7" target="_blank" rel="noopener noreferrer">Pulsz</a>
+            <div class="url">pulsz.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="rolla">
+          <div class="checkbox"><input type="checkbox" id="chk-rolla" aria-label="Mark Rolla as opened"></div>
+          <div class="meta">
+            <a href="https://www.rolla.com/?raf=314667" target="_blank" rel="noopener noreferrer">Rolla</a>
+            <div class="url">rolla.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="scarletsands">
+          <div class="checkbox"><input type="checkbox" id="chk-scarletsands" aria-label="Mark ScarletSands as opened"></div>
+          <div class="meta">
+            <a href="https://scarletsands.com/?invited_by=QDRY1V" target="_blank" rel="noopener noreferrer">ScarletSands</a>
+            <div class="url">scarletsands.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="sixty6">
+          <div class="checkbox"><input type="checkbox" id="chk-sixty6" aria-label="Mark Sixty6 as opened"></div>
+          <div class="meta">
+            <a href="https://sixty6.com/?ref=15B03DB787D8467C&modal=register" target="_blank" rel="noopener noreferrer">Sixty6</a>
+            <div class="url">sixty6.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="speedsweeps">
+          <div class="checkbox"><input type="checkbox" id="chk-speedsweeps" aria-label="Mark SpeedSweeps as opened"></div>
+          <div class="meta">
+            <a href="https://speedsweeps.com/?ref=r_jamie1964" target="_blank" rel="noopener noreferrer">SpeedSweeps</a>
+            <div class="url">speedsweeps.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="spinblitz">
+          <div class="checkbox"><input type="checkbox" id="chk-spinblitz" aria-label="Mark SpinBlitz as opened"></div>
+          <div class="meta">
+            <a href="https://www.spinblitz.com/lp/raf?r=2907bc45%2F2437995484" target="_blank" rel="noopener noreferrer">SpinBlitz</a>
+            <div class="url">spinblitz.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="spree">
+          <div class="checkbox"><input type="checkbox" id="chk-spree" aria-label="Mark Spree as opened"></div>
+          <div class="meta">
+            <a href="https://spree.com/?r=2030189" target="_blank" rel="noopener noreferrer">Spree</a>
+            <div class="url">spree.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="spindoo">
+          <div class="checkbox"><input type="checkbox" id="chk-spindoo" aria-label="Mark Spindoo as opened"></div>
+          <div class="meta">
+            <a href="https://www.spindoo.us/?r=35494464" target="_blank" rel="noopener noreferrer">Spindoo</a>
+            <div class="url">spindoo.us</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="spinsaga">
+          <div class="checkbox"><input type="checkbox" id="chk-spinsaga" aria-label="Mark SpinSaga as opened"></div>
+          <div class="meta">
+            <a href="https://play.spinsagacasino.com/?ref=90435&campaign=referFriend" target="_blank" rel="noopener noreferrer">SpinSaga</a>
+            <div class="url">spinsagacasino.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="stormrush">
+          <div class="checkbox"><input type="checkbox" id="chk-stormrush" aria-label="Mark StormRush as opened"></div>
+          <div class="meta">
+            <a href="http://stormrush.com/?invited_by=I2UJW0" target="_blank" rel="noopener noreferrer">StormRush</a>
+            <div class="url">stormrush.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="sweepico">
+          <div class="checkbox"><input type="checkbox" id="chk-sweepico" aria-label="Mark Sweepico as opened"></div>
+          <div class="meta">
+            <a href="http://sweepico.com/?invited_by=3JUCAU" target="_blank" rel="noopener noreferrer">Sweepico</a>
+            <div class="url">sweepico.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="sweepsblast">
+          <div class="checkbox"><input type="checkbox" id="chk-sweepsblast" aria-label="Mark SweepsBlast as opened"></div>
+          <div class="meta">
+            <a href="https://sweepsblast.com/?invitedby=43Ksd2tfPAbSq_h" target="_blank" rel="noopener noreferrer">SweepsBlast</a>
+            <div class="url">sweepsblast.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="sweepshark">
+          <div class="checkbox"><input type="checkbox" id="chk-sweepshark" aria-label="Mark Sweepshark as opened"></div>
+          <div class="meta">
+            <a href="https://sweepshark.com/?invited_by=FVAQ3B" target="_blank" rel="noopener noreferrer">Sweepshark</a>
+            <div class="url">sweepshark.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="sportzino">
+          <div class="checkbox"><input type="checkbox" id="chk-sportzino" aria-label="Mark Sportzino as opened"></div>
+          <div class="meta">
+            <a href="https://sportzino.com/signup/c13a134b-a7ae-4cba-a48a-22c5f157ee40" target="_blank" rel="noopener noreferrer">Sportzino</a>
+            <div class="url">sportzino.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="taofortune">
+          <div class="checkbox"><input type="checkbox" id="chk-taofortune" aria-label="Mark TaoFortune as opened"></div>
+          <div class="meta">
+            <a href="https://taofortune.com/?invited_by=2TGIZS" target="_blank" rel="noopener noreferrer">TaoFortune</a>
+            <div class="url">taofortune.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="thewinzone">
+          <div class="checkbox"><input type="checkbox" id="chk-thewinzone" aria-label="Mark TheWinZone as opened"></div>
+          <div class="meta">
+            <a href="https://www.thewinzone.com/s/2SqmlN" target="_blank" rel="noopener noreferrer">TheWinZone</a>
+            <div class="url">thewinzone.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="vegasway">
+          <div class="checkbox"><input type="checkbox" id="chk-vegasway" aria-label="Mark VegasWay as opened"></div>
+          <div class="meta">
+            <a href="http://vegasway.com/?invited_by=KV524E" target="_blank" rel="noopener noreferrer">VegasWay</a>
+            <div class="url">vegasway.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="winbonanza">
+          <div class="checkbox"><input type="checkbox" id="chk-winbonanza" aria-label="Mark WinBonanza as opened"></div>
+          <div class="meta">
+            <a href="https://winbonanza.com/register/8584d56d-85b9-4550-ae0b-cae8adc3d598" target="_blank" rel="noopener noreferrer">WinBonanza</a>
+            <div class="url">winbonanza.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="wowvegas">
+          <div class="checkbox"><input type="checkbox" id="chk-wowvegas" aria-label="Mark WowVegas as opened"></div>
+          <div class="meta">
+            <a href="https://www.wowvegas.com/?raf=7259051" target="_blank" rel="noopener noreferrer">WowVegas</a>
+            <div class="url">wowvegas.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="yaycasino">
+          <div class="checkbox"><input type="checkbox" id="chk-yaycasino" aria-label="Mark YayCasino as opened"></div>
+          <div class="meta">
+            <a href="https://www.yaycasino.com/signup/b34047a0-15a9-4e86-8eaf-c49ef3a39c45" target="_blank" rel="noopener noreferrer">YayCasino</a>
+            <div class="url">yaycasino.com</div>
+          </div>
+        </li>
+
+        <li class="item" data-id="zulacasino">
+          <div class="checkbox"><input type="checkbox" id="chk-zulacasino" aria-label="Mark ZulaCasino as opened"></div>
+          <div class="meta">
+            <a href="https://www.zulacasino.com/signup/402c0581-799e-4dba-8445-b066fca4a2f1" target="_blank" rel="noopener noreferrer">ZulaCasino</a>
+            <div class="url">zulacasino.com</div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'casino_cheat_opened_v4';
+  const linkList = document.getElementById('linkList');
+  const filterInput = document.getElementById('filter');
+  const countEl = document.getElementById('count');
+  const uncheckAllBtn = document.getElementById('uncheckAll');
+  const markAllBtn = document.getElementById('markAll');
+  const clearAllBtn = document.getElementById('clearAll');
+  const exportJsonBtn = document.getElementById('exportJson');
+
+  function loadState(){
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){ return {}; }
+  }
+  function saveState(s){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e){} }
+
+  const state = loadState();
+
+  function updateCounts(){
+    const items = Array.from(linkList.querySelectorAll('li'));
+    const total = items.length;
+    const opened = items.filter(li => state[li.dataset.id]).length;
+    countEl.textContent = opened + ' / ' + total + ' links opened';
+  }
+
+  function applyState(){
+    Array.from(linkList.querySelectorAll('li')).forEach(li => {
+      const id = li.dataset.id;
+      const chk = li.querySelector('input[type="checkbox"]');
+      chk.checked = !!state[id];
+      li.style.opacity = chk.checked ? '0.85' : '1';
+    });
+    updateCounts();
+  }
+
+  // Uncheck all: clear marks
+  uncheckAllBtn.addEventListener('click', () => {
+    if (!confirm('Uncheck every box on this page?')) return;
+    Array.from(linkList.querySelectorAll('li')).forEach(li => {
+      const id = li.dataset.id;
+      delete state[id];
+    });
+    saveState(state);
+    applyState();
+  });
+
+  // Mark all opened
+  markAllBtn.addEventListener('click', () => {
+    Array.from(linkList.querySelectorAll('li')).forEach(li => state[li.dataset.id] = true);
+    saveState(state);
+    applyState();
+  });
+
+  // Clear saved marks entirely
+  clearAllBtn.addEventListener('click', () => {
+    if (!confirm('Clear all saved marks from local storage?')) return;
+    Object.keys(state).forEach(k => delete state[k]);
+    saveState(state);
+    applyState();
+  });
+
+  // Export JSON of opened state
+  exportJsonBtn.addEventListener('click', () => {
+    const data = JSON.stringify(state, null, 2);
+    const blob = new Blob([data], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'cheat-opened-state.json'; document.body.appendChild(a); a.click();
+    a.remove(); URL.revokeObjectURL(url);
+  });
+
+  // Filter
+  function applyFilter(){
+    const q = (filterInput.value || '').trim().toLowerCase();
+    Array.from(linkList.querySelectorAll('li')).forEach(li => {
+      const a = li.querySelector('a');
+      const text = (a.textContent || '') + ' ' + (a.href || '');
+      li.style.display = (!q || text.toLowerCase().includes(q)) ? '' : 'none';
+    });
+    updateCounts();
+  }
+
+  filterInput.addEventListener('input', applyFilter);
+
+  // When a link is clicked, mark it opened (allow browser to open in new tab)
+  linkList.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    const li = a.closest('li');
+    state[li.dataset.id] = true;
+    saveState(state);
+    applyState();
+    // default behavior opens link in new tab (target="_blank")
+  });
+
+  // Checkbox manual toggle
+  linkList.addEventListener('change', (e) => {
+    const chk = e.target;
+    if (chk && chk.type === 'checkbox') {
+      const li = chk.closest('li');
+      if (chk.checked) state[li.dataset.id] = true; else delete state[li.dataset.id];
+      saveState(state);
+      applyState();
+    }
+  });
+
+  // Keyboard: Enter on focused link marks opened
+  linkList.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const el = document.activeElement;
+      if (el && el.tagName.toLowerCase() === 'a') {
+        const li = el.closest('li');
+        state[li.dataset.id] = true;
+        saveState(state);
+        applyState();
+      }
+    }
+  });
+
+  // Initialize
+  applyState();
+  applyFilter();
+
+  // Expose for debugging
+  window.__cheatsheet = {
+    state: state,
+    clearAll: () => { Object.keys(state).forEach(k=>delete state[k]); saveState(state); applyState(); }
+  };
+})();
+</script>
+</body>
+</html>
+
