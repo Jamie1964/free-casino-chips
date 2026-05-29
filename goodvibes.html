@@ -8,7 +8,7 @@
 
 <body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
-<!-- HEADER WITH PERFECT 100% BANNER (NO CROP) -->
+<!-- HEADER -->
 <div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
             border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
     <img src="images/site-logo-ultra-low.png"
@@ -32,7 +32,7 @@
     <!-- CONTENT -->
     <div style="flex:1;padding:0 25px;max-width:900px;">
 
-        <!-- CLICKABLE LOGO -->
+        <!-- LOGO -->
         <div style="text-align:center;margin-bottom:25px;">
             <a href="https://goodvibescasino.com?r=CXT718DTJO"
                target="_blank" rel="noopener noreferrer">
@@ -182,20 +182,17 @@
 
         </div>
 
-        <!-- PAGE VIEW COUNTER -->
-        <div style="text-align:center;color:#888;font-size:14px;margin-bottom:40px;">
-            <span id="viewCount">Loading views...</span>
-        </div>
+        <!-- PAGE VIEW COUNTER (FIXED ACE SYSTEM) -->
+        <div id="page-views" style="color:#888;font-size:14px;margin-bottom:40px;text-align:center;"></div>
 
         <script>
-            fetch('/api/goodvibes-views')
-                .then(r => r.json())
-                .then(d => {
-                    document.getElementById('viewCount').innerText = "Page Views: " + d.views;
-                })
-                .catch(() => {
-                    document.getElementById('viewCount').innerText = "Page Views: unavailable";
-                });
+            const pageId = "goodvibescasino";
+            const key = "views_" + pageId;
+            let views = localStorage.getItem(key);
+            if (!views) views = 0;
+            views = parseInt(views) + 1;
+            localStorage.setItem(key, views);
+            document.getElementById("page-views").innerText = "Page views: " + views;
         </script>
 
     </div>
