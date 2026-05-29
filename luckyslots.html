@@ -2,228 +2,195 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>LuckySlots Sweepstakes Casino | FREE-CASINO-CHIPS.COM</title>
-<meta name="description" content="LuckySlots Sweepstakes Casino — claim free coins, daily bonuses, and learn how to redeem sweepstakes coins for cash. Tips to maximize free earnings and FAQ.">
+<title>LuckySlots | FREE-CASINO-CHIPS.COM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LuckySlots review — bonuses, daily rewards, payouts, KYC, legitimacy, game library, and strategies to maximize free earnings.">
 <link rel="canonical" href="https://www.free-casino-chips.com/luckyslots.html">
-<meta name="robots" content="index, follow">
-
-<style>
-    body { background-color:#0b1020; color:#ffffff; font-family:Arial; margin:0; padding:0; }
-
-    header {
-        background:#111726; padding:25px; text-align:center;
-        font-size:32px; font-weight:bold; color:#ffcc33;
-        border-bottom:2px solid:#222a40;
-        position:fixed; top:0; left:0; width:100%; z-index:10;
-    }
-
-    .sidebar {
-        position:absolute; top:90px; left:0; width:260px;
-        min-height:100vh; background:#111827;
-        border-right:1px solid #1f2937;
-        padding:25px 20px 20px 35px; box-sizing:border-box;
-    }
-
-    .sidebar a {
-        display:block; margin-bottom:12px; font-size:18px;
-        color:#4da3ff; text-decoration:none; white-space:nowrap;
-    }
-    .sidebar a:hover { text-decoration:underline; }
-
-    .main {
-        margin-left:260px; padding:150px 60px 200px 40px;
-        width:calc(100% - 260px); box-sizing:border-box;
-    }
-
-    h1, h2 { color:#ffcc33; margin-top:0; }
-
-    .top-button { text-align:center; margin-bottom:30px; }
-    .top-button a {
-        display:inline-block; background:#ffcc33; color:#000;
-        padding:14px 32px; border-radius:8px;
-        font-size:26px; font-weight:bold; text-decoration:none;
-    }
-    .top-button a:hover { background:#ffe680; }
-
-    .grid {
-        display:grid; grid-template-columns:1fr 1fr;
-        gap:30px; margin-top:30px;
-    }
-
-    .card {
-        background:#111726; padding:25px; border-radius:10px;
-        border:1px solid:#222a40; font-size:20px; line-height:1.6;
-    }
-
-    footer {
-        text-align:center; padding:25px; margin-top:60px;
-        color:#888; font-size:14px;
-    }
-
-    .seo-section { margin-top:30px; color:#ddd; font-size:18px; }
-    .seo-section h2, .seo-section h3 { color:#ffcc33; }
-    .seo-section ul { margin-left:20px; }
-</style>
 </head>
 
-<body>
+<body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
-<header>FREE-CASINO-CHIPS.COM</header>
+<!-- HEADER -->
+<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
+    <img src="images/site-logo-ultra-low.png" alt="Free Casino Chips Logo"
+         style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
+</div>
 
-<div class="sidebar" id="sidebar"></div>
+<div style="display:flex;margin-top:200px;">
+
+<!-- SIDEBAR -->
+<div style="width:272px;padding-left:12px;">
+    <div id="sidebar" style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;overflow-y:auto;"></div>
+</div>
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    fetch("sidebar.html")
-        .then(r => r.text())
-        .then(html => { document.getElementById("sidebar").innerHTML = html; });
-});
+fetch('/sidebar.html')
+    .then(r => r.text())
+    .then(html => { document.getElementById('sidebar').innerHTML = html; })
+    .catch(() => { document.getElementById('sidebar').innerHTML = "<p style='color:#888;'>Sidebar unavailable</p>"; });
 </script>
 
-<div class="main">
+<!-- MAIN CONTENT -->
+<div style="flex:1;padding:0 25px;max-width:900px;">
 
-    <!-- TOP BUTTON -->
-    <div class="top-button">
-        <a href="https://luckyslots.us?raf=MWlmelV3YVBpSXpQTGZreGs2d2s=" target="_blank">
-            Sign Up at LuckySlots
-        </a>
-    </div>
+<!-- LOGO (60%) -->
+<div style="text-align:center;margin-bottom:25px;">
+    <a href="https://luckyslots.us?raf=MWlmelV3YVBpSXpQTGZreGs2d2s=" target="_blank" rel="noopener noreferrer">
+        <div style="display:inline-block;max-width:900px;width:100%;text-align:center;">
+            <img src="images/luckyslots.png"
+                 alt="LuckySlots"
+                 onerror="this.style.display='none'; document.getElementById('fallback-title').style.display='block';"
+                 style="width:60%;height:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 8px #000);">
+        </div>
+    </a>
+</div>
 
-    <!-- INTRO -->
-    <h2 style="text-align:center;">LuckySlots Sweepstakes Casino</h2>
-    <p style="font-size:20px; line-height:1.6; text-align:center; max-width:900px; margin:0 auto;">
-        LuckySlots is a modern sweepstakes casino offering fast-loading slot games, daily login bonuses,
-        and a clean mobile-friendly interface. Players enjoy LuckySlots for its simple layout,
-        frequent rewards, and smooth redemption process.
+<h1 id="fallback-title" style="display:none;color:#66ccff;font-size:32px;text-align:center;margin:0 0 25px;">LuckySlots</h1>
+<h1 style="font-size:1px;height:1px;overflow:hidden;margin:0;padding:0;opacity:0;">LuckySlots</h1>
+
+<!-- TOP BUTTON -->
+<div style="text-align:center;margin-bottom:30px;">
+    <a href="https://luckyslots.us?raf=MWlmelV3YVBpSXpQTGZreGs2d2s="
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block;background:#66ccff;color:#000;font-weight:900;padding:14px 28px;border-radius:8px;font-size:22px;text-decoration:none;box-shadow:0 0 12px #66ccff;">
+       Claim Offer
+    </a>
+</div>
+
+<!-- INTRO BOX -->
+<div style="background:#141414;padding:25px;border-radius:12px;border:2px solid:#66ccff;box-shadow:0 0 18px #66ccff;margin-bottom:35px;text-align:center;">
+    <p style="font-size:20px;line-height:1.7;margin:0;">
+        LuckySlots is a modern sweepstakes casino offering fast-loading slot games, daily login bonuses, and a clean mobile-friendly interface. Players enjoy LuckySlots for its simple layout, frequent rewards, and smooth redemption process.
     </p>
+</div>
 
-    <!-- BONUSES -->
-    <div class="grid">
-        <div class="card">
-            <h2>Welcome Bonus</h2>
-            <p>• Free Gold Coins on signup</p>
-            <p>• Sweepstakes Coins for new accounts</p>
-            <p>• First-week bonus drops</p>
-        </div>
-
-        <div class="card">
-            <h2>Daily Bonuses</h2>
-            <p>• Daily login rewards</p>
-            <p>• Streak bonuses</p>
-            <p>• Inbox surprise drops</p>
-        </div>
+<!-- TWO-COLUMN SECTIONS -->
+<div style="display:flex;gap:20px;margin-bottom:30px;">
+    <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
+        <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Welcome Bonus</h2>
+        <ul style="margin:0;padding-left:20px;line-height:1.6;">
+            <li>Free Gold Coins on signup</li>
+            <li>Sweepstakes Coins for new accounts</li>
+            <li>First-week bonus drops</li>
+        </ul>
     </div>
 
-    <!-- WHY + GAMES -->
-    <div class="grid" style="margin-top:30px;">
-        <div class="card">
-            <h2>Why I Like LuckySlots</h2>
-            <p>• Clean, modern interface</p>
-            <p>• Smooth mobile experience</p>
-            <p>• Frequent daily bonuses</p>
-        </div>
+    <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
+        <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Daily Bonuses</h2>
+        <ul style="margin:0;padding-left:20px;line-height:1.6;">
+            <li>Daily login rewards</li>
+            <li>Streak bonuses</li>
+            <li>Inbox surprise drops</li>
+        </ul>
+    </div>
+</div>
 
-        <div class="card">
-            <h2>Games You’ll Find Here</h2>
-            <p>• Classic slots</p>
-            <p>• Hold & Win titles</p>
-            <p>• Megaways-style reels</p>
-        </div>
+<div style="display:flex;gap:20px;margin-bottom:30px;">
+    <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
+        <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Why I Like LuckySlots</h2>
+        <ul style="margin:0;padding-left:20px;line-height:1.6;">
+            <li>Clean, modern interface</li>
+            <li>Smooth mobile experience</li>
+            <li>Frequent daily bonuses</li>
+        </ul>
     </div>
 
-    <!-- PAYOUTS + KYC -->
-    <div class="grid" style="margin-top:30px;">
-        <div class="card">
-            <h2>Payouts & Banking</h2>
-            <p>• Typical payout window: 2–7 business days</p>
-            <p>• Bank transfer, debit cards, gift cards</p>
-        </div>
+    <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
+        <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Games You’ll Find Here</h2>
+        <ul style="margin:0;padding-left:20px;line-height:1.6;">
+            <li>Classic slots</li>
+            <li>Hold & Win titles</li>
+            <li>Megaways-style reels</li>
+        </ul>
+    </div>
+</div>
 
-        <div class="card">
-            <h2>KYC Verification</h2>
-            <p>• Photo ID</p>
-            <p>• Selfie verification</p>
-            <p>• Address verification</p>
-        </div>
+<div style="display:flex;gap:20px;margin-bottom:30px;">
+    <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
+        <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Payouts & Banking</h2>
+        <ul style="margin:0;padding-left:20px;line-height:1.6;">
+            <li>Typical payout window: 2–7 business days</li>
+            <li>Bank transfer, debit cards, gift cards</li>
+        </ul>
     </div>
 
-    <!-- RESTRICTED STATES -->
-    <div class="grid" style="margin-top:30px;">
-        <div class="card">
-            <h2>Restricted States</h2>
-            <p>• Washington</p>
-            <p>• Idaho</p>
-            <p>• Michigan</p>
-            <p>• Nevada</p>
-        </div>
-        <div></div>
+    <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
+        <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">KYC Verification</h2>
+        <ul style="margin:0;padding-left:20px;line-height:1.6;">
+            <li>Photo ID</li>
+            <li>Selfie verification</li>
+            <li>Address verification</li>
+        </ul>
     </div>
+</div>
 
-    <!-- SEO SECTION -->
-    <section id="seo-luckyslots" class="seo-section">
+<!-- RESTRICTED STATES -->
+<div style="background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;margin-bottom:30px;">
+    <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Restricted States</h2>
+    <ul style="margin:0;padding-left:20px;line-height:1.6;">
+        <li>Washington</li>
+        <li>Idaho</li>
+        <li>Michigan</li>
+        <li>Nevada</li>
+    </ul>
+</div>
 
-      <h2>How to Make Money With LuckySlots Sweepstakes Casino</h2>
-      <p>
-        LuckySlots provides multiple ways to earn free coins that can be converted into sweepstakes coins
-        and redeemed for cash. Start by claiming the welcome bonuses, then complete daily logins and inbox
-        rewards. Focus on low‑variance games and bonus windows to preserve your balance and increase your
-        chances of reaching redemption.
-      </p>
+<!-- LONG CONTENT -->
+<div style="color:#ddd;font-size:18px;line-height:1.7;margin-bottom:40px;">
 
-      <h3>How to Get Free Coins and Free Money Daily</h3>
-      <p>
-        Claim the signup bonus, open the inbox every day, and participate in limited-time events.
-        Use streak bonuses and daily missions to build consistent free earnings.
-      </p>
+    <h2 style="color:#66ccff;">How to Make Money With LuckySlots Sweepstakes Casino</h2>
+    <p>LuckySlots provides multiple ways to earn free coins that can be converted into sweepstakes coins and redeemed for cash. Start by claiming the welcome bonuses, then complete daily logins and inbox rewards. Focus on low‑variance games and bonus windows to preserve your balance and increase your chances of reaching redemption.</p>
 
-      <h3>Is This Really Free? No Purchase Necessary Explained</h3>
-      <p>
-        LuckySlots operates on a sweepstakes model where promotional coins are distributed free of charge.
-        You can receive and play with these coins without making a purchase. Redemptions require following
-        the casino's rules and completing KYC verification.
-      </p>
+    <h2 style="color:#66ccff;">How to Get Free Coins and Free Money Daily</h2>
+    <p>Claim the signup bonus, open the inbox every day, and participate in limited-time events. Use streak bonuses and daily missions to build consistent free earnings.</p>
 
-      <h3>Tips to Maximize Your Free Earnings</h3>
-      <ul>
+    <h2 style="color:#66ccff;">Is This Really Free? No Purchase Necessary Explained</h2>
+    <p>LuckySlots operates on a sweepstakes model where promotional coins are distributed free of charge. You can receive and play with these coins without making a purchase. Redemptions require following the casino's rules and completing KYC verification.</p>
+
+    <h2 style="color:#66ccff;">Tips to Maximize Your Free Earnings</h2>
+    <ul>
         <li>Claim every inbox bonus and daily login reward</li>
         <li>Play low‑variance slots to protect your balance</li>
         <li>Use streaks and timed events to multiply rewards</li>
         <li>Keep KYC documents ready to speed up payouts</li>
-      </ul>
+    </ul>
 
-      <h3>FAQ</h3>
-      <p><strong>How long do redemptions take?</strong> Typically 2–7 business days after KYC approval.</p>
-      <p><strong>Do I need to verify my identity?</strong> Yes. KYC is required before the first payout.</p>
-      <p><strong>Is LuckySlots available in my state?</strong> Check the Restricted States section above.</p>
-
-    </section>
-
-    <!-- BOTTOM BUTTON -->
-    <div class="top-button" style="margin-top:40px;">
-        <a href="https://luckyslots.us?raf=MWlmelV3YVBpSXpQTGZreGs2d2s=" target="_blank">
-            Sign Up at LuckySlots
-        </a>
-    </div>
-
-    <footer>
-        Copyright ©2026 FREE-CASINO-CHIPS.COM
-        All rights reserved.
-    </footer>
+    <h2 style="color:#66ccff;">FAQ</h2>
+    <p><strong>How long do redemptions take?</strong> Typically 2–7 business days after KYC approval.</p>
+    <p><strong>Do I need to verify my identity?</strong> Yes. KYC is required before the first payout.</p>
+    <p><strong>Is LuckySlots available in my state?</strong> Check the Restricted States section above.</p>
 
 </div>
 
-<!-- FAQ JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    { "@type":"Question","name":"How do I get free coins on LuckySlots?","acceptedAnswer":{"@type":"Answer","text":"Sign up, claim the welcome drop, complete daily logins, and check the inbox for bonus drops."}},
-    { "@type":"Question","name":"Can I redeem sweepstakes coins for cash?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sweepstakes coins can be redeemed after completing KYC verification. Most payouts take 2–7 business days."}},
-    { "@type":"Question","name":"Is this really free money?","acceptedAnswer":{"@type":"Answer","text":"LuckySlots distributes promotional coins for free. No purchase is required to receive free coins."}},
-    { "@type":"Question","name":"Which states are restricted?","acceptedAnswer":{"@type":"Answer","text":"Some states restrict sweepstakes casinos. Check the Restricted States section for the latest list."}}
-  ]
-}
+<!-- BOTTOM BUTTON -->
+<div style="text-align:center;margin-bottom:40px;">
+    <a href="https://luckyslots.us?raf=MWlmelV3YVBpSXpQTGZreGs2d2s="
+       target="_blank" rel="noopener noreferrer"
+       style="display:inline-block;background:#66ccff;color:#000;font-weight:900;padding:14px 28px;border-radius:8px;font-size:22px;text-decoration:none;box-shadow:0 0 12px #66ccff;">
+       Claim Offer
+    </a>
+</div>
+
+<!-- PAGE VIEW COUNTER -->
+<div id="page-views" style="color:#888;font-size:14px;margin:40px 0 20px;text-align:center;"></div>
+
+<script>
+const pageId = "luckyslots";
+const key = "views_" + pageId;
+let views = localStorage.getItem(key);
+if (!views) views = 0;
+views = parseInt(views) + 1;
+localStorage.setItem(key, views);
+document.getElementById("page-views").innerText = "Page views: " + views;
 </script>
+
+<!-- FOOTER -->
+<div style="text-align:center;color:#666;font-size:14px;margin:50px 0 20px;">
+    © 2026 FREE-CASINO-CHIPS.COM — All Rights Reserved
+</div>
+
+</div>
+</div>
 
 </body>
 </html>
