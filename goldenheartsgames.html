@@ -10,48 +10,55 @@
 
 <body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
-<!-- HEADER WITH YOUR SITE LOGO -->
+<!-- HEADER (SITE LOGO) -->
 <div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
-            border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
+            border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
     <img src="images/site-logo-ultra-low.png"
          alt="Free Casino Chips Logo"
-         style="height:100%;width:auto;display:block;margin:0 auto;
-                object-fit:contain;object-position:center;
+         style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;
                 filter:drop-shadow(0 0 6px #000);">
 </div>
 
-<!-- MAIN WRAPPER -->
+<!-- MAIN -->
 <div style="display:flex;margin-top:200px;">
 
     <!-- SIDEBAR -->
     <div style="width:272px;padding-left:12px;">
         <div id="sidebar"
-             style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;
-                    overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;">
+             style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;overflow-y:auto;">
         </div>
     </div>
 
-    <!-- LOAD SIDEBAR -->
     <script>
         fetch('/sidebar.html')
-            .then(r => r.text())
-            .then(html => { document.getElementById('sidebar').innerHTML = html; })
-            .catch(() => { document.getElementById('sidebar').innerHTML = "<p style='color:#888;'>Sidebar unavailable</p>"; });
+            .then(r=>r.text())
+            .then(html=>{document.getElementById('sidebar').innerHTML=html;})
+            .catch(()=>{document.getElementById('sidebar').innerHTML="<p style='color:#888;'>Sidebar unavailable</p>";});
     </script>
 
     <!-- CONTENT -->
     <div style="flex:1;padding:0 25px;max-width:900px;">
 
-        <!-- TITLE -->
-        <h1 style="color:#66ccff;font-size:46px;text-align:center;margin-top:0;margin-bottom:10px;">
+        <!-- GOLDENHEARTS LOGO TITLE -->
+        <div style="text-align:center;margin-bottom:25px;">
+            <a href="https://www.goldenheartsgames.com/referral/YUX9OSX4U2" target="_blank" rel="noopener noreferrer">
+                <img src="images/goldenhearts-logo.svg"
+                     alt="GoldenHearts Logo"
+                     style="max-width:260px;width:100%;height:auto;filter:drop-shadow(0 0 8px #000);">
+            </a>
+        </div>
+
+        <!-- HIDDEN FALLBACK TITLE -->
+        <h1 style="font-size:1px;height:1px;overflow:hidden;margin:0;padding:0;opacity:0;">
             GoldenHearts
         </h1>
 
-        <h2 style="color:#66ccff;font-size:32px;text-align:center;margin-top:0;margin-bottom:25px;">
+        <!-- SUBTITLE -->
+        <h2 style="color:#66ccff;font-size:32px;text-align:center;margin:0 0 25px;">
             Charity-Based Sweepstakes Gaming
         </h2>
 
-        <!-- CLAIM OFFER BUTTON -->
+        <!-- CLAIM OFFER -->
         <div style="text-align:center;margin-bottom:30px;">
             <a href="https://www.goldenheartsgames.com/referral/YUX9OSX4U2"
                target="_blank" rel="noopener noreferrer"
@@ -62,140 +69,96 @@
             </a>
         </div>
 
-        <!-- INTRO -->
-        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid #222;
-                    box-shadow:0 0 12px #000;margin-bottom:30px;">
-            <p style="font-size:20px;line-height:1.7;margin:0;text-align:center;">
-                GoldenHearts is one of the most unique sweepstakes-style gaming platforms in the United States.
-                Unlike traditional sweepstakes casinos, GoldenHearts is built around charitable giving. Every
-                donation supports real nonprofit organizations — and in return, you receive Hearts for gameplay
-                and sweepstakes entries that can be redeemed for gift cards.
+        <!-- INTRO (BLUE BOX) -->
+        <div style="background:#141414;padding:25px;border-radius:12px;
+                    border:2px solid #66ccff;box-shadow:0 0 18px #66ccff;
+                    margin-bottom:35px;text-align:center;">
+            <p style="font-size:20px;line-height:1.7;margin:0;">
+                GoldenHearts is a charity-driven sweepstakes platform where every donation supports real nonprofit
+                organizations. Donations earn Hearts for gameplay and sweepstakes entries that can be redeemed for
+                gift cards.
             </p>
         </div>
 
-        <!-- TWO COLUMN BOXES -->
+        <!-- ROW 1 -->
         <div style="display:flex;gap:20px;margin-bottom:30px;">
-
-            <!-- HOW IT WORKS -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    How It Works
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
+                <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">How It Works</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
-                    <li>Donate → Receive Hearts + sweepstakes entries</li>
-                    <li>Play games using Hearts (slots, bingo, instant wins)</li>
-                    <li>Win prizes through sweepstakes entries</li>
+                    <li>Donate → Receive Hearts + entries</li>
+                    <li>Play games using Hearts</li>
+                    <li>Win prizes via sweepstakes</li>
                     <li>Redeem winnings as gift cards</li>
-                    <li>Support real charities with every donation</li>
+                    <li>Support real charities</li>
                 </ul>
             </div>
 
-            <!-- BONUSES & PROMOTIONS -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    Bonuses & Promotions
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
+                <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Bonuses & Rewards</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
-                    <li>Welcome Bonus: Bonus Hearts with your first donation</li>
-                    <li>Charity Events: Special nonprofit campaigns</li>
-                    <li>Daily Rewards: Free Hearts & sweepstakes entries</li>
+                    <li>Bonus Hearts with first donation</li>
+                    <li>Charity event promos</li>
+                    <li>Daily free Hearts & entries</li>
                 </ul>
             </div>
-
         </div>
 
-        <!-- SECOND ROW -->
+        <!-- ROW 2 -->
         <div style="display:flex;gap:20px;margin-bottom:30px;">
-
-            <!-- DONATIONS → HEARTS -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    Donations → Hearts
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
+                <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Donations → Hearts</h2>
                 <p style="line-height:1.6;margin:0;">
-                    When you donate, a portion goes directly to nonprofit organizations. In return, you receive
-                    Hearts used to play games.
+                    A portion of every donation goes directly to nonprofits. You receive Hearts to play games.
                 </p>
             </div>
 
-            <!-- HEARTS → GAMEPLAY -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    Hearts → Gameplay
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
+                <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Hearts → Gameplay</h2>
                 <p style="line-height:1.6;margin:0;">
-                    Hearts function like virtual coins. Use them to play slots, bingo, and instant-win games.
+                    Hearts act as virtual coins used to play slots, bingo, and instant-win games.
                 </p>
             </div>
-
         </div>
 
-        <!-- THIRD ROW -->
+        <!-- ROW 3 -->
         <div style="display:flex;gap:20px;margin-bottom:30px;">
-
-            <!-- SWEEPSTAKES ENTRIES -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    Sweepstakes Entries
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
+                <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Sweepstakes Entries</h2>
                 <p style="line-height:1.6;margin:0;">
-                    Along with Hearts, you receive sweepstakes entries that can win prizes while you play.
+                    Donations also include sweepstakes entries that can win prizes while you play.
                 </p>
             </div>
 
-            <!-- GIFT CARD PAYOUTS -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    Gift Card Payouts
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
+                <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Gift Card Payouts</h2>
                 <p style="line-height:1.6;margin:0;">
-                    Winnings are redeemed as gift cards to Amazon, Walmart, Target, restaurants, and more.
+                    Redeem winnings as gift cards to Amazon, Walmart, Target, restaurants, and more.
                 </p>
             </div>
-
         </div>
 
-        <!-- FOURTH ROW -->
+        <!-- ROW 4 -->
         <div style="display:flex;gap:20px;margin-bottom:30px;">
-
-            <!-- BANKING OPTIONS -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    Banking Options
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
+                <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Banking Options</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
-                    <li>Accepted: Debit cards, credit cards, sometimes PayPal</li>
-                    <li>Minimum Donation: Usually $10</li>
+                    <li>Debit & credit cards</li>
+                    <li>Sometimes PayPal</li>
+                    <li>Minimum donation: ~$10</li>
                 </ul>
             </div>
 
-            <!-- KYC VERIFICATION -->
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;
-                        border:1px solid #222;box-shadow:0 0 12px #000;">
-                <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                    KYC Verification
-                </h2>
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
+                <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">KYC Verification</h2>
                 <p style="line-height:1.6;margin:0;">
-                    GoldenHearts may require identity verification before redeeming gift cards. This ensures
-                    sweepstakes compliance and prevents fraud.
+                    ID verification may be required before redeeming gift cards to ensure sweepstakes compliance.
                 </p>
             </div>
-
         </div>
 
         <!-- RESTRICTED STATES -->
-        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid#222;
-                    box-shadow:0 0 12px #000;margin-bottom:30px;">
-            <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                Restricted States
-            </h2>
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid #222;margin-bottom:30px;">
+            <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Restricted States</h2>
             <ul style="margin:0;padding-left:20px;line-height:1.7;">
                 <li>Washington</li>
                 <li>Idaho</li>
@@ -205,41 +168,29 @@
         </div>
 
         <!-- SEO SECTION -->
-        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid#222;
-                    box-shadow:0 0 12px #000;margin-bottom:30px;">
-
-            <h2 style="color:#66ccff;font-size:30px;margin-top:0;margin-bottom:15px;">
-                GoldenHearts Charity Gaming Explained
-            </h2>
-
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid #222;margin-bottom:30px;">
+            <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Why Players Choose This Platform</h2>
             <p style="line-height:1.7;margin-bottom:15px;">
-                GoldenHearts is a charity-based sweepstakes gaming platform where every donation supports nonprofit
-                organizations. Players receive Hearts for gameplay and sweepstakes entries that can be redeemed for
-                gift cards.
+                A charity-first model, fast payouts, and simple gameplay make this one of the most trusted
+                sweepstakes platforms.
             </p>
 
-            <h3 style="color:#66ccff;font-size:26px;margin-top:20px;margin-bottom:10px;">
-                Why Choose GoldenHearts?
-            </h3>
+            <h3 style="color:#66ccff;font-size:24px;margin:20px 0 10px;">Top Reasons</h3>
             <ul style="margin:0;padding-left:20px;line-height:1.7;">
-                <li>Support real charities while playing</li>
-                <li>Fun games including slots, bingo, and instant wins</li>
-                <li>Gift card payouts to major retailers</li>
-                <li>Easy-to-understand donation system</li>
+                <li>Supports real nonprofits</li>
+                <li>Slots, bingo, instant wins</li>
+                <li>Gift card payouts</li>
+                <li>Easy donation system</li>
             </ul>
 
-            <h3 style="color:#66ccff;font-size:26px;margin-top:20px;margin-bottom:10px;">
-                Is GoldenHearts Legit?
-            </h3>
+            <h3 style="color:#66ccff;font-size:24px;margin:20px 0 10px;">Legitimacy</h3>
             <p style="line-height:1.7;margin:0;">
-                Yes — GoldenHearts operates under U.S. sweepstakes laws and partners with verified nonprofit
-                organizations.
+                Operates under U.S. sweepstakes laws and partners with verified nonprofit organizations.
             </p>
-
         </div>
 
-        <!-- CLAIM OFFER BUTTON AGAIN -->
-        <div style="text-align:center;margin-top:40px;margin-bottom:40px;">
+        <!-- CLAIM OFFER AGAIN -->
+        <div style="text-align:center;margin:40px 0;">
             <a href="https://www.goldenheartsgames.com/referral/YUX9OSX4U2"
                target="_blank" rel="noopener noreferrer"
                style="display:inline-block;background:#66ccff;color:#000;font-weight:900;
@@ -251,18 +202,17 @@
 
         <!-- PAGE VIEW COUNTER -->
         <div style="text-align:center;color:#888;font-size:14px;margin-bottom:40px;">
-            <span id="viewCount">Loading views...</span>
+            <span id="viewCount">Page Views: ...</span>
         </div>
 
+        <!-- ACE COUNTER -->
         <script>
-            fetch('/api/goldenhearts-views')
-                .then(r => r.json())
-                .then(d => {
-                    document.getElementById('viewCount').innerText = "Page Views: " + d.views;
-                })
-                .catch(() => {
-                    document.getElementById('viewCount').innerText = "Page Views: unavailable";
-                });
+            const pageId="goldenhearts";
+            const key="views_"+pageId;
+            let views=localStorage.getItem(key);
+            views=views?parseInt(views)+1:1;
+            localStorage.setItem(key,views);
+            document.getElementById("viewCount").innerText="Page Views: "+views;
         </script>
 
     </div>
@@ -270,43 +220,9 @@
 
 <!-- FOOTER -->
 <div style="width:100%;background:#111;padding:20px 0;text-align:center;color:#777;
-            border-top:2px solid#333;margin-top:40px;">
+            border-top:2px solid #333;margin-top:40px;">
     © 2026 FREE‑CASINO‑CHIPS.COM — All Rights Reserved
 </div>
-
-<!-- FAQ JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {
-      "@type":"Question",
-      "name":"Is GoldenHearts legit?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Yes. GoldenHearts operates under U.S. sweepstakes laws and partners with verified nonprofit organizations."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"How do payouts work?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"GoldenHearts payouts are redeemed as gift cards to major retailers such as Amazon, Walmart, and Target."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Do I need to verify my identity?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"GoldenHearts may require identity verification before redeeming gift cards to ensure sweepstakes compliance."
-      }
-    }
-  ]
-}
-</script>
 
 </body>
 </html>

@@ -12,37 +12,33 @@
 
 <!-- HEADER -->
 <div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
-            border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
-    <img src="images/site-logo-ultra-low.png"
-         alt="Free Casino Chips Logo"
-         style="height:100%;width:auto;display:block;margin:0 auto;
-                object-fit:contain;object-position:center;
+            border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
+    <img src="images/site-logo-ultra-low.png" alt="Free Casino Chips Logo"
+         style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;
                 filter:drop-shadow(0 0 6px #000);">
 </div>
 
-<!-- MAIN WRAPPER -->
+<!-- MAIN -->
 <div style="display:flex;margin-top:200px;">
 
     <!-- SIDEBAR -->
     <div style="width:272px;padding-left:12px;">
         <div id="sidebar"
-             style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;
-                    overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;">
+             style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;overflow-y:auto;">
         </div>
     </div>
 
-    <!-- LOAD SIDEBAR -->
     <script>
         fetch('/sidebar.html')
-            .then(r => r.text())
-            .then(html => { document.getElementById('sidebar').innerHTML = html; })
-            .catch(() => { document.getElementById('sidebar').innerHTML = "<p style='color:#888;'>Sidebar unavailable</p>"; });
+            .then(r=>r.text())
+            .then(html=>{document.getElementById('sidebar').innerHTML=html;})
+            .catch(()=>{document.getElementById('sidebar').innerHTML="<p style='color:#888;'>Sidebar unavailable</p>";});
     </script>
 
     <!-- CONTENT -->
     <div style="flex:1;padding:0 25px;max-width:900px;">
 
-        <!-- HERO IMAGE -->
+        <!-- LOGO -->
         <div style="text-align:center;margin-bottom:25px;">
             <a href="https://funrize.com/?invited_by=YH5D7O" target="_blank" rel="noopener noreferrer">
                 <img src="images/funrize.png"
@@ -51,11 +47,12 @@
             </a>
         </div>
 
-        <!-- TITLE -->
-        <h1 style="color:#66ccff;font-size:46px;text-align:center;margin:0 0 10px;">
+        <!-- HIDDEN FALLBACK TITLE -->
+        <h1 style="font-size:1px;height:1px;overflow:hidden;margin:0;padding:0;opacity:0;">
             Funrize
         </h1>
 
+        <!-- SUBTITLE -->
         <h2 style="color:#66ccff;font-size:32px;text-align:center;margin:0 0 25px;">
             Fast Payouts, Big Bonuses & Daily Rewards
         </h2>
@@ -71,10 +68,11 @@
             </a>
         </div>
 
-        <!-- INTRO -->
-        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid #222;
-                    box-shadow:0 0 12px #000;margin-bottom:30px;">
-            <p style="font-size:20px;line-height:1.7;margin:0;text-align:center;">
+        <!-- INTRO (BLUE BORDER + GLOW) -->
+        <div style="background:#141414;padding:25px;border-radius:12px;
+                    border:2px solid:#66ccff;box-shadow:0 0 18px #66ccff;
+                    margin-bottom:35px;text-align:center;">
+            <p style="font-size:20px;line-height:1.7;margin:0;">
                 Funrize is one of the most popular sweepstakes casinos in the U.S., offering fast payouts,
                 daily bonuses, and a strong mix of slots and instant‑win games. With simple banking,
                 quick verification, and a mobile‑friendly interface, it’s a great choice for both new and
@@ -84,8 +82,7 @@
 
         <!-- FEATURE ROW 1 -->
         <div style="display:flex;gap:20px;margin-bottom:25px;">
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;
-                        box-shadow:0 0 12px #000;">
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
                 <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Welcome Bonus</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Free coins for new players</li>
@@ -94,8 +91,7 @@
                 </ul>
             </div>
 
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;
-                        box-shadow:0 0 12px #000;">
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
                 <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Daily Bonuses</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Daily login rewards</li>
@@ -108,8 +104,7 @@
 
         <!-- FEATURE ROW 2 -->
         <div style="display:flex;gap:20px;margin-bottom:25px;">
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;
-                        box-shadow:0 0 12px #000;">
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
                 <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Game Library</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Slots</li>
@@ -119,8 +114,7 @@
                 </ul>
             </div>
 
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;
-                        box-shadow:0 0 12px #000;">
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
                 <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Payouts & Banking</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Fast withdrawals</li>
@@ -133,8 +127,7 @@
 
         <!-- FEATURE ROW 3 -->
         <div style="display:flex;gap:20px;margin-bottom:30px;">
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;
-                        box-shadow:0 0 12px #000;">
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
                 <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">KYC Verification</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Photo ID</li>
@@ -143,8 +136,7 @@
                 </ul>
             </div>
 
-            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;
-                        box-shadow:0 0 12px #000;">
+            <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
                 <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Restricted States</h2>
                 <ul style="margin:0;padding-left:20px;line-height:1.6;">
                     <li>Washington</li>
@@ -155,37 +147,33 @@
             </div>
         </div>
 
-        <!-- STRATEGY (CONDENSED) -->
-        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid #222;
-                    box-shadow:0 0 12px #000;margin-bottom:30px;">
-            <h2 style="color:#66ccff;font-size:28px;margin:0 0 15px;">How to Win More at Funrize</h2>
+        <!-- STRATEGY -->
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;margin-bottom:30px;">
+            <h2 style="color:#66ccff;font-size:28px;margin:0 0 15px;">How to Win More</h2>
             <p style="line-height:1.7;margin-bottom:15px;">
-                Funrize rewards consistent play. Use bonuses wisely, mix volatility levels, and withdraw profits
-                regularly to avoid chasing losses.
+                Funrize rewards consistent play. Use bonuses wisely, mix volatility levels, and withdraw profits often.
             </p>
             <ul style="margin:0;padding-left:20px;line-height:1.7;">
                 <li>Claim daily bonuses & streak rewards</li>
                 <li>Mix low‑ and medium‑volatility slots</li>
                 <li>Set win/loss limits</li>
-                <li>Withdraw profits often</li>
+                <li>Withdraw profits regularly</li>
             </ul>
         </div>
 
-        <!-- SEO SECTION (CONDENSED) -->
-        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid #222;
-                    box-shadow:0 0 12px #000;margin-bottom:30px;">
-            <h2 style="color:#66ccff;font-size:28px;margin:0 0 15px;">Why Players Choose Funrize</h2>
+        <!-- SEO SECTION -->
+        <div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;margin-bottom:30px;">
+            <h2 style="color:#66ccff;font-size:28px;margin:0 0 15px;">Why Players Choose This Platform</h2>
             <p style="line-height:1.7;margin-bottom:15px;">
-                Funrize is known for fast payouts, clean design, and reliable daily rewards. Its mobile‑friendly
-                layout and steady bonus system make it one of the most trusted sweepstakes casinos.
+                Fast payouts, clean design, and reliable daily rewards make this one of the most trusted sweepstakes casinos.
             </p>
 
             <h3 style="color:#66ccff;font-size:24px;margin:20px 0 10px;">Best Games to Play</h3>
             <ul style="margin:0;padding-left:20px;line-height:1.7;">
-                <li>Low‑volatility slots for long sessions</li>
-                <li>Crash‑style games for fast results</li>
-                <li>Instant‑win games for simple gameplay</li>
-                <li>Prize wheel for streak bonuses</li>
+                <li>Low‑volatility slots</li>
+                <li>Crash‑style games</li>
+                <li>Instant‑win games</li>
+                <li>Prize wheel</li>
             </ul>
 
             <h3 style="color:#66ccff;font-size:24px;margin:20px 0 10px;">Bankroll Tips</h3>
@@ -210,20 +198,17 @@
 
         <!-- PAGE VIEW COUNTER -->
         <div style="text-align:center;color:#888;font-size:14px;margin-bottom:40px;">
-            <span id="viewCount">Loading views...</span>
+            <span id="viewCount">Page Views: ...</span>
         </div>
 
+        <!-- ACE COUNTER -->
         <script>
-            fetch(`/api/pageviews?page=funrize`)
-                .then(r => r.json())
-                .then(d => {
-                    const v = d.views ?? d.count ?? d.total;
-                    document.getElementById('viewCount').innerText =
-                        (typeof v === 'number') ? "Page Views: " + v : "Page Views: unavailable";
-                })
-                .catch(() => {
-                    document.getElementById('viewCount').innerText = "Page Views: unavailable";
-                });
+            const pageId="funrize";
+            const key="views_"+pageId;
+            let views=localStorage.getItem(key);
+            views=views?parseInt(views)+1:1;
+            localStorage.setItem(key,views);
+            document.getElementById("viewCount").innerText="Page Views: "+views;
         </script>
 
     </div>
@@ -231,43 +216,9 @@
 
 <!-- FOOTER -->
 <div style="width:100%;background:#111;padding:20px 0;text-align:center;color:#777;
-            border-top:2px solid #333;margin-top:40px;">
+            border-top:2px solid:#333;margin-top:40px;">
     © 2026 FREE‑CASINO‑CHIPS.COM — All Rights Reserved
 </div>
-
-<!-- FAQ JSON-LD -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {
-      "@type":"Question",
-      "name":"Is Funrize legit?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Yes. Funrize operates as a sweepstakes-style casino."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"How fast are payouts?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Most payouts are processed within hours to 1–2 days."
-      }
-    },
-    {
-      "@type":"Question",
-      "name":"Do I need to verify?",
-      "acceptedAnswer":{
-        "@type":"Answer",
-        "text":"Yes. KYC verification is required before your first withdrawal."
-      }
-    }
-  ]
-}
-</script>
 
 </body>
 </html>
