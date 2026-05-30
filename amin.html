@@ -31,52 +31,57 @@
         text-shadow:0 0 6px #000;
     }
 
-    /* Center the list */
+    /* GRID: 5 across */
     #pageList {
-        max-width:420px;
+        display:grid;
+        grid-template-columns:repeat(5, 1fr);
+        gap:12px;
+        max-width:900px;
         margin:0 auto;
-        text-align:left;
     }
 
-    /* Each row */
+    /* Each tile */
     .page-row {
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
         background:#141414;
-        padding:10px 14px;
+        padding:10px;
         border-radius:8px;
         border:1px solid #222;
-        margin-bottom:10px;
-        max-width:420px;
+        text-align:center;
     }
 
-    /* Buttons */
+    /* Button */
     .page-button {
+        display:block;
         background:#66ccff;
         color:#000;
-        padding:8px 16px;
+        padding:8px 10px;
         border-radius:6px;
         font-weight:700;
         text-decoration:none;
-        font-size:16px;
+        font-size:14px;
         box-shadow:0 0 10px #66ccff;
+        margin-bottom:6px;
         white-space:nowrap;
     }
 
-    /* Counters */
+    /* Counter */
     .view-count {
-        font-size:16px;
+        font-size:14px;
         color:#ccc;
-        margin-left:10px;
-        white-space:nowrap;
+        display:block;
+    }
+
+    /* Mobile: 2 across */
+    @media (max-width:700px) {
+        #pageList {
+            grid-template-columns:repeat(2, 1fr);
+        }
     }
 </style>
 </head>
 
 <body>
 
-<!-- Your site logo -->
 <img src="images/site-logo.png" alt="Site Logo" class="logo">
 
 <h1>Admin Panel</h1>
