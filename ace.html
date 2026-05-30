@@ -193,6 +193,14 @@
                 "<p style='color:#888;'>Sidebar unavailable</p>";
         });
 </script>
+<script>
+(function() {
+    const key = "views_ace";
+    const count = parseInt(localStorage.getItem(key) || 0);
+    localStorage.setItem(key, count + 1);
+})();
+</script>
+
 
 </body>
 </html>
