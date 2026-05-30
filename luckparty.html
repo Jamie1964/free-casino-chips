@@ -11,7 +11,7 @@
 <body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
 <!-- HEADER -->
-<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
+<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
     <img src="images/site-logo-ultra-low.png" alt="Free Casino Chips Logo"
          style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
 </div>
@@ -33,7 +33,7 @@ fetch('/sidebar.html')
 <!-- MAIN CONTENT -->
 <div style="flex:1;padding:0 25px;max-width:900px;">
 
-<!-- LOGO (NOW 60%) -->
+<!-- LOGO (60%) -->
 <div style="text-align:center;margin-bottom:25px;">
     <a href="https://luckparty.com/signup/23c2ce10-e5bf-4713-9395-453f6d9a7009" target="_blank" rel="noopener noreferrer">
         <div style="display:inline-block;max-width:900px;width:100%;text-align:center;">
@@ -48,23 +48,26 @@ fetch('/sidebar.html')
 <h1 id="fallback-title" style="display:none;color:#66ccff;font-size:32px;text-align:center;margin:0 0 25px;">LuckParty</h1>
 <h1 style="font-size:1px;height:1px;overflow:hidden;margin:0;padding:0;opacity:0;">LuckParty</h1>
 
-<!-- TOP BUTTON -->
-<div style="text-align:center;margin-bottom:30px;">
-    <a href="https://luckparty.com/signup/23c2ce10-e5bf-4713-9395-453f6d9a7009"
-       target="_blank" rel="noopener noreferrer"
-       style="display:inline-block;background:#66ccff;color:#000;font-weight:900;padding:14px 28px;border-radius:8px;font-size:22px;text-decoration:none;box-shadow:0 0 12px #66ccff;">
-       Claim Offer
-    </a>
+<!-- INTRO BOX WITH BUTTON ON RIGHT -->
+<div style="background:#141414;padding:25px;border-radius:12px;border:2px solid:#66ccff;box-shadow:0 0 18px #66ccff;margin-bottom:35px;display:flex;align-items:center;justify-content:space-between;gap:20px;">
+
+    <div style="flex:1;">
+        <p style="font-size:20px;line-height:1.7;margin:0;">
+            LuckParty brings a bright, upbeat sweepstakes casino experience with fast gameplay, generous bonuses, and a clean interface that feels modern and easy to navigate. With a strong lineup of slots, crash games, and instant‑win titles, LuckParty delivers a high‑energy experience that appeals to both casual players and serious grinders.
+        </p>
+    </div>
+
+    <div style="flex:0 0 auto;text-align:center;">
+        <a href="https://luckparty.com/signup/23c2ce10-e5bf-4713-9395-453f6d9a7009"
+           target="_blank" rel="noopener noreferrer"
+           style="display:inline-block;background:#66ccff;color:#000;font-weight:900;padding:14px 26px;border-radius:8px;font-size:22px;text-decoration:none;box-shadow:0 0 12px #66ccff;white-space:nowrap;">
+           Claim Offer
+        </a>
+    </div>
+
 </div>
 
-<!-- INTRO BOX -->
-<div style="background:#141414;padding:25px;border-radius:12px;border:2px solid:#66ccff;box-shadow:0 0 18px #66ccff;margin-bottom:35px;text-align:center;">
-    <p style="font-size:20px;line-height:1.7;margin:0;">
-        LuckParty brings a bright, upbeat sweepstakes casino experience with fast gameplay, generous bonuses, and a clean interface that feels modern and easy to navigate. With a strong lineup of slots, crash games, and instant‑win titles, LuckParty delivers a high‑energy experience that appeals to both casual players and serious grinders.
-    </p>
-</div>
-
-<!-- TWO-COLUMN SECTIONS -->
+<!-- FEATURE ROW 1 -->
 <div style="display:flex;gap:20px;margin-bottom:30px;">
     <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid #222;">
         <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Welcome Bonus</h2>
@@ -87,6 +90,7 @@ fetch('/sidebar.html')
     </div>
 </div>
 
+<!-- FEATURE ROW 2 -->
 <div style="display:flex;gap:20px;margin-bottom:30px;">
     <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
         <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Why I Like LuckParty</h2>
@@ -111,6 +115,7 @@ fetch('/sidebar.html')
     </div>
 </div>
 
+<!-- FEATURE ROW 3 -->
 <div style="display:flex;gap:20px;margin-bottom:30px;">
     <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
         <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Payouts & Banking</h2>
@@ -132,16 +137,31 @@ fetch('/sidebar.html')
         </ul>
     </div>
 </div>
+<!-- RESTRICTED STATES + SLOT TYPES (SIDE‑BY‑SIDE) -->
+<div style="display:flex;gap:20px;margin-bottom:30px;">
 
-<!-- RESTRICTED STATES -->
-<div style="background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;margin-bottom:30px;">
-    <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Restricted States</h2>
-    <ul style="margin:0;padding-left:20px;line-height:1.6;">
-        <li>Washington</li>
-        <li>Idaho</li>
-        <li>Michigan</li>
-        <li>Nevada</li>
-    </ul>
+    <!-- RESTRICTED STATES -->
+    <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
+        <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Restricted States</h2>
+        <ul style="margin:0;padding-left:20px;line-height:1.6;">
+            <li>Washington</li>
+            <li>Idaho</li>
+            <li>Michigan</li>
+            <li>Nevada</li>
+        </ul>
+    </div>
+
+    <!-- SLOT TYPES -->
+    <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
+        <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Slot Types</h2>
+        <ul style="margin:0;padding-left:20px;line-height:1.6;">
+            <li>Low‑variance slots for longer play sessions</li>
+            <li>High‑volatility jackpot titles</li>
+            <li>Bonus‑heavy Hold & Win games</li>
+            <li>Seasonal and event‑themed releases</li>
+        </ul>
+    </div>
+
 </div>
 
 <!-- LONG CONTENT -->
@@ -152,14 +172,6 @@ fetch('/sidebar.html')
 
     <h2 style="color:#66ccff;">Game Library Breakdown</h2>
     <p>LuckParty offers a balanced mix of classic and modern titles. Slots make up the majority of the library, but the casino also includes crash games, instant wins, and Hold & Win jackpots.</p>
-
-    <h3 style="color:#66ccff;">Slot Types</h3>
-    <ul>
-        <li>Low‑variance slots for longer play sessions</li>
-        <li>High‑volatility jackpot titles</li>
-        <li>Bonus‑heavy Hold & Win games</li>
-        <li>Seasonal and event‑themed releases</li>
-    </ul>
 
     <h3 style="color:#66ccff;">Mobile Performance</h3>
     <p>LuckParty performs extremely well on mobile browsers. Load times are fast, animations are smooth, and the interface is optimized for one‑handed play.</p>
@@ -218,4 +230,5 @@ document.getElementById("page-views").innerText = "Page views: " + views;
 
 </body>
 </html>
+
 
