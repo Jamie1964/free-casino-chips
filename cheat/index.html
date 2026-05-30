@@ -469,6 +469,14 @@ function exportJSON() {
     URL.revokeObjectURL(url);
 }
 </script>
+<script>
+(function() {
+    const key = "views_cheat";
+    const count = parseInt(localStorage.getItem(key) || 0);
+    localStorage.setItem(key, count + 1);
+})();
+</script>
+
 
 </body>
 </html>
