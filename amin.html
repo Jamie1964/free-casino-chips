@@ -12,11 +12,18 @@
         margin:0;
         padding:20px;
     }
+    .logo {
+        width:80%;
+        max-width:320px;
+        display:block;
+        margin:0 auto 20px;
+        filter:drop-shadow(0 0 8px #000);
+    }
     h1 {
         text-align:center;
-        margin-bottom:30px;
+        margin-bottom:20px;
         color:#66ccff;
-        font-size:32px;
+        font-size:28px;
     }
     .page-row {
         display:flex;
@@ -47,37 +54,40 @@
 
 <body>
 
+<img src="images/site-logo.png" alt="Site Logo" class="logo">
+
 <h1>Admin Panel</h1>
 
 <div id="pageList"></div>
 
 <script>
-// AUTO-DETECT ALL HTML FILES EXCEPT amin.html
+// Load sidebar.html and extract all links
 async function loadPages() {
     try {
-        const response = await fetch("/");
-        const text = await response.text();
+        const response = await fetch("sidebar.html");
+        const html = await response.text();
 
-        // Extract .html files from directory listing
+        // Extract all .html links from sidebar
         const regex = /href="([^"]+\.html)"/g;
         let match;
-        const pages = [];
+        const pages = new Set();
 
-        while ((match = regex.exec(text)) !== null) {
+        while ((match = regex.exec(html)) !== null) {
             const file = match[1];
 
             // Exclude amin.html itself
             if (file.toLowerCase() !== "amin.html") {
-                pages.push(file);
+                pages.add(file);
             }
         }
 
-        // Sort alphabetically for consistency
-        pages.sort();
+        // Add index.html manually (not always in sidebar)
+        pages.add("index.html");
 
+        const sorted = Array.from(pages).sort();
         const container = document.getElementById("pageList");
 
-        pages.forEach(page => {
+        sorted.forEach(page => {
             const id = "views_" + page.replace(".html", "").replace(/-/g, "_");
 
             const row = document.createElement("div");
@@ -99,7 +109,7 @@ async function loadPages() {
     }
 }
 
-// LOCALSTORAGE COUNTER LOADER
+// LocalStorage counter loader
 function updateCount(elementId, storageKey) {
     let count = parseInt(localStorage.getItem(storageKey) || "0");
     document.getElementById(elementId).textContent = count;
