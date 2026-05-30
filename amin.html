@@ -84,27 +84,47 @@
 </style>
 
 <script>
+/* ---------------------------------------------------------
+   AUTO-DETECT PAGE ID FROM FILENAME
+   Example: "ace.html" → "ace"
+--------------------------------------------------------- */
+function getPageIdFromHref(href) {
+    if (!href) return null;
+    const file = href.split("/").pop();      // "ace.html"
+    return file.replace(".html", "");        // "ace"
+}
+
+/* ---------------------------------------------------------
+   LOAD COUNTS FOR ALL BUTTONS
+--------------------------------------------------------- */
 function loadCounts() {
     let totalViews = 0;
 
-    // Load button counts (all pages with data-page)
     const items = document.querySelectorAll("[data-page]");
     items.forEach(btn => {
-        const page = btn.getAttribute("data-page");
-        const count = parseInt(localStorage.getItem("views_" + page) || 0);
-        btn.textContent = btn.getAttribute("data-name") + " — " + count;
+        const href = btn.getAttribute("href");
+        const autoId = getPageIdFromHref(href);
+
+        // Use auto-detected ID instead of data-page
+        const pageId = autoId || btn.getAttribute("data-page");
+        const name = btn.getAttribute("data-name");
+
+        const count = parseInt(localStorage.getItem("views_" + pageId) || 0);
+
+        btn.textContent = name + " — " + count;
+
         totalViews += count;
     });
 
-    // Index views (explicit)
+    // Explicit counters
     const indexViews = parseInt(localStorage.getItem("views_index") || 0);
-    document.getElementById("indexViews").textContent = indexViews;
-
-    // Cheat views (explicit counter shown under Index Views)
     const cheatViews = parseInt(localStorage.getItem("views_cheat") || 0);
+
+    document.getElementById("indexViews").textContent = indexViews;
     document.getElementById("cheatViews").textContent = cheatViews;
 
-    // Update totals (items loop already summed all pages including cheat and index)
+    totalViews += indexViews + cheatViews;
+
     document.getElementById("totalViews").textContent = totalViews;
 }
 
@@ -124,7 +144,6 @@ window.onload = loadCounts;
     <a class="btn" href="index.html" data-page="index" data-name="Home"></a>
     <a class="btn" href="games.html" data-page="games" data-name="Slot Games"></a>
     <a class="btn" href="poker.html" data-page="poker" data-name="Poker"></a>
-    <!-- Cheatsheet button (points to cheat/index.html in the root/cheat folder) -->
     <a class="btn" href="cheat/index.html" data-page="cheat" data-name="Cheatsheet"></a>
 </div>
 
@@ -161,14 +180,14 @@ window.onload = loadCounts;
     <a class="btn" href="casinoclick.html" data-page="casinoclick" data-name="CasinoClick"></a>
     <a class="btn" href="chipnwin.html" data-page="chipnwin" data-name="ChipNWin"></a>
     <a class="btn" href="cidercasino.html" data-page="cidercasino" data-name="CiderCasino"></a>
-    <a class="btn" href="coinsback.html" data-page="coinsback" data-name="CoinsBack"></a>
+    <a class="btn" href="coinsbackcasino.html" data-page="coinsbackcasino" data-name="CoinsBackCasino"></a>
     <a class="btn" href="coinz.html" data-page="coinz" data-name="Coinz"></a>
 
     <a class="btn" href="epicsweep.html" data-page="epicsweep" data-name="EpicSweep"></a>
     <a class="btn" href="firesevens.html" data-page="firesevens" data-name="FireSevens"></a>
     <a class="btn" href="fortunewheelz.html" data-page="fortunewheelz" data-name="FortuneWheelz"></a>
     <a class="btn" href="funrize.html" data-page="funrize" data-name="Funrize"></a>
-    <a class="btn" href="goldenheartsgames.html" data-page="goldenheartsgames" data-name="GoldenHeartsGames"></a>
+    <a class="btn" href="goldenhearts.html" data-page="goldenhearts" data-name="GoldenHearts"></a>
 
     <a class="btn" href="goodvibes.html" data-page="goodvibes" data-name="GoodVibes"></a>
     <a class="btn" href="hellomillions.html" data-page="hellomillions" data-name="HelloMillions"></a>
@@ -202,7 +221,7 @@ window.onload = loadCounts;
 
     <a class="btn" href="spinblitz.html" data-page="spinblitz" data-name="SpinBlitz"></a>
     <a class="btn" href="spindoo.html" data-page="spindoo" data-name="Spindoo"></a>
-    <a class="btn" href="spinsagacasino.html" data-page="spinsagacasino" data-name="SpinSagaCasino"></a>
+    <a class="btn" href="spinsagacasino.html" data-page="spinsaga" data-name="SpinSagaCasino"></a>
     <a class="btn" href="sportzino.html" data-page="sportzino" data-name="Sportzino"></a>
     <a class="btn" href="spree.html" data-page="spree" data-name="Spree"></a>
 
