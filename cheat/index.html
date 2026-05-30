@@ -1,3 +1,4 @@
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +63,6 @@
         background: #555;
     }
 
-    /* 3‑column responsive grid */
     .grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -82,7 +82,6 @@
         }
     }
 
-    /* Casino button */
     .casino-btn {
         display: flex;
         align-items: center;
@@ -120,12 +119,13 @@
 <body>
 
 <div style="text-align:center; margin-bottom: 25px;">
-    <img src="images/logotransparent.png" 
-         alt="Site Logo" 
+    <img src="images/logotransparent.png"
+         alt="Site Logo"
          style="width:70%; max-width:500px;">
 </div>
+
 <div style="text-align:center; margin-bottom: 20px;">
-    <a href="https://www.free-casino-chips.com" 
+    <a href="https://www.free-casino-chips.com"
        style="
            display:inline-block;
            padding:10px 20px;
@@ -140,14 +140,19 @@
     </a>
 </div>
 
-
-
 <h1>Casino Cheat Sheet</h1>
 
 <div class="instructions">
-    This cheat sheet helps you collect your daily free chips quickly and efficiently. Each link opens in a new tab so you can claim your rewards, close the tab, and <strong>you</strong> return here to continue. Your progress is automatically saved using localStorage, so you can pick up where you left off anytime.
+    This cheat sheet helps you collect your daily free chips quickly and efficiently.
+    Each link opens in a new tab so you can claim your rewards, close the tab, and
+    <strong>you</strong> return here to continue. Your progress is automatically saved
+    using localStorage, so you can pick up where you left off anytime.
     <br><br>
-    This cheat sheet is used to collect your daily gift of chips — visit every day and collect them all. Each time you click a link it opens in a new tab. When you are finished collecting all your gifts on the casino site you close that tab and <strong>you</strong> come back to this page and click the next casino; repeat until you have collected all your daily free chips. (You can also use this page to create an account on each casino site.)
+    This cheat sheet is used to collect your daily gift of chips — visit every day and
+    collect them all. Each time you click a link it opens in a new tab. When you are
+    finished collecting all your gifts on the casino site you close that tab and
+    <strong>you</strong> come back to this page and click the next casino; repeat until
+    you have collected all your daily free chips.
 </div>
 
 <input type="text" id="searchBox" placeholder="Search casinos...">
@@ -159,8 +164,9 @@
     <button onclick="exportJSON()">Export JSON</button>
 </div>
 
-<!-- BEGIN CASINO GRID -->
 <div class="grid">
+
+    <!-- A -->
     <a class="casino-btn" data-id="ace" href="https://www.ace.com/?r=4333fa1d%2F42862933" target="_blank">
         <input type="checkbox">
         <span class="casino-name">Ace</span>
@@ -171,6 +177,7 @@
         <span class="casino-name">AmericanLuck</span>
     </a>
 
+    <!-- B -->
     <a class="casino-btn" data-id="babacasino" href="https://play.babacasino.com/#/?referral_id=f06633476f2ed3ac374f5b43bb18c51c&inv_referral=true&fb_source=invite" target="_blank">
         <input type="checkbox">
         <span class="casino-name">BabaCasino</span>
@@ -181,34 +188,25 @@
         <span class="casino-name">BangCoins</span>
     </a>
 
+    <!-- C -->
     <a class="casino-btn" data-id="cashoomo" href="https://cashoomo.com/?referralCode=JH8QLG3YWP8S" target="_blank">
         <input type="checkbox">
         <span class="casino-name">Cashoomo</span>
     </a>
 
-    <a class="casino-btn" data-id="casino-click" href="https://casino.click/?modal=iqs-sign-up&ReferenceCode=372778&AffiliatePlatformId=200" target="_blank">
+    <a class="casino-btn" data-id="casinoclick" href="https://casino.click/?modal=iqs-sign-up&ReferenceCode=372778&AffiliatePlatformId=200" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">Casino.Click</span>
+        <span class="casino-name">CasinoClick</span>
     </a>
 
     <a class="casino-btn" data-id="chipnwin" href="https://chipnwin.com/?earn=EQ9wKNS3" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">ChipnWin</span>
+        <span class="casino-name">ChipNWin</span>
     </a>
 
     <a class="casino-btn" data-id="cidercasino" href="https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S" target="_blank">
         <input type="checkbox">
         <span class="casino-name">CiderCasino</span>
-    </a>
-
-    <a class="casino-btn" data-id="clubwptgold" href="https://www.clubwpt.com/" target="_blank">
-        <input type="checkbox">
-        <span class="casino-name">ClubWPT Gold</span>
-    </a>
-
-    <a class="casino-btn" data-id="clubspoker" href="https://www.clubspoker.com/?ref=jamie1964" target="_blank">
-        <input type="checkbox">
-        <span class="casino-name">ClubsPoker</span>
     </a>
 
     <a class="casino-btn" data-id="coinsbackcasino" href="https://www.coinsbackcasino.com/invite/1542138?utm_source=copy&utm_medium=referral&utm_campaign=member-referral" target="_blank">
@@ -218,14 +216,27 @@
 
     <a class="casino-btn" data-id="coinz" href="https://coinz.us/?referral_code=2f3ba786b44e5184" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">Coinz.us</span>
+        <span class="casino-name">Coinz</span>
     </a>
 
+    <!-- ClubsPoker + ClubWPT Gold -->
+    <a class="casino-btn" data-id="clubspoker" href="https://www.clubspoker.com/?ref=jamie1964" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">ClubsPoker</span>
+    </a>
+
+    <a class="casino-btn" data-id="clubwptgold" href="https://www.clubwpt.com/" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">ClubWPT Gold</span>
+    </a>
+
+    <!-- E -->
     <a class="casino-btn" data-id="epicsweep" href="https://epicsweep.us?ref=48272_jamie1964" target="_blank">
         <input type="checkbox">
         <span class="casino-name">EpicSweep</span>
     </a>
 
+    <!-- F -->
     <a class="casino-btn" data-id="firesevens" href="http://firesevens.com/?invited_by=K4N5OQ" target="_blank">
         <input type="checkbox">
         <span class="casino-name">FireSevens</span>
@@ -246,14 +257,14 @@
         <span class="casino-name">FunzCity</span>
     </a>
 
-    <a class="casino-btn" data-id="goldenhearts" href="https://www.goldenheartsgames.com/referral/YUX9OSX4U2" target="_blank">
+    <a class="casino-btn" data-id="goldenheartsgames" href="https://www.goldenheartsgames.com/referral/YUX9OSX4U2" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">GoldenHearts</span>
+        <span class="casino-name">GoldenHeartsGames</span>
     </a>
 
     <a class="casino-btn" data-id="goodvibes" href="https://goodvibescasino.com/?r=CXT718DTJO" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">GoodVibesCasino</span>
+        <span class="casino-name">GoodVibes</span>
     </a>
 
     <a class="casino-btn" data-id="hellomillions" href="https://www.hellomillions.com/lp/raf?r=8f3817ef%2F1463962580" target="_blank">
@@ -261,7 +272,7 @@
         <span class="casino-name">HelloMillions</span>
     </a>
 
-    <a class="casino-btn" data-id="high5" href="https://high5casino.com/gc?openRegOnInit=1&adId=INV001%3AJamie1964" target="_blank">
+    <a class="casino-btn" data-id="high5casino" href="https://high5casino.com/gc?openRegOnInit=1&adId=INV001%3AJamie1964" target="_blank">
         <input type="checkbox">
         <span class="casino-name">High5Casino</span>
     </a>
@@ -296,9 +307,55 @@
         <span class="casino-name">LuckParty</span>
     </a>
 
+
+
+
+   <!-- M -->
+    <a class="casino-btn" data-id="mcluck" href="https://mcluck.com/?ref=jamie1964" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">McLuck</span>
+    </a>
+
+    <a class="casino-btn" data-id="modo" href="https://modo.com/?ref=jamie1964" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">Modo</span>
+    </a>
+
+    <a class="casino-btn" data-id="moozi" href="https://moozi.com/?ref=jamie1964" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">Moozi</span>
+    </a>
+
+    <a class="casino-btn" data-id="mrgoodwin" href="https://mrgoodwin.com/?ref=jamie1964" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">MrGoodwin</span>
+    </a>
+
     <a class="casino-btn" data-id="myprizeus" href="https://myprize.us/invite/Jamie1964" target="_blank">
         <input type="checkbox">
         <span class="casino-name">MyPrizeUS</span>
+    </a>
+
+    <!-- N -->
+    <a class="casino-btn" data-id="newluck" href="https://newluck.com/?ref=jamie1964" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">NewLuck</span>
+    </a>
+
+    <a class="casino-btn" data-id="nolimitcoins" href="https://nolimitcoins.com/?ref=jamie1964" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">NoLimitCoins</span>
+    </a>
+
+    <!-- P -->
+    <a class="casino-btn" data-id="playfame" href="https://playfame.com/?ref=jamie1964" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">PlayFame</span>
+    </a>
+
+    <a class="casino-btn" data-id="playtana" href="https://playtana.com/?ref=jamie1964" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">PlayTana</span>
     </a>
 
     <a class="casino-btn" data-id="pulsz" href="https://www.pulsz.com/?ref=jamie1964" target="_blank">
@@ -306,76 +363,91 @@
         <span class="casino-name">Pulsz</span>
     </a>
 
-    <a class="casino-btn" data-id="queenplay" href="https://queenplay.com/?ref=jamie1964" target="_blank">
+    <!-- R -->
+    <a class="casino-btn" data-id="rolla" href="https://rolla.com/?ref=jamie1964" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">QueenPlay</span>
+        <span class="casino-name">Rolla</span>
     </a>
 
-    <a class="casino-btn" data-id="richprize" href="https://richprize.com/?ref=jamie1964" target="_blank">
+    <!-- S -->
+    <a class="casino-btn" data-id="scarletsands" href="https://scarletsands.com/?ref=jamie1964" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">RichPrize</span>
+        <span class="casino-name">ScarletSands</span>
     </a>
 
-    <a class="casino-btn" data-id="riverbet" href="https://riverbet.com/?ref=jamie1964" target="_blank">
+    <a class="casino-btn" data-id="sixty6" href="https://sixty6.com/?ref=jamie1964" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">RiverBet</span>
+        <span class="casino-name">Sixty6</span>
     </a>
 
-    <a class="casino-btn" data-id="sweepium" href="https://sweepium.com/?ref=jamie1964" target="_blank">
+    <a class="casino-btn" data-id="speedsweeps" href="https://speedsweeps.com/?ref=jamie1964" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">Sweepium</span>
+        <span class="casino-name">SpeedSweeps</span>
     </a>
 
-    <a class="casino-btn" data-id="sweepstastic" href="https://sweepstastic.com/?ref=jamie1964" target="_blank">
+    <a class="casino-btn" data-id="spinblitz" href="https://spinblitz.com/?ref=jamie1964" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">Sweepstastic</span>
+        <span class="casino-name">SpinBlitz</span>
     </a>
 
-    <a class="casino-btn" data-id="sweepstakescasino" href="https://sweepstakescasino.com/?ref=jamie1964" target="_blank">
+    <a class="casino-btn" data-id="spindoo" href="https://spindoo.com/?ref=jamie1964" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">SweepstakesCasino</span>
+        <span class="casino-name">Spindoo</span>
     </a>
 
-    <a class="casino-btn" data-id="sweepstakesplus" href="https://sweepstakesplus.com/?ref=jamie1964" target="_blank">
+    <a class="casino-btn" data-id="spinsagacasino" href="https://spinsagacasino.com/?ref=jamie1964" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">SweepstakesPlus</span>
+        <span class="casino-name">SpinSagaCasino</span>
     </a>
 
-    <a class="casino-btn" data-id="sweeptastic" href="https://sweeptastic.com/?ref=jamie1964" target="_blank">
+    <a class="casino-btn" data-id="sportzino" href="https://sportzino.com/?ref=jamie1964" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">Sweeptastic</span>
+        <span class="casino-name">Sportzino</span>
     </a>
 
-    <a class="casino-btn" data-id="thunderpick" href="https://thunderpick.com/?ref=jamie1964" target="_blank">
+    <a class="casino-btn" data-id="spree" href="https://spree.com/?ref=jamie1964" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">ThunderPick</span>
+        <span class="casino-name">Spree</span>
     </a>
 
-    <a class="casino-btn" data-id="tiger777" href="https://tiger777.com/?ref=jamie1964" target="_blank">
+    <a class="casino-btn" data-id="stormrush" href="https://stormrush.com/?ref=jamie1964" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">Tiger777</span>
+        <span class="casino-name">StormRush</span>
     </a>
 
-    <a class="casino-btn" data-id="vegas7" href="https://vegas7.com/?ref=jamie1964" target="_blank">
+    <a class="casino-btn" data-id="sweepico" href="https://sweepico.com/?invited_by=3JUCAU" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">Vegas7</span>
+        <span class="casino-name">Sweepico</span>
     </a>
 
-    <a class="casino-btn" data-id="vegasluck" href="https://vegasluck.com/?ref=jamie1964" target="_blank">
+    <a class="casino-btn" data-id="sweepsblast" href="https://sweepsblast.com/?invitedby=43Ksd2tfPAbSq_h" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">VegasLuck</span>
+        <span class="casino-name">SweepsBlast</span>
     </a>
 
-    <a class="casino-btn" data-id="vegasworld" href="https://www.vegasworld.com/?ref=jamie1964" target="_blank">
+    <a class="casino-btn" data-id="sweepshark" href="http://sweepshark.com/?invited_by=FVAQ3B" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">VegasWorld</span>
+        <span class="casino-name">SweepsHark</span>
     </a>
 
-    <a class="casino-btn" data-id="winbig" href="https://winbig.com/?ref=jamie1964" target="_blank">
+    <!-- T -->
+    <a class="casino-btn" data-id="taofortune" href="https://taofortune.com/?invited_by=2TGIZS" target="_blank">
         <input type="checkbox">
-        <span class="casino-name">WinBig</span>
+        <span class="casino-name">TaoFortune</span>
     </a>
 
+    <a class="casino-btn" data-id="thewinzone" href="https://thewinzone.com/?ref=jamie1964" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">TheWinZone</span>
+    </a>
+
+    <!-- V -->
+    <a class="casino-btn" data-id="vegasway" href="https://vegasway.com/?ref=jamie1964" target="_blank">
+        <input type="checkbox">
+        <span class="casino-name">VegasWay</span>
+    </a>
+
+    <!-- W -->
     <a class="casino-btn" data-id="winbonanza" href="https://winbonanza.com/register/8584d56d-85b9-4550-ae0b-cae8adc3d598" target="_blank">
         <input type="checkbox">
         <span class="casino-name">WinBonanza</span>
@@ -386,11 +458,13 @@
         <span class="casino-name">WowVegas</span>
     </a>
 
+    <!-- Y -->
     <a class="casino-btn" data-id="yaycasino" href="https://www.yaycasino.com/signup/b34047a0-15a9-4e86-8eaf-c49ef3a39c45" target="_blank">
         <input type="checkbox">
         <span class="casino-name">YayCasino</span>
     </a>
 
+    <!-- Z -->
     <a class="casino-btn" data-id="zulacasino" href="https://www.zulacasino.com/signup/402c0581-799e-4dba-8445-b066fca4a2f1" target="_blank">
         <input type="checkbox">
         <span class="casino-name">ZulaCasino</span>
@@ -469,6 +543,7 @@ function exportJSON() {
     URL.revokeObjectURL(url);
 }
 </script>
+
 <script>
 (function() {
     const key = "views_cheat";
@@ -477,8 +552,6 @@ function exportJSON() {
 })();
 </script>
 
-
 </body>
 </html>
-
 
