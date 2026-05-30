@@ -13,10 +13,10 @@
     --accent:#0b74de;
   }
   html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;color:var(--text);background:var(--bg)}
-  .container{max-width:1100px;margin:20px auto;padding:16px}
-  /* Logo area placed at the very top */
+  /* Top logo: centered, large (about 70% width of container) */
   .top-logo-wrap{width:100%;display:flex;justify-content:center;padding:18px 0 6px;background:transparent}
   .top-logo{width:70%;max-width:980px;height:auto;display:block}
+  .container{max-width:1100px;margin:20px auto;padding:16px}
   header{display:flex;flex-direction:column;gap:12px;margin-bottom:12px;align-items:flex-start}
   .title-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
   h1{font-size:20px;margin:0}
@@ -37,9 +37,7 @@
   .small{font-size:13px;color:var(--muted)}
   footer{margin-top:28px}
   @media (max-width:980px){ .list{grid-template-columns:repeat(2,1fr)} .search input{width:200px} }
-  @media (max-width:900px){
-    .top-logo{width:85%}
-  }
+  @media (max-width:900px){ .top-logo{width:85%} }
   @media (max-width:640px){
     .list{grid-template-columns:1fr}
     .search input{width:100%}
@@ -51,7 +49,9 @@
 <body>
   <!-- LOGO: placed at the very top, centered, ~70% width of page -->
   <div class="top-logo-wrap" aria-hidden="false">
-    <img class="top-logo" src="/images/site-logo-ultra-low.png" alt="Site logo">
+    <!-- Using the new transparent logo file in the images folder at site root.
+         Spaces in the filename are URL-encoded. Cache-busted with ?v=2 so browsers pick up the new file. -->
+    <img class="top-logo" src="/images/site%20logo%20transparent.jpeg?v=2" alt="Free Casino Chips logo">
   </div>
 
   <div class="container" role="main" aria-label="Casino cheat sheet index">
@@ -86,7 +86,7 @@
 
     <section class="list-wrap" aria-live="polite">
       <ul class="list" id="linkList" aria-label="Cheat links">
-        <!-- (list items unchanged) -->
+        <!-- Full link list (each item has data-id used for localStorage) -->
         <li class="item" data-id="ace">
           <div class="checkbox"><input type="checkbox" id="chk-ace" aria-label="Mark Ace as opened"></div>
           <div class="meta">
@@ -688,23 +688,49 @@
 })();
 </script>
 
-<!-- FIXED COUNTER SCRIPT -->
+<!-- COUNTER DEBUG + ROBUST FETCH: tries multiple page parameter variants and logs details -->
 <script>
-  (function(){
-    const viewEl = document.getElementById('viewCount');
-    fetch(`/api/pageviews?page=cheat/index.html`)
-      .then(r => r.json())
-      .then(d => {
-        if (d && typeof d.views !== 'undefined') {
-          viewEl.innerText = "Page Views: " + d.views;
+(function(){
+  function setText(t){ const el = document.getElementById('viewCount'); if (el) el.innerText = t; }
+  async function tryFetch(pageParam){
+    const url = '/api/pageviews?page=' + encodeURIComponent(pageParam);
+    const res = await fetch(url, {cache:'no-store'});
+    if (!res.ok) throw new Error('HTTP ' + res.status + ' ' + res.statusText);
+    const text = await res.text();
+    // Try parse JSON safely
+    try {
+      return JSON.parse(text);
+    } catch(e) {
+      // If server returned non-JSON, throw with raw text for debugging
+      const err = new Error('Invalid JSON response');
+      err.raw = text;
+      throw err;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', async function(){
+    setText('Loading views...');
+    const candidates = ['cheat/index.html','cheat/','cheat'];
+    for (const p of candidates) {
+      try {
+        console.info('pageviews: trying', p);
+        const data = await tryFetch(p);
+        console.info('pageviews: response for', p, data);
+        if (data && typeof data.views !== 'undefined') {
+          setText('Page Views: ' + data.views);
+          return;
         } else {
-          viewEl.innerText = "Page Views: unavailable";
+          console.warn('pageviews: no views property in response for', p, data);
         }
-      })
-      .catch(() => {
-        viewEl.innerText = "Page Views: unavailable";
-      });
-  })();
+      } catch (err) {
+        console.warn('pageviews fetch error for', p, err);
+        // If server returned raw text, log it for debugging
+        if (err.raw) console.log('Raw response text:', err.raw);
+      }
+    }
+    setText('Page Views: unavailable (see console)');
+  });
+})();
 </script>
 </body>
 </html>
