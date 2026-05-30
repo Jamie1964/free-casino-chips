@@ -2,247 +2,111 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AMIN PANEL</title>
-
+<title>Admin Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
     body {
-        background:#0d1117;
-        color:white;
-        font-family:Arial, sans-serif;
+        background:#0d0d0d;
+        color:#fff;
+        font-family:Arial,Helvetica,sans-serif;
         margin:0;
-        padding:25px;
+        padding:20px;
     }
-
     h1 {
         text-align:center;
-        color:#ffcc33;
-        margin-bottom:25px;
+        margin-bottom:30px;
+        color:#66ccff;
         font-size:32px;
     }
-
-    h2 {
-        color:#66ccff;
-        margin:25px 0 10px;
-        font-size:22px;
-    }
-
-    /* GRID */
-    .grid {
-        display:grid;
-        grid-template-columns:repeat(5, 1fr);
-        gap:10px;
-        margin-bottom:30px;
-    }
-
-    @media (max-width:1100px) {
-        .grid {
-            grid-template-columns:repeat(3, 1fr);
-        }
-    }
-
-    /* BUTTONS */
-    .btn {
-        display:block;
-        background:#0b1020;
-        border:2px solid #66ccff;
-        border-radius:8px;
-        padding:10px 6px;
-        text-decoration:none;
-        color:#66ccff;
-        font-weight:bold;
-        font-size:14px;
-        text-align:center;
-        white-space:nowrap;
-        overflow:hidden;
-        text-overflow:ellipsis;
-        box-shadow:0 0 6px #66ccff;
-        transition:.25s;
-    }
-
-    .btn:hover {
-        background:#111a33;
-        box-shadow:0 0 12px #66ccff;
-    }
-
-    /* STATS BAR */
-    .stats {
-        background:#111a33;
-        border:2px solid #ffcc33;
-        padding:12px 15px;
-        border-radius:10px;
-        margin:10px 0 25px;
-        font-size:18px;
-        color:#ffcc33;
+    .page-row {
         display:flex;
         justify-content:space-between;
-        max-width:900px;
-        gap:12px;
         align-items:center;
+        background:#141414;
+        padding:14px 18px;
+        border-radius:8px;
+        border:1px solid #222;
+        margin-bottom:12px;
     }
-
-    .stats div { min-width:140px; text-align:center; }
+    .page-button {
+        background:#66ccff;
+        color:#000;
+        padding:10px 20px;
+        border-radius:6px;
+        font-weight:700;
+        text-decoration:none;
+        font-size:18px;
+        box-shadow:0 0 10px #66ccff;
+    }
+    .view-count {
+        font-size:18px;
+        color:#ccc;
+    }
 </style>
-
-<script>
-function getFileIdFromHref(href) {
-    if (!href) return null;
-    const file = href.split("/").pop();   // "ace.html" or "index.html"
-    if (!file.endsWith(".html")) return null;
-    return file.replace(".html", "");     // "ace"
-}
-
-function loadCounts() {
-    let totalViews = 0;
-
-    const items = document.querySelectorAll("[data-page]");
-    items.forEach(btn => {
-        const dataId = btn.getAttribute("data-page");   // e.g. "ace"
-        const href = btn.getAttribute("href") || "";
-        const fileId = getFileIdFromHref(href);         // e.g. "ace"
-
-        const name = btn.getAttribute("data-name");
-
-        const keyData = "views_" + dataId;
-        const keyFile = fileId ? "views_" + fileId : null;
-
-        const countData = parseInt(localStorage.getItem(keyData) || 0);
-        const countFile = keyFile ? parseInt(localStorage.getItem(keyFile) || 0) : 0;
-
-        // Prefer the one that actually has a value
-        let count = 0;
-        if (countData > 0 || (countData === 0 && countFile === 0)) {
-            count = countData;
-        } else {
-            count = countFile;
-        }
-
-        btn.textContent = name + " — " + count;
-        totalViews += count;
-    });
-
-    // Explicit counters for display
-    const indexViews = parseInt(localStorage.getItem("views_index") || 0);
-    const cheatViews = parseInt(localStorage.getItem("views_cheat") || 0);
-
-    document.getElementById("indexViews").textContent = indexViews;
-    document.getElementById("cheatViews").textContent = cheatViews;
-
-    document.getElementById("totalViews").textContent = totalViews;
-}
-
-window.onload = loadCounts;
-</script>
-
 </head>
+
 <body>
 
-<h1>AMIN CONTROL PANEL</h1>
+<h1>Admin Panel</h1>
 
-<!-- ===================== -->
-<!-- NAVIGATION -->
-<!-- ===================== -->
-<h2>Navigation</h2>
-<div class="grid">
-    <a class="btn" href="index.html" data-page="index" data-name="Home"></a>
-    <a class="btn" href="games.html" data-page="games" data-name="Slot Games"></a>
-    <a class="btn" href="poker.html" data-page="poker" data-name="Poker"></a>
-    <!-- Cheatsheet button (points to cheat/index.html in the root/cheat folder) -->
-    <a class="btn" href="cheat/index.html" data-page="cheat" data-name="Cheatsheet"></a>
-</div>
+<div id="pageList"></div>
 
-<!-- ===================== -->
-<!-- TOTALS BAR -->
-<!-- ===================== -->
-<div class="stats">
-    <div>Index Views: <span id="indexViews">0</span></div>
-    <div>Cheat Views: <span id="cheatViews">0</span></div>
-    <div>Total Views: <span id="totalViews">0</span></div>
-</div>
+<script>
+// AUTO-DETECT ALL HTML FILES EXCEPT amin.html
+async function loadPages() {
+    try {
+        const response = await fetch("/");
+        const text = await response.text();
 
-<!-- ===================== -->
-<!-- POKER SITES -->
-<!-- ===================== -->
-<h2>Poker Sites</h2>
-<div class="grid">
-    <a class="btn" href="clubspoker.html" data-page="clubspoker" data-name="ClubsPoker"></a>
-    <a class="btn" href="clubwptgold.html" data-page="clubwptgold" data-name="ClubWPT Gold"></a>
-</div>
+        // Extract .html files from directory listing
+        const regex = /href="([^"]+\.html)"/g;
+        let match;
+        const pages = [];
 
-<!-- ===================== -->
-<!-- CASINOS -->
-<!-- ===================== -->
-<h2>Casinos</h2>
-<div class="grid">
+        while ((match = regex.exec(text)) !== null) {
+            const file = match[1];
 
-    <a class="btn" href="ace.html" data-page="ace" data-name="Ace"></a>
-    <a class="btn" href="americanluck.html" data-page="americanluck" data-name="AmericanLuck"></a>
-    <a class="btn" href="babacasino.html" data-page="babacasino" data-name="BabaCasino"></a>
-    <a class="btn" href="bangcoins.html" data-page="bangcoins" data-name="BangCoins"></a>
-    <a class="btn" href="cashoomo.html" data-page="cashoomo" data-name="Cashoomo"></a>
+            // Exclude amin.html itself
+            if (file.toLowerCase() !== "amin.html") {
+                pages.push(file);
+            }
+        }
 
-    <a class="btn" href="casinoclick.html" data-page="casinoclick" data-name="CasinoClick"></a>
-    <a class="btn" href="chipnwin.html" data-page="chipnwin" data-name="ChipNWin"></a>
-    <a class="btn" href="cidercasino.html" data-page="cidercasino" data-name="CiderCasino"></a>
-    <a class="btn" href="coinsback.html" data-page="coinsback" data-name="CoinsBack"></a>
-    <a class="btn" href="coinz.html" data-page="coinz" data-name="Coinz"></a>
+        // Sort alphabetically for consistency
+        pages.sort();
 
-    <a class="btn" href="epicsweep.html" data-page="epicsweep" data-name="EpicSweep"></a>
-    <a class="btn" href="firesevens.html" data-page="firesevens" data-name="FireSevens"></a>
-    <a class="btn" href="fortunewheelz.html" data-page="fortunewheelz" data-name="FortuneWheelz"></a>
-    <a class="btn" href="funrize.html" data-page="funrize" data-name="Funrize"></a>
-    <a class="btn" href="goldenheartsgames.html" data-page="goldenheartsgames" data-name="GoldenHeartsGames"></a>
+        const container = document.getElementById("pageList");
 
-    <a class="btn" href="goodvibes.html" data-page="goodvibes" data-name="GoodVibes"></a>
-    <a class="btn" href="hellomillions.html" data-page="hellomillions" data-name="HelloMillions"></a>
-    <a class="btn" href="high5casino.html" data-page="high5casino" data-name="High5Casino"></a>
-    <a class="btn" href="jumbo88.html" data-page="jumbo88" data-name="Jumbo88"></a>
-    <a class="btn" href="kingprize.html" data-page="kingprize" data-name="KingPrize"></a>
+        pages.forEach(page => {
+            const id = "views_" + page.replace(".html", "").replace(/-/g, "_");
 
-    <a class="btn" href="lavishluck.html" data-page="lavishluck" data-name="LavishLuck"></a>
-    <a class="btn" href="legendz.html" data-page="legendz" data-name="Legendz"></a>
-    <a class="btn" href="lonestar.html" data-page="lonestar" data-name="LoneStar"></a>
-    <a class="btn" href="luckparty.html" data-page="luckparty" data-name="LuckParty"></a>
-    <a class="btn" href="luckyslots.html" data-page="luckyslots" data-name="LuckySlots"></a>
+            const row = document.createElement("div");
+            row.className = "page-row";
 
-    <a class="btn" href="luckystake.html" data-page="luckystake" data-name="LuckyStake"></a>
-    <a class="btn" href="mcluck.html" data-page="mcluck" data-name="McLuck"></a>
-    <a class="btn" href="modo.html" data-page="modo" data-name="Modo"></a>
-    <a class="btn" href="moozi.html" data-page="moozi" data-name="Moozi"></a>
-    <a class="btn" href="mrgoodwin.html" data-page="mrgoodwin" data-name="MrGoodwin"></a>
+            row.innerHTML = `
+                <a href="${page}" target="_blank" class="page-button">${page.replace(".html","")}</a>
+                <span class="view-count" id="${id}">0</span>
+            `;
 
-    <a class="btn" href="myprizeus.html" data-page="myprizeus" data-name="MyPrizeUS"></a>
-    <a class="btn" href="newluck.html" data-page="newluck" data-name="NewLuck"></a>
-    <a class="btn" href="nolimitcoins.html" data-page="nolimitcoins" data-name="NoLimitCoins"></a>
-    <a class="btn" href="playfame.html" data-page="playfame" data-name="PlayFame"></a>
-    <a class="btn" href="playtana.html" data-page="playtana" data-name="PlayTana"></a>
+            container.appendChild(row);
 
-    <a class="btn" href="pulsz.html" data-page="pulsz" data-name="Pulsz"></a>
-    <a class="btn" href="rolla.html" data-page="rolla" data-name="Rolla"></a>
-    <a class="btn" href="scarletsands.html" data-page="scarletsands" data-name="ScarletSands"></a>
-    <a class="btn" href="sixty6.html" data-page="sixty6" data-name="Sixty6"></a>
-    <a class="btn" href="speedsweeps.html" data-page="speedsweeps" data-name="SpeedSweeps"></a>
+            updateCount(id, id);
+        });
 
-    <a class="btn" href="spinblitz.html" data-page="spinblitz" data-name="SpinBlitz"></a>
-    <a class="btn" href="spindoo.html" data-page="spindoo" data-name="Spindoo"></a>
-    <a class="btn" href="spinsagacasino.html" data-page="spinsagacasino" data-name="SpinSagaCasino"></a>
-    <a class="btn" href="sportzino.html" data-page="sportzino" data-name="Sportzino"></a>
-    <a class="btn" href="spree.html" data-page="spree" data-name="Spree"></a>
+    } catch (err) {
+        document.getElementById("pageList").innerHTML =
+            "<p style='color:#f66;'>Error loading page list.</p>";
+    }
+}
 
-    <a class="btn" href="stormrush.html" data-page="stormrush" data-name="StormRush"></a>
-    <a class="btn" href="sweepico.html" data-page="sweepico" data-name="Sweepico"></a>
-    <a class="btn" href="sweepsblast.html" data-page="sweepsblast" data-name="SweepsBlast"></a>
-    <a class="btn" href="sweepshark.html" data-page="sweepshark" data-name="SweepsHark"></a>
-    <a class="btn" href="taofortune.html" data-page="taofortune" data-name="TaoFortune"></a>
+// LOCALSTORAGE COUNTER LOADER
+function updateCount(elementId, storageKey) {
+    let count = parseInt(localStorage.getItem(storageKey) || "0");
+    document.getElementById(elementId).textContent = count;
+}
 
-    <a class="btn" href="thewinzone.html" data-page="thewinzone" data-name="TheWinZone"></a>
-    <a class="btn" href="vegasway.html" data-page="vegasway" data-name="VegasWay"></a>
-    <a class="btn" href="winbonanza.html" data-page="winbonanza" data-name="WinBonanza"></a>
-    <a class="btn" href="wowvegas.html" data-page="wowvegas" data-name="WowVegas"></a>
-    <a class="btn" href="yaycasino.html" data-page="yaycasino" data-name="YayCasino"></a>
-
-    <a class="btn" href="zulacasino.html" data-page="zulacasino" data-name="ZulaCasino"></a>
-
-</div>
+loadPages();
+</script>
 
 </body>
 </html>
