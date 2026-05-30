@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Admin Panel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
     body {
         background:#0d0d0d;
@@ -11,7 +12,10 @@
         font-family:Arial,Helvetica,sans-serif;
         margin:0;
         padding:20px;
+        text-align:center;
     }
+
+    /* Logo */
     .logo {
         width:80%;
         max-width:320px;
@@ -19,41 +23,60 @@
         margin:0 auto 20px;
         filter:drop-shadow(0 0 8px #000);
     }
+
     h1 {
-        text-align:center;
         margin-bottom:20px;
         color:#66ccff;
         font-size:28px;
+        text-shadow:0 0 6px #000;
     }
+
+    /* Center the list */
+    #pageList {
+        max-width:420px;
+        margin:0 auto;
+        text-align:left;
+    }
+
+    /* Each row */
     .page-row {
         display:flex;
         justify-content:space-between;
         align-items:center;
         background:#141414;
-        padding:14px 18px;
+        padding:10px 14px;
         border-radius:8px;
         border:1px solid #222;
-        margin-bottom:12px;
+        margin-bottom:10px;
+        max-width:420px;
     }
+
+    /* Buttons */
     .page-button {
         background:#66ccff;
         color:#000;
-        padding:10px 20px;
+        padding:8px 16px;
         border-radius:6px;
         font-weight:700;
         text-decoration:none;
-        font-size:18px;
+        font-size:16px;
         box-shadow:0 0 10px #66ccff;
+        white-space:nowrap;
     }
+
+    /* Counters */
     .view-count {
-        font-size:18px;
+        font-size:16px;
         color:#ccc;
+        margin-left:10px;
+        white-space:nowrap;
     }
 </style>
 </head>
 
 <body>
 
+<!-- Your site logo -->
 <img src="images/site-logo.png" alt="Site Logo" class="logo">
 
 <h1>Admin Panel</h1>
@@ -61,13 +84,12 @@
 <div id="pageList"></div>
 
 <script>
-// Load sidebar.html and extract all links
+// Load sidebar.html and extract all .html links
 async function loadPages() {
     try {
         const response = await fetch("sidebar.html");
         const html = await response.text();
 
-        // Extract all .html links from sidebar
         const regex = /href="([^"]+\.html)"/g;
         let match;
         const pages = new Set();
@@ -81,7 +103,7 @@ async function loadPages() {
             }
         }
 
-        // Add index.html manually (not always in sidebar)
+        // Add index.html manually
         pages.add("index.html");
 
         const sorted = Array.from(pages).sort();
