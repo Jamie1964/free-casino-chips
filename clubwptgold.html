@@ -11,7 +11,7 @@
 <body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
 <!-- HEADER -->
-<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
+<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
     <img src="images/site-logo-ultra-low.png" alt="Free Casino Chips Logo"
          style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
 </div>
@@ -48,13 +48,13 @@ fetch('/sidebar.html')
 <h1 id="fallback-title" style="display:none;color:#66ccff;font-size:32px;text-align:center;margin:0 0 25px;">ClubWPT Gold</h1>
 <h1 style="font-size:1px;height:1px;overflow:hidden;margin:0;padding:0;opacity:0;">ClubWPT Gold</h1>
 
-<!-- TAGLINE (2.5× SIZE) -->
+<!-- TAGLINE -->
 <div style="text-align:center;color:#66ccff;font-size:50px;margin-top:-10px;margin-bottom:30px;font-style:italic;line-height:1.2;">
     Play Poker Online To Win A Share Of<br>$100,000 In Cash & Prizes Monthly
 </div>
 
 <!-- INTRO BOX -->
-<div style="background:#141414;padding:25px;border-radius:12px;border:2px solid #66ccff;box-shadow:0 0 18px #66ccff;margin-bottom:35px;display:flex;align-items:center;justify-content:space-between;gap:20px;">
+<div style="background:#141414;padding:25px;border-radius:12px;border:2px solid:#66ccff;box-shadow:0 0 18px #66ccff;margin-bottom:35px;display:flex;align-items:center;justify-content:space-between;gap:20px;">
     <div style="flex:1;">
         <p style="font-size:20px;line-height:1.7;margin:0;">
             ClubWPT Gold offers three FREE poker tournaments every single day — morning, afternoon, and night — all awarding real cash prizes. No subscription required. Download the software, register, and start playing for real money.
@@ -127,30 +127,58 @@ fetch('/sidebar.html')
     </div>
 </div>
 
-<!-- LEARNING BOX -->
-<div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;margin-bottom:30px;">
-    <h2 style="color:#66ccff;font-size:28px;margin:0 0 15px;">Need Help Learning Poker?</h2>
-    <p>Visit my full guide: <a href="poker.html" style="color:#66ccff;">How To (Poker Guide)</a></p>
-</div>
+<!-- FOUR CARDS IN TWO COLUMNS -->
+<div style="display:flex;flex-direction:column;gap:20px;margin-bottom:30px;">
 
-<!-- STRATEGY BOX -->
-<div style="background:#141414;padding:25px;border-radius:10px;border:1px solid:#222;margin-bottom:30px;">
-    <h2 style="color:#66ccff;font-size:28px;margin:0 0 15px;">How to Make Money on ClubWPT Gold</h2>
-    <p>Consistency and solid tournament strategy are key.</p>
+    <!-- Row 1 -->
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
 
-    <h2 style="color:#66ccff;font-size:26px;margin:25px 0 15px;">Bankroll Tips</h2>
-    <ul style="margin:0;padding-left:20px;line-height:1.6;">
-        <li>Play every daily event</li>
-        <li>Survive early, attack late</li>
-        <li>Track your finishes</li>
-    </ul>
+        <!-- Card 1 -->
+        <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
+            <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Need Help Learning Poker?</h2>
+            <p style="margin:0;line-height:1.6;font-size:18px;color:#ddd;">
+                Visit my full guide:
+                <a href="poker.html" style="color:#66ccff;text-decoration:none;font-weight:700;">
+                    How To (Poker Guide)
+                </a>
+            </p>
+        </div>
 
-    <h2 style="color:#66ccff;font-size:26px;margin:25px 0 15px;">Beginner Strategy</h2>
-    <ul style="margin:0;padding-left:20px;line-height:1.6;">
-        <li>Play tight early</li>
-        <li>Steal blinds when shallow</li>
-        <li>Value bet strong hands</li>
-    </ul>
+        <!-- Card 2 -->
+        <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
+            <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">How to Make Money on ClubWPT Gold</h2>
+            <p style="margin:0;line-height:1.6;font-size:18px;color:#ddd;">
+                Consistency and solid tournament strategy are key.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Row 2 -->
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
+
+        <!-- Card 3 -->
+        <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
+            <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Bankroll Tips</h2>
+            <ul style="margin:0;padding-left:20px;line-height:1.6;color:#ddd;font-size:18px;">
+                <li>Play every daily event</li>
+                <li>Survive early, attack late</li>
+                <li>Track your finishes</li>
+            </ul>
+        </div>
+
+        <!-- Card 4 -->
+        <div style="flex:1;background:#141414;padding:20px;border-radius:10px;border:1px solid:#222;">
+            <h2 style="color:#66ccff;font-size:28px;margin:0 0 12px;">Beginner Strategy</h2>
+            <ul style="margin:0;padding-left:20px;line-height:1.6;color:#ddd;font-size:18px;">
+                <li>Play tight early</li>
+                <li>Steal blinds when shallow</li>
+                <li>Value bet strong hands</li>
+            </ul>
+        </div>
+
+    </div>
+
 </div>
 
 <!-- PAGE VIEW COUNTER -->
