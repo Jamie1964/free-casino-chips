@@ -40,7 +40,7 @@
     <img src="images/site-logo.png" alt="FREE-CASINO-CHIPS.COM" style="max-height:140px;">
 </div>
 
-<!-- SIDEBAR -->
+<!-- LEFT SIDEBAR (FIXED) -->
 <div id="sidebar-container"
      style="position:fixed; left:0; top:160px; height:calc(100% - 160px); width:260px;
             overflow-y:auto; background:#000; z-index:1;">
@@ -52,8 +52,19 @@
         .then(h => document.getElementById('sidebar-container').innerHTML = h);
 </script>
 
+<!-- RIGHT SIDEBAR (SCROLLS WITH PAGE) -->
+<div id="right-sidebar"
+     style="position:absolute; top:160px; right:20px; width:260px; background:#000;">
+</div>
+
+<script>
+    fetch('sidebar.html')
+        .then(r => r.text())
+        .then(h => document.getElementById('right-sidebar').innerHTML = h);
+</script>
+
 <!-- MAIN CONTENT -->
-<main style="padding:20px; max-width:1200px; margin-left:280px;">
+<main style="padding:20px; max-width:1200px; margin-left:280px; margin-right:280px;">
 
 <h1>Games</h1>
 
@@ -61,7 +72,7 @@
     Explore the best online casino games across every category — from low‑cost nickel slots to Megaways, Hold & Win, Crash Games, and brand‑new releases.
 </p>
 
-<!-- BLUE ODDS BOX -->
+<!-- ODDS BOX (KEEP BORDER) -->
 <div style="background:#0a1a2a; padding:25px; border:1px solid #66ccff; border-radius:8px;
             margin-top:40px; text-align:center; box-shadow:0 0 12px #66ccff;">
 
@@ -82,13 +93,13 @@
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Nickel Games (5¢)</h3>
         <p><strong>Volcano Power</strong> — Fast-paced nickel slot with frequent bonus triggers.</p>
         <p><strong>Cash Volcano</strong> — Low-cost game with steady payouts.</p>
     </div>
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>10¢ Games</h3>
         <p><strong>Voltage Blitz Rapid</strong> — High-energy slot with rapid hits.</p>
 
@@ -104,7 +115,7 @@
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Big Bass Bonanza</h3>
         <p>Classic fishing slot with free spins.</p>
 
@@ -115,7 +126,7 @@
         <p>Zeus multipliers up to 500×.</p>
     </div>
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Buffalo King Megaways</h3>
         <p>Massive Megaways potential.</p>
 
@@ -133,7 +144,7 @@
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Buffalo Blitz</h3>
         <p>Stacked wilds and free spins.</p>
 
@@ -141,7 +152,7 @@
         <p>Expanding symbols and immersive visuals.</p>
     </div>
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Wolf Gold</h3>
         <p>Classic Hold & Win jackpots.</p>
 
@@ -156,7 +167,7 @@
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Bonanza Megaways</h3>
         <p>The original Megaways hit.</p>
 
@@ -164,7 +175,7 @@
         <p>Sticky wilds with huge potential.</p>
     </div>
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Extra Chilli Megaways</h3>
         <p>High-volatility bonus buys.</p>
 
@@ -179,12 +190,12 @@
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Aviator</h3>
         <p>Cash-out timing game.</p>
     </div>
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>JetX</h3>
         <p>Fast-paced crash rounds.</p>
     </div>
@@ -196,12 +207,12 @@
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Chaos Crew</h3>
         <p>Huge multiplier potential.</p>
     </div>
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Wanted Dead or a Wild</h3>
         <p>Extremely volatile bonus buys.</p>
     </div>
@@ -213,12 +224,12 @@
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Dog House Megaways</h3>
         <p>Sticky wilds with massive potential.</p>
     </div>
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Madame Destiny Megaways</h3>
         <p>High-risk, high-reward free spins.</p>
     </div>
@@ -230,12 +241,12 @@
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Starburst</h3>
         <p>Smooth, steady payouts.</p>
     </div>
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Fruit Shop</h3>
         <p>Frequent small wins.</p>
     </div>
@@ -247,12 +258,12 @@
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Triple Diamond</h3>
         <p>Timeless 3‑reel classic.</p>
     </div>
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Double Gold</h3>
         <p>Simple and fast gameplay.</p>
     </div>
@@ -264,12 +275,12 @@
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Big Bass Amazon Xtreme</h3>
         <p>Newest Big Bass upgrade.</p>
     </div>
 
-    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border-radius:8px;">
         <h3>Fire Archer</h3>
         <p>Expanding wilds and features.</p>
     </div>
