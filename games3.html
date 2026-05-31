@@ -1,0 +1,51 @@
+<!-- BOTTOM BUTTONS -->
+<div style="text-align:center; margin-top:50px;">
+
+    <!-- BACK TO HOME -->
+    <a href="/index.html"
+       style="display:inline-block; background:#66ccff; color:#000;
+              padding:15px 30px; font-size:24px; font-weight:bold;
+              border-radius:8px; text-decoration:none;">
+        Back to Home
+    </a>
+
+    <!-- BACK TO TOP -->
+    <a href="#top"
+       style="display:inline-block; background:#66ccff; color:#000;
+              padding:15px 30px; font-size:24px; font-weight:bold;
+              border-radius:8px; text-decoration:none; margin-left:20px;">
+        Back to Top
+    </a>
+
+</div>
+
+<!-- PAGE VIEW COUNTER -->
+<div style="text-align:center; margin-top:40px; font-size:18px; color:#ccc;">
+    <span id="viewCount"></span>
+</div>
+
+<script>
+    const pageId = "games";
+    const countKey = "views_" + pageId;
+
+    let views = localStorage.getItem(countKey);
+    if (!views) {
+        views = 1;
+    } else {
+        views = parseInt(views) + 1;
+    }
+    localStorage.setItem(countKey, views);
+
+    document.getElementById("viewCount").innerText =
+        "Page Views: " + views.toLocaleString();
+</script>
+
+<!-- FOOTER -->
+<footer style="text-align:center; margin-top:60px; padding:20px; color:#888; font-size:16px;">
+    © 2026 FREE-CASINO-CHIPS.COM — All Rights Reserved
+</footer>
+
+</main>
+</body>
+</html>
+
