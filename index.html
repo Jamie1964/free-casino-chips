@@ -97,6 +97,47 @@ fetch('/sidebar.html')
 
 </div>
 
+
+<!-- PAGE VIEW + UNIQUE VISITOR COUNTER -->
+<div id="stats" style="text-align:center;color:#888;font-size:14px;margin-top:30px;">
+    Loading stats...
+</div>
+
+<script>
+(function() {
+    const pageId = "index";
+
+    // PAGE VIEWS
+    const viewsKey = "page_views_" + pageId;
+    let views = localStorage.getItem(viewsKey);
+    if (!views) {
+        views = 1;
+    } else {
+        views = parseInt(views) + 1;
+    }
+    localStorage.setItem(viewsKey, views);
+
+    // UNIQUE VISITORS (per browser)
+    const uniqueKey = "unique_visitor_" + pageId;
+    let isUnique = localStorage.getItem(uniqueKey);
+    let uniques = localStorage.getItem("unique_count_" + pageId);
+
+    if (!uniques) uniques = 0;
+
+    if (!isUnique) {
+        uniques = parseInt(uniques) + 1;
+        localStorage.setItem("unique_count_" + pageId, uniques);
+        localStorage.setItem(uniqueKey, "true");
+    }
+
+    // DISPLAY
+    document.getElementById("stats").innerHTML =
+        "Page Views: " + views + " &nbsp;&nbsp; | &nbsp;&nbsp; Unique Visitors: " + uniques;
+})();
+</script>
+
+
+
 <!-- FOOTER -->
 <div style="text-align:center;padding:20px;color:#666;font-size:14px;margin-top:40px;">
     © 2026 FREE‑CASINO‑CHIPS.COM — All Rights Reserved.
