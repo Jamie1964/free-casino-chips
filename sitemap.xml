@@ -1,74 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- MAIN PAGES -->
-  <url><loc>https://www.free-casino-chips.com/</loc></url>
-  <url><loc>https://www.free-casino-chips.com/index.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/games.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/poker.html</loc></url>
+    <!-- Homepage -->
+    <url>
+        <loc>https://www.free-casino-chips.com/</loc>
+        <priority>1.0</priority>
+        <changefreq>daily</changefreq>
+    </url>
 
-  <!-- POKER SITES -->
-  <url><loc>https://www.free-casino-chips.com/clubspoker.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/clubwptgold.html</loc></url>
+    <!-- Core Pages -->
+    <url>
+        <loc>https://www.free-casino-chips.com/sidebar.html</loc>
+        <priority>0.6</priority>
+        <changefreq>weekly</changefreq>
+    </url>
 
-  <!-- CASINOS -->
-  <url><loc>https://www.free-casino-chips.com/ace.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/americanluck.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/babacasino.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/bangcoins.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/cashoomo.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/casinoclick.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/chipnwin.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/cidercasino.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/coinsback.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/coinz.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/epicsweep.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/firesevens.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/fortunewheelz.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/funrize.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/goldenheartsgames.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/goodvibes.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/hellomillions.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/high5casino.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/jackpotentry.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/jumbo88.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/kingprize.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/lavishluck.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/legendz.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/lonestar.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/luckparty.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/luckyslots.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/luckystake.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/mcluck.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/modo.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/moozi.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/mrgoodwin.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/myprizeus.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/newluck.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/nolimitcoins.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/playfame.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/playtana.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/pulsz.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/rolla.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/scarletsands.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/sixty6.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/speedsweeps.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/spinblitz.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/spindoo.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/spinsagacasino.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/sportzino.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/spree.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/stormrush.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/sweepico.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/sweepsblast.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/sweepshark.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/taofortune.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/thewinzone.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/vegasway.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/winbonanza.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/wowvegas.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/yaycasino.html</loc></url>
-  <url><loc>https://www.free-casino-chips.com/zulacasino.html</loc></url>
+    <url>
+        <loc>https://www.free-casino-chips.com/slotgames.html</loc>
+        <priority>0.7</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+
+    <!-- Poker Pages -->
+    <url>
+        <loc>https://www.free-casino-chips.com/clubspoker.html</loc>
+        <priority>0.8</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+
+    <!-- Casino Pages -->
+    <url><loc>https://www.free-casino-chips.com/ace.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/americanluck.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/babacasino.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/bangcoins.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/chipnwin.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/epicsweep.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/firesevens.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/fortunewheelz.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/high5.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/jumbo88.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/kingprize.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/lavishluck.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/scarletsands.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/sweepshark.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/taofortune.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/thewinzone.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/vegasway.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/winbonanza.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/wowvegas.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/yaycasino.html</loc></url>
+    <url><loc>https://www.free-casino-chips.com/zulacasino.html</loc></url>
 
 </urlset>
 
