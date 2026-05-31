@@ -35,33 +35,35 @@
 
 <a id="top"></a>
 
-<!-- HEADER -->
-<div style="width:100%; height:160px; background:#111; display:flex; align-items:center; justify-content:center; border-bottom:3px solid gold;">
-    <img src="logo.png" alt="FREE-CASINO-CHIPS.COM" style="max-height:140px;">
+<!-- HEADER (NO GOLD LINE) -->
+<div style="width:100%; height:160px; background:#111; display:flex; align-items:center; justify-content:center; position:relative; z-index:2;">
+    <img src="/images/logo.png" alt="FREE-CASINO-CHIPS.COM" style="max-height:140px;">
 </div>
 
-<!-- SIDEBAR LOADER -->
-<div id="sidebar-container"></div>
+<!-- SIDEBAR -->
+<div id="sidebar-container"
+     style="position:fixed; left:0; top:160px; height:calc(100% - 160px); width:260px;
+            overflow-y:auto; background:#000; z-index:1;">
+</div>
+
 <script>
     fetch('/sidebar.html')
         .then(r => r.text())
         .then(h => document.getElementById('sidebar-container').innerHTML = h);
 </script>
 
-<!-- MAIN CONTENT -->
-<main style="padding:20px; max-width:1200px; margin:auto;">
+<!-- MAIN CONTENT SHIFTED RIGHT -->
+<main style="padding:20px; max-width:1200px; margin-left:280px;">
 
 <h1>Games</h1>
 
-<!-- INTRO SECTION -->
 <p style="font-size:20px; line-height:1.6; margin-top:20px;">
     Explore the best online casino games across every category — from low‑cost nickel slots to Megaways, Hold & Win, Crash Games, and brand‑new releases.  
     Every section below is organized into a clean 2‑column layout for easy browsing.
 </p>
 
-<!-- WHY CHEAPER GAMES GIVE YOU BETTER ODDS (CENTERED TEXT ONLY) -->
-<div style="background:#111; padding:25px; border:1px solid #333; border-radius:8px;
-            margin-top:40px; text-align:center;">
+<div style="background:#0a1a2a; padding:25px; border:1px solid #66ccff; border-radius:8px;
+            margin-top:40px; text-align:center; box-shadow:0 0 12px #66ccff;">
 
     <h2 style="margin-top:0; color:#66ccff;">
         Why Cheaper Games Give You Better Odds
@@ -77,40 +79,36 @@
 
 </div>
 
-<!-- JAMIE’S RECOMMENDED GAMES -->
 <h2 style="margin-top:40px;">Jamie’s Recommended Games</h2>
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
-    <!-- LEFT COLUMN -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
         <h3 style="margin-top:0;">Nickel Games (5¢)</h3>
-
         <p><strong>Volcano Power</strong> — Fast-paced nickel slot with frequent bonus triggers.</p>
         <p><strong>Cash Volcano</strong> — Low-cost game with steady payouts and simple features.</p>
     </div>
 
-    <!-- RIGHT COLUMN -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
         <h3 style="margin-top:0;">10¢ Games</h3>
-
         <p><strong>Voltage Blitz Rapid</strong> — High-energy slot with rapid hits and bonus potential.</p>
 
         <h3 style="margin-top:25px;">20¢ Games</h3>
-
         <p><strong>Genie’s Chest</strong> — Feature-rich slot with expanding symbols and bonus rounds.</p>
         <p><strong>Coin Nonet Bison (Hold & Win 3×3)</strong> — Compact Hold & Win game with strong bonus frequency.</p>
     </div>
 
 </div>
 
+
+</div>
 <!-- POPULAR SLOTS (20¢) -->
 <h2 style="margin-top:40px;">Popular Slots (20¢)</h2>
 
 <div style="display:flex; gap:20px; margin-top:25px;">
 
     <!-- LEFT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Big Bass Bonanza</h3>
         <p>Classic fishing slot with free spins and multipliers.</p>
@@ -124,7 +122,7 @@
     </div>
 
     <!-- RIGHT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Buffalo King Megaways</h3>
         <p>Huge Megaways potential with stacked wilds.</p>
@@ -145,7 +143,7 @@
 <div style="display:flex; gap:20px; margin-top:25px;">
 
     <!-- LEFT COLUMN (unchanged) -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Buffalo Blitz</h3>
         <p>High-energy slot with stacked wilds and free spins.</p>
@@ -156,7 +154,7 @@
     </div>
 
     <!-- RIGHT COLUMN (Hold & Win Games moved here) -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Wolf Gold</h3>
         <p>Classic Hold & Win with jackpots.</p>
@@ -174,7 +172,7 @@
 <div style="display:flex; gap:20px; margin-top:25px;">
 
     <!-- LEFT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Bonanza Megaways</h3>
         <p>The original Megaways hit with massive potential.</p>
@@ -185,7 +183,7 @@
     </div>
 
     <!-- RIGHT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Extra Chilli Megaways</h3>
         <p>High-volatility slot with bonus buys.</p>
@@ -203,7 +201,7 @@
 <div style="display:flex; gap:20px; margin-top:25px;">
 
     <!-- LEFT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Aviator</h3>
         <p>Cash-out timing game with rising multipliers.</p>
@@ -211,7 +209,7 @@
     </div>
 
     <!-- RIGHT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>JetX</h3>
         <p>Fast-paced crash game with instant rounds.</p>
@@ -226,7 +224,7 @@
 <div style="display:flex; gap:20px; margin-top:25px;">
 
     <!-- LEFT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Chaos Crew</h3>
         <p>Wild bonus buy slot with huge multipliers.</p>
@@ -234,7 +232,7 @@
     </div>
 
     <!-- RIGHT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Wanted Dead or a Wild</h3>
         <p>Extremely volatile bonus buy favorite.</p>
@@ -249,7 +247,7 @@
 <div style="display:flex; gap:20px; margin-top:25px;">
 
     <!-- LEFT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Dog House Megaways</h3>
         <p>Sticky wilds with massive potential.</p>
@@ -257,7 +255,7 @@
     </div>
 
     <!-- RIGHT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Madame Destiny Megaways</h3>
         <p>High-risk, high-reward free spins.</p>
@@ -272,7 +270,7 @@
 <div style="display:flex; gap:20px; margin-top:25px;">
 
     <!-- LEFT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Starburst</h3>
         <p>Smooth, steady payouts with expanding wilds.</p>
@@ -280,7 +278,7 @@
     </div>
 
     <!-- RIGHT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Fruit Shop</h3>
         <p>Light volatility with frequent hits.</p>
@@ -295,7 +293,7 @@
 <div style="display:flex; gap:20px; margin-top:25px;">
 
     <!-- LEFT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Triple Diamond</h3>
         <p>Timeless 3‑reel slot with clean payouts.</p>
@@ -303,7 +301,7 @@
     </div>
 
     <!-- RIGHT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Double Gold</h3>
         <p>Simple, fast, and easy to play.</p>
@@ -318,7 +316,7 @@
 <div style="display:flex; gap:20px; margin-top:25px;">
 
     <!-- LEFT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Big Bass Amazon Xtreme</h3>
         <p>Newest Big Bass with upgraded features.</p>
@@ -326,7 +324,7 @@
     </div>
 
     <!-- RIGHT -->
-    <div style="flex:1; background:#111; padding:20px; border:1px solid #333; border-radius:8px;">
+    <div style="flex:1; background:#0a1a2a; padding:20px; border:1px solid #66ccff; border-radius:8px;">
 
         <h3>Fire Archer</h3>
         <p>Fresh release with expanding wilds.</p>
@@ -334,6 +332,7 @@
     </div>
 
 </div>
+
 <!-- BOTTOM BUTTONS -->
 <div style="text-align:center; margin-top:50px;">
 
