@@ -1,0 +1,14 @@
+<!-- RIGHT PANEL CONTENT -->
+
+<h2 style="color:#66ccff;font-size:20px;margin-top:0;margin-bottom:10px;">
+    All Pages
+</h2>
+
+<div id="pageList" style="
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px;
+">
+    <!-- Script will populate this -->
+</div>
+

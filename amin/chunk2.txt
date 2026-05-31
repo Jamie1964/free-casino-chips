@@ -1,0 +1,50 @@
+<!-- LEFT PANEL CONTENT -->
+
+<!-- TOTAL INDEX VIEWS -->
+<div class="stat-box" id="totalIndexViews" style="
+    background:#1a1a1a;
+    border:1px solid #333;
+    padding:10px;
+    border-radius:6px;
+    margin-bottom:12px;
+    font-size:15px;
+    color:#ccc;
+">
+    Index Views: 0
+</div>
+
+<!-- TOTAL CHEAT VIEWS -->
+<div class="stat-box" id="totalCheatViews" style="
+    background:#1a1a1a;
+    border:1px solid #333;
+    padding:10px;
+    border-radius:6px;
+    margin-bottom:12px;
+    font-size:15px;
+    color:#ccc;
+">
+    Cheat Views: 0
+</div>
+
+<!-- TOTAL SITE VIEWS -->
+<div class="stat-box" id="totalSiteViews" style="
+    background:#1a1a1a;
+    border:1px solid #333;
+    padding:10px;
+    border-radius:6px;
+    margin-bottom:20px;
+    font-size:15px;
+    color:#ccc;
+">
+    Total Site Views: 0
+</div>
+
+<!-- TOP 10 MOST VIEWED PAGES -->
+<h2 style="color:#66ccff;font-size:20px;margin-top:10px;margin-bottom:10px;">
+    Top 10 Pages
+</h2>
+
+<div id="topPages" style="margin-top:10px;">
+    <!-- Script will populate this -->
+</div>
+

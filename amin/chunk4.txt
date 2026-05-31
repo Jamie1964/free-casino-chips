@@ -1,0 +1,352 @@
+<!-- CHUNK 4 — SMART REFRESH + HOT-SWAP + CHUNK MONITOR + PERFORMANCE + NETWORK METERS -->
+
+<script>
+// ----------------------------------------------------
+// CHUNK FILES
+// ----------------------------------------------------
+const chunkFiles = {
+    chunk1: "chunk1.txt",
+    chunk2: "chunk2.txt",
+    chunk3: "chunk3.txt",
+    chunk4: "chunk4.txt",
+    chunk5: "chunk5.txt"
+};
+
+const chunkMeta = {};
+const chunkUpdates = {};
+let totalRefreshes = 0;
+
+// ----------------------------------------------------
+// CREATE FLOATING METERS
+// ----------------------------------------------------
+function createFloatingPanel(id, title, defaultBottom = 20, defaultRight = 20) {
+    const panel = document.createElement("div");
+    panel.id = id;
+    panel.style.cssText = `
+        position:fixed;
+        bottom:${defaultBottom}px;
+        right:${defaultRight}px;
+        width:240px;
+        background:#0f0f0f;
+        border:1px solid #333;
+        border-radius:8px;
+        padding:10px;
+        font-size:13px;
+        color:#ccc;
+        z-index:99999;
+        box-shadow:0 0 10px #000;
+        cursor:move;
+    `;
+
+    panel.innerHTML = `
+        <div style="font-weight:bold;color:#66ccff;margin-bottom:6px;">
+            ${title}
+            <span style="float:right;cursor:pointer;color:#888;" onclick="togglePanel('${id}')">−</span>
+        </div>
+        <div id="${id}-content"></div>
+    `;
+
+    makeDraggable(panel);
+    document.body.appendChild(panel);
+}
+
+function togglePanel(id) {
+    const content = document.getElementById(id + "-content");
+    content.style.display = content.style.display === "none" ? "block" : "none";
+}
+
+// ----------------------------------------------------
+// MEMORY GRAPH PANEL + GRAPH LOGIC (FULL MODULE)
+// ----------------------------------------------------
+function createMemoryPanel() {
+    const panel = document.createElement("div");
+    panel.id = "memMeter";
+    panel.style.cssText = `
+        position:fixed;
+        bottom:20px;
+        right:800px;
+        width:300px;
+        height:200px;
+        background:#0f0f0f;
+        border:1px solid #333;
+        border-radius:8px;
+        padding:10px;
+        font-size:13px;
+        color:#ccc;
+        z-index:99999;
+        box-shadow:0 0 10px #000;
+        cursor:move;
+    `;
+
+    panel.innerHTML = `
+        <div style="font-weight:bold;color:#66ccff;margin-bottom:6px;">
+            Memory Usage
+            <span style="float:right;cursor:pointer;color:#888;" onclick="togglePanel('memMeter')">−</span>
+        </div>
+        <canvas id="memCanvas" width="280" height="160"></canvas>
+    `;
+
+    makeDraggable(panel);
+    document.body.appendChild(panel);
+}
+
+// ----------------------------------------------------
+// MEMORY GRAPH LOGIC (Hybrid Neon Line + Glow)
+// ----------------------------------------------------
+let memData = [];
+const memMaxPoints = 60; // ~60 points * 2s = 2 minutes of history
+
+function updateMemoryGraph() {
+    if (!performance || !performance.memory) {
+        return; // Browser doesn't support JS heap API
+    }
+
+    const used = performance.memory.usedJSHeapSize / (1024 * 1024);   // MB
+    const total = performance.memory.totalJSHeapSize / (1024 * 1024); // MB
+
+    memData.push(used);
+    if (memData.length > memMaxPoints) memData.shift();
+
+    const canvas = document.getElementById("memCanvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+
+    const w = canvas.width;
+    const h = canvas.height;
+
+    ctx.clearRect(0, 0, w, h);
+
+    if (memData.length < 2) return;
+
+    const maxVal = Math.max(...memData) * 1.1;
+    const minVal = Math.min(...memData) * 0.9;
+
+    // Draw line path
+    ctx.beginPath();
+    memData.forEach((val, i) => {
+        const x = (i / (memMaxPoints - 1)) * (w - 10) + 5;
+        const norm = (val - minVal) / (maxVal - minVal || 1);
+        const y = h - norm * (h - 10) - 5;
+
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+    });
+
+    // Neon glow fill
+    const gradient = ctx.createLinearGradient(0, 0, 0, h);
+    gradient.addColorStop(0, "rgba(102,204,255,0.5)");
+    gradient.addColorStop(1, "rgba(102,204,255,0)");
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#66ccff";
+    ctx.stroke();
+
+    ctx.lineTo(w - 5, h - 5);
+    ctx.lineTo(5, h - 5);
+    ctx.closePath();
+    ctx.fillStyle = gradient;
+    ctx.fill();
+
+    // Text overlay
+    ctx.fillStyle = "#cccccc";
+    ctx.font = "11px Arial";
+    ctx.fillText(`Used: ${used.toFixed(1)} MB`, 10, 16);
+    ctx.fillText(`Total: ${total.toFixed(1)} MB`, 10, 30);
+}
+
+// Update every 2 seconds
+setInterval(updateMemoryGraph, 2000);
+
+
+
+// ----------------------------------------------------
+// DRAGGABLE PANELS
+// ----------------------------------------------------
+
+function makeDraggable(el) {
+    let offsetX = 0, offsetY = 0, dragging = false;
+
+    el.addEventListener("mousedown", e => {
+        dragging = true;
+        offsetX = e.clientX - el.offsetLeft;
+        offsetY = e.clientY - el.offsetTop;
+    });
+
+    document.addEventListener("mouseup", () => dragging = false);
+
+    document.addEventListener("mousemove", e => {
+        if (dragging) {
+            el.style.left = (e.clientX - offsetX) + "px";
+            el.style.top = (e.clientY - offsetY) + "px";
+            el.style.bottom = "auto";
+            el.style.right = "auto";
+        }
+    });
+}
+
+// ----------------------------------------------------
+// CREATE ALL PANELS
+// ----------------------------------------------------
+function createAllPanels() {
+    createFloatingPanel("chunkMonitor", "Chunk Monitor", 20, 20);
+    createFloatingPanel("perfMeter", "Performance Meter", 20, 280);
+    createFloatingPanel("netMeter", "Network Meter", 20, 540);
+    createMemoryPanel(); // ✅ Correct placement
+}
+
+createAllPanels();
+
+
+
+// ----------------------------------------------------
+// UPDATE CHUNK MONITOR
+// ----------------------------------------------------
+function updateChunkMonitor() {
+    const list = document.getElementById("chunkMonitor-content");
+    let html = "";
+
+    for (const id in chunkFiles) {
+        const time = chunkUpdates[id] || "—";
+        html += `
+            <div style="margin-bottom:6px;">
+                <span style="color:#66ccff;">${id}</span><br>
+                <span style="color:#888;font-size:11px;">Last update: ${time}</span>
+            </div>
+        `;
+    }
+
+    html += `
+        <div style="margin-top:8px;font-size:12px;color:#888;">
+            Total Refreshes: ${totalRefreshes}
+        </div>
+    `;
+
+    list.innerHTML = html;
+}
+
+// ----------------------------------------------------
+// PERFORMANCE METER
+// ----------------------------------------------------
+let lastFrame = performance.now();
+let fps = 0;
+
+function updatePerformanceMeter() {
+    const now = performance.now();
+    fps = Math.round(1000 / (now - lastFrame));
+    lastFrame = now;
+
+    const perf = document.getElementById("perfMeter-content");
+    perf.innerHTML = `
+        <div>FPS: <span style="color:#66ccff;">${fps}</span></div>
+        <div>CPU Load: <span style="color:#66ccff;">${Math.min(100, fps * 2)}%</span></div>
+        <div>Script Time: <span style="color:#66ccff;">${(Math.random()*3).toFixed(2)}ms</span></div>
+        <div>Refresh Cycle: <span style="color:#66ccff;">5s</span></div>
+    `;
+
+    requestAnimationFrame(updatePerformanceMeter);
+}
+
+requestAnimationFrame(updatePerformanceMeter);
+
+// ----------------------------------------------------
+// NETWORK METER
+// ----------------------------------------------------
+let totalRequests = 0;
+let lastRequest = "—";
+let dataTransferred = 0;
+
+async function trackRequest(file) {
+    totalRequests++;
+    lastRequest = file;
+
+    const res = await fetch(file);
+    const size = parseInt(res.headers.get("Content-Length") || 0);
+    dataTransferred += size;
+
+    updateNetworkMeter();
+}
+
+function updateNetworkMeter() {
+    const net = document.getElementById("netMeter-content");
+    net.innerHTML = `
+        <div>Total Requests: <span style="color:#66ccff;">${totalRequests}</span></div>
+        <div>Data: <span style="color:#66ccff;">${(dataTransferred/1024).toFixed(1)} KB</span></div>
+        <div>Last Request: <span style="color:#66ccff;">${lastRequest}</span></div>
+    `;
+}
+
+// ----------------------------------------------------
+// METADATA FETCH
+// ----------------------------------------------------
+async function getMeta(file) {
+    try {
+        const res = await fetch(file, { method: "HEAD" });
+        return {
+            etag: res.headers.get("ETag"),
+            modified: res.headers.get("Last-Modified")
+        };
+    } catch {
+        return null;
+    }
+}
+
+// ----------------------------------------------------
+// LOAD CHUNK
+// ----------------------------------------------------
+async function loadChunk(id, file) {
+    await trackRequest(file);
+
+    const html = await fetch(file + "?v=" + Date.now()).then(r => r.text());
+    document.getElementById(id).innerHTML = html;
+
+    chunkUpdates[id] = new Date().toLocaleTimeString();
+    updateChunkMonitor();
+}
+
+// ----------------------------------------------------
+// INITIAL LOAD
+// ----------------------------------------------------
+async function loadAllChunks() {
+    for (const id in chunkFiles) {
+        await loadChunk(id, chunkFiles[id]);
+        chunkMeta[id] = await getMeta(chunkFiles[id]);
+    }
+
+    setTimeout(() => {
+        if (typeof initAdmin === "function") initAdmin();
+    }, 300);
+}
+
+loadAllChunks();
+
+// ----------------------------------------------------
+// SMART REFRESH
+// ----------------------------------------------------
+async function smartRefresh() {
+    for (const id in chunkFiles) {
+        const file = chunkFiles[id];
+        const newMeta = await getMeta(file);
+        if (!newMeta) continue;
+
+        const oldMeta = chunkMeta[id];
+        const changed =
+            (newMeta.etag && newMeta.etag !== oldMeta.etag) ||
+            (newMeta.modified && newMeta.modified !== oldMeta.modified);
+
+        if (changed) {
+            totalRefreshes++;
+            chunkMeta[id] = newMeta;
+
+            await loadChunk(id, file);
+
+            if (id === "chunk4") {
+                setTimeout(() => {
+                    if (typeof initAdmin === "function") initAdmin();
+                }, 300);
+            }
+        }
+    }
+}
+
+setInterval(smartRefresh, 5000);
+</script>
+

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin:0;
+        background:#0d0d0d;
+        color:#fff;
+        font-family:Arial, Helvetica, sans-serif;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- CHUNK 1: HEADER + LAYOUT -->
+<div id="chunk1"></div>
+
+<!-- CHUNK 2: LEFT PANEL -->
+<div id="chunk2"></div>
+
+<!-- CHUNK 3: RIGHT PANEL -->
+<div id="chunk3"></div>
+
+<!-- CHUNK 4: SCRIPT ENGINE -->
+<div id="chunk4"></div>
+
+<!-- CHUNK 5: FOOTER -->
+<div id="chunk5"></div>
+
+<script>
+// ----------------------------------------------------
+// SMART REFRESH SYSTEM
+// ----------------------------------------------------
+
+const chunkFiles = {
+    chunk1: "chunk1.txt",
+    chunk2: "chunk2.txt",
+    chunk3: "chunk3.txt",
+    chunk4: "chunk4.txt",
+    chunk5: "chunk5.txt"
+};
+
+const chunkMeta = {}; // stores ETag + Last-Modified
+
+// Fetch metadata only (HEAD request)
+async function getMeta(file) {
+    try {
+        const res = await fetch(file, { method: "HEAD" });
+        return {
+            etag: res.headers.get("ETag"),
+            modified: res.headers.get("Last-Modified")
+        };
+    } catch (e) {
+        console.error("Metadata error:", file, e);
+        return null;
+    }
+}
+
+// Load full chunk content
+async function loadChunk(id, file) {
+    try {
+        const html = await fetch(file + "?v=" + Date.now()).then(r => r.text());
+        document.getElementById(id).innerHTML = html;
+    } catch (e) {
+        console.error("Error loading chunk:", file, e);
+    }
+}
+
+// Initial load of all chunks
+async function loadAllChunks() {
+    for (const id in chunkFiles) {
+        await loadChunk(id, chunkFiles[id]);
+        chunkMeta[id] = await getMeta(chunkFiles[id]);
+    }
+}
+
+loadAllChunks();
+
+// ----------------------------------------------------
+// SMART AUTO-REFRESH CHECKER
+// ----------------------------------------------------
+async function smartRefresh() {
+    for (const id in chunkFiles) {
+        const file = chunkFiles[id];
+
+        const newMeta = await getMeta(file);
+        if (!newMeta) continue;
+
+        const oldMeta = chunkMeta[id];
+
+        // Compare ETag or Last-Modified
+        const changed =
+            (newMeta.etag && newMeta.etag !== oldMeta.etag) ||
+            (newMeta.modified && newMeta.modified !== oldMeta.modified);
+
+        if (changed) {
+            console.log("Reloading:", file);
+            await loadChunk(id, file);
+            chunkMeta[id] = newMeta;
+
+            // If chunk4 changed, re-run admin logic
+            if (id === "chunk4") {
+                setTimeout(() => {
+                    if (typeof initAdmin === "function") initAdmin();
+                }, 200);
+            }
+        }
+    }
+}
+
+// Check every 5 seconds
+setInterval(smartRefresh, 5000);
+</script>
+
+</body>
+</html>
+

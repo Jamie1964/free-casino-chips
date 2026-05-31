@@ -1,0 +1,49 @@
+<header>
+    <img src="../images/site-logo-ultra-low.png" alt="Site Logo" style="height:100%;object-fit:contain;filter:drop-shadow(0 0 10px #66ccff);">
+</header>
+
+<div class="wrapper">
+
+    <!-- SIDEBAR -->
+    <div id="sidebar"></div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main">
+        <h1 style="color:#66ccff;text-shadow:0 0 6px #000;font-size:28px;margin-top:0;margin-bottom:20px;">
+            Admin Panel
+        </h1>
+
+        <!-- TWO-COLUMN ADMIN LAYOUT -->
+        <div class="admin-grid" style="
+            display:grid;
+            grid-template-columns:1fr 300px;
+            gap:20px;
+        ">
+
+            <!-- LEFT SIDE (WIDE) -->
+            <div id="leftPanel" style="
+                background:#141414;
+                border:1px solid #222;
+                border-radius:8px;
+                padding:15px;
+                box-shadow:0 0 10px #000 inset;
+            ">
+                <!-- Chunk 2 will load here -->
+            </div>
+
+            <!-- RIGHT SIDE (NARROW) -->
+            <div id="rightPanel" style="
+                background:#141414;
+                border:1px solid #222;
+                border-radius:8px;
+                padding:15px;
+                box-shadow:0 0 10px #000 inset;
+            ">
+                <!-- Chunk 3 will load here -->
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
