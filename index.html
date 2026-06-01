@@ -5,14 +5,14 @@
 <title>FREE-CASINO-CHIPS.COM — Daily Free Coins & Sweepstakes Bonuses</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Your trusted source for sweepstakes casino bonuses, daily free coins, redemption guides, and safe legal play. Explore top sweepstakes casinos, free rewards, and expert tips.">
-<link rel="canonical" href="https://www.free-casino-chips.com/">
+<link rel="canonical" href="https://free-casino-chips.com/">
 </head>
 
 <body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
 <!-- HEADER -->
 <div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
-    <img src="images/site-logo-ultra-low.png" alt="Free Casino Chips Logo"
+    <img src="https://free-casino-chips.com/images/site-logo-ultra-low.png" alt="Free Casino Chips Logo"
          style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
 </div>
 
@@ -24,7 +24,7 @@
 </div>
 
 <script>
-fetch('/sidebar.html')
+fetch('https://free-casino-chips.com/sidebar.html')
     .then(r => r.text())
     .then(html => { document.getElementById('sidebar').innerHTML = html; })
     .catch(() => { document.getElementById('sidebar').innerHTML = "<p style='color:#888;'>Sidebar unavailable</p>"; });
@@ -33,12 +33,12 @@ fetch('/sidebar.html')
 <!-- MAIN CONTENT -->
 <div style="flex:1;padding:0 25px;max-width:900px;">
 
-<!-- Intro text moved above the box -->
+<!-- INTRO TEXT -->
 <p style="font-size:18px;line-height:1.6;color:#ddd;text-align:center;margin:10px 0 18px;">
   Your trusted hub for sweepstakes casino bonuses, daily free coin rewards, and safe, legal prize‑eligible gameplay. Whether you're exploring new platforms, comparing bonuses, or learning how sweepstakes casinos work, we bring you verified information and up‑to‑date offers.
 </p>
 
-<!-- HERO PROMO BOX (only poker line + new centered line) -->
+<!-- HERO PROMO BOX -->
 <div style="background:#141414;padding:40px;border-radius:14px;border:2px solid #66ccff;
             box-shadow:0 0 22px #66ccff;margin-bottom:40px;text-align:center;max-width:900px;margin-left:auto;margin-right:auto;">
 
@@ -117,23 +117,11 @@ fetch('/sidebar.html')
     }
     localStorage.setItem(viewsKey, views);
 
-// UNIQUE VISITORS (count EVERY hit as unique)
-let uniques = localStorage.getItem("unique_count_" + pageId);
-
-if (!uniques) uniques = 0;
-
-// Always count a new unique on every load (bots + humans)
-uniques = parseInt(uniques) + 1;
-
-// Save updated count
-localStorage.setItem("unique_count_" + pageId, uniques);
-
-// DISPLAY
-document.getElementById("stats").innerHTML =
-    "Page Views: " + views + " &nbsp;&nbsp; | &nbsp;&nbsp; Unique Visitors: " + uniques;
-
-
-
+    // UNIQUE VISITORS (count EVERY hit as unique)
+    let uniques = localStorage.getItem("unique_count_" + pageId);
+    if (!uniques) uniques = 0;
+    uniques = parseInt(uniques) + 1;
+    localStorage.setItem("unique_count_" + pageId, uniques);
 
     // DISPLAY
     document.getElementById("stats").innerHTML =
