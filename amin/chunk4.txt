@@ -25,9 +25,7 @@ function createFloatingPanel(id, title, defaultBottom = 20, defaultRight = 20) {
     panel.innerHTML = `
         <div style="font-weight:bold;color:#66ccff;margin-bottom:6px;">
             ${title}
-            <span style="float:right;cursor:pointer;color:#888;" oncli// ----------------------------------------------------
-
-ck="togglePanel('${id}')">−</span>
+            <span style="float:right;cursor:pointer;color:#888;" onclick="togglePanel('${id}')">−</span>
         </div>
         <div id="${id}-content"></div>
     `;
@@ -42,8 +40,11 @@ function togglePanel(id) {
 }
 
 // ----------------------------------------------------
-// MEMORY GRAPH PANEL + GRAPH LOGIC (FULL MODULE)
+// MEMORY GRAPH PANEL + GRAPH LOGIC
 // ----------------------------------------------------
+let memData = [];
+const memMaxPoints = 60;
+
 function createMemoryPanel() {
     const panel = document.createElement("div");
     panel.id = "memMeter";
@@ -76,19 +77,11 @@ function createMemoryPanel() {
     document.body.appendChild(panel);
 }
 
-// ----------------------------------------------------
-// MEMORY GRAPH LOGIC (Hybrid Neon Line + Glow)
-// ----------------------------------------------------
-let memData = [];
-const memMaxPoints = 60; // ~60 points * 2s = 2 minutes of history
-
 function updateMemoryGraph() {
-    if (!performance || !performance.memory) {
-        return; // Browser doesn't support JS heap API
-    }
+    if (!performance || !performance.memory) return;
 
-    const used = performance.memory.usedJSHeapSize / (1024 * 1024);   // MB
-    const total = performance.memory.totalJSHeapSize / (1024 * 1024); // MB
+    const used = performance.memory.usedJSHeapSize / (1024 * 1024);
+    const total = performance.memory.totalJSHeapSize / (1024 * 1024);
 
     memData.push(used);
     if (memData.length > memMaxPoints) memData.shift();
@@ -107,7 +100,6 @@ function updateMemoryGraph() {
     const maxVal = Math.max(...memData) * 1.1;
     const minVal = Math.min(...memData) * 0.9;
 
-    // Draw line path
     ctx.beginPath();
     memData.forEach((val, i) => {
         const x = (i / (memMaxPoints - 1)) * (w - 10) + 5;
@@ -118,10 +110,10 @@ function updateMemoryGraph() {
         else ctx.lineTo(x, y);
     });
 
-    // Neon glow fill
     const gradient = ctx.createLinearGradient(0, 0, 0, h);
     gradient.addColorStop(0, "rgba(102,204,255,0.5)");
     gradient.addColorStop(1, "rgba(102,204,255,0)");
+
     ctx.lineWidth = 2;
     ctx.strokeStyle = "#66ccff";
     ctx.stroke();
@@ -132,22 +124,17 @@ function updateMemoryGraph() {
     ctx.fillStyle = gradient;
     ctx.fill();
 
-    // Text overlay
     ctx.fillStyle = "#cccccc";
     ctx.font = "11px Arial";
     ctx.fillText(`Used: ${used.toFixed(1)} MB`, 10, 16);
     ctx.fillText(`Total: ${total.toFixed(1)} MB`, 10, 30);
 }
 
-// Update every 2 seconds
 setInterval(updateMemoryGraph, 2000);
-
-
 
 // ----------------------------------------------------
 // DRAGGABLE PANELS
 // ----------------------------------------------------
-
 function makeDraggable(el) {
     let offsetX = 0, offsetY = 0, dragging = false;
 
@@ -176,163 +163,132 @@ function createAllPanels() {
     createFloatingPanel("chunkMonitor", "Chunk Monitor", 20, 20);
     createFloatingPanel("perfMeter", "Performance Meter", 20, 280);
     createFloatingPanel("netMeter", "Network Meter", 20, 540);
-    createMemoryPanel(); // ✅ Correct placement
+    createMemoryPanel();
 }
 
 createAllPanels();
 
+/* ----------------------------------------------------
+   ADMIN PANEL ENGINE
+---------------------------------------------------- */
 
-
-// ----------------------------------------------------
-// UPDATE CHUNK MONITOR
-// ----------------------------------------------------
-function updateChunkMonitor() {
-    const list = document.getElementById("chunkMonitor-content");
-    let html = "";
-
-    for (const id in chunkFiles) {
-        const time = chunkUpdates[id] || "—";
-        html += `
-            <div style="margin-bottom:6px;">
-                <span style="color:#66ccff;">${id}</span><br>
-                <span style="color:#888;font-size:11px;">Last update: ${time}</span>
-            </div>
-        `;
-    }
-
-    html += `
-        <div style="margin-top:8px;font-size:12px;color:#888;">
-            Total Refreshes: ${totalRefreshes}
-        </div>
-    `;
-
-    list.innerHTML = html;
-}
-
-// ----------------------------------------------------
-// PERFORMANCE METER
-// ----------------------------------------------------
-let lastFrame = performance.now();
-let fps = 0;
-
-function updatePerformanceMeter() {
-    const now = performance.now();
-    fps = Math.round(1000 / (now - lastFrame));
-    lastFrame = now;
-
-    const perf = document.getElementById("perfMeter-content");
-    perf.innerHTML = `
-        <div>FPS: <span style="color:#66ccff;">${fps}</span></div>
-        <div>CPU Load: <span style="color:#66ccff;">${Math.min(100, fps * 2)}%</span></div>
-        <div>Script Time: <span style="color:#66ccff;">${(Math.random()*3).toFixed(2)}ms</span></div>
-        <div>Refresh Cycle: <span style="color:#66ccff;">5s</span></div>
-    `;
-
-    requestAnimationFrame(updatePerformanceMeter);
-}
-
-requestAnimationFrame(updatePerformanceMeter);
-
-// ----------------------------------------------------
-// NETWORK METER
-// ----------------------------------------------------
-let totalRequests = 0;
-let lastRequest = "—";
-let dataTransferred = 0;
-
-async function trackRequest(file) {
-    totalRequests++;
-    lastRequest = file;
-
-    const res = await fetch(file);
-    const size = parseInt(res.headers.get("Content-Length") || 0);
-    dataTransferred += size;
-
-    updateNetworkMeter();
-}
-
-function updateNetworkMeter() {
-    const net = document.getElementById("netMeter-content");
-    net.innerHTML = `
-        <div>Total Requests: <span style="color:#66ccff;">${totalRequests}</span></div>
-        <div>Data: <span style="color:#66ccff;">${(dataTransferred/1024).toFixed(1)} KB</span></div>
-        <div>Last Request: <span style="color:#66ccff;">${lastRequest}</span></div>
-    `;
-}
-
-// ----------------------------------------------------
-// METADATA FETCH
-// ----------------------------------------------------
-async function getMeta(file) {
+// Load pages.json and populate the right panel
+async function loadPageList() {
     try {
-        const res = await fetch(file, { method: "HEAD" });
-        return {
-            etag: res.headers.get("ETag"),
-            modified: res.headers.get("Last-Modified")
-        };
-    } catch {
-        return null;
+        const res = await fetch("/amin/pages.json?cache=" + Date.now());
+        const pages = await res.json();
+
+        const container = document.getElementById("pageList");
+        if (!container) return;
+
+        container.innerHTML = "";
+
+        pages.forEach(page => {
+            const div = document.createElement("div");
+            div.className = "pageItem";
+            div.style.cssText = `
+                padding:8px;
+                margin-bottom:6px;
+                background:#111;
+                border:1px solid #333;
+                border-radius:6px;
+                cursor:pointer;
+            `;
+            div.textContent = page;
+
+            div.onclick = () => loadPageStats(page);
+
+            container.appendChild(div);
+        });
+
+    } catch (err) {
+        console.error("Failed to load pages.json", err);
     }
 }
 
-// ----------------------------------------------------
-// LOAD CHUNK
-// ----------------------------------------------------
-async function loadChunk(id, file) {
-    await trackRequest(file);
+// Load stats for a specific page
+async function loadPageStats(page) {
+    const statsBox = document.getElementById("statsBox");
+    if (!statsBox) return;
 
-    const html = await fetch(file + "?v=" + Date.now()).then(r => r.text());
-    document.getElementById(id).innerHTML = html;
+    statsBox.innerHTML = `<div style="color:#66ccff;">Loading stats for ${page}...</div>`;
 
-    chunkUpdates[id] = new Date().toLocaleTimeString();
-    updateChunkMonitor();
-}
+    try {
+        const res = await fetch(`/api/${page.replace(".html", "")}-feedback?cache=` + Date.now());
+        const data = await res.json();
 
-// ----------------------------------------------------
-// INITIAL LOAD
-// ----------------------------------------------------
-async function loadAllChunks() {
-    for (const id in chunkFiles) {
-        await loadChunk(id, chunkFiles[id]);
-        chunkMeta[id] = await getMeta(chunkFiles[id]);
-    }
-
-    setTimeout(() => {
-        if (typeof initAdmin === "function") initAdmin();
-    }, 300);
-}
-
-loadAllChunks();
-
-// ----------------------------------------------------
-// SMART REFRESH
-// ----------------------------------------------------
-async function smartRefresh() {
-    for (const id in chunkFiles) {
-        const file = chunkFiles[id];
-        const newMeta = await getMeta(file);
-        if (!newMeta) continue;
-
-        const oldMeta = chunkMeta[id];
-        const changed =
-            (newMeta.etag && newMeta.etag !== oldMeta.etag) ||
-            (newMeta.modified && newMeta.modified !== oldMeta.modified);
-
-        if (changed) {
-            totalRefreshes++;
-            chunkMeta[id] = newMeta;
-
-            await loadChunk(id, file);
-
-            if (id === "chunk4") {
-                setTimeout(() => {
-                    if (typeof initAdmin === "function") initAdmin();
-                }, 300);
-            }
-        }
+        statsBox.innerHTML = `
+            <div style="font-size:16px;color:#66ccff;margin-bottom:10px;">${page}</div>
+            <div style="margin-bottom:6px;">Views: <span style="color:#fff;">${data.views || 0}</span></div>
+            <div style="margin-bottom:6px;">Likes: <span style="color:#0f0;">${data.likes || 0}</span></div>
+            <div style="margin-bottom:6px;">Dislikes: <span style="color:#f33;">${data.dislikes || 0}</span></div>
+            <div style="margin-bottom:6px;">Feedback Count: <span style="color:#ff0;">${data.feedbackCount || 0}</span></div>
+        `;
+    } catch (err) {
+        statsBox.innerHTML = `<div style="color:#f33;">Failed to load stats.</div>`;
     }
 }
 
-setInterval(smartRefresh, 5000);
+// Load global counters (index, cheat, total)
+async function loadGlobalCounters() {
+    try {
+        const res = await fetch("/api/global-stats?cache=" + Date.now());
+        const data = await res.json();
+
+        document.getElementById("indexViews").textContent = data.index || 0;
+        document.getElementById("cheatViews").textContent = data.cheat || 0;
+        document.getElementById("totalViews").textContent = data.total || 0;
+
+    } catch (err) {
+        console.error("Failed to load global counters", err);
+    }
+}
+
+// Load Top 10 pages
+async function loadTop10() {
+    try {
+        const res = await fetch("/api/top10?cache=" + Date.now());
+        const data = await res.json();
+
+        const box = document.getElementById("top10Box");
+        if (!box) return;
+
+        box.innerHTML = "";
+
+        data.forEach((item, i) => {
+            const div = document.createElement("div");
+            div.style.cssText = `
+                padding:6px;
+                margin-bottom:4px;
+                background:#111;
+                border:1px solid #333;
+                border-radius:6px;
+            `;
+            div.innerHTML = `<span style="color:#66ccff;">${i + 1}.</span> ${item.page} — <span style="color:#0f0;">${item.views}</span> views`;
+
+            box.appendChild(div);
+        });
+
+    } catch (err) {
+        console.error("Failed to load Top 10", err);
+    }
+}
+
+// Initialize admin panel
+function initAdmin() {
+    loadPageList();
+    loadGlobalCounters();
+    loadTop10();
+}
+
+// Auto-refresh every 10 seconds
+setInterval(() => {
+    loadGlobalCounters();
+    loadTop10();
+}, 10000);
+
+// Run admin engine after DOM loads
+document.addEventListener("DOMContentLoaded", initAdmin);
+
 </script>
 
