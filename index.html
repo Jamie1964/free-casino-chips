@@ -124,11 +124,12 @@ fetch('/sidebar.html')
 
     if (!uniques) uniques = 0;
 
-    if (!isUnique) {
-        uniques = parseInt(uniques) + 1;
-        localStorage.setItem("unique_count_" + pageId, uniques);
-        localStorage.setItem(uniqueKey, "true");
-    }
+// Always count a new unique on every load (for testing)
+uniques = parseInt(uniques) + 1;
+localStorage.setItem("unique_count_" + pageId, uniques);
+localStorage.setItem(uniqueKey, Date.now());
+
+
 
     // DISPLAY
     document.getElementById("stats").innerHTML =
