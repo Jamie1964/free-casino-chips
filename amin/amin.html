@@ -34,9 +34,8 @@
 
 <script>
 // ----------------------------------------------------
-// SMART REFRESH SYSTEM
+// CHUNK PATHS (ABSOLUTE PATHS - CORRECTED)
 // ----------------------------------------------------
-
 const chunkFiles = {
     chunk1: "/amin/chunk1.txt",
     chunk2: "/amin/chunk2.txt",
@@ -45,11 +44,11 @@ const chunkFiles = {
     chunk5: "/amin/chunk5.txt"
 };
 
-
-
 const chunkMeta = {}; // stores ETag + Last-Modified
 
-// Fetch metadata only (HEAD request)
+// ----------------------------------------------------
+// FETCH METADATA (HEAD REQUEST)
+// ----------------------------------------------------
 async function getMeta(file) {
     try {
         const res = await fetch(file, { method: "HEAD" });
@@ -63,17 +62,39 @@ async function getMeta(file) {
     }
 }
 
-// Load full chunk content
+// ----------------------------------------------------
+// LOAD CHUNK + EXECUTE SCRIPTS (FIXED VERSION)
+// ----------------------------------------------------
 async function loadChunk(id, file) {
     try {
         const html = await fetch(file + "?v=" + Date.now()).then(r => r.text());
-        document.getElementById(id).innerHTML = html;
+
+        const container = document.getElementById(id);
+        container.innerHTML = html;
+
+        // ⭐ Execute <script> tags inside the chunk
+        const scripts = container.querySelectorAll("script");
+        scripts.forEach(oldScript => {
+            const newScript = document.createElement("script");
+
+            if (oldScript.src) {
+                newScript.src = oldScript.src;
+            } else {
+                newScript.textContent = oldScript.textContent;
+            }
+
+            document.body.appendChild(newScript);
+            oldScript.remove();
+        });
+
     } catch (e) {
         console.error("Error loading chunk:", file, e);
     }
 }
 
-// Initial load of all chunks
+// ----------------------------------------------------
+// INITIAL LOAD OF ALL CHUNKS
+// ----------------------------------------------------
 async function loadAllChunks() {
     for (const id in chunkFiles) {
         await loadChunk(id, chunkFiles[id]);
@@ -95,7 +116,6 @@ async function smartRefresh() {
 
         const oldMeta = chunkMeta[id];
 
-        // Compare ETag or Last-Modified
         const changed =
             (newMeta.etag && newMeta.etag !== oldMeta.etag) ||
             (newMeta.modified && newMeta.modified !== oldMeta.modified);
