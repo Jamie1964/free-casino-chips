@@ -1,3 +1,4 @@
+<script>
 
 // ----------------------------------------------------
 // CREATE FLOATING METERS
@@ -24,7 +25,9 @@ function createFloatingPanel(id, title, defaultBottom = 20, defaultRight = 20) {
     panel.innerHTML = `
         <div style="font-weight:bold;color:#66ccff;margin-bottom:6px;">
             ${title}
-            <span style="float:right;cursor:pointer;color:#888;" onclick="togglePanel('${id}')">−</span>
+            <span style="float:right;cursor:pointer;color:#888;" oncli// ----------------------------------------------------
+
+ck="togglePanel('${id}')">−</span>
         </div>
         <div id="${id}-content"></div>
     `;
