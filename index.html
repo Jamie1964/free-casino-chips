@@ -117,17 +117,21 @@ fetch('/sidebar.html')
     }
     localStorage.setItem(viewsKey, views);
 
-    // UNIQUE VISITORS (per browser)
-    const uniqueKey = "unique_visitor_" + pageId;
-    let isUnique = localStorage.getItem(uniqueKey);
-    let uniques = localStorage.getItem("unique_count_" + pageId);
+// UNIQUE VISITORS (count EVERY hit as unique)
+let uniques = localStorage.getItem("unique_count_" + pageId);
 
-    if (!uniques) uniques = 0;
+if (!uniques) uniques = 0;
 
-// Always count a new unique on every load (for testing)
+// Always count a new unique on every load (bots + humans)
 uniques = parseInt(uniques) + 1;
+
+// Save updated count
 localStorage.setItem("unique_count_" + pageId, uniques);
-localStorage.setItem(uniqueKey, Date.now());
+
+// DISPLAY
+document.getElementById("stats").innerHTML =
+    "Page Views: " + views + " &nbsp;&nbsp; | &nbsp;&nbsp; Unique Visitors: " + uniques;
+
 
 
 
