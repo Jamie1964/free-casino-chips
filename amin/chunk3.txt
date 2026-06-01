@@ -1,14 +1,41 @@
-<!-- RIGHT PANEL CONTENT -->
+<div style="padding:20px;">
 
-<h2 style="color:#66ccff;font-size:20px;margin-top:0;margin-bottom:10px;">
-    All Pages
-</h2>
+    <h2 style="color:#66ccff;margin-bottom:10px;">Admin Panel</h2>
 
-<div id="pageList" style="
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:12px;
-">
-    <!-- Script will populate this -->
+    <div style="margin-bottom:20px;">
+        <div>Index Views: <span id="indexViews">0</span></div>
+        <div>Cheat Views: <span id="cheatViews">0</span></div>
+        <div>Total Site Views: <span id="totalViews">0</span></div>
+    </div>
+
+    <h3 style="color:#66ccff;">Top 10 Pages</h3>
+    <div id="top10Box" style="
+        background:#111;
+        padding:10px;
+        border:1px solid #333;
+        border-radius:6px;
+        margin-bottom:20px;
+    "></div>
+
+    <h3 style="color:#66ccff;">All Pages</h3>
+    <div id="pageList" style="
+        background:#111;
+        padding:10px;
+        border:1px solid #333;
+        border-radius:6px;
+        margin-bottom:20px;
+        max-height:400px;
+        overflow-y:auto;
+    "></div>
+
+    <h3 style="color:#66ccff;">Page Stats</h3>
+    <div id="statsBox" style="
+        background:#111;
+        padding:10px;
+        border:1px solid #333;
+        border-radius:6px;
+        min-height:120px;
+    "></div>
+
 </div>
 
