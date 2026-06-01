@@ -1,20 +1,3 @@
-<!-- CHUNK 4 — SMART REFRESH + HOT-SWAP + CHUNK MONITOR + PERFORMANCE + NETWORK METERS -->
-
-<script>
-// ----------------------------------------------------
-// CHUNK FILES
-// ----------------------------------------------------
-const chunkFiles = {
-    chunk1: "chunk1.txt",
-    chunk2: "chunk2.txt",
-    chunk3: "chunk3.txt",
-    chunk4: "chunk4.txt",
-    chunk5: "chunk5.txt"
-};
-
-const chunkMeta = {};
-const chunkUpdates = {};
-let totalRefreshes = 0;
 
 // ----------------------------------------------------
 // CREATE FLOATING METERS
