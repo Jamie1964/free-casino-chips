@@ -117,15 +117,10 @@ fetch('https://free-casino-chips.com/sidebar.html')
     }
     localStorage.setItem(viewsKey, views);
 
-    // UNIQUE VISITORS (count EVERY hit as unique)
-    let uniques = localStorage.getItem("unique_count_" + pageId);
-    if (!uniques) uniques = 0;
-    uniques = parseInt(uniques) + 1;
-    localStorage.setItem("unique_count_" + pageId, uniques);
 
     // DISPLAY
     document.getElementById("stats").innerHTML =
-        "Page Views: " + views + " &nbsp;&nbsp; | &nbsp;&nbsp; Unique Visitors: " + uniques;
+        "Page Views: " + views + ";
 })();
 </script>
 
