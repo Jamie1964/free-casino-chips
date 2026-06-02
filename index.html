@@ -109,20 +109,28 @@ fetch('https://free-casino-chips.com/sidebar.html')
 (function() {
     const pageId = "index";
 
-    // PAGE VIEWS
+    // 1. PAGE VIEWS (Increments every refresh)
     const viewsKey = "page_views_" + pageId;
-    let views = localStorage.getItem(viewsKey);
-    if (!views) {
-        views = 1;
-    } else {
-        views = parseInt(views) + 1;
-    }
+    let views = parseInt(localStorage.getItem(viewsKey)) || 0;
+    views++;
     localStorage.setItem(viewsKey, views);
 
+    // 2. UNIQUE VISITORS (Increments only on the first visit)
+    const visitorKey = "is_unique_visitor_" + pageId;
+    const totalVisitorsKey = "unique_visitors_count_" + pageId;
+    
+    let visitors = parseInt(localStorage.getItem(totalVisitorsKey)) || 0;
+    
+    if (!localStorage.getItem(visitorKey)) {
+        // This is a new visitor for this browser
+        visitors++;
+        localStorage.setItem(visitorKey, "true");
+        localStorage.setItem(totalVisitorsKey, visitors);
+    }
 
     // DISPLAY
     document.getElementById("stats").innerHTML =
-        "Page Views: " + views "";
+        "Page Views: " + views + " | Unique Visitors: " + visitors;
 })();
 </script>
 
