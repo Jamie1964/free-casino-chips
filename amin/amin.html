@@ -83,8 +83,46 @@ button:hover {
     <button onclick="resetCounters()">Reset All Counters</button>
 </div>
 
+<!-- TOTALS -->
+<div class="card">
+    <h2>Total Visitors</h2>
+    <p id="totalVisitors" style="font-size:28px;font-weight:bold;">0</p>
+</div>
+
+<div class="card">
+    <h2>Total Page Views</h2>
+    <p id="totalViews" style="font-size:28px;font-weight:bold;">0</p>
+</div>
+
+<!-- TOP 10 -->
+<div class="card">
+    <h2>Top 10 Pages</h2>
+    <table id="topPagesTable">
+        <tr><th>Page</th><th>Views</th></tr>
+    </table>
+</div>
+
+<!-- ALL PAGES -->
+<div class="card">
+    <h2>All Pages</h2>
+    <table id="allPagesTable">
+        <tr><th>Page</th><th>Views</th></tr>
+    </table>
+</div>
+
+<!-- CHARTS -->
+<div class="card">
+    <h2>Views Per Page (Bar Chart)</h2>
+    <canvas id="barChart"></canvas>
+</div>
+
+<div class="card">
+    <h2>Traffic Share (Pie Chart)</h2>
+    <canvas id="pieChart"></canvas>
+</div>
+
 <script>
-// ⭐ PAGE LIST (Home added)
+// PAGE LIST (Home added)
 const pages = [
 "index","ace","americanluck","babacasino","bangcoins","cashoomo","casinoclick","chipnwin",
 "cidercasino","coinsback","coinz","epicsweep","firesevens","fortunewheelz","funrize",
@@ -96,7 +134,7 @@ const pages = [
 "taofortune","thewinzone","vegasway","winbonanza","wowvegas","yaycasino","zulacasino"
 ];
 
-// ⭐ EXACT SIDEBAR NAMES
+// EXACT SIDEBAR NAMES
 const sidebarNames = {
 index:"Home", ace:"Ace", americanluck:"AmericanLuck", babacasino:"BabaCasino",
 bangcoins:"BangCoins", cashoomo:"Cashoomo", casinoclick:"CasinoClick",
@@ -119,72 +157,7 @@ vegasway:"VegasWay", winbonanza:"WinBonanza", wowvegas:"WowVegas",
 yaycasino:"YayCasino", zulacasino:"ZulaCasino"
 };
 
-// ⭐ DATE HELPERS
-function today() {
-    return new Date().toISOString().slice(0,10);
-}
-function daysAgo(n) {
-    const d = new Date();
-    d.setDate(d.getDate() - n);
-    return d.toISOString().slice(0,10);
-}
-
-// ⭐ DAILY TRACKING
-function incrementDaily(pageID) {
-    const key = "views_" + pageID + "_" + today();
-    let count = parseInt(localStorage.getItem(key) || "0");
-    count++;
-    localStorage.setItem(key, count);
-}
-// ⭐ GET DAILY TOTALS FOR A PAGE
-function getDailyCount(pageID, date) {
-    const key = "views_" + pageID + "_" + date;
-    return parseInt(localStorage.getItem(key) || "0");
-}
-
-// ⭐ WEEKLY TOTALS (last 7 days)
-function getWeeklyTotals() {
-    let totals = {};
-    pages.forEach(id => totals[id] = 0);
-
-    for (let i = 0; i < 7; i++) {
-        const d = daysAgo(i);
-        pages.forEach(id => {
-            totals[id] += getDailyCount(id, d);
-        });
-    }
-    return totals;
-}
-
-// ⭐ MONTHLY TOTALS (last 30 days)
-function getMonthlyTotals() {
-    let totals = {};
-    pages.forEach(id => totals[id] = 0);
-
-    for (let i = 0; i < 30; i++) {
-        const d = daysAgo(i);
-        pages.forEach(id => {
-            totals[id] += getDailyCount(id, d);
-        });
-    }
-    return totals;
-}
-
-// ⭐ BUILD WEEKLY & MONTHLY TABLES
-function buildPeriodTable(periodTotals, tableID) {
-    const table = document.getElementById(tableID);
-
-    const sorted = Object.entries(periodTotals)
-        .sort((a,b)=>b[1]-a[1]);
-
-    sorted.forEach(([id,count])=>{
-        const row = document.createElement("tr");
-        row.innerHTML = `<td>${sidebarNames[id]}</td><td>${count}</td>`;
-        table.appendChild(row);
-    });
-}
-
-// ⭐ MAIN ANALYTICS LOADER
+// MAIN ANALYTICS
 function loadAnalytics() {
     let allData = [];
     let totalViews = 0;
@@ -199,7 +172,7 @@ function loadAnalytics() {
     document.getElementById("totalVisitors").textContent = totalViews;
     document.getElementById("totalViews").textContent = totalViews;
 
-    // ⭐ TOP 10 TABLE
+    // TOP 10
     const topPages = [...allData].sort((a,b)=>b.count-a.count).slice(0,10);
     const topTable = document.getElementById("topPagesTable");
     topPages.forEach(item=>{
@@ -208,7 +181,7 @@ function loadAnalytics() {
         topTable.appendChild(row);
     });
 
-    // ⭐ ALL PAGES TABLE
+    // ALL PAGES
     const allTable = document.getElementById("allPagesTable");
     allData.forEach(item=>{
         const row=document.createElement("tr");
@@ -216,19 +189,11 @@ function loadAnalytics() {
         allTable.appendChild(row);
     });
 
-    // ⭐ WEEKLY TABLE
-    const weeklyTotals = getWeeklyTotals();
-    buildPeriodTable(weeklyTotals, "weeklyTable");
-
-    // ⭐ MONTHLY TABLE
-    const monthlyTotals = getMonthlyTotals();
-    buildPeriodTable(monthlyTotals, "monthlyTable");
-
-    // ⭐ CHARTS
+    // CHARTS
     drawCharts(allData);
 }
 
-// ⭐ CHARTS
+// CHARTS
 function drawCharts(data) {
     const labels = data.map(x=>x.id);
     const values = data.map(x=>x.count);
@@ -250,46 +215,18 @@ function randomColor() {
     return `hsl(${Math.random()*360},70%,60%)`;
 }
 
-// ⭐ DARK MODE
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
 }
 
-// ⭐ RESET
 function resetCounters() {
     if(!confirm("Reset ALL counters?")) return;
-
-    // Remove main counters
     pages.forEach(id => localStorage.removeItem("views_" + id));
-
-    // Remove daily counters
-    Object.keys(localStorage).forEach(key=>{
-        if(key.startsWith("views_") && key.split("_").length === 3) {
-            localStorage.removeItem(key);
-        }
-    });
-
     location.reload();
 }
 
 loadAnalytics();
 </script>
-
-<!-- WEEKLY STATS -->
-<div class="card">
-    <h2>Weekly Stats (Last 7 Days)</h2>
-    <table id="weeklyTable">
-        <tr><th>Page</th><th>Views</th></tr>
-    </table>
-</div>
-
-<!-- MONTHLY STATS -->
-<div class="card">
-    <h2>Monthly Stats (Last 30 Days)</h2>
-    <table id="monthlyTable">
-        <tr><th>Page</th><th>Views</th></tr>
-    </table>
-</div>
 
 </div> <!-- END CONTAINER -->
 
