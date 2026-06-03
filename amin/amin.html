@@ -31,7 +31,7 @@ header {
     background:#141414;
     padding:20px;
     border-radius:10px;
-    border:1px solid:#222;
+    border:1px solid #222;
     margin-bottom:25px;
 }
 table {
@@ -40,7 +40,7 @@ table {
 }
 th, td {
     padding:10px;
-    border-bottom:1px solid:#333;
+    border-bottom:1px solid #333;
 }
 th {
     background:#1c1c1c;
@@ -69,6 +69,11 @@ button:hover {
 .dark-mode th {
     background:#e6e6e6;
 }
+.timestamp {
+    font-size:14px;
+    opacity:0.7;
+    margin-top:8px;
+}
 </style>
 </head>
 
@@ -83,15 +88,19 @@ button:hover {
     <button onclick="resetCounters()">Reset All Counters</button>
 </div>
 
-<!-- TOTALS -->
+<!-- VISITOR OVERVIEW -->
 <div class="card">
-    <h2>Total Visitors</h2>
-    <p id="totalVisitors" style="font-size:28px;font-weight:bold;">0</p>
-</div>
+    <h2>Visitors Overview</h2>
 
-<div class="card">
-    <h2>Total Page Views</h2>
-    <p id="totalViews" style="font-size:28px;font-weight:bold;">0</p>
+    <p style="font-size:22px;margin:0;">
+        Total Visitors: <span id="totalVisitors" style="font-weight:bold;">0</span>
+    </p>
+
+    <p style="font-size:22px;margin:0;margin-top:8px;">
+        Unique Visitors (Index): <span id="uniqueIndex" style="font-weight:bold;">0</span>
+    </p>
+
+    <p id="lastUpdated" class="timestamp"></p>
 </div>
 
 <!-- TOP 10 -->
@@ -122,7 +131,7 @@ button:hover {
 </div>
 
 <script>
-// PAGE LIST (Home added)
+// PAGE LIST
 const pages = [
 "index","ace","americanluck","babacasino","bangcoins","cashoomo","casinoclick","chipnwin",
 "cidercasino","coinsback","coinz","epicsweep","firesevens","fortunewheelz","funrize",
@@ -134,7 +143,7 @@ const pages = [
 "taofortune","thewinzone","vegasway","winbonanza","wowvegas","yaycasino","zulacasino"
 ];
 
-// EXACT SIDEBAR NAMES
+// SIDEBAR NAMES
 const sidebarNames = {
 index:"Index", ace:"Ace", americanluck:"AmericanLuck", babacasino:"BabaCasino",
 bangcoins:"BangCoins", cashoomo:"Cashoomo", casinoclick:"CasinoClick",
@@ -157,7 +166,12 @@ vegasway:"VegasWay", winbonanza:"WinBonanza", wowvegas:"WowVegas",
 yaycasino:"YayCasino", zulacasino:"ZulaCasino"
 };
 
-// SPECIAL CASE: HOMEPAGE USES A DIFFERENT KEY
+// HOMEPAGE UNIQUE VISITORS
+function getHomepageUniques() {
+    return parseInt(localStorage.getItem("unique_count_index") || "0");
+}
+
+// HOMEPAGE VIEWS (special key)
 function getHomepageViews() {
     return parseInt(localStorage.getItem("page_views_index") || "0");
 }
@@ -182,7 +196,12 @@ function loadAnalytics() {
     });
 
     document.getElementById("totalVisitors").textContent = totalViews;
-    document.getElementById("totalViews").textContent = totalViews;
+    document.getElementById("uniqueIndex").textContent = getHomepageUniques();
+
+    // TIMESTAMP
+    const now = new Date();
+    document.getElementById("lastUpdated").textContent =
+        "Last Updated: " + now.toLocaleString();
 
     // TOP 10
     const topPages = [...allData].sort((a,b)=>b.count-a.count).slice(0,10);
@@ -201,7 +220,6 @@ function loadAnalytics() {
         allTable.appendChild(row);
     });
 
-    // CHARTS
     drawCharts(allData);
 }
 
@@ -234,10 +252,9 @@ function toggleDarkMode() {
 function resetCounters() {
     if(!confirm("Reset ALL counters?")) return;
 
-    // Reset homepage
     localStorage.removeItem("page_views_index");
+    localStorage.removeItem("unique_count_index");
 
-    // Reset all other pages
     pages.forEach(id => {
         if (id !== "index") {
             localStorage.removeItem("views_" + id);
@@ -250,7 +267,7 @@ function resetCounters() {
 loadAnalytics();
 </script>
 
-</div> <!-- END CONTAINER -->
+</div>
 
 </body>
 </html>
