@@ -275,7 +275,7 @@ function drawCharts(data) {
 
 // SMALL BAR CHART (index excluded)
 function drawSmallChart(data) {
-    const filtered = data.filter(x => x.id !== "index");
+    const filtered = data.filter(x => x.id !== "index" && x.id !== "cheat");
 
     new Chart(document.getElementById("smallBarChart"), {
         type:"bar",
