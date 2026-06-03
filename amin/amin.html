@@ -1,188 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Admin Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Admin Dashboard – FREE‑CASINO‑CHIPS.COM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- CHART.JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f4f4f4;
-        display: flex;
-        height: 100vh;
-        overflow: hidden;
-    }
-
-    /* SIDEBAR */
-    #sidebar {
-        width: 260px;
-        background: #1e1e1e;
-        color: white;
-        padding: 20px;
-        overflow-y: auto;
-    }
-
-    #sidebar h2 {
-        margin-top: 0;
-        font-size: 20px;
-        margin-bottom: 15px;
-    }
-
-    /* MAIN AREA */
-    #main {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-    }
-
-    #topbar {
-        background: white;
-        padding: 12px 20px;
-        border-bottom: 1px solid #ddd;
-    }
-
-    #content {
-        padding: 20px;
-    }
-
-    .card {
-        background: white;
-        padding: 15px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 6px #00000022;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-    }
-
-    th, td {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        text-align: left;
-    }
-
-    th {
-        background: #fafafa;
-    }
-
-    .highlight {
-        font-weight: bold;
-        color: #0081f2;
-    }
+body {
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#0d0d0d;
+    color:#fff;
+}
+header {
+    background:#111;
+    padding:20px;
+    text-align:center;
+    font-size:26px;
+    font-weight:bold;
+    border-bottom:2px solid #222;
+}
+.container {
+    max-width:1200px;
+    margin:30px auto;
+    padding:20px;
+}
+.card {
+    background:#141414;
+    padding:20px;
+    border-radius:10px;
+    border:1px solid #222;
+    margin-bottom:25px;
+}
+table {
+    width:100%;
+    border-collapse:collapse;
+}
+th, td {
+    padding:10px;
+    border-bottom:1px solid #333;
+}
+th {
+    background:#1c1c1c;
+}
+button {
+    background:#66ccff;
+    color:#000;
+    padding:10px 18px;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-right:10px;
+}
+button:hover {
+    background:#99ddff;
+}
+.dark-mode {
+    background:#fff;
+    color:#000;
+}
+.dark-mode .card {
+    background:#f2f2f2;
+    border-color:#ccc;
+}
+.dark-mode th {
+    background:#e6e6e6;
+}
 </style>
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
-<div id="sidebar">
-    <h2>Admin Dashboard</h2>
-    <p>Visitor analytics for all pages.</p>
+<header>Admin Dashboard – FREE‑CASINO‑CHIPS.COM</header>
+
+<div class="container">
+
+<div style="margin-bottom:20px;">
+    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <button onclick="resetCounters()">Reset All Counters</button>
 </div>
 
-<!-- MAIN AREA -->
-<div id="main">
+<div class="card">
+    <h2>Total Visitors</h2>
+    <p id="totalVisitors" style="font-size:28px;font-weight:bold;">0</p>
+</div>
 
-    <div id="topbar">
-        <strong>Site Analytics Overview</strong>
-    </div>
+<div class="card">
+    <h2>Total Page Views</h2>
+    <p id="totalViews" style="font-size:28px;font-weight:bold;">0</p>
+</div>
 
-    <div id="content">
+<div class="card">
+    <h2>Top 10 Pages</h2>
+    <table id="topPagesTable">
+        <tr><th>Page</th><th>Views</th></tr>
+    </table>
+</div>
 
-        <div class="card">
-            <h3>Total Visitors</h3>
-            <p id="totalVisitors" class="highlight">0</p>
-        </div>
+<div class="card">
+    <h2>All Pages</h2>
+    <table id="allPagesTable">
+        <tr><th>Page</th><th>Views</th></tr>
+    </table>
+</div>
 
-        <div class="card">
-            <h3>Total Page Views</h3>
-            <p id="totalViews" class="highlight">0</p>
-        </div>
+<div class="card">
+    <h2>Views Per Page (Bar Chart)</h2>
+    <canvas id="barChart"></canvas>
+</div>
 
-        <div class="card">
-            <h3>Top 10 Pages</h3>
-            <table id="topPagesTable">
-                <tr><th>Page</th><th>Views</th></tr>
-            </table>
-        </div>
-
-        <div class="card">
-            <h3>All Pages</h3>
-            <table id="allPagesTable">
-                <tr><th>Page</th><th>Views</th></tr>
-            </table>
-        </div>
-
-    </div>
+<div class="card">
+    <h2>Traffic Share (Pie Chart)</h2>
+    <canvas id="pieChart"></canvas>
+</div>
 
 </div>
 
 <script>
-    // Your pages in the root
-    const pages = [
-        "ace.html",
-        "americanluck.html",
-        "babacasino.html",
-        "bangcoins.html",
-        "firesevens.html",
-        "moozi.html",
-        "cashoomo.html",
-        "coinsback.html",
-        "slotgames.html",
-        "poker1.html",
-        "poker2.html"
-    ];
+// FULL PAGE LIST (from your sidebar)
+const pages = [
+"ace","americanluck","babacasino","bangcoins","cashoomo","casinoclick","chipnwin",
+"cidercasino","coinsback","coinz","epicsweep","firesevens","fortunewheelz","funrize",
+"funzcity","goldenheartsgames","goodvibes","hellomillions","high5casino","jumbo88",
+"kingprize","lavishluck","legendz","lonestar","luckparty","luckyslots","luckystake",
+"mcluck","modo","moozi","mrgoodwin","myprizeus","newluck","nolimitcoins","playfame",
+"playtana","pulsz","rolla","scarletsands","sixty6","speedsweeps","spinblitz","spindoo",
+"spinsagacasino","sportzino","spree","stormrush","sweepico","sweepsblast","sweepshark",
+"taofortune","thewinzone","vegasway","winbonanza","wowvegas","yaycasino","zulacasino"
+];
 
-    function getPageName(filename) {
-        return filename.replace(".html", "")
-                       .replace(/-/g, " ")
-                       .replace(/\b\w/g, c => c.toUpperCase());
-    }
+// EXACT SIDEBAR NAMES (for tables)
+const sidebarNames = {
+ace:"Ace", americanluck:"AmericanLuck", babacasino:"BabaCasino", bangcoins:"BangCoins",
+cashoomo:"Cashoomo", casinoclick:"CasinoClick", chipnwin:"ChipNWin", cidercasino:"CiderCasino",
+coinsback:"CoinsBackCasino", coinz:"Coinz", epicsweep:"EpicSweep", firesevens:"FireSevens",
+fortunewheelz:"FortuneWheelz", funrize:"Funrize", funzcity:"FunzCity",
+goldenheartsgames:"GoldenHeartsGames", goodvibes:"GoodVibes", hellomillions:"HelloMillions",
+high5casino:"High5Casino", jumbo88:"Jumbo88", kingprize:"KingPrize", lavishluck:"LavishLuck",
+legendz:"Legendz", lonestar:"LoneStar", luckparty:"LuckParty", luckyslots:"LuckySlots",
+luckystake:"LuckyStake", mcluck:"McLuck", modo:"Modo", moozi:"Moozi", mrgoodwin:"MrGoodwin",
+myprizeus:"MyPrizeUS", newluck:"NewLuck", nolimitcoins:"NoLimitCoins", playfame:"PlayFame",
+playtana:"PlayTana", pulsz:"Pulsz", rolla:"Rolla", scarletsands:"ScarletSands",
+sixty6:"Sixty6", speedsweeps:"SpeedSweeps", spinblitz:"SpinBlitz", spindoo:"Spindoo",
+spinsagacasino:"SpinSagaCasino", sportzino:"Sportzino", spree:"Spree", stormrush:"StormRush",
+sweepico:"Sweepico", sweepsblast:"SweepsBlast", sweepshark:"SweepsHark",
+taofortune:"TaoFortune", thewinzone:"TheWinZone", vegasway:"VegasWay",
+winbonanza:"WinBonanza", wowvegas:"WowVegas", yaycasino:"YayCasino", zulacasino:"ZulaCasino"
+};
 
-    function loadAnalytics() {
-        let allData = [];
-        let totalViews = 0;
+function loadAnalytics() {
+    let allData = [];
+    let totalViews = 0;
 
-        pages.forEach(page => {
-            const key = "views_" + page; // matches your localStorage system
-            const count = parseInt(localStorage.getItem(key) || "0");
+    pages.forEach(id => {
+        const key = "views_" + id;
+        const count = parseInt(localStorage.getItem(key) || "0");
+        allData.push({ id, count });
+        totalViews += count;
+    });
 
-            allData.push({ page, count });
-            totalViews += count;
-        });
+    document.getElementById("totalVisitors").textContent = totalViews;
+    document.getElementById("totalViews").textContent = totalViews;
 
-        // Sort for top pages
-        const topPages = [...allData].sort((a, b) => b.count - a.count).slice(0, 10);
+    const topPages = [...allData].sort((a,b)=>b.count-a.count).slice(0,10);
 
-        // Update totals
-        document.getElementById("totalVisitors").textContent = totalViews;
-        document.getElementById("totalViews").textContent = totalViews;
+    const topTable = document.getElementById("topPagesTable");
+    topPages.forEach(item=>{
+        const row=document.createElement("tr");
+        row.innerHTML=`<td>${sidebarNames[item.id]}</td><td>${item.count}</td>`;
+        topTable.appendChild(row);
+    });
 
-        // Fill Top Pages Table
-        const topTable = document.getElementById("topPagesTable");
-        topPages.forEach(item => {
-            const row = document.createElement("tr");
-            row.innerHTML = `<td>${getPageName(item.page)}</td><td>${item.count}</td>`;
-            topTable.appendChild(row);
-        });
+    const allTable = document.getElementById("allPagesTable");
+    allData.forEach(item=>{
+        const row=document.createElement("tr");
+        row.innerHTML=`<td>${sidebarNames[item.id]}</td><td>${item.count}</td>`;
+        allTable.appendChild(row);
+    });
 
-        // Fill All Pages Table
-        const allTable = document.getElementById("allPagesTable");
-        allData.forEach(item => {
-            const row = document.createElement("tr");
-            row.innerHTML = `<td>${getPageName(item.page)}</td><td>${item.count}</td>`;
-            allTable.appendChild(row);
-        });
-    }
+    drawCharts(allData);
+}
 
-    loadAnalytics();
+function drawCharts(data) {
+    const labels = data.map(x=>x.id);
+    const values = data.map(x=>x.count);
+
+    new Chart(document.getElementById("barChart"), {
+        type:"bar",
+        data:{ labels, datasets:[{ label:"Views", data:values, backgroundColor:"#66ccff" }] },
+        options:{ responsive:true, scales:{ y:{ beginAtZero:true } } }
+    });
+
+    new Chart(document.getElementById("pieChart"), {
+        type:"pie",
+        data:{ labels, datasets:[{ data:values, backgroundColor:labels.map(()=>randomColor()) }] },
+        options:{ responsive:true }
+    });
+}
+
+function randomColor() {
+    return `hsl(${Math.random()*360},70%,60%)`;
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
+
+function resetCounters() {
+    if(!confirm("Reset ALL counters?")) return;
+    pages.forEach(id=>localStorage.removeItem("views_"+id));
+    location.reload();
+}
+
+loadAnalytics();
 </script>
 
 </body>
