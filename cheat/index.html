@@ -11,7 +11,7 @@
 <!-- FIXED HEADER -->
 <div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
             border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
-    <img src="images/site-logo-ultra-low.png" alt="Free Casino Chips Logo"
+    <img src="https://free-casino-chips.com/images/logotransparent.png" alt="Free Casino Chips Logo"
          style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;
                 filter:drop-shadow(0 0 6px #000);">
 </div>
@@ -28,7 +28,7 @@
 </div>
 
 <script>
-fetch('/sidebar.html')
+fetch('https://free-casino-chips.com/sidebar.html')
     .then(r => r.text())
     .then(html => { document.getElementById('sidebar').innerHTML = html; })
     .catch(() => { document.getElementById('sidebar').innerHTML =
@@ -42,7 +42,7 @@ fetch('/sidebar.html')
 <h1 style="font-size:32px;margin:0 0 20px;color:#66ccff;">Casino Cheat Sheet</h1>
 
 <!-- INSTRUCTIONS (unchanged per your request) -->
-<div style="max-width:900px;font-size:16px;line-height:1.55;margin-bottom:25px;color:#ccc;">
+<div style="max-width:900px;font-size:18px;line-height:1.55;margin-bottom:25px;color:#ccc;">
     This cheat sheet helps you collect your daily free chips quickly and efficiently.
     Each link opens in a new tab so you can claim your rewards, close the tab, and
     <strong>you</strong> return here to continue. Your progress is automatically saved
