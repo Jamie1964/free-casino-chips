@@ -23,7 +23,7 @@ header {
     border-bottom:2px solid #222;
 }
 .container {
-    max-width:1200px;
+    max-width:1400px;
     margin:30px auto;
     padding:20px;
 }
@@ -55,13 +55,15 @@ button:hover {
     background:#f2f2f2;
     border-color:#ccc;
 }
-.timestamp {
-    font-size:14px;
-    opacity:0.7;
-    margin-top:8px;
+
+/* ⭐ 2‑COLUMN TOP LAYOUT ⭐ */
+.top-grid {
+    display:grid;
+    grid-template-columns:72% 28%;
+    gap:20px;
 }
 
-/* ⭐ 4‑COLUMN GRID FOR ALL PAGES ⭐ */
+/* ⭐ 4‑COLUMN ALL PAGES GRID ⭐ */
 .grid-table {
     display:grid;
     grid-template-columns:repeat(4, 1fr);
@@ -74,6 +76,13 @@ button:hover {
 }
 .dark-mode .grid-item {
     border-bottom:1px solid #ccc;
+}
+
+/* ⭐ SMALL BAR CHART ⭐ */
+.small-chart-container {
+    width:100%;
+    max-width:70%;
+    margin-top:20px;
 }
 </style>
 </head>
@@ -89,48 +98,72 @@ button:hover {
     <button onclick="resetCounters()">Reset All Counters</button>
 </div>
 
-<!-- VISITOR OVERVIEW -->
-<div class="card">
-    <h2>Visitors Overview</h2>
+<!-- ⭐ TOP GRID: LEFT = Visitors Overview + Small Chart, RIGHT = Top 10 ⭐ -->
+<div class="top-grid">
 
-    <p style="font-size:22px;margin:0;">
-        Total Visitors: <span id="totalVisitors" style="font-weight:bold;">0</span>
-    </p>
+    <!-- LEFT COLUMN -->
+    <div>
 
-    <p style="font-size:22px;margin:0;margin-top:8px;">
-        Unique Visitors (Index): <span id="uniqueIndex" style="font-weight:bold;">0</span>
-    </p>
+        <!-- VISITOR OVERVIEW -->
+        <div class="card">
+            <h2>Visitors Overview</h2>
 
-    <p id="lastUpdated" class="timestamp"></p>
+            <p style="font-size:22px;margin:0;">
+                Total Visitors: <span id="totalVisitors" style="font-weight:bold;">0</span>
+            </p>
+
+            <p style="font-size:22px;margin:0;margin-top:8px;">
+                Unique Visitors (Index): <span id="uniqueIndex" style="font-weight:bold;">0</span>
+            </p>
+
+            <p style="font-size:22px;margin:0;margin-top:8px;">
+                Cheatsheet Views: <span id="cheatViews" style="font-weight:bold;">0</span>
+            </p>
+
+            <!-- SMALL BAR CHART -->
+            <div class="small-chart-container">
+                <canvas id="smallBarChart" height="150"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div>
+
+        <!-- TOP 10 PAGES -->
+        <div class="card">
+            <h2>Top 10 Pages</h2>
+            <table id="topPagesTable">
+                <tr><th>Page</th><th>Views</th></tr>
+            </table>
+        </div>
+
+    </div>
+
 </div>
 
-<!-- TOP 10 -->
-<div class="card">
-    <h2>Top 10 Pages</h2>
-    <table id="topPagesTable">
-        <tr><th>Page</th><th>Views</th></tr>
-    </table>
-</div>
-
-<!-- ⭐ ALL PAGES — 4 COLUMN GRID ⭐ -->
-<div class="card">
-    <h2>All Pages</h2>
-    <div id="allPagesGrid" class="grid-table"></div>
-</div>
-
-<!-- CHARTS -->
+<!-- FULL BAR CHART -->
 <div class="card">
     <h2>Views Per Page (Bar Chart)</h2>
     <canvas id="barChart"></canvas>
 </div>
 
+<!-- PIE CHART -->
 <div class="card">
     <h2>Traffic Share (Pie Chart)</h2>
     <canvas id="pieChart"></canvas>
 </div>
 
+<!-- ALL PAGES GRID -->
+<div class="card">
+    <h2>All Pages</h2>
+    <div id="allPagesGrid" class="grid-table"></div>
+</div>
+
 <script>
-// PAGE LIST
+// PAGE LIST (added cheat)
 const pages = [
 "index","ace","americanluck","babacasino","bangcoins","cashoomo","casinoclick","chipnwin",
 "cidercasino","coinsback","coinz","epicsweep","firesevens","fortunewheelz","funrize",
@@ -139,10 +172,11 @@ const pages = [
 "mcluck","modo","moozi","mrgoodwin","myprizeus","newluck","nolimitcoins","playfame",
 "playtana","pulsz","rolla","scarletsands","sixty6","speedsweeps","spinblitz","spindoo",
 "spinsagacasino","sportzino","spree","stormrush","sweepico","sweepsblast","sweepshark",
-"taofortune","thewinzone","vegasway","winbonanza","wowvegas","yaycasino","zulacasino"
+"taofortune","thewinzone","vegasway","winbonanza","wowvegas","yaycasino","zulacasino",
+"cheat"
 ];
 
-// SIDEBAR NAMES
+// SIDEBAR NAMES (added Cheatsheet)
 const sidebarNames = {
 index:"Index", ace:"Ace", americanluck:"AmericanLuck", babacasino:"BabaCasino",
 bangcoins:"BangCoins", cashoomo:"Cashoomo", casinoclick:"CasinoClick",
@@ -162,7 +196,7 @@ spinsagacasino:"SpinSagaCasino", sportzino:"Sportzino", spree:"Spree",
 stormrush:"StormRush", sweepico:"Sweepico", sweepsblast:"SweepsBlast",
 sweepshark:"SweepsHark", taofortune:"TaoFortune", thewinzone:"TheWinZone",
 vegasway:"VegasWay", winbonanza:"WinBonanza", wowvegas:"WowVegas",
-yaycasino:"YayCasino", zulacasino:"ZulaCasino"
+yaycasino:"YayCasino", zulacasino:"ZulaCasino", cheat:"Cheatsheet"
 };
 
 // HOMEPAGE UNIQUE VISITORS
@@ -196,11 +230,8 @@ function loadAnalytics() {
 
     document.getElementById("totalVisitors").textContent = totalViews;
     document.getElementById("uniqueIndex").textContent = getHomepageUniques();
-
-    // TIMESTAMP
-    const now = new Date();
-    document.getElementById("lastUpdated").textContent =
-        "Last Updated: " + now.toLocaleString();
+    document.getElementById("cheatViews").textContent =
+        parseInt(localStorage.getItem("views_cheat") || "0");
 
     // TOP 10 TABLE
     const topPages = [...allData].sort((a,b)=>b.count-a.count).slice(0,10);
@@ -211,7 +242,7 @@ function loadAnalytics() {
         topTable.appendChild(row);
     });
 
-    // ⭐ ALL PAGES GRID ⭐
+    // ALL PAGES GRID
     const grid = document.getElementById("allPagesGrid");
     allData.forEach(item=>{
         const div=document.createElement("div");
@@ -221,9 +252,10 @@ function loadAnalytics() {
     });
 
     drawCharts(allData);
+    drawSmallChart(allData);
 }
 
-// CHARTS
+// FULL CHARTS
 function drawCharts(data) {
     const labels = data.map(x=>x.id);
     const values = data.map(x=>x.count);
@@ -238,6 +270,28 @@ function drawCharts(data) {
         type:"pie",
         data:{ labels, datasets:[{ data:values, backgroundColor:labels.map(()=>randomColor()) }] },
         options:{ responsive:true }
+    });
+}
+
+// SMALL BAR CHART (index excluded)
+function drawSmallChart(data) {
+    const filtered = data.filter(x => x.id !== "index");
+
+    new Chart(document.getElementById("smallBarChart"), {
+        type:"bar",
+        data:{
+            labels: filtered.map(x=>sidebarNames[x.id]),
+            datasets:[{
+                label:"Views",
+                data: filtered.map(x=>x.count),
+                backgroundColor:"#66ccff"
+            }]
+        },
+        options:{
+            responsive:true,
+            scales:{ y:{ beginAtZero:true } },
+            plugins:{ legend:{ display:false } }
+        }
     });
 }
 
