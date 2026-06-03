@@ -34,17 +34,6 @@ header {
     border:1px solid #222;
     margin-bottom:25px;
 }
-table {
-    width:100%;
-    border-collapse:collapse;
-}
-th, td {
-    padding:10px;
-    border-bottom:1px solid #333;
-}
-th {
-    background:#1c1c1c;
-}
 button {
     background:#66ccff;
     color:#000;
@@ -66,13 +55,25 @@ button:hover {
     background:#f2f2f2;
     border-color:#ccc;
 }
-.dark-mode th {
-    background:#e6e6e6;
-}
 .timestamp {
     font-size:14px;
     opacity:0.7;
     margin-top:8px;
+}
+
+/* ⭐ 4‑COLUMN GRID FOR ALL PAGES ⭐ */
+.grid-table {
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:10px;
+}
+.grid-item {
+    padding:10px;
+    border-bottom:1px solid #333;
+    font-size:16px;
+}
+.dark-mode .grid-item {
+    border-bottom:1px solid #ccc;
 }
 </style>
 </head>
@@ -111,12 +112,10 @@ button:hover {
     </table>
 </div>
 
-<!-- ALL PAGES -->
+<!-- ⭐ ALL PAGES — 4 COLUMN GRID ⭐ -->
 <div class="card">
     <h2>All Pages</h2>
-    <table id="allPagesTable">
-        <tr><th>Page</th><th>Views</th></tr>
-    </table>
+    <div id="allPagesGrid" class="grid-table"></div>
 </div>
 
 <!-- CHARTS -->
@@ -171,7 +170,7 @@ function getHomepageUniques() {
     return parseInt(localStorage.getItem("unique_count_index") || "0");
 }
 
-// HOMEPAGE VIEWS (special key)
+// HOMEPAGE VIEWS
 function getHomepageViews() {
     return parseInt(localStorage.getItem("page_views_index") || "0");
 }
@@ -203,7 +202,7 @@ function loadAnalytics() {
     document.getElementById("lastUpdated").textContent =
         "Last Updated: " + now.toLocaleString();
 
-    // TOP 10
+    // TOP 10 TABLE
     const topPages = [...allData].sort((a,b)=>b.count-a.count).slice(0,10);
     const topTable = document.getElementById("topPagesTable");
     topPages.forEach(item=>{
@@ -212,12 +211,13 @@ function loadAnalytics() {
         topTable.appendChild(row);
     });
 
-    // ALL PAGES
-    const allTable = document.getElementById("allPagesTable");
+    // ⭐ ALL PAGES GRID ⭐
+    const grid = document.getElementById("allPagesGrid");
     allData.forEach(item=>{
-        const row=document.createElement("tr");
-        row.innerHTML=`<td>${sidebarNames[item.id]}</td><td>${item.count}</td>`;
-        allTable.appendChild(row);
+        const div=document.createElement("div");
+        div.className="grid-item";
+        div.textContent = `${sidebarNames[item.id]} — ${item.count}`;
+        grid.appendChild(div);
     });
 
     drawCharts(allData);
