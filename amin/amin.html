@@ -31,7 +31,7 @@ header {
     background:#141414;
     padding:20px;
     border-radius:10px;
-    border:1px solid #222;
+    border:1px solid:#222;
     margin-bottom:25px;
 }
 table {
@@ -40,7 +40,7 @@ table {
 }
 th, td {
     padding:10px;
-    border-bottom:1px solid #333;
+    border-bottom:1px solid:#333;
 }
 th {
     background:#1c1c1c;
@@ -136,7 +136,7 @@ const pages = [
 
 // EXACT SIDEBAR NAMES
 const sidebarNames = {
-index:"Home", ace:"Ace", americanluck:"AmericanLuck", babacasino:"BabaCasino",
+index:"Index", ace:"Ace", americanluck:"AmericanLuck", babacasino:"BabaCasino",
 bangcoins:"BangCoins", cashoomo:"Cashoomo", casinoclick:"CasinoClick",
 chipnwin:"ChipNWin", cidercasino:"CiderCasino", coinsback:"CoinsBackCasino",
 coinz:"Coinz", epicsweep:"EpicSweep", firesevens:"FireSevens",
@@ -157,14 +157,26 @@ vegasway:"VegasWay", winbonanza:"WinBonanza", wowvegas:"WowVegas",
 yaycasino:"YayCasino", zulacasino:"ZulaCasino"
 };
 
+// SPECIAL CASE: HOMEPAGE USES A DIFFERENT KEY
+function getHomepageViews() {
+    return parseInt(localStorage.getItem("page_views_index") || "0");
+}
+
 // MAIN ANALYTICS
 function loadAnalytics() {
     let allData = [];
     let totalViews = 0;
 
     pages.forEach(id => {
-        const key = "views_" + id;
-        const count = parseInt(localStorage.getItem(key) || "0");
+        let count;
+
+        if (id === "index") {
+            count = getHomepageViews();
+        } else {
+            const key = "views_" + id;
+            count = parseInt(localStorage.getItem(key) || "0");
+        }
+
         allData.push({ id, count });
         totalViews += count;
     });
@@ -221,7 +233,17 @@ function toggleDarkMode() {
 
 function resetCounters() {
     if(!confirm("Reset ALL counters?")) return;
-    pages.forEach(id => localStorage.removeItem("views_" + id));
+
+    // Reset homepage
+    localStorage.removeItem("page_views_index");
+
+    // Reset all other pages
+    pages.forEach(id => {
+        if (id !== "index") {
+            localStorage.removeItem("views_" + id);
+        }
+    });
+
     location.reload();
 }
 
