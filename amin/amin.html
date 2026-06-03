@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Admin Panel</title>
+<title>Admin Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style>
@@ -30,70 +30,51 @@
         margin-bottom: 15px;
     }
 
-    #search {
-        width: 100%;
-        padding: 8px;
-        border-radius: 6px;
-        border: none;
-        margin-bottom: 15px;
-    }
-
-    .page-btn {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 8px;
-        background: #333;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        text-align: left;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-
-    .page-btn:hover {
-        background: #444;
-    }
-
     /* MAIN AREA */
     #main {
         flex: 1;
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
     }
 
     #topbar {
         background: white;
         padding: 12px 20px;
         border-bottom: 1px solid #ddd;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
 
-    #editor {
-        flex: 1;
+    #content {
         padding: 20px;
-        overflow-y: auto;
-        background: #ffffff;
     }
 
-    #editor[contenteditable="true"] {
-        outline: 2px solid #0081f2;
-        background: #f0f8ff;
+    .card {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 6px #00000022;
     }
 
-    #saveBtn {
-        padding: 8px 14px;
-        background: #0081f2;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
     }
 
-    #saveBtn:hover {
-        background: #0a6fcc;
+    th, td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background: #fafafa;
+    }
+
+    .highlight {
+        font-weight: bold;
+        color: #0081f2;
     }
 </style>
 </head>
@@ -102,84 +83,106 @@
 
 <!-- SIDEBAR -->
 <div id="sidebar">
-    <h2>Admin Pages</h2>
-
-    <input id="search" type="text" placeholder="Search pages...">
-
-    <div id="pageList">
-        <button class="page-btn">Ace Casino</button>
-        <button class="page-btn">American Luck</button>
-        <button class="page-btn">Baba Casino</button>
-        <button class="page-btn">BangCoins</button>
-        <button class="page-btn">FireSevens</button>
-        <button class="page-btn">Moozi</button>
-        <button class="page-btn">Cashoomo</button>
-        <button class="page-btn">CoinsBack</button>
-        <button class="page-btn">Slot Games</button>
-        <button class="page-btn">Poker Site 1</button>
-        <button class="page-btn">Poker Site 2</button>
-    </div>
+    <h2>Admin Dashboard</h2>
+    <p>Visitor analytics for all pages.</p>
 </div>
 
 <!-- MAIN AREA -->
 <div id="main">
 
     <div id="topbar">
-        <strong id="currentPage">Select a page</strong>
-        <button id="saveBtn">Save Changes</button>
+        <strong>Site Analytics Overview</strong>
     </div>
 
-    <div id="editor">
-        <p>Select a page from the left to begin editing.</p>
+    <div id="content">
+
+        <div class="card">
+            <h3>Total Visitors</h3>
+            <p id="totalVisitors" class="highlight">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Page Views</h3>
+            <p id="totalViews" class="highlight">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Top 10 Pages</h3>
+            <table id="topPagesTable">
+                <tr><th>Page</th><th>Views</th></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>All Pages</h3>
+            <table id="allPagesTable">
+                <tr><th>Page</th><th>Views</th></tr>
+            </table>
+        </div>
+
     </div>
 
 </div>
 
 <script>
-    const editor = document.getElementById("editor");
-    const currentPage = document.getElementById("currentPage");
-    const search = document.getElementById("search");
-    const pageButtons = document.querySelectorAll(".page-btn");
+    // Your pages in the root
+    const pages = [
+        "ace.html",
+        "americanluck.html",
+        "babacasino.html",
+        "bangcoins.html",
+        "firesevens.html",
+        "moozi.html",
+        "cashoomo.html",
+        "coinsback.html",
+        "slotgames.html",
+        "poker1.html",
+        "poker2.html"
+    ];
 
-    // Fake page content (you can replace with real HTML later)
-    const pageData = {
-        "Ace Casino": "<h1>Ace Casino</h1><p>Welcome to Ace Casino.</p>",
-        "American Luck": "<h1>American Luck</h1><p>USA themed casino.</p>",
-        "Baba Casino": "<h1>Baba Casino</h1><p>Fun and exciting games.</p>",
-        "BangCoins": "<h1>BangCoins</h1><p>Crypto casino platform.</p>",
-        "FireSevens": "<h1>FireSevens</h1><p>Hot slots and jackpots.</p>",
-        "Moozi": "<h1>Moozi</h1><p>Coming soon...</p>",
-        "Cashoomo": "<h1>Cashoomo</h1><p>Cashback rewards casino.</p>",
-        "CoinsBack": "<h1>CoinsBack</h1><p>Earn coins on every bet.</p>",
-        "Slot Games": "<h1>Slot Games</h1><p>All slot machines listed here.</p>",
-        "Poker Site 1": "<h1>Poker Site 1</h1><p>Texas Hold'em tables.</p>",
-        "Poker Site 2": "<h1>Poker Site 2</h1><p>High stakes poker.</p>"
-    };
+    function getPageName(filename) {
+        return filename.replace(".html", "")
+                       .replace(/-/g, " ")
+                       .replace(/\b\w/g, c => c.toUpperCase());
+    }
 
-    // Load page into editor
-    pageButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const name = btn.textContent.trim();
-            currentPage.textContent = name;
-            editor.innerHTML = pageData[name] || "<p>No content.</p>";
-            editor.setAttribute("contenteditable", "true");
+    function loadAnalytics() {
+        let allData = [];
+        let totalViews = 0;
+
+        pages.forEach(page => {
+            const key = "views_" + page; // matches your localStorage system
+            const count = parseInt(localStorage.getItem(key) || "0");
+
+            allData.push({ page, count });
+            totalViews += count;
         });
-    });
 
-    // Search filter
-    search.addEventListener("input", () => {
-        const term = search.value.toLowerCase();
-        pageButtons.forEach(btn => {
-            btn.style.display = btn.textContent.toLowerCase().includes(term)
-                ? "block"
-                : "none";
+        // Sort for top pages
+        const topPages = [...allData].sort((a, b) => b.count - a.count).slice(0, 10);
+
+        // Update totals
+        document.getElementById("totalVisitors").textContent = totalViews;
+        document.getElementById("totalViews").textContent = totalViews;
+
+        // Fill Top Pages Table
+        const topTable = document.getElementById("topPagesTable");
+        topPages.forEach(item => {
+            const row = document.createElement("tr");
+            row.innerHTML = `<td>${getPageName(item.page)}</td><td>${item.count}</td>`;
+            topTable.appendChild(row);
         });
-    });
 
-    // Save button (local only)
-    document.getElementById("saveBtn").addEventListener("click", () => {
-        alert("Changes saved locally. (You can wire this to your backend later.)");
-    });
+        // Fill All Pages Table
+        const allTable = document.getElementById("allPagesTable");
+        allData.forEach(item => {
+            const row = document.createElement("tr");
+            row.innerHTML = `<td>${getPageName(item.page)}</td><td>${item.count}</td>`;
+            allTable.appendChild(row);
+        });
+    }
+
+    loadAnalytics();
 </script>
 
 </body>
