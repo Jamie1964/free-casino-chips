@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Casino Page Viewer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    background:#0d0d0d;
+}
+
+/* LEFT SIDEBAR FRAME */
+#leftFrame {
+    position:fixed;
+    top:0;
+    left:0;
+    width:300px;
+    height:100vh;
+    border:none;
+    overflow-y:auto;
+    background:#111;
+}
+
+/* RIGHT CONTENT FRAME */
+#rightFrame {
+    position:fixed;
+    top:0;
+    left:300px;
+    width:calc(100% - 300px);
+    height:100vh;
+    border:none;
+    overflow-y:auto;
+    background:#000;
+}
+</style>
+</head>
+
+<body>
+
+<iframe id="leftFrame" src="sidebar-viewer.html" name="leftFrame"></iframe>
+
+<iframe id="rightFrame" src="welcome.html" name="rightFrame"></iframe>
+
+</body>
+</html>
