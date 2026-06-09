@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,41 +10,46 @@
 
 <body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
-<!-- HEADER -->
-<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
+
+<!-- FIXED HEADER (NO BORDER) -->
+<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;height:160px;overflow:hidden;text-align:center;">
     <img src="https://free-casino-chips.com/images/logotransparent.png" alt="Free Casino Chips"
          style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
 </div>
 
+
+<!-- PAGE LAYOUT WRAPPER -->
 <div style="display:flex;margin-top:200px;">
 
-<!-- SIDEBAR -->
+
+<!-- SIDEBAR (NO BORDER) -->
 <div style="width:272px;padding-left:12px;margin-top:-12px;">
-    <div id="sidebar" style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;overflow-y:auto;"></div>
+    <div id="sidebar" style="background:#111;min-height:100vh;padding:10px;overflow-y:auto;"></div>
 </div>
 
 <script>
-fetch('https://free-casino-chips.com/sidebar.html')
+fetch('/sidebar.html')
     .then(r => r.text())
     .then(html => { document.getElementById('sidebar').innerHTML = html; })
     .catch(() => { document.getElementById('sidebar').innerHTML = "<p style='color:#888;'>Sidebar unavailable</p>"; });
 </script>
 
+
 <!-- MAIN CONTENT -->
 <div style="flex:1;padding:0 25px;max-width:900px;">
 
+
 <!-- INTRO TEXT -->
 <p style="font-size:18px;line-height:1.6;color:#ddd;text-align:center;margin:10px 0 18px;">
-          Do you like to play games online? Would  you like to gamble without risk?
-<br>      This is a free site that links to all the online casinos that offer free chips for you to play with!
-<br><B>      And YOU get to KEEP your winnings!</B>
-<br>      But is it really gambling if you only risk the casino's money? 
+    Do you like to play games online? Would you like to gamble without risk?
+    <br>This is a free site that links to all the online casinos that offer free chips for you to play with!
+    <br><b>And YOU get to KEEP your winnings!</b>
+    <br>But is it really gambling if you only risk the casino's money?
 </p>
 
 <p style="font-size:18px;line-height:1.6;color:#ddd;text-align:center;margin:10px 0 18px;">
-         PLAY FOR FREE! SERIOUSLY, PLAY FOR FREE! 
+    PLAY FOR FREE! SERIOUSLY, PLAY FOR FREE!
 </p>
-<br>
 
 
 <!-- HERO PROMO BOX -->
@@ -65,57 +68,73 @@ fetch('https://free-casino-chips.com/sidebar.html')
 
 </div>
 
+
 <!-- FEATURED CASINOS PLACEHOLDER -->
-<div id="featured-casinos-placeholder">
-    <!-- Featured casino logos/links will be added here later -->
-</div>
+<div id="featured-casinos-placeholder"></div>
+
 
 <!-- MAIN HOMEPAGE CONTENT -->
-<div style="background:#0d0d0d;padding:15px;border-radius:12px;border:0px;margin-top:40px;line-height:1.7;">
+<div style="background:#0d0d0d;padding:15px;border-radius:12px;margin-top:40px;line-height:1.7;">
 
 <p style="font-size:18px;line-height:1.6;color:#ddd;text-align:center;margin:10px 0 18px;">
-          Open a free account at the casino with a single click, fast and easy by using your fb credentials! The casino gives you FREE money for opening the account, anywhere from $2 to $10, and they also give you 20 cents to a buck each day that you login. Follow their social media and they give you promo codes that you redeem for dollars! What could be easier? Our <B><I>Cheatsheet</I></B> makes it easier! 
+    Open a free account at the casino with a single click using your FB credentials!
+    The casino gives you FREE money for opening the account, anywhere from $2 to $10,
+    and they also give you 20 cents to a buck each day that you login.
+    Follow their social media and they give you promo codes that you redeem for dollars!
+    What could be easier? Our <b><i>Cheatsheet</i></b> makes it easier!
 </p>
 
-    <h1 style="color:#66ccff;font-size:28px;text-align:center;margin-top:0;">What This Website Does</h1>
-    <p><center>
-        We are your trusted hub for sweepstakes casino bonuses, daily free coin rewards, and safe, legal prize‑eligible gameplay. Whether you're exploring new platforms, comparing bonuses, or learning how sweepstakes casinos work, we bring you verified information and up‑to‑date offers. We help players navigate the world of sweepstakes casinos — a legal, nationwide way to enjoy slots, table games, and prize‑eligible play without traditional gambling. We track bonuses, daily rewards, redemption rules, and platform reliability so you can play confidently and safely.
-    </p>
 
-    <h2 style="color:#66ccff;font-size:28px;">Why Sweepstakes Casinos Are Growing</h2>
-    <p>
-        Sweepstakes casinos have exploded in popularity because they offer a unique blend of entertainment and prize‑eligible gameplay. Players receive Gold Coins for fun play and Sweeps Coins for real‑prize redemption. This model is legal in most U.S. states, making it accessible to millions of players who want casino‑style fun without traditional wagering.
-    </p>
+<h1 style="color:#66ccff;font-size:28px;text-align:center;margin-top:0;">What This Website Does</h1>
+
+<p style="color:#ddd;">
+    We are your trusted hub for sweepstakes casino bonuses, daily free coin rewards, and safe, legal prize‑eligible gameplay.
+    Whether you're exploring new platforms, comparing bonuses, or learning how sweepstakes casinos work,
+    we bring you verified information and up‑to‑date offers.
+</p>
 
 
-    <h2 style="color:#66ccff;font-size:28px;">Tips for New Players</h2>
-</CENTER>
-    <ul style="padding-left:20px;line-height:1.6;">
-       <li>Claim every daily bonus — they add up fast.</li>
-        <li>Play lower‑variance slots to stretch your Sweeps Coins.</li>
-        <li>Complete KYC early to avoid payout delays.</li>
-        <li>Watch for boosted SC bundles and seasonal promos.</li>
-        <li>Use mobile apps or mobile browsers for faster gameplay.</li>
-    </ul>
-<CENTER>
-    <h2 style="color:#66ccff;font-size:28px;">Is It Really Free?</h2>
-    <p>
-        Yes — sweepstakes casinos allow players to participate without making a purchase. You can earn Sweeps Coins through bonuses, mail‑in methods, and daily rewards. Purchases simply provide more Gold Coins and bonus Sweeps Coins, but they are never required to play.
-    </p>
+<h2 style="color:#66ccff;font-size:28px;">Why Sweepstakes Casinos Are Growing</h2>
+<p style="color:#ddd;">
+    Sweepstakes casinos have exploded in popularity because they offer a unique blend of entertainment and prize‑eligible gameplay.
+    Players receive Gold Coins for fun play and Sweeps Coins for real‑prize redemption.
+</p>
 
-    <h2 style="color:#66ccff;font-size:28px;">How We Choose Casinos</h2>
-    <p>
-        We evaluate platforms based on game variety, bonus value, redemption speed, customer support, mobile performance, and overall trustworthiness. Our reviews highlight what matters most: safety, transparency, and consistent rewards. Every casino listed on our site has been researched for legitimacy and player experience.
-    </p>
 
-    <h2 style="color:#66ccff;font-size:28px;">Legal & Safe Play</h2>
-    <p>
-        Sweepstakes casinos operate under U.S. sweepstakes laws, making them legal in most states. However, some states restrict participation. Always check each casino’s terms and ensure you complete identity verification before redeeming prizes.
-    </p>
+<h2 style="color:#66ccff;font-size:28px;">Tips for New Players</h2>
+<ul style="padding-left:20px;line-height:1.6;color:#ddd;">
+    <li>Claim every daily bonus — they add up fast.</li>
+    <li>Play lower‑variance slots to stretch your Sweeps Coins.</li>
+    <li>Complete KYC early to avoid payout delays.</li>
+    <li>Watch for boosted SC bundles and seasonal promos.</li>
+    <li>Use mobile apps or mobile browsers for faster gameplay.</li>
+</ul>
+
+
+<h2 style="color:#66ccff;font-size:28px;">Is It Really Free?</h2>
+<p style="color:#ddd;">
+    Yes — sweepstakes casinos allow players to participate without making a purchase.
+    You can earn Sweeps Coins through bonuses, mail‑in methods, and daily rewards.
+</p>
+
+
+<h2 style="color:#66ccff;font-size:28px;">How We Choose Casinos</h2>
+<p style="color:#ddd;">
+    We evaluate platforms based on game variety, bonus value, redemption speed, customer support,
+    mobile performance, and overall trustworthiness.
+</p>
+
+
+<h2 style="color:#66ccff;font-size:28px;">Legal & Safe Play</h2>
+<p style="color:#ddd;">
+    Sweepstakes casinos operate under U.S. sweepstakes laws, making them legal in most states.
+    Always check each casino’s terms and complete identity verification before redeeming prizes.
+</p>
 
 </div>
 
-<!-- PAGE VIEW + UNIQUE VISITOR COUNTER -->
+
+<!-- PAGE VIEW COUNTER -->
 <div id="stats" style="text-align:center;color:#888;font-size:14px;margin-top:30px;">
     Loading stats...
 </div>
@@ -123,57 +142,31 @@ fetch('https://free-casino-chips.com/sidebar.html')
 <script>
 (function() {
     const pageId = "index";
-
-    // 1. PAGE VIEWS (Increments every refresh)
     const viewsKey = "page_views_" + pageId;
     let views = parseInt(localStorage.getItem(viewsKey)) || 0;
     views++;
     localStorage.setItem(viewsKey, views);
-
-    // 2. UNIQUE VISITORS (Increments only on the first visit)
-    const visitorKey = "is_unique_visitor_" + pageId;
-    const totalVisitorsKey = "unique_visitors_count_" + pageId;
-    
-    let visitors = parseInt(localStorage.getItem(totalVisitorsKey)) || 0;
-    
-    if (!localStorage.getItem(visitorKey)) {
-        // This is a new visitor for this browser
-        visitors++;
-        localStorage.setItem(visitorKey, "true");
-        localStorage.setItem(totalVisitorsKey, visitors);
-    }
-
-    // DISPLAY
-    document.getElementById("stats").innerHTML =
-        "Page Views: " + views;
+    document.getElementById("stats").innerHTML = "Page Views: " + views;
 })();
 </script>
 
-<!-- + " | Unique Visitors: " + visitors -->
 
-<br>
-<!-- CREATOR PHILOSOPHY LINK -->
-<div style="text-align:center;padding:20px;color:#888;font-size:14px;margin-top:40px;">
-    <span style="opacity:0.8;">
-        Creator’s Note:  
-        <a href="http://jamiespages.com/female/explanation.html" style="color:#66ccff;text-decoration:none;">
-            How to treat a female...
-        </a>
-    </span>
-</div>
+<!-- CREATOR NOTE -->
 
-
-
-<!-- FOOTER -->
-<div style="text-align:center;padding:20px;color:#666;font-size:14px;margin-top:10px;">
-    © 2026 FREE‑CASINO‑CHIPS.COM — All Rights Reserved.
-</div>
 
 </div> <!-- END MAIN CONTENT -->
-
 </div> <!-- END FLEX WRAPPER -->
+
+
+<!-- UNIVERSAL FCC FOOTER -->
+<footer id="footer"></footer>
+
+<script>
+fetch('/footer.html')
+  .then(r => r.text())
+  .then(html => { document.getElementById('footer').innerHTML = html; });
+</script>
+
 
 </body>
 </html>
-
-
