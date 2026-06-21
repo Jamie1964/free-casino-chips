@@ -1,251 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Casino Cheat Sheet | FREE-CASINO-CHIPS.COM</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Casino Cheat Sheet | FREE-CASINO-CHIPS.COM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
-<!-- FIXED HEADER -->
-<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
-            border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
-    <img src="https://free-casino-chips.com/images/logotransparent.png" alt="Free Casino Chips Logo"
-         style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;
-                filter:drop-shadow(0 0 6px #000);">
-</div>
-
-<!-- PAGE WRAPPER -->
-<div style="display:flex;margin-top:200px;">
-
-<!-- SIDEBAR -->
-<div style="width:272px;padding-left:12px;">
-    <div id="sidebar"
-         style="background:#111;border-right:2px solid #222;min-height:100vh;
-                padding:10px;overflow-y:auto;">
+    <!-- HEADER -->
+    <div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
+                border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
+        <img src="https://free-casino-chips.com/images/logotransparent.png" alt="Free Casino Chips Logo"
+             style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;
+                    filter:drop-shadow(0 0 6px #000);">
     </div>
-</div>
 
-<script>
-fetch('/sidebar.html')
-    .then(r => r.text())
-    .then(html => { document.getElementById('sidebar').innerHTML = html; });
-</script>
+    <!-- PAGE WRAPPER -->
+    <div style="display:flex;margin-top:200px;">
 
-<!-- MAIN CONTENT -->
-<div style="flex:1;padding:0 25px;">
+        <!-- SIDEBAR -->
+        <div style="width:272px;padding-left:12px;">
+            <div id="sidebar"
+                 style="background:#111;border-right:2px solid #222;min-height:100vh;
+                        padding:10px;overflow-y:auto;">
+            </div>
+        </div>
 
-<h1 style="font-size:32px;margin:0 0 20px;color:#66ccff;">Casino Cheat Sheet</h1>
+        <script>
+        fetch('/sidebar.html')
+            .then(r => r.text())
+            .then(html => { document.getElementById('sidebar').innerHTML = html; });
+        </script>
 
-<!-- ⭐ WHITE INSTRUCTION TEXT -->
-<div style="color:#fff;font-size:15px;line-height:1.5;margin-bottom:20px;">
-    <strong>How to use this page</strong><br><br>
-    • Use the search box to quickly find any casino by name.<br>
-    • Click a blue casino button to open that site in a new tab.<br>
-    • Click the checkbox to mark a casino as completed or visited.<br>
-    • Your checkmarks save automatically in your browser.<br>
-    • Use “Mark All” to check everything, “Uncheck All” to clear them,<br>
-      and “Clear Saved” to wipe all saved progress and start fresh.
-</div>
+        <!-- MAIN CONTENT (RIGHT SIDE AREA) -->
+        <div style="flex:1;padding:0 25px;">
 
-<input type="text" id="searchBox" placeholder="Search casinos..."
-       style="width:260px;padding:10px;font-size:15px;border-radius:6px;border:1px solid #ccc;
-              margin-bottom:20px;display:block;">
+            <h1 style="font-size:32px;margin:0 0 20px;color:#66ccff;">Casino Cheat Sheet</h1>
 
-<div style="display:flex;gap:12px;margin-bottom:25px;flex-wrap:wrap;">
-    <button onclick="markAll()" style="padding:10px 16px;background:#333;color:#fff;border-radius:6px;border:none;">Mark All</button>
-    <button onclick="uncheckAll()" style="padding:10px 16px;background:#333;color:#fff;border-radius:6px;border:none;">Uncheck All</button>
-    <button onclick="clearAll()" style="padding:10px 16px;background:#333;color:#fff;border-radius:6px;border:none;">Clear Saved</button>
-</div>
+            <!-- WHITE TEXT IN THE BIG RIGHT-SIDE EMPTY AREA -->
+            <div style="color:#fff;font-size:15px;line-height:1.5;margin-bottom:20px;">
+                <strong>How to use this page</strong><br><br>
+                • Use the search box to quickly find any casino by name.<br>
+                • Click a blue casino button to open that site in a new tab.<br>
+                • Click the checkbox to mark a casino as completed or visited.<br>
+                • Your checkmarks save automatically in your browser.<br>
+                • Use “Mark All” to check everything, “Uncheck All” to clear them,<br>
+                  and “Clear Saved” to wipe all saved progress and start fresh.
+            </div>
 
-<!-- BUTTON GRID -->
-<div id="buttonContainer"
-     style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:30px;">
-</div>
+            <!-- SEARCH BAR -->
+            <input type="text" id="searchBox" placeholder="Search casinos..."
+                   style="width:260px;padding:10px;font-size:15px;border-radius:6px;border:1px solid #ccc;
+                          margin-bottom:20px;display:block;">
 
-<!-- ⭐ PAGE NUMBER ABOVE PAGINATION -->
-<div id="pageNumberDisplay" style="text-align:center;font-size:16px;margin-bottom:10px;color:#66ccff;">
-    Page 1 of 1
-</div>
+            <!-- CONTROL BUTTONS -->
+            <div style="display:flex;gap:12px;margin-bottom:25px;flex-wrap:wrap;">
+                <button onclick="markAll()" style="padding:10px 16px;background:#333;color:#fff;border-radius:6px;border:none;">Mark All</button>
+                <button onclick="uncheckAll()" style="padding:10px 16px;background:#333;color:#fff;border-radius:6px;border:none;">Uncheck All</button>
+                <button onclick="clearAll()" style="padding:10px 16px;background:#333;color:#fff;border-radius:6px;border:none;">Clear Saved</button>
+            </div>
 
-<!-- PAGINATION -->
-<div style="text-align:center;margin-bottom:10px;">
-    <button onclick="prevPage()" style="padding:10px 20px;">Previous</button>
-    <button onclick="nextPage()" style="padding:10px 20px;">Next</button>
-</div>
+            <!-- CASINO BUTTON GRID -->
+            <div id="buttonContainer"
+                 style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:30px;">
+            </div>
 
-<!-- ⭐ PER-PAGE COUNTER -->
-<div id="pageViewCounter" style="text-align:center;color:#aaa;font-size:14px;margin-bottom:10px;">
-    Page 1 Views: 0
-</div>
+            <!-- PAGE NUMBER ABOVE PAGINATION -->
+            <div id="pageNumberDisplay" style="text-align:center;font-size:16px;margin-bottom:10px;color:#66ccff;">
+                Page 1 of 1
+            </div>
 
-<!-- ⭐ GLOBAL COUNTER -->
-<div style="text-align:center;color:#888;font-size:14px;margin-bottom:40px;">
-    Total Views: <span id="globalViewCount">0</span>
-</div>
+            <!-- PAGINATION -->
+            <div style="text-align:center;margin-bottom:10px;">
+                <button onclick="prevPage()" style="padding:10px 20px;">Previous</button>
+                <button onclick="nextPage()" style="padding:10px 20px;">Next</button>
+            </div>
 
-<script>
-let casinos = [];
-let currentPage = 0;
-const perPage = 15;
+            <!-- PER-PAGE COUNTER -->
+            <div id="pageViewCounter" style="text-align:center;color:#aaa;font-size:14px;margin-bottom:10px;">
+                Page 1 Views: 0
+            </div>
 
-// Load JSON
-fetch('/cheatsheet/casinos.json')
-  .then(r => r.json())
-  .then(data => {
-      casinos = data;
-      updatePageNumber();
-      renderButtons();
-      updatePageCounter();
-  });
+            <!-- GLOBAL COUNTER -->
+            <div style="text-align:center;color:#888;font-size:14px;margin-bottom:40px;">
+                Total Views: <span id="globalViewCount">0</span>
+            </div>
 
-// Render 15 buttons
-function renderButtons() {
-    const container = document.getElementById('buttonContainer');
-    container.innerHTML = "";
+            <script>
+            let casinos = [];
+            let currentPage = 0;
+            const perPage = 15;
 
-    const start = currentPage * perPage;
-    const end = start + perPage;
-    const slice = casinos.slice(start, end);
+            // Load JSON
+            fetch('/cheatsheet/casinos.json')
+              .then(r => r.json())
+              .then(data => {
+                  casinos = data;
+                  updatePageNumber();
+                  renderButtons();
+                  updatePageCounter();
+              });
 
-    slice.forEach(casino => {
-        const id = casino.name.toLowerCase().replace(/\s+/g, '');
+            // Render buttons
+            function renderButtons() {
+                const container = document.getElementById('buttonContainer');
+                container.innerHTML = "";
 
-        const btn = document.createElement('a');
-        btn.href = casino.url;
-        btn.target = "_blank";
-        btn.className = "casino-btn";
-        btn.dataset.id = id;
-        btn.style.cssText = `
-            display:flex;align-items:center;gap:8px;background:#1e73ff;
-            color:#fff;padding:9px 10px;border-radius:6px;text-decoration:none;
-            font-size:14px;font-weight:bold;
-        `;
+                const start = currentPage * perPage;
+                const end = start + perPage;
+                const slice = casinos.slice(start, end);
 
-        const cb = document.createElement('input');
-        cb.type = "checkbox";
-        cb.style.width = "16px";
-        cb.style.height = "16px";
+                slice.forEach(casino => {
+                    const id = casino.name.toLowerCase().replace(/\s+/g, '');
 
-        const saved = localStorage.getItem("chk_" + id);
-        if (saved === "1") cb.checked = true;
+                    const btn = document.createElement('a');
+                    btn.href = casino.url;
+                    btn.target = "_blank";
+                    btn.className = "casino-btn";
+                    btn.dataset.id = id;
+                    btn.style.cssText = `
+                        display:flex;align-items:center;gap:8px;background:#1e73ff;
+                        color:#fff;padding:9px 10px;border-radius:6px;text-decoration:none;
+                        font-size:14px;font-weight:bold;
+                    `;
 
-        cb.addEventListener("click", e => {
-            e.stopPropagation();
-            localStorage.setItem("chk_" + id, cb.checked ? "1" : "0");
-        });
+                    const cb = document.createElement('input');
+                    cb.type = "checkbox";
+                    cb.style.width = "16px";
+                    cb.style.height = "16px";
 
-        btn.addEventListener("click", e => {
-            if (e.target.tagName !== "INPUT") {
-                cb.checked = !cb.checked;
-                localStorage.setItem("chk_" + id, cb.checked ? "1" : "0");
+                    const saved = localStorage.getItem("chk_" + id);
+                    if (saved === "1") cb.checked = true;
+
+                    cb.addEventListener("click", e => {
+                        e.stopPropagation();
+                        localStorage.setItem("chk_" + id, cb.checked ? "1" : "0");
+                    });
+
+                    btn.addEventListener("click", e => {
+                        if (e.target.tagName !== "INPUT") {
+                            cb.checked = !cb.checked;
+                            localStorage.setItem("chk_" + id, cb.checked ? "1" : "0");
+                        }
+                    });
+
+                    const label = document.createElement('span');
+                    label.textContent = casino.name;
+
+                    btn.appendChild(cb);
+                    btn.appendChild(label);
+                    container.appendChild(btn);
+                });
             }
-        });
 
-        const label = document.createElement('span');
-        label.textContent = casino.name;
+            // Pagination
+            function nextPage() {
+                if ((currentPage + 1) * perPage < casinos.length) {
+                    currentPage++;
+                    updatePageNumber();
+                    renderButtons();
+                    updatePageCounter();
+                }
+            }
 
-        btn.appendChild(cb);
-        btn.appendChild(label);
-        container.appendChild(btn);
-    });
-}
+            function prevPage() {
+                if (currentPage > 0) {
+                    currentPage--;
+                    updatePageNumber();
+                    renderButtons();
+                    updatePageCounter();
+                }
+            }
 
-// Pagination
-function nextPage() {
-    if ((currentPage + 1) * perPage < casinos.length) {
-        currentPage++;
-        updatePageNumber();
-        renderButtons();
-        updatePageCounter();
-    }
-}
+            // Page number display
+            function updatePageNumber() {
+                const totalPages = Math.ceil(casinos.length / perPage) || 1;
+                document.getElementById("pageNumberDisplay").textContent =
+                    "Page " + (currentPage + 1) + " of " + totalPages;
+            }
 
-function prevPage() {
-    if (currentPage > 0) {
-        currentPage--;
-        updatePageNumber();
-        renderButtons();
-        updatePageCounter();
-    }
-}
+            // Per-page counter
+            function updatePageCounter() {
+                const key = "cheat_page_" + currentPage + "_views";
+                let count = parseInt(localStorage.getItem(key) || "0");
+                count++;
+                localStorage.setItem(key, count);
+                document.getElementById("pageViewCounter").textContent =
+                    "Page " + (currentPage + 1) + " Views: " + count;
+            }
 
-// Page number display
-function updatePageNumber() {
-    const totalPages = Math.ceil(casinos.length / perPage);
-    document.getElementById("pageNumberDisplay").textContent =
-        "Page " + (currentPage + 1) + " of " + totalPages;
-}
+            // Search
+            document.getElementById("searchBox").addEventListener("input", function () {
+                const term = this.value.toLowerCase();
+                document.querySelectorAll(".casino-btn").forEach(btn => {
+                    const name = btn.textContent.toLowerCase();
+                    btn.style.display = name.includes(term) ? "" : "none";
+                });
+            });
 
-// Per-page counter
-function updatePageCounter() {
-    const key = "cheat_page_" + currentPage + "_views";
-    let count = parseInt(localStorage.getItem(key) || "0");
-    count++;
-    localStorage.setItem(key, count);
-    document.getElementById("pageViewCounter").textContent =
-        "Page " + (currentPage + 1) + " Views: " + count;
-}
+            // Mark all
+            function markAll() {
+                document.querySelectorAll(".casino-btn").forEach(btn => {
+                    const id = btn.dataset.id;
+                    const cb = btn.querySelector("input");
+                    cb.checked = true;
+                    localStorage.setItem("chk_" + id, "1");
+                });
+            }
 
-// Search
-document.getElementById("searchBox").addEventListener("input", function () {
-    const term = this.value.toLowerCase();
-    document.querySelectorAll(".casino-btn").forEach(btn => {
-        const name = btn.textContent.toLowerCase();
-        btn.style.display = name.includes(term) ? "" : "none";
-    });
-});
+            // Uncheck all
+            function uncheckAll() {
+                document.querySelectorAll(".casino-btn").forEach(btn => {
+                    const id = btn.dataset.id;
+                    const cb = btn.querySelector("input");
+                    cb.checked = false;
+                    localStorage.setItem("chk_" + id, "0");
+                });
+            }
 
-// Mark all
-function markAll() {
-    document.querySelectorAll(".casino-btn").forEach(btn => {
-        const id = btn.dataset.id;
-        const cb = btn.querySelector("input");
-        cb.checked = true;
-        localStorage.setItem("chk_" + id, "1");
-    });
-}
+            // Clear all
+            function clearAll() {
+                document.querySelectorAll(".casino-btn").forEach(btn => {
+                    const id = btn.dataset.id;
+                    localStorage.removeItem("chk_" + id);
+                    btn.querySelector("input").checked = false;
+                });
+            }
 
-// Uncheck all
-function uncheckAll() {
-    document.querySelectorAll(".casino-btn").forEach(btn => {
-        const id = btn.dataset.id;
-        const cb = btn.querySelector("input");
-        cb.checked = false;
-        localStorage.setItem("chk_" + id, "0");
-    });
-}
+            // Global counter
+            (function() {
+                const key = "cheatsheet_global_views";
+                let count = parseInt(localStorage.getItem(key) || "0");
+                count++;
+                localStorage.setItem(key, count);
+                document.getElementById("globalViewCount").textContent = count;
+            })();
+            </script>
 
-// Clear all
-function clearAll() {
-    document.querySelectorAll(".casino-btn").forEach(btn => {
-        const id = btn.dataset.id;
-        localStorage.removeItem("chk_" + id);
-        btn.querySelector("input").checked = false;
-    });
-}
+            <!-- FOOTER -->
+            <footer id="footer"></footer>
+            <script>
+            fetch('/footer.html')
+              .then(r => r.text())
+              .then(h => footer.innerHTML = h);
+            </script>
 
-// Global counter
-(function() {
-    const key = "cheatsheet_global_views";
-    let count = parseInt(localStorage.getItem(key) || "0");
-    count++;
-    localStorage.setItem(key, count);
-    document.getElementById("globalViewCount").textContent = count;
-})();
-</script>
-
-<!-- FOOTER -->
-<footer id="footer"></footer>
-<script>
-fetch('/footer.html')
-  .then(r => r.text())
-  .then(h => footer.innerHTML = h);
-</script>
-
-</div>
-</div>
+        </div>
+    </div>
 
 </body>
 </html>
