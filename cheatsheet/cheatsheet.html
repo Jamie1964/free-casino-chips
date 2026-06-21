@@ -8,9 +8,9 @@
 
 <body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
-    <!-- HEADER -->
+    <!-- HEADER (NO BORDER LINE) -->
     <div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
-                border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
+                height:160px;overflow:hidden;text-align:center;">
         <img src="https://free-casino-chips.com/images/logotransparent.png" alt="Free Casino Chips Logo"
              style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;
                     filter:drop-shadow(0 0 6px #000);">
@@ -19,10 +19,10 @@
     <!-- PAGE WRAPPER -->
     <div style="display:flex;margin-top:200px;">
 
-        <!-- SIDEBAR -->
+        <!-- SIDEBAR (NO BORDER LINE) -->
         <div style="width:272px;padding-left:12px;">
             <div id="sidebar"
-                 style="background:#111;border-right:2px solid #222;min-height:100vh;
+                 style="background:#111;min-height:100vh;
                         padding:10px;overflow-y:auto;">
             </div>
         </div>
@@ -33,20 +33,28 @@
             .then(html => { document.getElementById('sidebar').innerHTML = html; });
         </script>
 
-        <!-- MAIN CONTENT (RIGHT SIDE AREA) -->
+        <!-- MAIN CONTENT -->
         <div style="flex:1;padding:0 25px;">
 
             <h1 style="font-size:32px;margin:0 0 20px;color:#66ccff;">Casino Cheat Sheet</h1>
 
-            <!-- WHITE TEXT IN THE BIG RIGHT-SIDE EMPTY AREA -->
-            <div style="color:#fff;font-size:15px;line-height:1.5;margin-bottom:20px;">
-                <strong>How to use this page</strong><br><br>
-                • Use the search box to quickly find any casino by name.<br>
-                • Click a blue casino button to open that site in a new tab.<br>
-                • Click the checkbox to mark a casino as completed or visited.<br>
-                • Your checkmarks save automatically in your browser.<br>
-                • Use “Mark All” to check everything, “Uncheck All” to clear them,<br>
-                  and “Clear Saved” to wipe all saved progress and start fresh.
+            <!-- ⭐ TWO-COLUMN RIGHT-SIDE LAYOUT (30% / 70%) -->
+            <div style="display:flex;gap:20px;margin-bottom:25px;">
+
+                <!-- LEFT COLUMN (30%) — EMPTY -->
+                <div style="width:30%;"></div>
+
+                <!-- RIGHT COLUMN (70%) — WHITE TEXT GOES HERE -->
+                <div style="width:70%;color:#fff;font-size:15px;line-height:1.5;">
+                    <strong>How to use this page</strong><br><br>
+                    • Use the search box to quickly find any casino by name.<br>
+                    • Click a blue casino button to open that site in a new tab.<br>
+                    • Click the checkbox to mark a casino as completed or visited.<br>
+                    • Your checkmarks save automatically in your browser.<br>
+                    • Use “Mark All” to check everything, “Uncheck All” to clear them,<br>
+                      and “Clear Saved” to wipe all saved progress and start fresh.
+                </div>
+
             </div>
 
             <!-- SEARCH BAR -->
@@ -92,7 +100,6 @@
             let currentPage = 0;
             const perPage = 15;
 
-            // Load JSON
             fetch('/cheatsheet/casinos.json')
               .then(r => r.json())
               .then(data => {
@@ -102,7 +109,6 @@
                   updatePageCounter();
               });
 
-            // Render buttons
             function renderButtons() {
                 const container = document.getElementById('buttonContainer');
                 container.innerHTML = "";
@@ -154,7 +160,6 @@
                 });
             }
 
-            // Pagination
             function nextPage() {
                 if ((currentPage + 1) * perPage < casinos.length) {
                     currentPage++;
@@ -173,14 +178,12 @@
                 }
             }
 
-            // Page number display
             function updatePageNumber() {
                 const totalPages = Math.ceil(casinos.length / perPage) || 1;
                 document.getElementById("pageNumberDisplay").textContent =
                     "Page " + (currentPage + 1) + " of " + totalPages;
             }
 
-            // Per-page counter
             function updatePageCounter() {
                 const key = "cheat_page_" + currentPage + "_views";
                 let count = parseInt(localStorage.getItem(key) || "0");
@@ -190,7 +193,6 @@
                     "Page " + (currentPage + 1) + " Views: " + count;
             }
 
-            // Search
             document.getElementById("searchBox").addEventListener("input", function () {
                 const term = this.value.toLowerCase();
                 document.querySelectorAll(".casino-btn").forEach(btn => {
@@ -199,7 +201,6 @@
                 });
             });
 
-            // Mark all
             function markAll() {
                 document.querySelectorAll(".casino-btn").forEach(btn => {
                     const id = btn.dataset.id;
@@ -209,7 +210,6 @@
                 });
             }
 
-            // Uncheck all
             function uncheckAll() {
                 document.querySelectorAll(".casino-btn").forEach(btn => {
                     const id = btn.dataset.id;
@@ -219,7 +219,6 @@
                 });
             }
 
-            // Clear all
             function clearAll() {
                 document.querySelectorAll(".casino-btn").forEach(btn => {
                     const id = btn.dataset.id;
@@ -228,7 +227,6 @@
                 });
             }
 
-            // Global counter
             (function() {
                 const key = "cheatsheet_global_views";
                 let count = parseInt(localStorage.getItem(key) || "0");
