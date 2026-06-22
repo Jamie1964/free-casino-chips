@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Promo Code Casinos Cheatsheet</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        background: #0d0d0d;
+        color: #fff;
+        font-family: Arial, sans-serif;
+    }
+    .header {
+        width: 100%;
+        height: 160px;
+        background: url('/images/header.png') no-repeat center center;
+        background-size: cover;
+    }
+    .container {
+        display: flex;
+        width: 100%;
+    }
+    .sidebar {
+        width: 260px;
+        min-height: 100vh;
+        background: #111;
+        border-right: 2px solid #333;
+    }
+    .main {
+        flex: 1;
+        padding: 20px;
+    }
+    .title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .intro {
+        background: #151515;
+        padding: 15px;
+        border: 1px solid #333;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+
+    /* RESOURCE BAR — DARKER BLUE */
+    .resource-bar {
+        width: 99%;
+        margin: 20px auto;
+        display: flex;
+        gap: 1%;
+    }
+    .resource-bar a {
+        flex: 1;
+        background: #0d1626;
+        border: 1px solid #1a75ff;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a75ff;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        box-shadow: 0 0 8px #1a75ff;
+    }
+
+    /* PROMO BUTTONS — MEDIUM BLUE */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-top: 20px;
+    }
+    .btn {
+        background: #0f1a2b;
+        border: 1px solid #3399ff;
+        padding: 14px;
+        text-align: center;
+        color: #3399ff;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 6px;
+        display: block;
+        position: relative;
+        box-shadow: 0 0 8px #3399ff;
+    }
+    .checkbox {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        transform: scale(1.4);
+    }
+
+    .pagination {
+        margin-top: 25px;
+        text-align: center;
+    }
+    .pagination button {
+        background: #333;
+        color: #fff;
+        border: 1px solid #555;
+        padding: 8px 14px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .counter {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 14px;
+        color: #aaa;
+    }
+
+    footer {
+        margin-top: 40px;
+        padding: 20px;
+        text-align: center;
+        color: #777;
+        font-size: 14px;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="header"></div>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <div class="title">Promo Code Casinos Cheatsheet</div>
+
+        <div class="intro">
+            Promo codes are special rewards offered by select sweepstakes casinos.  
+            They can include free spins, bonus coins, inbox gifts, seasonal rewards,  
+            Discord drops, Telegram drops, and Facebook giveaways.  
+            This cheatsheet lists all casinos that regularly offer promo codes,  
+            so you can check them quickly and never miss a reward.
+        </div>
+
+        <!-- RESOURCE BAR -->
+        <div class="resource-bar">
+            <a href="/discord.html">Discord</a>
+            <a href="/facebook.html">Facebook</a>
+            <a href="/telegram.html">Telegram</a>
+        </div>
+
+        <!-- GRID -->
+        <div id="promoGrid" class="grid"></div>
+
+        <!-- PAGINATION -->
+        <div class="pagination">
+            <button onclick="prevPage()">Previous</button>
+            <button onclick="nextPage()">Next</button>
+        </div>
+
+        <!-- COUNTER -->
+        <div class="counter" id="pageCounter"></div>
+        <div class="counter" id="viewCounter"></div>
+
+        <footer>
+            © 2026 FREE-CASINO-CHIPS.COM — Promo Code Cheatsheet
+        </footer>
+
+    </div>
+</div>
+
+<script>
+// Load sidebar
+fetch('/sidebar.html')
+    .then(r => r.text())
+    .then(html => document.getElementById('sidebar').innerHTML = html);
+
+// Promo Code Casino List
+const promoSites = [
+    "BangCoins",
+    "FireSevens",
+    "Fortune Wheelz",
+    "Funrize",
+    "Funcity",
+    "JackpotRabbit",
+    "MrGoodwin",
+    "NoLimitCoins",
+    "PlayTana",
+    "ScarletSands",
+    "StormRush",
+    "Sweepico",
+    "TAO",
+    "VegasWay"
+];
+
+// Pagination
+let currentPage = 1;
+const perPage = 20;
+
+function renderPage() {
+    const grid = document.getElementById('promoGrid');
+    grid.innerHTML = "";
+
+    const start = (currentPage - 1) * perPage;
+    const end = start + perPage;
+
+    promoSites.slice(start, end).forEach(site => {
+        const id = "promo_" + site.replace(/\s+/g, '');
+        const checked = localStorage.getItem(id) === "true" ? "checked" : "";
+
+        grid.innerHTML += `
+            <a class="btn" href="/${site.toLowerCase().replace(/\s+/g,'')}.html">
+                ${site}
+                <input type="checkbox" class="checkbox" id="${id}" ${checked}
+                    onclick="localStorage.setItem('${id}', this.checked)">
+            </a>
+        `;
+    });
+
+    document.getElementById('pageCounter').innerText =
+        "Page " + currentPage + " of " + Math.ceil(promoSites.length / perPage);
+}
+
+function nextPage() {
+    if (currentPage < Math.ceil(promoSites.length / perPage)) {
+        currentPage++;
+        renderPage();
+    }
+}
+
+function prevPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        renderPage();
+    }
+}
+
+// Page View Counter
+let views = localStorage.getItem("promoPageViews") || 0;
+views++;
+localStorage.setItem("promoPageViews", views);
+document.getElementById('viewCounter').innerText = "Page Views: " + views;
+
+// Initial Render
+renderPage();
+</script>
+
+</body>
+</html>
