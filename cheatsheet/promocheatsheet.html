@@ -67,7 +67,7 @@
         box-shadow: 0 0 8px #1a75ff;
     }
 
-    /* PROMO BUTTONS — MEDIUM BLUE */
+    /* BUTTONS — EXACT SAME STYLE AS ORIGINAL CHEATSHEET, JUST BLUE */
     .grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -85,26 +85,19 @@
         border-radius: 6px;
         display: block;
         position: relative;
-        box-shadow: 0 0 8px #3399ff;
+        box-shadow: 0 0 10px #3399ff;
+        transition: 0.2s;
+    }
+    .btn:hover {
+        box-shadow: 0 0 14px #66ccff;
+        border-color: #66ccff;
+        color: #66ccff;
     }
     .checkbox {
         position: absolute;
         top: 6px;
         right: 6px;
         transform: scale(1.4);
-    }
-
-    .pagination {
-        margin-top: 25px;
-        text-align: center;
-    }
-    .pagination button {
-        background: #333;
-        color: #fff;
-        border: 1px solid #555;
-        padding: 8px 14px;
-        margin: 0 5px;
-        cursor: pointer;
     }
 
     .counter {
@@ -114,8 +107,15 @@
         color: #aaa;
     }
 
+    .updated {
+        margin-top: 25px;
+        text-align: center;
+        font-size: 14px;
+        color: #66ccff;
+    }
+
     footer {
-        margin-top: 40px;
+        margin-top: 20px;
         padding: 20px;
         text-align: center;
         color: #777;
@@ -156,15 +156,11 @@
         <!-- GRID -->
         <div id="promoGrid" class="grid"></div>
 
-        <!-- PAGINATION -->
-        <div class="pagination">
-            <button onclick="prevPage()">Previous</button>
-            <button onclick="nextPage()">Next</button>
-        </div>
-
-        <!-- COUNTER -->
-        <div class="counter" id="pageCounter"></div>
+        <!-- COUNTERS -->
         <div class="counter" id="viewCounter"></div>
+
+        <!-- LAST UPDATED -->
+        <div class="updated">Last Updated: June 2026</div>
 
         <footer>
             © 2026 FREE-CASINO-CHIPS.COM — Promo Code Cheatsheet
@@ -197,18 +193,12 @@ const promoSites = [
     "VegasWay"
 ];
 
-// Pagination
-let currentPage = 1;
-const perPage = 20;
-
+// Render all buttons (no pagination)
 function renderPage() {
     const grid = document.getElementById('promoGrid');
     grid.innerHTML = "";
 
-    const start = (currentPage - 1) * perPage;
-    const end = start + perPage;
-
-    promoSites.slice(start, end).forEach(site => {
+    promoSites.forEach(site => {
         const id = "promo_" + site.replace(/\s+/g, '');
         const checked = localStorage.getItem(id) === "true" ? "checked" : "";
 
@@ -220,23 +210,6 @@ function renderPage() {
             </a>
         `;
     });
-
-    document.getElementById('pageCounter').innerText =
-        "Page " + currentPage + " of " + Math.ceil(promoSites.length / perPage);
-}
-
-function nextPage() {
-    if (currentPage < Math.ceil(promoSites.length / perPage)) {
-        currentPage++;
-        renderPage();
-    }
-}
-
-function prevPage() {
-    if (currentPage > 1) {
-        currentPage--;
-        renderPage();
-    }
 }
 
 // Page View Counter
