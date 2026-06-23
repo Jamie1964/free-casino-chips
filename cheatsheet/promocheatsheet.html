@@ -12,12 +12,25 @@
         color: #fff;
         font-family: Arial, sans-serif;
     }
+
+    /* FCC LOGO */
+    .fcc-logo {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0 10px 0;
+    }
+    .fcc-logo img {
+        width: 260px;
+        height: auto;
+    }
+
     .header {
         width: 100%;
         height: 160px;
         background: url('/images/header.png') no-repeat center center;
         background-size: cover;
     }
+
     .container {
         display: flex;
         width: 100%;
@@ -45,7 +58,7 @@
         line-height: 1.5;
     }
 
-    /* RESOURCE BAR — DARKER BLUE */
+    /* RESOURCE BAR */
     .resource-bar {
         width: 99%;
         margin: 20px auto;
@@ -67,7 +80,7 @@
         box-shadow: 0 0 8px #1a75ff;
     }
 
-    /* BUTTONS — EXACT SAME STYLE AS ORIGINAL CHEATSHEET, JUST BLUE */
+    /* BUTTON GRID */
     .grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -114,6 +127,16 @@
         color: #66ccff;
     }
 
+    .jp-link {
+        text-align: center;
+        margin-top: 5px;
+        font-size: 14px;
+    }
+    .jp-link a {
+        color: #66ccff;
+        text-decoration: none;
+    }
+
     footer {
         margin-top: 20px;
         padding: 20px;
@@ -125,6 +148,11 @@
 
 </head>
 <body>
+
+<!-- FCC LOGO -->
+<div class="fcc-logo">
+    <img src="/images/fcc-logo.png" alt="FCC Logo">
+</div>
 
 <div class="header"></div>
 
@@ -148,9 +176,9 @@
 
         <!-- RESOURCE BAR -->
         <div class="resource-bar">
-    <a href="https://facebook.com" target="_blank" style="color:#66ccff;">Facebook</a>,
-    <a href="https://telegram.org" target="_blank" style="color:#66ccff;">Telegram</a>,
-    <a href="https://discord.com" target="_blank" style="color:#66ccff;">Discord</a>.
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://telegram.org" target="_blank">Telegram</a>
+            <a href="https://discord.com" target="_blank">Discord</a>
         </div>
 
         <!-- GRID -->
@@ -160,7 +188,12 @@
         <div class="counter" id="viewCounter"></div>
 
         <!-- LAST UPDATED -->
-        <div class="updated">Last Updated: June 2026</div>
+        <div class="updated" id="updatedDate"></div>
+
+        <!-- JP LINK -->
+        <div class="jp-link">
+            <a href="https://jamiespages.com" target="_blank">jamiespages.com</a>
+        </div>
 
         <footer>
             © 2026 FREE-CASINO-CHIPS.COM — Promo Code Cheatsheet
@@ -175,35 +208,35 @@ fetch('/sidebar.html')
     .then(r => r.text())
     .then(html => document.getElementById('sidebar').innerHTML = html);
 
-// Promo Code Casino List
-const promoSites = [
-    "BangCoins",
-    "FireSevens",
-    "Fortune Wheelz",
-    "Funrize",
-    "Funcity",
-    "JackpotRabbit",
-    "MrGoodwin",
-    "NoLimitCoins",
-    "PlayTana",
-    "ScarletSands",
-    "StormRush",
-    "Sweepico",
-    "TAO",
-    "VegasWay"
-];
+// OFFICIAL PROMO URLS
+const promoLinks = {
+    "BangCoins": "https://bangcoins.com/setting?active=bonusDrop",
+    "FireSevens": "https://firesevens.com/promotions/#/",
+    "Fortune Wheelz": "https://fortunewheelz.com/lobby/",
+    "Funrize": "https://funrize.com/promotions#/",
+    "Funcity": "https://funcity.com/promotions#/",
+    "JackpotRabbit": "https://jackpotrabbit.com/promocode#/",
+    "MrGoodwin": "https://mrgoodwin.com/promotions/",
+    "NoLimitCoins": "https://nolimitcoins.com/lobby/",
+    "PlayTana": "https://playtana.com/promotions/#/",
+    "ScarletSands": "https://scarletsands.com/promocode/",
+    "StormRush": "https://stormrush.com/lobby/#/",
+    "Sweepico": "https://sweepico.com/promotions#/",
+    "TAO": "https://taofortune.com/lobby/",
+    "VegasWay": "https://vegasway.com/promotions#/"
+};
 
-// Render all buttons (no pagination)
+// Render all buttons
 function renderPage() {
     const grid = document.getElementById('promoGrid');
     grid.innerHTML = "";
 
-    promoSites.forEach(site => {
+    Object.keys(promoLinks).forEach(site => {
         const id = "promo_" + site.replace(/\s+/g, '');
         const checked = localStorage.getItem(id) === "true" ? "checked" : "";
 
         grid.innerHTML += `
-            <a class="btn" href="/${site.toLowerCase().replace(/\s+/g,'')}.html">
+            <a class="btn" href="${promoLinks[site]}" target="_blank">
                 ${site}
                 <input type="checkbox" class="checkbox" id="${id}" ${checked}
                     onclick="localStorage.setItem('${id}', this.checked)">
@@ -217,6 +250,15 @@ let views = localStorage.getItem("promoPageViews") || 0;
 views++;
 localStorage.setItem("promoPageViews", views);
 document.getElementById('viewCounter').innerText = "Page Views: " + views;
+
+// FULL DATE
+const today = new Date();
+const formatted = today.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+});
+document.getElementById("updatedDate").innerText = "Last Updated: " + formatted;
 
 // Initial Render
 renderPage();
