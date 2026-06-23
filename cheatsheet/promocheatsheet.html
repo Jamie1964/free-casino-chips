@@ -13,16 +13,6 @@
         font-family: Arial, sans-serif;
     }
 
-    /* HEADER WITH BUILT-IN FCC LOGO */
-<!-- FIXED TOP LOGO BAR (CORRECT VERSION) -->
-<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
-    <img src="https://free-casino-chips.com/images/logotransparent.png" alt="Free Casino Chips Logo"
-         style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
-</div>
-
-<!-- ADD SPACING BELOW FIXED HEADER -->
-<div style="height:160px;"></div>
-
     .container {
         display: flex;
         width: 100%;
@@ -54,7 +44,6 @@
         line-height: 1.5;
     }
 
-    /* RESOURCE BAR */
     .resource-bar {
         width: 99%;
         margin: 20px auto;
@@ -77,7 +66,6 @@
         box-shadow: 0 0 8px #1a75ff;
     }
 
-    /* BUTTON GRID */
     .grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -150,15 +138,19 @@
 </head>
 <body>
 
-<!-- HEADER ONLY — THIS HAS THE CORRECT FCC LOGO -->
-<div class="header"></div>
+<!-- ⭐ FIXED TOP LOGO BAR (CORRECT VERSION) -->
+<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
+    <img src="https://free-casino-chips.com/images/logotransparent.png" alt="Free Casino Chips Logo"
+         style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
+</div>
+
+<!-- ⭐ SPACER BELOW FIXED HEADER -->
+<div style="height:160px;"></div>
 
 <div class="container">
 
-    <!-- SIDEBAR -->
     <div class="sidebar" id="sidebar"></div>
 
-    <!-- MAIN CONTENT -->
     <div class="main">
 
         <div class="title">Promo Code Casinos Cheatsheet</div>
@@ -171,23 +163,18 @@
             so you can check them quickly and never miss a reward.
         </div>
 
-        <!-- RESOURCE BAR -->
         <div class="resource-bar">
             <a href="https://facebook.com" target="_blank">Facebook</a>
             <a href="https://telegram.org" target="_blank">Telegram</a>
             <a href="https://discord.com" target="_blank">Discord</a>
         </div>
 
-        <!-- GRID -->
         <div id="promoGrid" class="grid"></div>
 
-        <!-- COUNTERS -->
         <div class="counter" id="viewCounter"></div>
 
-        <!-- LAST UPDATED -->
         <div class="updated" id="updatedDate"></div>
 
-        <!-- JP LINK -->
         <div class="jp-link">
             <a href="https://jamiespages.com" target="_blank">jamiespages.com</a>
         </div>
@@ -200,12 +187,10 @@
 </div>
 
 <script>
-// Load sidebar
 fetch('/sidebar.html')
     .then(r => r.text())
     .then(html => document.getElementById('sidebar').innerHTML = html);
 
-// OFFICIAL PROMO URLS
 const promoLinks = {
     "BangCoins": "https://bangcoins.com/setting?active=bonusDrop",
     "FireSevens": "https://firesevens.com/promotions/#/",
@@ -223,7 +208,6 @@ const promoLinks = {
     "VegasWay": "https://vegasway.com/promotions#/"
 };
 
-// Render all buttons
 function renderPage() {
     const grid = document.getElementById('promoGrid');
     grid.innerHTML = "";
@@ -242,13 +226,11 @@ function renderPage() {
     });
 }
 
-// Page View Counter
 let views = localStorage.getItem("promoPageViews") || 0;
 views++;
 localStorage.setItem("promoPageViews", views);
 document.getElementById('viewCounter').innerText = "Page Views: " + views;
 
-// FULL DATE
 const today = new Date();
 const formatted = today.toLocaleDateString("en-US", {
     year: "numeric",
@@ -257,7 +239,6 @@ const formatted = today.toLocaleDateString("en-US", {
 });
 document.getElementById("updatedDate").innerText = "Last Updated: " + formatted;
 
-// Initial Render
 renderPage();
 </script>
 
