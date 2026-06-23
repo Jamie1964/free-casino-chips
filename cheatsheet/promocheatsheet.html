@@ -68,7 +68,7 @@
         box-shadow: 0 0 8px #1a75ff;
     }
 
-    /* ⭐ GRID — KEEP 5 COLUMNS LIKE YOUR CHEATSHEET */
+    /* ⭐ GRID — 5 columns like your cheatsheet */
     .grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -76,18 +76,17 @@
         margin-top: 20px;
     }
 
-    /* ⭐ TRUE CHEATSHEET BUTTON STYLE — BLUE VERSION */
-    .btn {
+    /* ⭐ TRUE CHEATSHEET BUTTON STYLE — APPLIED TO <a> */
+    .btn-link {
+        display: block;
         background: #0d1b33; /* solid fill */
         border: 2px solid #3da0ff;
         padding: 16px 14px 16px 44px; /* space for left checkbox */
-        text-align: left;
         color: #3da0ff;
         text-decoration: none;
         font-size: 17px;
         font-weight: bold;
         border-radius: 8px;
-        display: block;
         position: relative;
         box-shadow:
             inset 0 0 10px #000,
@@ -96,7 +95,7 @@
         cursor: pointer;
     }
 
-    .btn:hover {
+    .btn-link:hover {
         border-color: #66c7ff;
         color: #66c7ff;
         box-shadow:
@@ -224,7 +223,7 @@ const promoLinks = {
     "VegasWay": "https://vegasway.com/promotions#/"
 };
 
-// ⭐ Render buttons with toggleable checkboxes
+// ⭐ Render buttons with working links + toggleable checkboxes
 function renderPage() {
     const grid = document.getElementById('promoGrid');
     grid.innerHTML = "";
@@ -234,19 +233,13 @@ function renderPage() {
         const checked = localStorage.getItem(id) === "true" ? "checked" : "";
 
         grid.innerHTML += `
-            <div class="btn" onclick="toggleCheck('${id}')">
+            <a href="${promoLinks[site]}" target="_blank" class="btn-link">
                 <input type="checkbox" class="checkbox" id="${id}" ${checked}
                     onclick="event.stopPropagation(); saveCheck('${id}', this.checked);">
                 ${site}
-            </div>
+            </a>
         `;
     });
-}
-
-function toggleCheck(id) {
-    const box = document.getElementById(id);
-    box.checked = !box.checked;
-    localStorage.setItem(id, box.checked);
 }
 
 function saveCheck(id, state) {
