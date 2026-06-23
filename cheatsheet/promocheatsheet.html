@@ -1,171 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Promo Code Casinos Cheatsheet</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-    body {
-        margin: 0;
-        background: #0d0d0d;
-        color: #fff;
-        font-family: Arial, sans-serif;
-    }
-
-    .container {
-        display: flex;
-        width: 100%;
-    }
-
-    .sidebar {
-        width: 260px;
-        min-height: 100vh;
-        background: #111;
-    }
-
-    .main {
-        flex: 1;
-        padding: 20px;
-    }
-
-    .title {
-        font-size: 32px;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .intro {
-        background: #151515;
-        padding: 15px;
-        margin-bottom: 20px;
-        line-height: 1.5;
-    }
-
-    .resource-bar {
-        width: 99%;
-        margin: 20px auto;
-        display: flex;
-        gap: 1%;
-    }
-
-    .resource-bar a {
-        flex: 1;
-        background: #0d1626;
-        border: 1px solid #1a75ff;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #1a75ff;
-        text-decoration: none;
-        font-size: 18px;
-        font-weight: bold;
-        box-shadow: 0 0 8px #1a75ff;
-    }
-
-    /* ⭐ 5-column grid (correct width) */
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 12px;
-        margin-top: 20px;
-    }
-
-    /* ⭐ BUTTON STYLE — applied to <a> */
-    .btn-link {
-        display: block; /* REQUIRED for background to show */
-        background: #0d1b33;
-        border: 2px solid #3da0ff;
-        padding: 16px 14px 16px 44px;
-        color: #3da0ff;
-        text-decoration: none;
-        font-size: 17px;
-        font-weight: bold;
-        border-radius: 8px;
-        position: relative;
-        box-shadow:
-            inset 0 0 10px #000,
-            0 0 12px #3da0ff;
-        transition: 0.2s ease-in-out;
-    }
-
-    .btn-link:hover {
-        border-color: #66c7ff;
-        color: #66c7ff;
-        box-shadow:
-            inset 0 0 10px #000,
-            0 0 18px #66c7ff;
-    }
-
-    /* ⭐ CHECKBOX — left + centered */
-    .checkbox {
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%) scale(1.4);
-        cursor: pointer;
-    }
-
-    .counter, .updated, footer, .jp-link {
-        text-align: center;
-        margin-top: 20px;
-        color: #aaa;
-    }
-</style>
-
+    <meta charset="UTF-8">
+    <title>Promo Code Casinos Cheatsheet | FREE-CASINO-CHIPS.COM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
 
-<!-- HEADER -->
-<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
-    <img src="https://free-casino-chips.com/images/logotransparent.png"
-         style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
-</div>
+<body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
 
-<div style="height:160px;"></div>
-
-<div class="container">
-
-    <div class="sidebar" id="sidebar"></div>
-
-    <div class="main">
-
-        <div class="title">Promo Code Casinos Cheatsheet</div>
-
-        <div class="intro">
-            Promo codes are special rewards offered by select sweepstakes casinos.
-            They can include free spins, bonus coins, inbox gifts, seasonal rewards,
-            Discord drops, Telegram drops, and Facebook giveaways.
-            This cheatsheet lists all casinos that regularly offer promo codes.
-        </div>
-
-        <div class="resource-bar">
-            <a href="https://facebook.com" target="_blank">Facebook</a>
-            <a href="https://telegram.org" target="_blank">Telegram</a>
-            <a href="https://discord.com" target="_blank">Discord</a>
-        </div>
-
-        <div id="promoGrid" class="grid"></div>
-
-        <div class="counter" id="viewCounter"></div>
-        <div class="updated" id="updatedDate"></div>
-
-        <div class="jp-link">
-            <a href="https://jamiespages.com" target="_blank" style="color:#66ccff;">jamiespages.com</a>
-        </div>
-
-        <footer>© 2026 FREE-CASINO-CHIPS.COM — Promo Code Cheatsheet</footer>
-
+    <!-- HEADER -->
+    <div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;
+                height:160px;overflow:hidden;text-align:center;">
+        <img src="https://free-casino-chips.com/images/logotransparent.png"
+             alt="Free Casino Chips Logo"
+             style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;
+                    filter:drop-shadow(0 0 6px #000);">
     </div>
-</div>
+
+    <!-- PAGE WRAPPER -->
+    <div style="display:flex;margin-top:200px;">
+
+        <!-- SIDEBAR -->
+        <div style="width:272px;padding-left:12px;">
+            <div id="sidebar"
+                 style="background:#111;min-height:100vh;
+                        padding:10px;overflow-y:auto;">
+            </div>
+        </div>
+
+        <script>
+        fetch('/sidebar.html')
+            .then(r => r.text())
+            .then(html => { document.getElementById('sidebar').innerHTML = html; });
+        </script>
+
+        <!-- MAIN CONTENT -->
+        <div style="flex:1;padding:0 25px;">
+
+            <h1 style="font-size:32px;margin:0 0 20px;color:#66ccff;">
+                Promo Code Casinos Cheatsheet
+            </h1>
+
+            <div style="background:#151515;padding:15px;margin-bottom:20px;line-height:1.5;">
+                Promo codes are special rewards offered by select sweepstakes casinos.<br>
+                They include free spins, bonus coins, inbox gifts, seasonal rewards,<br>
+                Discord drops, Telegram drops, and Facebook giveaways.<br><br>
+                This cheatsheet lists all casinos that regularly offer promo codes.
+            </div>
+
+            <!-- RESOURCE BAR -->
+            <div style="width:99%;margin:20px auto;display:flex;gap:1%;">
+                <a href="https://facebook.com" target="_blank"
+                   style="flex:1;background:#0d1626;border:1px solid #1a75ff;height:70px;
+                          display:flex;align-items:center;justify-content:center;
+                          color:#1a75ff;text-decoration:none;font-size:18px;font-weight:bold;
+                          box-shadow:0 0 8px #1a75ff;">
+                    Facebook
+                </a>
+                <a href="https://telegram.org" target="_blank"
+                   style="flex:1;background:#0d1626;border:1px solid #1a75ff;height:70px;
+                          display:flex;align-items:center;justify-content:center;
+                          color:#1a75ff;text-decoration:none;font-size:18px;font-weight:bold;
+                          box-shadow:0 0 8px #1a75ff;">
+                    Telegram
+                </a>
+                <a href="https://discord.com" target="_blank"
+                   style="flex:1;background:#0d1626;border:1px solid #1a75ff;height:70px;
+                          display:flex;align-items:center;justify-content:center;
+                          color:#1a75ff;text-decoration:none;font-size:18px;font-weight:bold;
+                          box-shadow:0 0 8px #1a75ff;">
+                    Discord
+                </a>
+            </div>
+
+            <!-- BUTTON GRID -->
+            <div id="promoGrid"
+                 style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:30px;">
+            </div>
+
+            <!-- PAGE VIEW COUNTER -->
+            <div id="viewCounter"
+                 style="text-align:center;color:#aaa;font-size:14px;margin-bottom:10px;">
+            </div>
+
+            <!-- LAST UPDATED -->
+            <div id="updatedDate"
+                 style="text-align:center;color:#66ccff;font-size:14px;margin-bottom:40px;">
+            </div>
+
+            <!-- FOOTER -->
+            <footer id="footer"></footer>
+            <script>
+            fetch('/footer.html')
+              .then(r => r.text())
+              .then(h => footer.innerHTML = h);
+            </script>
+
+        </div>
+    </div>
 
 <script>
-// Load sidebar
-fetch('/sidebar.html')
-    .then(r => r.text())
-    .then(html => document.getElementById('sidebar').innerHTML = html);
-
+// OFFICIAL PROMO URLS
 const promoLinks = {
     "BangCoins": "https://bangcoins.com/setting?active=bonusDrop",
     "FireSevens": "https://firesevens.com/promotions/#/",
@@ -183,50 +118,71 @@ const promoLinks = {
     "VegasWay": "https://vegasway.com/promotions#/"
 };
 
-// ⭐ Render buttons with working links + auto-check
+// RENDER BUTTONS (EXACT CHEATSHEET STYLE)
 function renderPage() {
     const grid = document.getElementById('promoGrid');
     grid.innerHTML = "";
 
     Object.keys(promoLinks).forEach(site => {
         const id = "promo_" + site.replace(/\s+/g, '');
-        const checked = localStorage.getItem(id) === "true" ? "checked" : "";
+        const saved = localStorage.getItem(id) === "1";
 
-        grid.innerHTML += `
-            <a href="${promoLinks[site]}" target="_blank" class="btn-link" onclick="toggleCheck('${id}')">
-                <input type="checkbox" class="checkbox" id="${id}" ${checked}
-                    onclick="event.stopPropagation(); saveCheck('${id}', this.checked);">
-                ${site}
-            </a>
+        const btn = document.createElement('a');
+        btn.href = promoLinks[site];
+        btn.target = "_blank";
+        btn.className = "casino-btn";
+        btn.dataset.id = id;
+
+        // EXACT cheatsheet button style
+        btn.style.cssText = `
+            display:flex;align-items:center;gap:8px;background:#1e73ff;
+            color:#fff;padding:9px 10px;border-radius:6px;text-decoration:none;
+            font-size:14px;font-weight:bold;
         `;
+
+        const cb = document.createElement('input');
+        cb.type = "checkbox";
+        cb.style.width = "16px";
+        cb.style.height = "16px";
+        cb.checked = saved;
+
+        cb.addEventListener("click", e => {
+            e.stopPropagation();
+            localStorage.setItem(id, cb.checked ? "1" : "0");
+        });
+
+        btn.addEventListener("click", e => {
+            if (e.target.tagName !== "INPUT") {
+                cb.checked = !cb.checked;
+                localStorage.setItem(id, cb.checked ? "1" : "0");
+            }
+        });
+
+        const label = document.createElement('span');
+        label.textContent = site;
+
+        btn.appendChild(cb);
+        btn.appendChild(label);
+        grid.appendChild(btn);
     });
 }
 
-function toggleCheck(id) {
-    const box = document.getElementById(id);
-    box.checked = true;
-    localStorage.setItem(id, true);
-}
-
-function saveCheck(id, state) {
-    localStorage.setItem(id, state);
-}
-
-// Page View Counter
-let views = localStorage.getItem("promoPageViews") || 0;
+// PAGE VIEW COUNTER
+let views = parseInt(localStorage.getItem("promoPageViews") || "0");
 views++;
 localStorage.setItem("promoPageViews", views);
-document.getElementById('viewCounter').innerText = "Page Views: " + views;
+document.getElementById('viewCounter').textContent = "Page Views: " + views;
 
-// Last Updated
+// LAST UPDATED
 const today = new Date();
-document.getElementById("updatedDate").innerText =
+document.getElementById("updatedDate").textContent =
     "Last Updated: " + today.toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric"
     });
 
+// INITIAL RENDER
 renderPage();
 </script>
 
