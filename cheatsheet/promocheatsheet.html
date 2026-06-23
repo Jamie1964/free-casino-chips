@@ -13,6 +13,7 @@
         font-family: Arial, sans-serif;
     }
 
+    /* PAGE LAYOUT */
     .container {
         display: flex;
         width: 100%;
@@ -44,6 +45,7 @@
         line-height: 1.5;
     }
 
+    /* RESOURCE BAR */
     .resource-bar {
         width: 99%;
         margin: 20px auto;
@@ -66,6 +68,7 @@
         box-shadow: 0 0 8px #1a75ff;
     }
 
+    /* GRID */
     .grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -73,27 +76,34 @@
         margin-top: 20px;
     }
 
+    /* ⭐ TRUE CHEATSHEET BUTTON STYLE (BLUE VERSION) */
     .btn {
-        background: #0f1a2b;
-        border: 1px solid #3399ff;
-        padding: 14px;
+        background: linear-gradient(#0b1a33, #0a162b);
+        border: 1px solid #3da0ff;
+        padding: 14px 10px;
         text-align: center;
-        color: #3399ff;
+        color: #3da0ff;
         text-decoration: none;
         font-size: 16px;
+        font-weight: bold;
         border-radius: 6px;
         display: block;
         position: relative;
-        box-shadow: 0 0 10px #3399ff;
-        transition: 0.2s;
+        box-shadow:
+            inset 0 0 6px #000,
+            0 0 10px #3da0ff;
+        transition: 0.2s ease-in-out;
     }
 
     .btn:hover {
-        box-shadow: 0 0 14px #66ccff;
-        border-color: #66ccff;
-        color: #66ccff;
+        border-color: #66c7ff;
+        color: #66c7ff;
+        box-shadow:
+            inset 0 0 6px #000,
+            0 0 14px #66c7ff;
     }
 
+    /* CHECKBOX */
     .checkbox {
         position: absolute;
         top: 6px;
@@ -101,6 +111,7 @@
         transform: scale(1.4);
     }
 
+    /* FOOTER ELEMENTS */
     .counter {
         margin-top: 30px;
         text-align: center;
@@ -138,9 +149,10 @@
 </head>
 <body>
 
-<!-- ⭐ FIXED TOP LOGO BAR (CORRECT VERSION) -->
-<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid:#333;height:160px;overflow:hidden;text-align:center;">
-    <img src="https://free-casino-chips.com/images/logotransparent.png" alt="Free Casino Chips Logo"
+<!-- ⭐ FIXED TOP LOGO BAR -->
+<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
+    <img src="https://free-casino-chips.com/images/logotransparent.png"
+         alt="Free Casino Chips Logo"
          style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
 </div>
 
@@ -187,10 +199,12 @@
 </div>
 
 <script>
+// Load sidebar
 fetch('/sidebar.html')
     .then(r => r.text())
     .then(html => document.getElementById('sidebar').innerHTML = html);
 
+// OFFICIAL PROMO URLS
 const promoLinks = {
     "BangCoins": "https://bangcoins.com/setting?active=bonusDrop",
     "FireSevens": "https://firesevens.com/promotions/#/",
@@ -208,6 +222,7 @@ const promoLinks = {
     "VegasWay": "https://vegasway.com/promotions#/"
 };
 
+// Render buttons
 function renderPage() {
     const grid = document.getElementById('promoGrid');
     grid.innerHTML = "";
@@ -217,28 +232,30 @@ function renderPage() {
         const checked = localStorage.getItem(id) === "true" ? "checked" : "";
 
         grid.innerHTML += `
-            <a class="btn" href="${promoLinks[site]}" target="_blank">
+            <a class="btn" href="${promoLinks[site]}" target="_blank" onclick="document.getElementById('${id}').checked = true; localStorage.setItem('${id}', true);">
                 ${site}
-                <input type="checkbox" class="checkbox" id="${id}" ${checked}
-                    onclick="localStorage.setItem('${id}', this.checked)">
+                <input type="checkbox" class="checkbox" id="${id}" ${checked}>
             </a>
         `;
     });
 }
 
+// Page View Counter
 let views = localStorage.getItem("promoPageViews") || 0;
 views++;
 localStorage.setItem("promoPageViews", views);
 document.getElementById('viewCounter').innerText = "Page Views: " + views;
 
+// Last Updated
 const today = new Date();
-const formatted = today.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric"
-});
-document.getElementById("updatedDate").innerText = "Last Updated: " + formatted;
+document.getElementById("updatedDate").innerText =
+    "Last Updated: " + today.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    });
 
+// Initial Render
 renderPage();
 </script>
 
