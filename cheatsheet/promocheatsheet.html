@@ -41,11 +41,42 @@
                 Promo Code Casinos Cheatsheet
             </h1>
 
+            <!-- ⭐ RESTORED INTRO TEXT (A) -->
             <div style="background:#151515;padding:15px;margin-bottom:20px;line-height:1.5;">
                 Promo codes are special rewards offered by select sweepstakes casinos.<br>
-                They include free spins, bonus coins, inbox gifts, seasonal rewards,<br>
+                They can include free spins, bonus coins, inbox gifts, seasonal rewards,<br>
                 Discord drops, Telegram drops, and Facebook giveaways.<br><br>
-                This cheatsheet lists all casinos that regularly offer promo codes.
+                This cheatsheet lists all casinos that regularly offer promo codes,<br>
+                so you can check them quickly and never miss a reward.
+            </div>
+
+            <!-- ⭐ CONTROL BUTTONS (Mark All / Uncheck All / Clear Saved) -->
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:25px;width:260px;">
+                <button onclick="markAll()" 
+                        style="padding:10px 16px;background:#333;color:#fff;border-radius:6px;border:none;text-align:left;">
+                    Mark All
+                </button>
+
+                <button onclick="uncheckAll()" 
+                        style="padding:10px 16px;background:#333;color:#fff;border-radius:6px;border:none;text-align:left;">
+                    Uncheck All
+                </button>
+
+                <button onclick="clearAll()" 
+                        style="padding:10px 16px;background:#333;color:#fff;border-radius:6px;border:none;text-align:left;">
+                    Clear Saved
+                </button>
+            </div>
+
+            <!-- ⭐ RESTORED HOW-TO BLOCK (C) -->
+            <div style="color:#fff;font-size:15px;line-height:1.5;margin-bottom:25px;">
+                <strong>How to use this page</strong><br><br>
+                • This cheat sheet is used to collect your daily gift of free chips from the different casinos <br>
+                • or to quickly join many casinos fast... Click a blue casino button to open that site in a new tab.<br>
+                • The checkbox is automatic to mark a casino as completed or visited.<br>
+                • Your checkmarks save automatically in your browser.<br>
+                • Use “Mark All” to check everything, “Uncheck All” to clear them,<br>
+                  and “Clear Saved” to wipe all saved progress and start fresh.
             </div>
 
             <!-- RESOURCE BAR -->
@@ -133,7 +164,6 @@ function renderPage() {
         btn.className = "casino-btn";
         btn.dataset.id = id;
 
-        // EXACT cheatsheet button style
         btn.style.cssText = `
             display:flex;align-items:center;gap:8px;background:#1e73ff;
             color:#fff;padding:9px 10px;border-radius:6px;text-decoration:none;
@@ -164,6 +194,35 @@ function renderPage() {
         btn.appendChild(cb);
         btn.appendChild(label);
         grid.appendChild(btn);
+    });
+}
+
+// MARK ALL
+function markAll() {
+    document.querySelectorAll(".casino-btn").forEach(btn => {
+        const id = btn.dataset.id;
+        const cb = btn.querySelector("input");
+        cb.checked = true;
+        localStorage.setItem(id, "1");
+    });
+}
+
+// ⭐ UNCHECK ALL (added back)
+function uncheckAll() {
+    document.querySelectorAll(".casino-btn").forEach(btn => {
+        const id = btn.dataset.id;
+        const cb = btn.querySelector("input");
+        cb.checked = false;
+        localStorage.setItem(id, "0");
+    });
+}
+
+// CLEAR SAVED
+function clearAll() {
+    document.querySelectorAll(".casino-btn").forEach(btn => {
+        const id = btn.dataset.id;
+        localStorage.removeItem(id);
+        btn.querySelector("input").checked = false;
     });
 }
 
