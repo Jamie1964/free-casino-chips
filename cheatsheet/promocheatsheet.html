@@ -68,20 +68,20 @@
         box-shadow: 0 0 8px #1a75ff;
     }
 
-    /* ⭐ GRID — MATCH CHEATSHEET WIDTH */
+    /* ⭐ GRID — KEEP 5 COLUMNS LIKE YOUR CHEATSHEET */
     .grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
         margin-top: 20px;
     }
 
     /* ⭐ TRUE CHEATSHEET BUTTON STYLE — BLUE VERSION */
     .btn {
-        background: linear-gradient(#0a1424, #0c1b33);
+        background: #0d1b33; /* solid fill */
         border: 2px solid #3da0ff;
-        padding: 16px 12px;
-        text-align: center;
+        padding: 16px 14px 16px 44px; /* space for left checkbox */
+        text-align: left;
         color: #3da0ff;
         text-decoration: none;
         font-size: 17px;
@@ -93,6 +93,7 @@
             inset 0 0 10px #000,
             0 0 12px #3da0ff;
         transition: 0.2s ease-in-out;
+        cursor: pointer;
     }
 
     .btn:hover {
@@ -103,12 +104,13 @@
             0 0 18px #66c7ff;
     }
 
-    /* CHECKBOX */
+    /* ⭐ CHECKBOX ON LEFT, CENTERED */
     .checkbox {
         position: absolute;
-        top: 6px;
-        right: 6px;
-        transform: scale(1.4);
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%) scale(1.4);
+        cursor: pointer;
     }
 
     /* FOOTER ELEMENTS */
@@ -222,7 +224,7 @@ const promoLinks = {
     "VegasWay": "https://vegasway.com/promotions#/"
 };
 
-// Render buttons
+// ⭐ Render buttons with toggleable checkboxes
 function renderPage() {
     const grid = document.getElementById('promoGrid');
     grid.innerHTML = "";
@@ -232,13 +234,23 @@ function renderPage() {
         const checked = localStorage.getItem(id) === "true" ? "checked" : "";
 
         grid.innerHTML += `
-            <a class="btn" href="${promoLinks[site]}" target="_blank"
-               onclick="document.getElementById('${id}').checked = true; localStorage.setItem('${id}', true);">
+            <div class="btn" onclick="toggleCheck('${id}')">
+                <input type="checkbox" class="checkbox" id="${id}" ${checked}
+                    onclick="event.stopPropagation(); saveCheck('${id}', this.checked);">
                 ${site}
-                <input type="checkbox" class="checkbox" id="${id}" ${checked}>
-            </a>
+            </div>
         `;
     });
+}
+
+function toggleCheck(id) {
+    const box = document.getElementById(id);
+    box.checked = !box.checked;
+    localStorage.setItem(id, box.checked);
+}
+
+function saveCheck(id, state) {
+    localStorage.setItem(id, state);
 }
 
 // Page View Counter
