@@ -13,7 +13,6 @@
         font-family: Arial, sans-serif;
     }
 
-    /* PAGE LAYOUT */
     .container {
         display: flex;
         width: 100%;
@@ -23,7 +22,6 @@
         width: 260px;
         min-height: 100vh;
         background: #111;
-        border-right: none;
     }
 
     .main {
@@ -40,12 +38,10 @@
     .intro {
         background: #151515;
         padding: 15px;
-        border: none;
         margin-bottom: 20px;
         line-height: 1.5;
     }
 
-    /* RESOURCE BAR */
     .resource-bar {
         width: 99%;
         margin: 20px auto;
@@ -68,7 +64,7 @@
         box-shadow: 0 0 8px #1a75ff;
     }
 
-    /* ⭐ GRID — 5 columns like your cheatsheet */
+    /* ⭐ 5-column grid (correct width) */
     .grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -76,12 +72,12 @@
         margin-top: 20px;
     }
 
-    /* ⭐ TRUE CHEATSHEET BUTTON STYLE — APPLIED TO <a> */
+    /* ⭐ BUTTON STYLE — applied to <a> */
     .btn-link {
-        display: block;
-        background: #0d1b33; /* solid fill */
+        display: block; /* REQUIRED for background to show */
+        background: #0d1b33;
         border: 2px solid #3da0ff;
-        padding: 16px 14px 16px 44px; /* space for left checkbox */
+        padding: 16px 14px 16px 44px;
         color: #3da0ff;
         text-decoration: none;
         font-size: 17px;
@@ -92,7 +88,6 @@
             inset 0 0 10px #000,
             0 0 12px #3da0ff;
         transition: 0.2s ease-in-out;
-        cursor: pointer;
     }
 
     .btn-link:hover {
@@ -103,7 +98,7 @@
             0 0 18px #66c7ff;
     }
 
-    /* ⭐ CHECKBOX ON LEFT, CENTERED */
+    /* ⭐ CHECKBOX — left + centered */
     .checkbox {
         position: absolute;
         left: 10px;
@@ -112,52 +107,22 @@
         cursor: pointer;
     }
 
-    /* FOOTER ELEMENTS */
-    .counter {
-        margin-top: 30px;
+    .counter, .updated, footer, .jp-link {
         text-align: center;
-        font-size: 14px;
-        color: #aaa;
-    }
-
-    .updated {
-        margin-top: 25px;
-        text-align: center;
-        font-size: 14px;
-        color: #66ccff;
-    }
-
-    .jp-link {
-        text-align: center;
-        margin-top: 5px;
-        font-size: 14px;
-    }
-
-    .jp-link a {
-        color: #66ccff;
-        text-decoration: none;
-    }
-
-    footer {
         margin-top: 20px;
-        padding: 20px;
-        text-align: center;
-        color: #777;
-        font-size: 14px;
+        color: #aaa;
     }
 </style>
 
 </head>
 <body>
 
-<!-- ⭐ FIXED TOP LOGO BAR -->
+<!-- HEADER -->
 <div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
     <img src="https://free-casino-chips.com/images/logotransparent.png"
-         alt="Free Casino Chips Logo"
          style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
 </div>
 
-<!-- ⭐ SPACER BELOW FIXED HEADER -->
 <div style="height:160px;"></div>
 
 <div class="container">
@@ -169,11 +134,10 @@
         <div class="title">Promo Code Casinos Cheatsheet</div>
 
         <div class="intro">
-            Promo codes are special rewards offered by select sweepstakes casinos.  
-            They can include free spins, bonus coins, inbox gifts, seasonal rewards,  
-            Discord drops, Telegram drops, and Facebook giveaways.  
-            This cheatsheet lists all casinos that regularly offer promo codes,  
-            so you can check them quickly and never miss a reward.
+            Promo codes are special rewards offered by select sweepstakes casinos.
+            They can include free spins, bonus coins, inbox gifts, seasonal rewards,
+            Discord drops, Telegram drops, and Facebook giveaways.
+            This cheatsheet lists all casinos that regularly offer promo codes.
         </div>
 
         <div class="resource-bar">
@@ -185,16 +149,13 @@
         <div id="promoGrid" class="grid"></div>
 
         <div class="counter" id="viewCounter"></div>
-
         <div class="updated" id="updatedDate"></div>
 
         <div class="jp-link">
-            <a href="https://jamiespages.com" target="_blank">jamiespages.com</a>
+            <a href="https://jamiespages.com" target="_blank" style="color:#66ccff;">jamiespages.com</a>
         </div>
 
-        <footer>
-            © 2026 FREE-CASINO-CHIPS.COM — Promo Code Cheatsheet
-        </footer>
+        <footer>© 2026 FREE-CASINO-CHIPS.COM — Promo Code Cheatsheet</footer>
 
     </div>
 </div>
@@ -205,7 +166,6 @@ fetch('/sidebar.html')
     .then(r => r.text())
     .then(html => document.getElementById('sidebar').innerHTML = html);
 
-// OFFICIAL PROMO URLS
 const promoLinks = {
     "BangCoins": "https://bangcoins.com/setting?active=bonusDrop",
     "FireSevens": "https://firesevens.com/promotions/#/",
@@ -223,7 +183,7 @@ const promoLinks = {
     "VegasWay": "https://vegasway.com/promotions#/"
 };
 
-// ⭐ Render buttons with working links + toggleable checkboxes
+// ⭐ Render buttons with working links + auto-check
 function renderPage() {
     const grid = document.getElementById('promoGrid');
     grid.innerHTML = "";
@@ -233,13 +193,19 @@ function renderPage() {
         const checked = localStorage.getItem(id) === "true" ? "checked" : "";
 
         grid.innerHTML += `
-            <a href="${promoLinks[site]}" target="_blank" class="btn-link">
+            <a href="${promoLinks[site]}" target="_blank" class="btn-link" onclick="toggleCheck('${id}')">
                 <input type="checkbox" class="checkbox" id="${id}" ${checked}
                     onclick="event.stopPropagation(); saveCheck('${id}', this.checked);">
                 ${site}
             </a>
         `;
     });
+}
+
+function toggleCheck(id) {
+    const box = document.getElementById(id);
+    box.checked = true;
+    localStorage.setItem(id, true);
 }
 
 function saveCheck(id, state) {
@@ -261,7 +227,6 @@ document.getElementById("updatedDate").innerText =
         day: "numeric"
     });
 
-// Initial Render
 renderPage();
 </script>
 
