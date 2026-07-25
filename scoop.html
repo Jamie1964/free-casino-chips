@@ -7,34 +7,38 @@
   <meta name="description" content="Scoop.com sweepstakes casino review — bonuses, daily wheel rewards, redemptions, KYC requirements, slot library, and strategies to maximize Sweeps Coins.">
   <link rel="canonical" href="https://www.free-casino-chips.com/scoop.html">
 </head>
-<body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
+<body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;display:flex;flex-direction:column;min-height:100vh;">
 
   <!-- HEADER -->
   <div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
     <img src="https://www.free-casino-chips.com/images/site-logo-ultra-low.png" alt="Free Casino Chips Logo" style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
   </div>
 
-  <div style="display:flex;margin-top:200px;">
+  <!-- CONTENT WRAPPER -->
+  <div style="display:flex;margin-top:180px;flex:1;">
     
     <!-- SIDEBAR -->
-    <div style="width:272px;padding-left:12px;">
-      <div id="sidebar" style="background:#111;border-right:2px solid #222;min-height:100vh;padding:10px;overflow-y:auto;"></div>
+    <div style="width:272px;padding-left:12px;flex-shrink:0;">
+      <div id="sidebar" style="background:#111;border-right:2px solid #222;padding:10px;overflow-y:auto;box-sizing:border-box;"></div>
     </div>
     <script>
-      fetch('https://www.free-casino-chips.com/sidebar.html')
-        .then(r => r.text())
+      fetch('/sidebar.html')
+        .then(r => {
+          if (!r.ok) throw new Error('Network response was not ok');
+          return r.text();
+        })
         .then(html => { document.getElementById('sidebar').innerHTML = html; })
         .catch(() => { document.getElementById('sidebar').innerHTML = "<p style='color:#888;'>Sidebar unavailable</p>"; });
     </script>
 
     <!-- MAIN CONTENT -->
-    <div style="flex:1;padding:0 25px;max-width:900px;">
+    <div style="flex:1;padding:0 25px 40px;max-width:900px;">
 
       <!-- LOGO -->
       <div style="text-align:center;margin-bottom:25px;">
         <a href="https://www.scoop.com/" target="_blank" rel="noopener noreferrer">
           <div style="display:inline-block;max-width:900px;width:100%;text-align:center;">
-            <img src="https://www.free-casino-chips.com/images/scooplogo.svg" alt="Scoop Casino" onerror="this.style.display='none'; document.getElementById('fallback-title').style.display='block';" style="width:60%;height:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 8px #000);">
+            <img src="https://www.free-casino-chips.com/images/scooplogo.svg" alt="Scoop Casino Logo" onerror="this.style.display='none'; document.getElementById('fallback-title').style.display='block';" style="width:60%;height:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 8px #000);">
           </div>
         </a>
       </div>
@@ -157,7 +161,7 @@
       </div>
 
       <!-- PAGE VIEW COUNTER -->
-      <div style="text-align:center;color:#888;font-size:14px;margin-bottom:40px;">
+      <div style="text-align:center;color:#888;font-size:14px;margin-bottom:20px;">
         Views: <span id="viewCountNumber">0</span>
       </div>
       <script>
@@ -174,7 +178,7 @@
   </div><!-- END FLEX WRAPPER -->
 
   <!-- FOOTER -->
-  <div style="text-align:center;padding:20px;color:#666;font-size:14px;">
+  <div style="text-align:center;padding:20px;color:#666;font-size:14px;background:#111;border-top:1px solid #222;width:100%;box-sizing:border-box;">
     © 2026 FREE-CASINO-CHIPS.COM — All Rights Reserved.
   </div>
 
