@@ -48,6 +48,7 @@
 
                     <!-- CONTROL BUTTONS -->
                     <div style="display:flex;flex-direction:column;gap:8px;">
+                        <button onclick="openAllPage()" style="padding:10px 16px;background:#66ccff;color:#000;border-radius:6px;border:none;text-align:left;cursor:pointer;font-weight:900;box-shadow:0 0 8px #66ccff;">Open All (Current Page)</button>
                         <button onclick="markAll()" style="padding:10px 16px;background:#333;color:#fff;border-radius:6px;border:1px solid #444;text-align:left;cursor:pointer;font-weight:bold;">Mark All</button>
                         <button onclick="uncheckAll()" style="padding:10px 16px;background:#333;color:#fff;border-radius:6px;border:1px solid #444;text-align:left;cursor:pointer;font-weight:bold;">Uncheck All</button>
                     </div>
@@ -57,8 +58,8 @@
                 <div style="width:70%;color:#fff;font-size:15px;line-height:1.65;padding-left:20px;">
                     <h2 style="color:#66ccff;font-size:22px;margin:0 0 10px;">How to Use the Daily Bonus Cheat Sheet</h2>
                     • Collect your daily gift of free Sweeps Coins and Gold Coins from each sweepstakes casino.<br>
-                    • Click any blue casino button to open that site in a new tab.<br>
-                    • The checkbox checks automatically to mark a casino as visited or completed.<br>
+                    • Click <strong>Open All (Current Page)</strong> to launch all 15 casinos on the current page in new tabs and check them off automatically (allow pop-ups in Chrome when prompted).<br>
+                    • Or click any blue casino button individually to open that site in a new tab.<br>
                     • Your checkmarks save automatically in your browser's local storage.<br>
                     • Use <strong>Mark All</strong> to check every casino or <strong>Uncheck All</strong> to reset for a new day.
                 </div>
@@ -196,6 +197,18 @@
                 renderButtons();
             });
 
+            function openAllPage() {
+                const start = currentPage * perPage;
+                const end = start + perPage;
+                const slice = filteredCasinos.slice(start, end);
+
+                slice.forEach(casino => {
+                    localStorage.setItem("chk_" + getCasinoId(casino.name), "1");
+                    window.open(casino.url, "_blank", "noopener,noreferrer");
+                });
+                renderButtons();
+            }
+
             function markAll() {
                 casinos.forEach(c => {
                     localStorage.setItem("chk_" + getCasinoId(c.name), "1");
@@ -213,7 +226,7 @@
 
             <!-- LAST UPDATED -->
             <div style="text-align:center;color:#888;font-size:14px;margin-bottom:20px;">
-                Last Updated: November 26, 2026 at 7:45 AM MST
+                Last Updated: November 26, 2026 at 7:51 AM MST
             </div>
 
             <!-- UNIVERSAL FOOTER -->
