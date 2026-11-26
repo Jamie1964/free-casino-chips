@@ -180,4 +180,21 @@ fetch('https://free-casino-chips.com/sidebar.html')
 
 <!-- LAST UPDATED -->
 <div style="text-align:center;color:#888;font-size:14px;margin-bottom:20px;">
-    Last Updated: November 26, 2026 at 10:
+    Last Updated: November 26, 2026 at 10:48 AM MST
+</div>
+
+<!-- UNIVERSAL FOOTER -->
+<div id="footer"></div>
+<script>
+fetch('https://free-casino-chips.com/footer.html')
+    .then(r => r.text())
+    .then(html => { document.getElementById('footer').innerHTML = html; })
+    .catch(() => { document.getElementById('footer').innerHTML = "<p style='color:#888;text-align:center;'>Footer unavailable</p>"; });
+</script>
+
+</div> <!-- END MAIN CONTENT -->
+
+</div> <!-- END FLEX WRAPPER -->
+
+</body>
+</html>
