@@ -1,0 +1,90 @@
+<!-- https://free-casino-chips.com/braingemini/11.26.2026at6am.html -->
+# MASTER BRAIN — WEB DEVELOPMENT, ARCHITECTURE & WORKFLOW SYSTEM
+# File: braingemini/11.26.2026at6am.html
+# Last Consolidated: November 26, 2026 at 6:25 AM MST
+
+================================================================================
+1. IDENTITY, STACK & CORE WORKING RULES
+================================================================================
+- Role & Stack: Static web designer and developer building and maintaining directories, media archives, and sweepstakes casino portals using pure static HTML, 100% inline CSS, vanilla JavaScript fetch(), GitHub (Jamie1964), and Cloudflare Pages.
+- Zero Backend / Zero Workers: All pages are 100% static HTML. Never suggest, create, or use Cloudflare Workers, server-side scripts, databases, external CSS files, or `<style>` blocks.
+- Complete Full-File Output Only: Always output the ENTIRE, complete, copy-paste-ready HTML file from line 1 (`<!-- https://... -->`) to `</html>`. Never output snippets, partial edits, diffs, or placeholders like `<!-- rest of code here -->`.
+- No Page-View Counters (OBSOLETE): Page-view counters (`localStorage`, `viewCounter`, `viewCountNumber`, `views_*` keys, or external API counters) are completely obsolete across ALL websites. Permanently strip every counter element, label, and script from every page edited.
+- No Feedback Forms: None of the web pages contain feedback forms unless explicitly requested.
+- No Icons or Emojis: Do not use emojis, icon fonts, or decorative icon SVGs in HTML layouts or templates.
+
+================================================================================
+2. ACTIVE NETWORK PROPERTIES & DOMAIN ARCHITECTURE
+================================================================================
+- free-casino-chips.com — Sweepstakes & social casino review portal, bonus guides, and interactive daily bonus cheat sheet.
+  * Index Page Rule: `index.html` links ONLY to internal review pages (e.g., `https://free-casino-chips.com/coinsback.html`, `https://free-casino-chips.com/coinz.html`).
+  * Referral Link Rule: External casino referral/affiliate links appear ONLY on the individual casino review pages (logo link, top intro box `Claim Offer` button, and bottom `Claim Offer` button) and on the cheat sheet—never on `index.html`.
+- jamiespages.com — Central web design & creator portfolio linking to active network properties (`wepaythefreight.com`, `nellyi.com`, etc.).
+- jamiestunes.com — Full-length live concert streams, street buskers, and young musical talent archives.
+  * Directory Rule: Concert pages live directly in `/concerts/` (e.g., `https://jamiestunes.com/concerts/george-strait-live-2021.html`). There is NO `/music/` folder on the root directory.
+- giggle-factory.com — Comedy entertainment portal (note hyphenated spelling: `giggle-factory.com`, NOT `gigglefactory.com`).
+  * Domain Notes: `jamies-laughs.com` holds a meta-refresh redirect to `giggle-factory.com`; `jamieslaughs.com` is owned with no active content.
+- nellyi.com — Custom personal website and multi-page photo portfolio for creator Nelly Ihsayabok (`jamiespages.com` is credited only as the creator).
+- wepaythefreight.com — Network property featured in the universal `footer.html` banner ad.
+
+================================================================================
+3. UNIVERSAL HTML ARCHITECTURE & STYLING STANDARDS
+================================================================================
+- First-Line URL Comment: Line 1 of EVERY HTML file MUST be an HTML comment containing its exact full canonical non-`www` URL:
+  `<!-- https://free-casino-chips.com/pagename.html -->`
+- Hard Non-`www` Absolute URLs: Always use full `https://domain.com/...` URLs without `www` for `<link rel="canonical">`, header logos, casino logos, `sidebar.html`, and `footer.html` (never use `http://` or relative paths like `/sidebar.html` or `images/...`).
+- Color Palette & Typography:
+  * Page background: `#0d0d0d`
+  * Header & Sidebar background: `#111`
+  * Card & Content box background: `#141414`
+  * Primary accent & neon glow: `#66ccff`
+  * Primary text: `#fff` | Muted text (`Last Updated`): `#888`
+  * Font stack: `Arial,Helvetica,sans-serif`
+- Fixed Header & Left Sidebar:
+  * Fixed top header (`height:160px;position:fixed;top:0;left:0;z-index:999;background:#111;border-bottom:2px solid #333;`) displaying `https://free-casino-chips.com/images/site-logo-ultra-low.png`.
+  * Main flex wrapper (`display:flex;margin-top:200px;`) with a `272px` left sidebar (`padding-left:12px;`) loading `https://free-casino-chips.com/sidebar.html` via vanilla JS `fetch()`.
+  * Main content container (`flex:1;padding:0 25px;max-width:900px;`).
+- Visible Last Updated Timestamp: Every page MUST include a visible centered timestamp right above `<div id="footer"></div>`:
+  `<div style="text-align:center;color:#888;font-size:14px;margin-bottom:20px;">Last Updated: [Month Day, Year] at [H:MM AM/PM] MST</div>`
+- Universal Footer Loader: Every page loads `https://free-casino-chips.com/footer.html` via vanilla JS `fetch()` into `<div id="footer"></div>` at the bottom of the main content column.
+
+================================================================================
+4. CASINO PAGE RESEARCH & UPDATE WORKFLOW (STANDARD OPERATING PROCEDURE)
+================================================================================
+Whenever a casino HTML file is provided for updating, execute these exact steps:
+1. Research Latest Data (Current Year: 2026):
+   - Verify exact current No-Purchase Welcome Bonus (GC + SC amounts, promo code requirements, onboarding steps) and First-Purchase Boosts.
+   - Verify Daily Rewards (daily login streaks, wheels, scratchcards, rakeback/coinback, VIP tiers, mail-in AMOE SC amount, referral bonuses).
+   - Verify Game Library size, categories (slots, live dealer, crash/instant-win, fish games, jackpots), and top software providers.
+   - Verify Payouts & Banking (exact SC minimums for gift cards vs. cash/bank/crypto/debit, 1 SC = $1 rate, playthrough requirement, processing times, daily limits, supported payment methods).
+   - Verify KYC & Age Requirements (18+ vs. 21+, photo ID, selfie, proof of address, closed-loop rules).
+   - Verify Full 2026 Restricted States List (all U.S. states excluded from Sweeps Coin play).
+2. Migrate to the Locked Master Template (Section 5 below):
+   - Preserve the exact casino referral link (`href`) and casino logo URL (`src`) from the source file while upgrading everything else to the Master Template.
+   - Remove all page-view counters, outdated footer blocks, `http://` links, and raw keyword lists.
+3. Deliver Complete File + Summary:
+   - Briefly list what changed based on the latest research, then output the complete, ready-to-commit HTML file.
+
+================================================================================
+5. LOCKED MASTER CASINO PAGE TEMPLATE (REFERENCE STANDARD)
+================================================================================
+<!-- https://free-casino-chips.com/[slug].html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>[CasinoName] | FREE-CASINO-CHIPS.COM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="[CasinoName] sweepstakes casino review — [Welcome Bonus], [Daily Reward], [Redemption Highlights], KYC, game library, and restricted states.">
+<link rel="canonical" href="https://free-casino-chips.com/[slug].html">
+</head>
+
+<body style="margin:0;background:#0d0d0d;color:#fff;font-family:Arial,Helvetica,sans-serif;">
+
+<!-- HEADER -->
+<div style="width:100%;background:#111;position:fixed;top:0;left:0;z-index:999;border-bottom:2px solid #333;height:160px;overflow:hidden;text-align:center;">
+    <img src="https://free-casino-chips.com/images/site-logo-ultra-low.png" alt="Free Casino Chips Logo"
+         style="height:100%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:drop-shadow(0 0 6px #000);">
+</div>
+
+<div style="display:flex;margin-
