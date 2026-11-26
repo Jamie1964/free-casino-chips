@@ -1,11 +1,12 @@
 [
+  { "name": "WowVegas", "url": "https://www.wowvegas.com/?raf=7259051" },
+  { "name": "YayCasino", "url": "https://www.yaycasino.com/signup/b34047a0-15a9-4e86-8eaf-c49ef3a39c45" },
+  { "name": "ZulaCasino", "url": "https://www.zulacasino.com/signup/402c0581-799e-4dba-8445-b066fca4a2f1" },
   { "name": "Ace", "url": "https://www.ace.com/?r=4333fa1d%2F42862933" },
   { "name": "AmericanLuck", "url": "https://americanluck.com/signup/cefd9172-4bad-4f93-b8c3-a9d912bc522a" },
   { "name": "BabaCasino", "url": "https://play.babacasino.com/#/?referral_id=f06633476f2ed3ac374f5b43bb18c51c&inv_referral=true&fb_source=invite" },
   { "name": "BangCoins", "url": "https://bangcoins.com/?ref=r_jamie1964" },
-  { "name": "Cashoomo", "url": "https://cashoomo.com/?referralCode=JH8QLG3YWP8S" },
   { "name": "CasinoClick", "url": "https://casino.click/?modal=iqs-sign-up&ReferenceCode=372778&AffiliatePlatformId=200" },
-  { "name": "ChipNWin", "url": "https://chipnwin.com/?earn=EQ9wKNS3" },
   { "name": "CiderCasino", "url": "https://cidercasino.onelink.me/QfGN/oio1bede?c=GKLL9W7S" },
   { "name": "CoinsBackCasino", "url": "https://www.coinsbackcasino.com/invite/1542138?utm_source=copy&utm_medium=referral&utm_campaign=member-referral" },
   { "name": "Coinz", "url": "https://coinz.us/?referral_code=2f3ba786b44e5184" },
@@ -50,7 +51,6 @@
   { "name": "TheWinZone", "url": "https://thewinzone.com/?ref=jamie1964" },
   { "name": "VegasWay", "url": "https://vegasway.com/?ref=jamie1964" },
   { "name": "WinBonanza", "url": "https://winbonanza.com/register/8584d56d-85b9-4550-ae0b-cae8adc3d598" },
-  { "name": "WowVegas", "url": "https://www.wowvegas.com/?raf=7259051" },
-  { "name": "YayCasino", "url": "https://www.yaycasino.com/signup/b34047a0-15a9-4e86-8eaf-c49ef3a39c45" },
-  { "name": "ZulaCasino", "url": "https://www.zulacasino.com/signup/402c0581-799e-4dba-8445-b066fca4a2f1" }
+  { "name": "ChipNWin", "url": "https://chipnwin.com/?earn=EQ9wKNS3" },
+  { "name": "Cashoomo", "url": "https://cashoomo.com/?referralCode=JH8QLG3YWP8S" }
 ]
