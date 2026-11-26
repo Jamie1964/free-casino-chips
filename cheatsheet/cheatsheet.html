@@ -79,9 +79,19 @@
             </div>
 
             <!-- PAGINATION -->
-            <div style="text-align:center;margin-bottom:35px;">
+            <div style="text-align:center;margin-bottom:20px;">
                 <button onclick="prevPage()" style="padding:10px 20px;background:#222;color:#fff;border:1px solid #444;border-radius:6px;cursor:pointer;margin-right:8px;font-weight:bold;">Previous</button>
                 <button onclick="nextPage()" style="padding:10px 20px;background:#222;color:#fff;border:1px solid #444;border-radius:6px;cursor:pointer;font-weight:bold;">Next</button>
+            </div>
+
+            <!-- PER-PAGE COUNTER -->
+            <div id="pageViewCounter" style="text-align:center;color:#aaa;font-size:14px;margin-bottom:8px;">
+                Page 1 Views: 0
+            </div>
+
+            <!-- GLOBAL COUNTER -->
+            <div style="text-align:center;color:#888;font-size:14px;margin-bottom:35px;">
+                Total Views: <span id="globalViewCount">0</span>
             </div>
 
             <!-- SEO OVERVIEW -->
@@ -107,6 +117,7 @@
                     filteredCasinos = data;
                     updatePageNumber();
                     renderButtons();
+                    updatePageCounter();
                 })
                 .catch(() => {
                     document.getElementById('buttonContainer').innerHTML =
@@ -134,4 +145,132 @@
                     btn.rel = "noopener noreferrer";
                     btn.className = "casino-btn";
                     btn.dataset.id = id;
-                    btn.style.cssText =
+                    btn.style.cssText = `
+                        display:flex;align-items:center;gap:8px;background:#1e73ff;
+                        color:#fff;padding:9px 10px;border-radius:6px;text-decoration:none;
+                        font-size:14px;font-weight:bold;
+                    `;
+
+                    const cb = document.createElement('input');
+                    cb.type = "checkbox";
+                    cb.style.width = "16px";
+                    cb.style.height = "16px";
+                    cb.style.cursor = "pointer";
+
+                    const saved = localStorage.getItem("chk_" + id);
+                    if (saved === "1") cb.checked = true;
+
+                    cb.addEventListener("click", e => {
+                        e.stopPropagation();
+                        localStorage.setItem("chk_" + id, cb.checked ? "1" : "0");
+                    });
+
+                    btn.addEventListener("click", e => {
+                        if (e.target.tagName !== "INPUT") {
+                            cb.checked = true;
+                            localStorage.setItem("chk_" + id, "1");
+                        }
+                    });
+
+                    const label = document.createElement('span');
+                    label.textContent = casino.name;
+
+                    btn.appendChild(cb);
+                    btn.appendChild(label);
+                    container.appendChild(btn);
+                });
+            }
+
+            function openAllPage() {
+                const start = currentPage * perPage;
+                const end = start + perPage;
+                const slice = filteredCasinos.slice(start, end);
+
+                slice.forEach(casino => {
+                    const id = getCasinoId(casino.name);
+                    localStorage.setItem("chk_" + id, "1");
+                    window.open(casino.url, "_blank", "noopener,noreferrer");
+                });
+
+                renderButtons();
+            }
+
+            function markAll() {
+                casinos.forEach(casino => {
+                    const id = getCasinoId(casino.name);
+                    localStorage.setItem("chk_" + id, "1");
+                });
+                renderButtons();
+            }
+
+            function uncheckAll() {
+                casinos.forEach(casino => {
+                    const id = getCasinoId(casino.name);
+                    localStorage.setItem("chk_" + id, "0");
+                });
+                renderButtons();
+            }
+
+            function nextPage() {
+                if ((currentPage + 1) * perPage < filteredCasinos.length) {
+                    currentPage++;
+                    updatePageNumber();
+                    renderButtons();
+                    updatePageCounter();
+                }
+            }
+
+            function prevPage() {
+                if (currentPage > 0) {
+                    currentPage--;
+                    updatePageNumber();
+                    renderButtons();
+                    updatePageCounter();
+                }
+            }
+
+            function updatePageNumber() {
+                const totalPages = Math.ceil(filteredCasinos.length / perPage) || 1;
+                document.getElementById("pageNumberDisplay").textContent =
+                    "Page " + (currentPage + 1) + " of " + totalPages;
+            }
+
+            function updatePageCounter() {
+                const key = "cheat_page_" + currentPage + "_views";
+                let count = parseInt(localStorage.getItem(key) || "0");
+                count++;
+                localStorage.setItem(key, count);
+                document.getElementById("pageViewCounter").textContent =
+                    "Page " + (currentPage + 1) + " Views: " + count;
+            }
+
+            document.getElementById("searchBox").addEventListener("input", function () {
+                const term = this.value.toLowerCase().trim();
+                filteredCasinos = casinos.filter(c => c.name.toLowerCase().includes(term));
+                currentPage = 0;
+                updatePageNumber();
+                renderButtons();
+            });
+
+            (function() {
+                const key = "cheatsheet_global_views";
+                let count = parseInt(localStorage.getItem(key) || "0");
+                count++;
+                localStorage.setItem(key, count);
+                document.getElementById("globalViewCount").textContent = count;
+            })();
+            </script>
+
+            <!-- FOOTER -->
+            <footer id="footer"></footer>
+            <script>
+            fetch('https://free-casino-chips.com/footer.html')
+                .then(r => r.text())
+                .then(html => { document.getElementById('footer').innerHTML = html; });
+            </script>
+
+        </div>
+    </div>
+
+</body>
+</html>
