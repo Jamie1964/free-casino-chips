@@ -58,10 +58,12 @@
                 <div style="width:70%;color:#fff;font-size:15px;line-height:1.65;padding-left:20px;">
                     <h2 style="color:#66ccff;font-size:22px;margin:0 0 10px;">How to Use the Daily Bonus Cheat Sheet</h2>
                     • Collect your daily gift of free Sweeps Coins and Gold Coins from each sweepstakes casino.<br>
-                    • Click <strong>Open All (Current Page)</strong> to launch all 15 casinos on the current page in new tabs and check them off automatically (allow pop-ups in Chrome when prompted).<br>
-                    • Or click any blue casino button individually to open that site in a new tab.<br>
-                    • Your checkmarks save automatically in your browser's local storage.<br>
-                    • Use <strong>Mark All</strong> to check every casino or <strong>Uncheck All</strong> to reset for a new day.
+                    • <strong>Important before using "Open All (Current Page)":</strong> You must allow pop-ups for this site or your browser will only open 1 tab at a time instead of all 15:<br>
+                    &nbsp;&nbsp;&nbsp;1. Right-click the icon to the left of the page address in your browser's address bar.<br>
+                    &nbsp;&nbsp;&nbsp;2. Choose <strong>Site settings</strong> (or <strong>Settings</strong>).<br>
+                    &nbsp;&nbsp;&nbsp;3. Find <strong>Pop-ups and redirects</strong>, click the <strong>Block</strong> dropdown, and select <strong>Allow</strong>.<br>
+                    • Click <strong>Open All (Current Page)</strong> to launch all 15 casinos on the current page in new tabs and check them off automatically, or click any blue casino button individually.<br>
+                    • Your checkmarks save automatically in your browser's local storage. Use <strong>Mark All</strong> to check every casino or <strong>Uncheck All</strong> to reset for a new day.
                 </div>
 
             </div>
@@ -133,113 +135,3 @@
                     btn.className = "casino-btn";
                     btn.dataset.id = id;
                     btn.style.cssText =
-                        "display:flex;align-items:center;gap:8px;background:#1e73ff;" +
-                        "color:#fff;padding:10px 12px;border-radius:6px;text-decoration:none;" +
-                        "font-size:14px;font-weight:bold;";
-
-                    const cb = document.createElement('input');
-                    cb.type = "checkbox";
-                    cb.style.width = "16px";
-                    cb.style.height = "16px";
-                    cb.style.cursor = "pointer";
-
-                    const saved = localStorage.getItem("chk_" + id);
-                    if (saved === "1") cb.checked = true;
-
-                    cb.addEventListener("click", e => {
-                        e.stopPropagation();
-                        localStorage.setItem("chk_" + id, cb.checked ? "1" : "0");
-                    });
-
-                    btn.addEventListener("click", e => {
-                        if (e.target.tagName !== "INPUT") {
-                            cb.checked = !cb.checked;
-                            localStorage.setItem("chk_" + id, cb.checked ? "1" : "0");
-                        }
-                    });
-
-                    const label = document.createElement('span');
-                    label.textContent = casino.name;
-
-                    btn.appendChild(cb);
-                    btn.appendChild(label);
-                    container.appendChild(btn);
-                });
-            }
-
-            function nextPage() {
-                if ((currentPage + 1) * perPage < filteredCasinos.length) {
-                    currentPage++;
-                    updatePageNumber();
-                    renderButtons();
-                }
-            }
-
-            function prevPage() {
-                if (currentPage > 0) {
-                    currentPage--;
-                    updatePageNumber();
-                    renderButtons();
-                }
-            }
-
-            function updatePageNumber() {
-                const totalPages = Math.ceil(filteredCasinos.length / perPage) || 1;
-                document.getElementById("pageNumberDisplay").textContent =
-                    "Page " + (currentPage + 1) + " of " + totalPages;
-            }
-
-            document.getElementById("searchBox").addEventListener("input", function () {
-                const term = this.value.toLowerCase().trim();
-                filteredCasinos = casinos.filter(c => c.name.toLowerCase().includes(term));
-                currentPage = 0;
-                updatePageNumber();
-                renderButtons();
-            });
-
-            function openAllPage() {
-                const start = currentPage * perPage;
-                const end = start + perPage;
-                const slice = filteredCasinos.slice(start, end);
-
-                slice.forEach(casino => {
-                    localStorage.setItem("chk_" + getCasinoId(casino.name), "1");
-                    window.open(casino.url, "_blank", "noopener,noreferrer");
-                });
-                renderButtons();
-            }
-
-            function markAll() {
-                casinos.forEach(c => {
-                    localStorage.setItem("chk_" + getCasinoId(c.name), "1");
-                });
-                renderButtons();
-            }
-
-            function uncheckAll() {
-                casinos.forEach(c => {
-                    localStorage.setItem("chk_" + getCasinoId(c.name), "0");
-                });
-                renderButtons();
-            }
-            </script>
-
-            <!-- LAST UPDATED -->
-            <div style="text-align:center;color:#888;font-size:14px;margin-bottom:20px;">
-                Last Updated: November 26, 2026 at 7:51 AM MST
-            </div>
-
-            <!-- UNIVERSAL FOOTER -->
-            <div id="footer"></div>
-            <script>
-            fetch('https://free-casino-chips.com/footer.html')
-                .then(r => r.text())
-                .then(html => { document.getElementById('footer').innerHTML = html; })
-                .catch(() => { document.getElementById('footer').innerHTML = "<p style='color:#888;text-align:center;'>Footer unavailable</p>"; });
-            </script>
-
-        </div> <!-- END MAIN CONTENT -->
-    </div> <!-- END PAGE WRAPPER -->
-
-</body>
-</html>
