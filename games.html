@@ -1,3 +1,4 @@
+<!-- https://free-casino-chips.com/games.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -337,27 +338,6 @@
 
 </div>
 
-<!-- PAGE VIEW COUNTER -->
-<div style="text-align:center; margin-top:40px; font-size:18px; color:#ccc;">
-    <span id="viewCount"></span>
-</div>
-
-<script>
-    const pageId = "games";
-    const countKey = "views_" + pageId;
-
-    let views = localStorage.getItem(countKey);
-    if (!views) {
-        views = 1;
-    } else {
-        views = parseInt(views) + 1;
-    }
-    localStorage.setItem(countKey, views);
-
-    document.getElementById("viewCount").innerText =
-        "Page Views: " + views.toLocaleString();
-</script>
-
 <!-- FADE-IN SCRIPT -->
 <script>
     const boxes = document.querySelectorAll('.fade-box');
@@ -376,11 +356,22 @@
 </script>
 
 <!-- FOOTER -->
-<footer style="text-align:center; margin-top:60px; padding:20px; color:#888; font-size:16px;">
-    © 2026 FREE-CASINO-CHIPS.COM — All Rights Reserved
+<footer style="text-align:center; margin-top:60px; padding:25px 20px; background:#0a1a2a; border-radius:8px; color:#ccc; font-size:16px; line-height:1.8;">
+    <div style="margin-bottom:10px;">
+        <a href="https://free-casino-chips.com/index.html" style="color:#66ccff; text-decoration:none; margin:0 12px;">Home</a>
+        <a href="https://free-casino-chips.com/games.html" style="color:#66ccff; text-decoration:none; margin:0 12px;">Slot Games</a>
+        <a href="https://free-casino-chips.com/poker.html" style="color:#66ccff; text-decoration:none; margin:0 12px;">Poker</a>
+        <a href="https://free-casino-chips.com/cheatsheet/cheatsheet.html" style="color:#66ccff; text-decoration:none; margin:0 12px;">Cheatsheet</a>
+        <a href="https://free-casino-chips.com/promocodes.html" style="color:#66ccff; text-decoration:none; margin:0 12px;">Promo Codes</a>
+    </div>
+    <div style="color:#888;">
+        © 2026 FREE-CASINO-CHIPS.COM — All Rights Reserved
+    </div>
+    <div style="color:#66ccff; font-size:14px; margin-top:6px;">
+        Last Updated: November 28, 2026
+    </div>
 </footer>
 
 </main>
 </body>
 </html>
-
